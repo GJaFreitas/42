@@ -6,13 +6,13 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:18:01 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/08 17:36:42 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:41:06 by gjacome-         ###   ########.fr       */
 /*                                                                           */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-int	compare(const char *s1, const char *s2)
+static int	compare(const char *s1, const char *s2)
 {
 	while (*s1 && *s2)
 	{

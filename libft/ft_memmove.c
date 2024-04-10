@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:31:10 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/08 14:33:44 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:34:04 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		src++;
 		n--;
 	}
-	return (ret_ptr);
+	dest = ret_ptr;
+	return (dest);
 }

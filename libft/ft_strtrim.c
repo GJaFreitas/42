@@ -6,14 +6,14 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 18:50:02 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/08 19:33:07 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:55:15 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-void	trim_it(char *str)
+static void	trim_it(char *str)
 {
 	int	i;
 	int	j;

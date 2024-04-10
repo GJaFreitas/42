@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 18:36:26 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/10 17:54:30 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/10 17:22:55 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/10 17:46:31 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-static int	ft_strcpy(char *dest, const char *src)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
+	char	*ret_str;
 	int	i;
 
 	i = 0;
-	while(src[i])
+	ret_str = ft_calloc(ft_strlen((char *)s) + 1, sizeof(char));
+	while (s[i])
 	{
-		dest[i] = src[i];
+		ret_str[i] = f(i, s[i]);
 		i++;
 	}
-	return (i);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	int	total_len;
-	char	*new_str;
-
-	total_len = (ft_strlen((char *)s1) + ft_strlen((char *)s2));
-	new_str = malloc(total_len);
-	if (new_str == NULL)
-		return (NULL);
-	total_len = total_len - ft_strlcpy(new_str, s1, total_len);
-	ft_strlcat(new_str, s2, total_len);
-	return (new_str);
+	return (ret_str);
 }
