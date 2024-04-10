@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:40:55 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/08 18:11:36 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:04:13 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stddef.h>
 #include "libft.h"
 
-size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	j;
@@ -38,5 +38,5 @@ size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t size)
 	{
 		dst[i] = 0;
 	}
-	return (ft_strlen((char *)src));
+	return (ft_strlen((char *) dst) + ft_strlen((char *) src));
 }

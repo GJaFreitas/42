@@ -1,71 +1,68 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 19:04:16 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/08 19:25:20 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/10 15:16:44 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/10 15:16:53 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "libft/libft.h"
 
-static int	count_words(const char *s, char c)
+static void	allocpy(char **arr, char *s, char c)
 {
-	int	i;
-	int	words;
+	char	*temp;
 
-	i = 0;
-	words = 0;
-	if (s[i] != c && s[i + 1] != c)
-		words++;
-	while (s[i] != 0)
+	temp = s;
+	while (*temp)
 	{
-		if (s[i] == c && s[i + 1] != c && s[i + 1] != 0)
-			words++;
+		while (*s == c)
+			s++;
+		temp = s;
+		while (*temp && *temp != c)
+			temp++;
+		if (*temp == c || temp > s)
+		{
+			*arr = ft_substr(s, 0, temp - s);
+			s = temp;
+			++arr;
+		}
 	}
-	return (words);
+	*arr = NULL;
 }
 
-static int	copy(char *dest, const char *src, char c)
+static int	count_words(char const *s, char c)
 {
-	int	len;
+	int	word_count;
 
-	len = 0;
-	while (*src && *src != c)
+	word_count = 0;
+	while (*s)
 	{
-		*dest = *src;
-		dest++;
-		src++;
-		len++;
+		while (*s == c)
+			s++;
+		if (*s)
+			++word_count;
+		while (*s && *s != c)
+			++s;
 	}
-	return (len);
+	return (word_count);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
-	char	*temp;
-	int	word_count;
-	int	len;
+	int	words;
 
-	word_count = count_words(s, c);
-	arr = ft_calloc(word_count + 1, sizeof(char *));
-	temp = ft_calloc(256, sizeof(char));
-	if (arr == NULL || temp == NULL)
+	if (!*s)
 		return (NULL);
-	len = 0;
-	while (word_count > 0)
-	{
-		len += copy(temp, s + len, c);
-		*arr = ft_calloc(len + 1, sizeof(char));
-		ft_strlcpy(*arr, temp, len + 1);
-		arr++;
-		ft_memset(temp, 0, 256);
-		word_count--;
-	}
+	words = count_words(s, c);
+	arr = malloc(sizeof(char *) * (words + 1));
+	if (!arr)
+		return (NULL);
+	allocpy(arr, (char *)s, c);
 	return (arr);
 }
