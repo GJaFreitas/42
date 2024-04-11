@@ -6,25 +6,12 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 18:36:26 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/10 17:54:30 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:50:44 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-
-static int	ft_strcpy(char *dest, const char *src)
-{
-	int	i;
-
-	i = 0;
-	while(src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	return (i);
-}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

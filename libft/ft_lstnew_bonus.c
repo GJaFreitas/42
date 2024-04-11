@@ -1,0 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/11 08:18:43 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/11 08:21:15 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+#include <stdlib.h>
+
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*newnode;
+
+	newnode = malloc(sizeof(t_list));
+	newnode->next = NULL;
+	newnode->content = content;
+	return (newnode);
+}

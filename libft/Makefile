@@ -15,6 +15,8 @@ TARGET = libft.a
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 
+BONUSOBJS = $(wildcard *_bonus.c)
+
 DEPS = libft.h
 
 HEAD = includes
@@ -29,6 +31,10 @@ RANLIB = ranlib
 	$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) -I $(HEAD)
 
 $(TARGET) : $(OBJS)
+	$(AR) $(TARGET) $(OBJS)
+	$(RANLIB) $(TARGET)
+
+bonus: $(BONUSOBJS) $(OBJS)
 	$(AR) $(TARGET) $(OBJS)
 	$(RANLIB) $(TARGET)
 
