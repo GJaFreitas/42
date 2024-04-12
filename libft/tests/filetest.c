@@ -1,11 +1,6 @@
 #include <stdio.h>
 #include "../libft.h"
 
-static char	strmapi_assist(unsigned int i, char c)
-{
-	return ('a');
-}
-
 int	main(void)
 {
 	char teststring[256];
@@ -26,6 +21,5 @@ int	main(void)
 		printf("Memcmp: Working as intended\n");
 	substr = ft_substr(teststring, 4, 10);
 	printf("itoa: %s\n", ft_itoa(-123));
-	printf("strmapi: %s %s\n", duplicate, ft_strmapi(duplicate, strmapi_assist(0, 0)));
 	return 0;
 }

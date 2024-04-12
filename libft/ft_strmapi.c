@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:22:55 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/10 17:46:31 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/12 18:48:34 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,16 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int	i;
 
 	i = 0;
+	if (s[0] == 0)
+		return (ft_strdup(""));
 	ret_str = ft_calloc(ft_strlen((char *)s) + 1, sizeof(char));
+	if (!ret_str)
+		return (NULL);
 	while (s[i])
 	{
-		ret_str[i] = f(i, s[i]);
+		ret_str[i] = (*f)(i, s[i]);
 		i++;
 	}
+	ret_str[i] = 0;
 	return (ret_str);
 }
