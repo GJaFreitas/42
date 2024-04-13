@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:18:43 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/11 08:21:15 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/13 19:29:47 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_list	*ft_lstnew(void *content)
 	t_list	*newnode;
 
 	newnode = malloc(sizeof(t_list));
+	if (newnode == NULL)
+		return (NULL);
 	newnode->next = NULL;
 	newnode->content = content;
 	return (newnode);
