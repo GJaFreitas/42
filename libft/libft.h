@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:38:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/13 12:24:38 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:58:19 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define __H__LIBFT
 
 #include <stddef.h>
+#include <stdlib.h>
 
 typedef struct s_list
 {

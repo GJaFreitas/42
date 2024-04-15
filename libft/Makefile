@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/04/15 15:16:22 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/04/15 18:15:10 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ TARGET = libft.a
 
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
-
-BONUSOBJS = $(wildcard *_bonus.c)
+BONUSSRCS = $(wildcard *_bonus.c)
+BONUSOBJS = $(BONUSSRCS:.c=.o)
 
 DEPS = libft.h
 
