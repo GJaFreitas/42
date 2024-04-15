@@ -6,24 +6,29 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:31:10 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/10 15:34:04 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/15 16:51:00 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#define OVERLAP 1
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	void	*ret_ptr;
+	void	*ret;
 
-	ret_ptr = dest;
-	while (n > 0)
+	if (!dest && !src)
+		return (0);
+	ret = dest;
+	if (src < dest)
 	{
-		*(char *)dest = *(char *)src;
-		dest++;
-		src++;
-		n--;
+		dest += n;
+		src += n;
+		while (n--)
+			*(char *)--dest = *(char *)--src;
 	}
-	dest = ret_ptr;
-	return (dest);
+	else
+		while (n--)
+			*(char *)dest++ = *(char *)src++;
+	return (ret);
 }

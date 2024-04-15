@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:19:37 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/08 14:22:13 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:15:27 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_bzero(void *s, size_t n)
 {
 	while (n > 0)
 	{
-		*(int  *)s = 0;
+		*(unsigned char  *)s = 0;
 		s++;
 		n--;
 	}

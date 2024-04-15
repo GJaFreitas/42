@@ -6,18 +6,33 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:16:44 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/10 15:54:44 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:14:43 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
+static void	destroy(char ***arr)
+{
+	int	i;
+
+	i = 0;
+	while (**arr != NULL)
+	{
+		free(*arr[i]);
+		i++;
+	}
+	*arr = NULL;
+}
+
 static void	allocpy(char **arr, char *s, char c)
 {
 	char	*temp;
+	char	**arr_cpy;
 
 	temp = s;
+	arr_cpy = arr;
 	while (*temp)
 	{
 		while (*s == c)
@@ -28,6 +43,8 @@ static void	allocpy(char **arr, char *s, char c)
 		if (*temp == c || temp > s)
 		{
 			*arr = ft_substr(s, 0, temp - s);
+			if (*arr == NULL)
+				destroy(&arr_cpy);
 			s = temp;
 			++arr;
 		}

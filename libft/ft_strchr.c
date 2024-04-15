@@ -6,13 +6,21 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:59:38 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/08 15:17:16 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:55:06 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdlib.h>
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != c)
+	char	*ret_ptr;
+
+	ret_ptr = NULL;
+	while (*s && *s != c)
 		s++;
-	return ((char *)s);
+	if (*s == c)
+		ret_ptr = (char *)s;
+	if (c == 0)
+		return ((char *)s);
+	return (ret_ptr);
 }
