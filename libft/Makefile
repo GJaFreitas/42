@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/04/15 18:15:10 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/04/16 12:16:12 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,11 +46,11 @@ $(TARGET) : $(OBJS)
 	$(AR) $(TARGET) $(OBJS)
 	$(RANLIB) $(TARGET)
 
-bonus: $(BONUSOBJS) $(OBJS)
-	$(AR) $(TARGET) $(OBJS)
-	$(RANLIB) $(TARGET)
-
 all: $(TARGET)
+
+bonus: $(TARGET)
+	make fclean
+	make
 
 clean:
 	$(RM) *.o
