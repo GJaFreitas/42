@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 18:30:50 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/15 19:28:18 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:22:47 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	size;
 	size_t	i;
 	char	*sub_str;
 
 	if (start > ft_strlen((char *)s))
 		return (ft_strdup(""));
-	size = len - start;
-	sub_str = ft_calloc(len + 1, sizeof(char));
+	sub_str = malloc(len + 1);
 	if (sub_str == NULL)
 		return (NULL);
 	i = 0;

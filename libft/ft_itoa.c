@@ -6,12 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:21:32 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/10 17:22:31 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:50:22 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static void	ft_writenum(int c, char *s)
 {
@@ -24,12 +23,7 @@ static void	ft_putnbr(int nb, char *s)
 {
 	char	num;
 
-	if (nb == -2147483648)
-	{
-		ft_strlcpy(s, "-2147483648", 11);
-		return;
-	}
-	else if (nb > 9)
+	if (nb > 9)
 	{
 		ft_putnbr(nb / 10, s);
 		ft_putnbr(nb % 10, s);
@@ -51,14 +45,28 @@ static void	ft_putminus(char *s)
 	s[i] = '-';
 }
 
+static void	init(char *temp)
+{
+	int	i;
+
+	i = 0;
+	while (i < 12)
+	{
+		temp[i] = 0;
+		i++;
+	}
+}
+
 char	*ft_itoa(int n)
 {
 	char	*str;
-	char	*temp;
-	int	size;
+	char	temp[12];
+	int		size;
 
-	temp = ft_calloc(12, sizeof(char));
-	if (n < 0)
+	init(temp);
+	if (n == -2147483648)
+		ft_strlcpy(temp, "-2147483648", 12);
+	else if (n < 0)
 	{
 		ft_putminus(temp);
 		ft_putnbr(-n, temp);
@@ -66,8 +74,7 @@ char	*ft_itoa(int n)
 	else
 		ft_putnbr(n, temp);
 	size = ft_strlen(temp);
-	str = ft_calloc(size + 1, sizeof(char));
+	str = malloc(size + 1);
 	ft_strlcpy(str, temp, size + 1);
-	free(temp);
 	return (str);
 }

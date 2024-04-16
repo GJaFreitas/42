@@ -6,11 +6,10 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:35:26 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/10 17:44:01 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:51:13 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
 void	ft_putendl_fd(char *buf, int fd)

@@ -6,12 +6,10 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:40:55 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/15 17:50:25 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:51:53 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//not entirely sure this is correct
-#include <stddef.h>
 #include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)

@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/04/16 12:16:12 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/04/16 18:54:19 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ CC = cc
 
 CFLAGS = -g -Wall -Wextra -Werror
 
-# --- TARGET ---------------------- #
+# --- NAME ---------------------- #
 
-TARGET = libft.a
+NAME = libft.a
 
 # --- DEPENDENCIES ---------------- #
 
@@ -42,13 +42,13 @@ RANLIB = ranlib
 .c.o:
 	$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) -I $(HEAD)
 
-$(TARGET) : $(OBJS)
-	$(AR) $(TARGET) $(OBJS)
-	$(RANLIB) $(TARGET)
+$(NAME) : $(OBJS)
+	$(AR) $(NAME) $(OBJS)
+	$(RANLIB) $(NAME)
 
-all: $(TARGET)
+all: $(NAME)
 
-bonus: $(TARGET)
+bonus: $(NAME)
 	make fclean
 	make
 
@@ -56,7 +56,7 @@ clean:
 	$(RM) *.o
 
 fclean:
-	$(RM) $(TARGET) *.o
+	$(RM) $(NAME) *.o
 
 re:
 	make fclean

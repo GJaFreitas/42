@@ -6,11 +6,10 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:16:44 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/15 17:14:43 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:51:27 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 static void	destroy(char ***arr)
@@ -72,10 +71,14 @@ static int	count_words(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
-	int	words;
+	int		words;
 
 	if (!*s)
-		return (NULL);
+	{
+		arr = malloc(sizeof(char *));
+		*arr = NULL;
+		return (arr);
+	}
 	words = count_words(s, c);
 	arr = malloc(sizeof(char *) * (words + 1));
 	if (!arr)

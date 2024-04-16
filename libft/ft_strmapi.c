@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:22:55 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/12 18:48:34 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:20:36 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*ret_str;
-	int	i;
+	int		i;
 
 	i = 0;
 	if (s[0] == 0)

@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:01:57 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/15 17:55:49 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:17:41 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char *return_ptr;
+	char	*return_ptr;
 
 	return_ptr = NULL;
 	while (*s)

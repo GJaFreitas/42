@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:13:28 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/08 15:16:31 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:16:21 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	while (--n > 0)
 	{
 		if (*(unsigned char *)s1 != *(unsigned char *)s2)
-			break;
+			break ;
 		s1++;
 		s2++;
 	}

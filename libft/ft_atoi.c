@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:23:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 16:22:40 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:39:05 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static int	ft_isspace(char c)
 {
-	return (c == '\n' ||
-		c == '\t' ||
-		c == '\v' ||
-		c == '\r' ||
-		c == '\f' ||
-		c == ' ');
+	return (c == '\n' 
+		|| c == '\t' 
+		|| c == '\v' 
+		|| c == '\r' 
+		|| c == '\f' 
+		|| c == ' ');
 }
 
 int	ft_atoi(const char *str)

@@ -6,11 +6,12 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:28:32 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/08 12:31:16 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:15:21 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_isalnum(int c)
 {
 	return (ft_isalpha(c) || ft_isdigit(c));
