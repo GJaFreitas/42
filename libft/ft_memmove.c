@@ -6,12 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:31:10 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/15 16:51:00 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:19:45 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#define OVERLAP 1
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
