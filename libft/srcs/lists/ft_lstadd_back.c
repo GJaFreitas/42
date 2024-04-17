@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 08:35:32 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 18:50:43 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/11 08:37:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/17 17:48:40 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_lstadd_back(t_list **head, t_list *node)
 {
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	t_list	*temp;
+
+	temp = *head;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp->next = node;
 }

@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 17:35:26 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 18:51:13 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/08 14:59:38 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/17 17:51:37 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdlib.h>
 
-#include "libft.h"
-
-void	ft_putendl_fd(char *buf, int fd)
+char	*ft_strchr(const char *s, int c)
 {
-	write(fd, buf, ft_strlen(buf));
-	write(fd, "\n", 1);
+	char	*ret_ptr;
+
+	ret_ptr = NULL;
+	while (*s && *s != c)
+		s++;
+	if (*s == c)
+		ret_ptr = (char *)s;
+	if (c == 0)
+		return ((char *)s);
+	return (ret_ptr);
 }

@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 08:21:56 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 18:17:56 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/11 08:35:32 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/17 17:49:05 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
-void	ft_lstadd_front(t_list **head, t_list *node)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*temp;
-
-	temp = *head;
-	head = &node;
-	node->next = temp;
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }

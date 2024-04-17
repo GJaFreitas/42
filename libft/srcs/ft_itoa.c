@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:21:32 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 18:50:22 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:51:21 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 static void	ft_writenum(int c, char *s)
 {

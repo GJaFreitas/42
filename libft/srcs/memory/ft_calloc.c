@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 18:30:50 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 17:22:47 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/08 15:31:05 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/17 17:49:39 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
+#include <limits.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+// nmemb = n members of size x
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	i;
-	char	*sub_str;
+	void	*ptr;
 
-	if (start > ft_strlen((char *)s))
-		return (ft_strdup(""));
-	sub_str = malloc(len + 1);
-	if (sub_str == NULL)
+	if (nmemb * size > INT_MAX)
 		return (NULL);
-	i = 0;
-	while (i < len && s[start + i])
-	{
-		sub_str[i] = s[start + i];
-		i++;
-	}
-	sub_str[i] = 0;
-	return (sub_str);
+	if (nmemb == 0 || size == 0)
+		return (malloc(1));
+	ptr = malloc(nmemb * size);
+	ft_memset(ptr, 0, nmemb * size);
+	return (ptr);
 }

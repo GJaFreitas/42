@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 17:22:55 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 18:20:36 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/08 14:40:55 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/17 17:50:20 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	char	*ret_str;
-	int		i;
+	size_t	dstsize;
+	size_t	i;
 
 	i = 0;
-	if (s[0] == 0)
-		return (ft_strdup(""));
-	ret_str = ft_calloc(ft_strlen((char *)s) + 1, sizeof(char));
-	if (!ret_str)
-		return (NULL);
-	while (s[i])
+	dstsize = ft_strlen(dst);
+	if (dstsize >= size)
+		return (size + ft_strlen((char *)src));
+	while (src[i] && dstsize < size - 1)
 	{
-		ret_str[i] = (*f)(i, s[i]);
+		dst[dstsize] = src[i];
+		dstsize++;
 		i++;
 	}
-	ret_str[i] = 0;
-	return (ret_str);
+	dst[dstsize] = 0;
+	return (ft_strlen((char *)dst) + ft_strlen((char *)&src[i]));
 }

@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 18:53:46 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 18:50:33 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/13 12:25:06 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/17 17:49:11 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
-static void	ft_recursive_deletion(t_list *lst, void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (lst->next != NULL)
-		ft_recursive_deletion(lst->next, (*del));
-	ft_lstdelone(lst, (*del));
-}
+	t_list	*new_lst;
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
-{
-	ft_recursive_deletion(*lst, (*del));
-	lst = NULL;
+	new_lst = ft_lstnew((*f)(lst->content));
+	if (new_lst == NULL)
+	{
+		(*del)(new_lst->content);
+		return (NULL);
+	}
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+		ft_lstadd_back(&new_lst, ft_lstnew((*f)(lst->content)));
+	}
+	return (new_lst);
 }

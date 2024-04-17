@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 14:59:38 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/15 17:55:06 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/11 08:18:43 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/17 17:49:15 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+#include "../../libft.h"
+
+t_list	*ft_lstnew(void *content)
 {
-	char	*ret_ptr;
+	t_list	*newnode;
 
-	ret_ptr = NULL;
-	while (*s && *s != c)
-		s++;
-	if (*s == c)
-		ret_ptr = (char *)s;
-	if (c == 0)
-		return ((char *)s);
-	return (ret_ptr);
+	newnode = malloc(sizeof(t_list));
+	if (newnode == NULL)
+		return (NULL);
+	newnode->next = NULL;
+	newnode->content = content;
+	return (newnode);
 }

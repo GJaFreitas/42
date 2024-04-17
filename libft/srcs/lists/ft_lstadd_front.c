@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 17:38:10 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 18:42:32 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/11 08:21:56 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/17 17:48:47 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_lstadd_front(t_list **head, t_list *node)
 {
-	char	*nb;
+	t_list	*temp;
 
-	nb = ft_itoa(n);
-	write(fd, nb, ft_strlen(nb));
+	temp = *head;
+	head = &node;
+	node->next = temp;
 }
