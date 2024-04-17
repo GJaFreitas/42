@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:23:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/17 17:51:00 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:02:56 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../libft.h"
 
 static int	ft_isspace(char c)
 {
