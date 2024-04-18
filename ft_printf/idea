@@ -1,2 +1,0 @@
-read from the passed string into a buffer like buf[256] and change the %d and such and at the end just
-call write() once to write the whole thing in one instruction

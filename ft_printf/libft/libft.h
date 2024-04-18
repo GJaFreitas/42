@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:38:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/17 18:40:16 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:53:26 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ void	ft_lstadd_back(t_list **head, t_list *node);
 void	ft_lstadd_front(t_list **head, t_list *node);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
-int	ft_strcat(char *dst, const char *src);
+int		ft_strcat(char *dst, const char *src);
+int		ft_strcpy(char *dest, char *src);
+// strmove is basically strcpy but it frees the src string
+int		ft_strmove(char *dest, char *src);
+char	*ft_revstr(char *str);
+char	*ft_itox(int num);
+char	*ft_itoX(int num);
 
 #endif

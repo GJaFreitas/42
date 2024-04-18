@@ -6,28 +6,18 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/04/17 18:13:56 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/04/18 13:22:55 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# --- Compiler -------------------- #
-
 CC = cc
-
-# --- Compiler Flags -------------- #
 
 CFLAGS = -g -Wall -Wextra -Werror
 
-# --- NAME ---------------------- #
+NAME = libftprintf.a
 
-NAME = libft.a
-
-# --- DEPENDENCIES ---------------- #
-
-SRCS = $(wildcard srcs/*/*.c)
+SRCS = ft_printf.c libft/libft.a
 OBJS = $(SRCS:.c=.o)
-
-DEPS = libft.h
 
 HEAD = includes
 
@@ -38,11 +28,12 @@ AR = ar rc
 RANLIB = ranlib
 
 .c.o:
-	$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) -I $(HEAD)
+	@$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) -I $(HEAD)
 
 $(NAME) : $(OBJS)
-	$(AR) $(NAME) $(OBJS)
-	$(RANLIB) $(NAME)
+	@cd libft && make && make clean
+	@$(AR) $(NAME) $(OBJS)	
+	@$(RANLIB) $(NAME)
 
 all: $(NAME)
 
@@ -50,7 +41,9 @@ clean:
 	$(RM) *.o
 
 fclean:
-	$(RM) $(NAME) *.o
+	cd libft && make fclean
+	make clean
+	$(RM) $(NAME)
 
 re:
 	make fclean

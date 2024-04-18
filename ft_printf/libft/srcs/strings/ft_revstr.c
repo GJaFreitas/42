@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_revstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 18:36:10 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/18 10:34:12 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/18 11:04:09 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/18 12:25:26 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../libft.h"
 
-// Assumes there is enough space in dest, this function was made for ft_printf
-int	ft_strcat(char *dst, const char *src)
+// Function that returns a pointer to a reversed string
+char	*ft_revstr(char *str)
 {
+	int	size;
 	int	i;
-	int	j;
-	int	dstsize;
+	char	*revstr;
 
+	size = ft_strlen(str);
+	revstr = malloc(size + 1);
+	revstr[size] = 0; // Null terminating str
 	i = 0;
-	dstsize = ft_strlen(dst);
-	j = dstsize + 1;
-	while (src[i])
+	size--;
+	while (i < size)
 	{
-		dst[j] = src[i];
-		j++;
+		revstr[i] = str[size];
 		i++;
+		size--;
 	}
-	dst[j] = 0;
-	return (j);
+	return (revstr);
 }

@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 18:36:10 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/18 10:34:12 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/18 10:45:51 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/18 10:48:39 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../libft.h"
 
-// Assumes there is enough space in dest, this function was made for ft_printf
-int	ft_strcat(char *dst, const char *src)
+// required for ft_printf, unsafe as hell. assumes there is space in the buffer
+int	ft_strcpy(char *dest, char *src)
 {
-	int	i;
-	int	j;
-	int	dstsize;
+	int	count;
 
-	i = 0;
-	dstsize = ft_strlen(dst);
-	j = dstsize + 1;
-	while (src[i])
+	count = 0;
+	while (src[count])
 	{
-		dst[j] = src[i];
-		j++;
-		i++;
+		dest[count] = src[count];
+		count++;
 	}
-	dst[j] = 0;
-	return (j);
+	return (count);
 }
