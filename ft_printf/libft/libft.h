@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:38:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/18 18:12:45 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:59:43 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ char	*ft_revstr(char *str);
 char	*ft_itox(int num);
 char	*ft_itoX(int num);
 char	*ft_itoptr(size_t num);
+char	*ft_uitoa(unsigned int n);
 
 #endif

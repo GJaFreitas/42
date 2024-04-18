@@ -11,7 +11,7 @@ static int	data(char *buff, char c, va_list args)
 	else if (c == 'd')
 		count = ft_strmove(buff, ft_itoa(va_arg(args, int)));
 	else if (c == 'u')
-		count = ft_strmove(buff, ft_itoa(va_arg(args, int)));
+		count = ft_strmove(buff, ft_uitoa(va_arg(args, int)));
 	else if (c == 'c')
 		*buff = va_arg(args, int);
 	else if (c == 's')
@@ -22,6 +22,8 @@ static int	data(char *buff, char c, va_list args)
 		count = ft_strmove(buff, ft_itoX(va_arg(args, int)));
 	else if (c == 'p')
 		count = ft_strmove(buff, ft_itoptr(va_arg(args, size_t)));
+	else
+		count = 0;
 	return (count);
 }
 
