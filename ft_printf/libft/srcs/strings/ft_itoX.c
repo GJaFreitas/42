@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 12:12:49 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/18 12:13:31 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:12:54 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*ft_itoX(int num)
 	char	*ret;
 	int	i;
 	int	sign;
+	int	hex_ascii;
 
 	ft_memset(temp, 0, 12);
 	if (num < 0)
@@ -28,14 +29,21 @@ char	*ft_itoX(int num)
 		num *= -1;
 	}
 	i = 0;
+	if (!num)
+		temp[i] = '0';
 	while (num)
 	{
-		temp[i] = "0123456789ABCDEF"[num % 16] - '0';
+		hex_ascii = num % 16;
+		if (hex_ascii < 10)
+			hex_ascii += '0';
+		else
+			hex_ascii += 55;
+		temp[i++] = hex_ascii;
 		num = num / 16;
-		i++;
+		temp[i] = 0;
 	}
 	if (sign)
-		temp[i] = '-';
+		temp[i++] = '-';
 	ret = ft_revstr(temp);
 	return (ret);
 }

@@ -8,16 +8,20 @@ static int	data(char *buff, char c, va_list args)
 	count = 1;
 	if (c == 'i')
 		count = ft_strmove(buff, ft_itoa(va_arg(args, int)));
+	else if (c == 'd')
+		count = ft_strmove(buff, ft_itoa(va_arg(args, int)));
+	else if (c == 'u')
+		count = ft_strmove(buff, ft_itoa(va_arg(args, int)));
 	else if (c == 'c')
 		*buff = va_arg(args, int);
 	else if (c == 's')
 		count = ft_strcpy(buff, va_arg(args, char *));
-	else if (c == 'd')
-		count = ft_strmove(buff, ft_itoa(va_arg(args, int)));
 	else if (c == 'x')
 		count = ft_strmove(buff, ft_itox(va_arg(args, int)));
 	else if (c == 'X')
 		count = ft_strmove(buff, ft_itoX(va_arg(args, int)));
+	else if (c == 'p')
+		count = ft_strmove(buff, ft_itoptr(va_arg(args, size_t)));
 	return (count);
 }
 

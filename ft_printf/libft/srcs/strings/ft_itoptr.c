@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itox.c                                          :+:      :+:    :+:   */
+/*   ft_itoptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 10:52:09 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/18 18:13:11 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/18 18:13:29 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/18 18:19:10 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../../libft.h"
 
-// As should be understood this function is int to hex
-// This function cannot convert the min int
-char	*ft_itox(int num)
+char	*ft_itoptr(size_t num)
 {
-	char	temp[12];
+	char	temp[16];
 	char	*ret;
 	int	i;
-	int	sign;
 	int	hex_ascii;
 
 	ft_memset(temp, 0, 12);
-	sign = 0;
-	if (num < 0)
-	{
-		sign = 1;
-		num *= -1;
-	}
 	i = 0;
 	if (!num)
 		temp[i] = '0';
@@ -41,10 +31,10 @@ char	*ft_itox(int num)
 			hex_ascii += 87;
 		temp[i++] = hex_ascii;
 		num = num / 16;
-		temp[i] = 0;
 	}
-	if (sign)
-		temp[i++] = '-';
+	temp[i++] = 'x';
+	temp[i++] = '0';
+	temp[i] = 0;
 	ret = ft_revstr(temp);
 	return (ret);
 }

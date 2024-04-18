@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:38:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/18 12:53:26 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:12:45 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ int		ft_strmove(char *dest, char *src);
 char	*ft_revstr(char *str);
 char	*ft_itox(int num);
 char	*ft_itoX(int num);
+char	*ft_itoptr(size_t num);
 
 #endif
