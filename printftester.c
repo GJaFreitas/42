@@ -29,4 +29,13 @@ int main(int argc, char **argv)
 	ft_printf("%s", "this whole thing is a string\n");
 	printf("Normal printf: %s", "this whole thing is a string\n");
 
+	ft_printf("And now for the 'what the fuck are you doing?' tests\n");
+	/*
+	ft_printf("%%s but giving it a char:\n");
+	printf("Normal printf: %s\n", 'c');
+	ft_printf("%s\n", 'c');
+	
+	They both seg fault, nice.
+
+	*/
 }

@@ -1,5 +1,4 @@
 #include "libftprintf.h"
-// Should i use enums? Can i use them?
 
 static int	data(char *buff, char c, va_list args)
 {
@@ -53,3 +52,10 @@ int	ft_printf(const char *input, ...)
 	va_end(arg_list);
 	return (count);
 }
+
+// Problem rn:
+// Buffer max size is 256
+// i COULD make it write as it goes and not need a buffer
+// buttttt nahhh
+// of course that way it could write infinitely but it would take quite a bit longer
+// the changes are super basic too
