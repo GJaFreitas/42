@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 18:50:02 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/17 16:13:18 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:05:41 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	int	i;
 
+	if (!s1 || !set)
+		return (NULL);
 	while (*s1 && ft_strchr(set, *s1))
 		s1++;
 	i = ft_strlen((char *)s1);

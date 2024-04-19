@@ -1,24 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 12:44:21 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/19 19:08:15 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/19 18:39:23 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/19 18:40:12 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
+#include "../../libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_putchar(char c)
 {
-	size_t	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
+	write(1, &c, 1);
 }

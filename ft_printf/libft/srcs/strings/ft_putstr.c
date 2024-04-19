@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 12:44:21 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/19 19:08:15 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/19 18:54:29 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/19 18:55:21 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
 
-size_t	ft_strlen(const char *str)
+#include "../../libft.h"
+
+int	ft_putstr(char *s)
 {
-	size_t	i;
+	int	size = ft_strlen(s);
 
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
+	write(1, s, size);
+	return (size);
 }

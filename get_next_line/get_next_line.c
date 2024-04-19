@@ -6,36 +6,26 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:11:56 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/19 11:27:11 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:44:51 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
-	char	*text;
+	char	text[BUFFER_SIZE];
 	char	*ret_ptr;
+	int	err;
 	int	size;
-	int	count;
 
-	size = 64;
-	text = malloc(size);
-	count = 0;
-	while (text[count] != '\n')
-	{
-		if (!read(fd, &text[count], 1))
-			break;
-		if (count == size - 1)
-		{
-			text = ft_realloc(text, size);
-			size *= 2;
-		}
-		count++;
-	}
-	ret_ptr = malloc(count + 1);
-	ret_ptr[count] = 0;
-	ft_memcpy(ret_ptr, text, count - 1);
-	free(text);
+	err = read(fd, text, BUFFER_SIZE);
+	if (err == -1)
+		return (NULL);
+	if (!err)
+		return (NULL) ;
+	size = ft_get_buff_size(text);
+	ret_ptr = malloc(size + 1);
+	ret_ptr[size] = 0;
+	ft_memcpy(ret_ptr, text, size);
 	return (ret_ptr);
 }

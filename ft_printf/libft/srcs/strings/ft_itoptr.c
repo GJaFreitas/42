@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:13:29 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/18 18:19:10 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/19 15:32:01 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../libft.h"
@@ -15,13 +15,13 @@ char	*ft_itoptr(size_t num)
 {
 	char	temp[16];
 	char	*ret;
-	int	i;
-	int	hex_ascii;
+	int		i;
+	int		hex_ascii;
 
 	ft_memset(temp, 0, 12);
 	i = 0;
 	if (!num)
-		temp[i] = '0';
+		return (ft_strdup("(nil)"));
 	while (num)
 	{
 		hex_ascii = num % 16;

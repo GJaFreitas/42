@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:38:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/18 18:59:43 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/19 18:56:03 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,11 @@ int		ft_strcpy(char *dest, char *src);
 // strmove is basically strcpy but it frees the src string
 int		ft_strmove(char *dest, char *src);
 char	*ft_revstr(char *str);
-char	*ft_itox(int num);
-char	*ft_itoX(int num);
+char	*ft_itox(unsigned int num);
+char	*ft_itox_up(unsigned int num);
 char	*ft_itoptr(size_t num);
 char	*ft_uitoa(unsigned int n);
+void	ft_putchar(char c);
+int		ft_putstr(char *s);
 
 #endif

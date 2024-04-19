@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:52:09 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/18 18:13:11 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/19 18:46:29 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,13 @@
 
 // As should be understood this function is int to hex
 // This function cannot convert the min int
-char	*ft_itox(int num)
-{
-	char	temp[12];
-	char	*ret;
-	int	i;
-	int	sign;
-	int	hex_ascii;
 
-	ft_memset(temp, 0, 12);
-	sign = 0;
-	if (num < 0)
-	{
-		sign = 1;
-		num *= -1;
-	}
+static int	write_to_temp(char *temp, unsigned int num)
+{
+	int	hex_ascii;
+	int	i;
+
 	i = 0;
-	if (!num)
-		temp[i] = '0';
 	while (num)
 	{
 		hex_ascii = num % 16;
@@ -43,8 +32,19 @@ char	*ft_itox(int num)
 		num = num / 16;
 		temp[i] = 0;
 	}
-	if (sign)
-		temp[i++] = '-';
+	return (i);
+}
+
+char	*ft_itox(unsigned int num)
+{
+	char	temp[12];
+	char	*ret;
+	int		i;
+
+	ft_memset(temp, 0, 12);
+	i = write_to_temp(temp, num);
+	if (!num)
+		temp[i] = '0';
 	ret = ft_revstr(temp);
 	return (ret);
 }

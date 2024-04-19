@@ -6,12 +6,14 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:10:37 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/19 11:23:06 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:19:34 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H_
 # define GET_NEXT_LINE_H_
+
+#define BUFFER_SIZE 50
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -27,5 +29,6 @@ struct _FILES
 char	*get_next_line(int fd);
 void	*ft_realloc(void *origin, unsigned int originsize);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
+int	ft_get_buff_size(char *s);
 
 # endif

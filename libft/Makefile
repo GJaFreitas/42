@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/04/17 17:53:50 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/04/17 18:27:01 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,10 +47,11 @@ $(NAME) : $(OBJS)
 all: $(NAME)
 
 clean:
-	$(RM) *.o
+	$(RM) */*/*.o
 
 fclean:
-	$(RM) $(NAME) *.o
+	make clean
+	$(RM) $(NAME)
 
 re:
 	make fclean
