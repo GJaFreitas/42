@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:15:09 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/21 16:13:33 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/21 16:44:48 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stddef.h>
 #include "get_next_line.h"
 
+// Auxiliary function used to detect a \n char
 int	found_endline(char *buff)
 {
 	int	i;
@@ -28,6 +29,7 @@ int	found_endline(char *buff)
 	return (0);
 }
 
+// Creates a node with default values
 int	ft_listinit(t_list *list)
 {
 	list = malloc(sizeof(t_list));
@@ -38,6 +40,7 @@ int	ft_listinit(t_list *list)
 	return (0);
 }
 
+// Auxiliary function to ft_readfile(), adds a new node and copies over the buffer into it
 int	ft_addnode(t_list *list, char *buff, int size)
 {
 	int	i;
@@ -61,6 +64,8 @@ int	ft_addnode(t_list *list, char *buff, int size)
 	return (0);
 }
 
+// Read the contents of the file pointed to by fd until it reaches either the end of
+// the file or a \n character into a linked list
 int	ft_readfile(t_list *list, int fd)
 {
 	char	buff[256];
@@ -80,5 +85,100 @@ int	ft_readfile(t_list *list, int fd)
 	return (0);
 }
 
-char	*ft_getstring(t_list *list);
+// Malloc enough space for the string, copy it and then return it
+char	*ft_returnstring(t_list **list, int len)
+{
+	char	*ret;
+	t_list	*temp;
+	int	i;
+	int	j;
 
+	i = 0;
+	j = 0;
+	temp = *list;
+	ret = malloc(len + 1);
+	while (temp->next != NULL)
+	{
+		i = 0;
+		while (temp->str[i] != '\n' && temp->str[i])
+		{
+			ret[j] = temp->str[i];
+			i++;
+			j++;
+		}
+		temp = temp->next;
+	}
+	ret[len] = 0;
+	return (ret);
+}
+
+// Trim the string by removing everything up until the \n
+// and then copying it over to another str
+void	ft_trimstring(t_list *lastnode)
+{
+	int	i;
+	int	j;
+	int	size;
+	char	*trimmed_str;
+
+	i = 0;
+	j = 0;
+	while (lastnode->str[i] != '\n')
+		i++;
+	size = i;
+	while (lastnode->str[size])
+		size++;
+	trimmed_str = malloc(size + 1);
+	while (i < size)
+	{
+		trimmed_str[j] = lastnode->str[i];
+		j++;
+		i++;
+	}
+	trimmed_str[size] = 0;
+	free(lastnode->str);
+	lastnode->str = trimmed_str;
+}
+
+// Free everything until the lastnode and changing the head of the list to the lastnode
+void	ft_destroylist(t_list **list, t_list *lastnode)
+{
+	t_list	*temp;
+
+	temp = *list;
+	while (temp != lastnode)
+	{
+		*list = temp;
+		temp = (*list)->next;
+		free(temp->str);
+		free(*list);
+	}
+	ft_trimstring(lastnode);
+	*list = lastnode;
+}
+
+// Get the size of the string, copy it into a char* and then reset the list with
+// the last node being the new head so that any left over text can be used later
+char	*ft_getstring(t_list **list)
+{
+	t_list	*temp;
+	char	*ret;
+	int	i;
+	int	len;
+
+	i = 0;
+	len = 0;
+	temp = *list;
+	while (temp->next != NULL)
+	{
+		while (temp->str[i] != '\n' && temp->str[i])
+		{
+			len++;
+			i++;
+		}
+		temp = temp->next;
+	}
+	ret = ft_returnstring(list, len);
+	ft_destroylist(list, temp);
+	return (ret);
+}

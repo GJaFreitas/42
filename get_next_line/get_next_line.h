@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:10:37 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/21 16:05:20 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/21 16:17:29 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ typedef struct s_list
 
 char	*get_next_line(int fd);
 int	ft_readfile(t_list *list, int fd);
-char	*ft_getstring(t_list *list);
+char	*ft_getstring(t_list **list);
 
 # endif
