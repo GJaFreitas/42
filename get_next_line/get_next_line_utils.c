@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:15:09 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/21 16:09:05 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/21 16:13:33 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ int	ft_addnode(t_list *list, char *buff, int size)
 	while (list->next != NULL)
 		list = list->next;
 	list->next = malloc(sizeof(t_list));
-	if (list->next == NULL)
+	if (ft_listinit(list->next))
 		return (1);
 	list = list->next;
-	list->next = NULL;
 	list->str = malloc(size + 1);
 	if (list->str == NULL)
 		return (1);
