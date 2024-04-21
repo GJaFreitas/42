@@ -6,29 +6,28 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:10:37 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/19 19:19:34 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/21 16:05:20 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H_
 # define GET_NEXT_LINE_H_
 
+#ifndef BUFFER_SIZE
 #define BUFFER_SIZE 50
+#endif
 
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct _FILES *FILES;
-struct _FILES
+typedef struct s_list
 {
-	int	n_files;
-	int	*fds;
-	int	*location; // Not sure if this is the best name
-} ;
+	char			*str;
+	struct s_list	*next;
+}	t_list;
 
 char	*get_next_line(int fd);
-void	*ft_realloc(void *origin, unsigned int originsize);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-int	ft_get_buff_size(char *s);
+int	ft_readfile(t_list *list, int fd);
+char	*ft_getstring(t_list *list);
 
 # endif
