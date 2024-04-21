@@ -6,6 +6,8 @@
 int main()
 {
 	int fd = open("testfile.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
+	char	*str;
+	while((str = get_next_line(fd)) != NULL)
+		printf("%s", str);
 }
 

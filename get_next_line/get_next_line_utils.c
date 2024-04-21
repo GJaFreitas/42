@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:15:09 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/21 16:44:48 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/21 17:54:34 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,43 +30,44 @@ int	found_endline(char *buff)
 }
 
 // Creates a node with default values
-int	ft_listinit(t_list *list)
+int	ft_listinit(t_list **list)
 {
-	list = malloc(sizeof(t_list));
-	if (list == NULL)
+	if (*list == NULL)
+		*list = malloc(sizeof(t_list));
+	if (*list == NULL)
 		return (1);
-	list->next = NULL;
-	list->str = NULL;
+	(*list)->next = NULL;
+	(*list)->str = NULL;
 	return (0);
 }
 
 // Auxiliary function to ft_readfile(), adds a new node and copies over the buffer into it
-int	ft_addnode(t_list *list, char *buff, int size)
+int	ft_addnode(t_list **list, char *buff, int size)
 {
 	int	i;
 
 	i = 0;
-	while (list->next != NULL)
-		list = list->next;
-	list->next = malloc(sizeof(t_list));
-	if (ft_listinit(list->next))
+	while ((*list)->next != NULL)
+		(*list) = (*list)->next;
+	(*list)->next = malloc(sizeof(t_list));
+	if (ft_listinit(&((*list)->next)))
 		return (1);
-	list = list->next;
-	list->str = malloc(size + 1);
-	if (list->str == NULL)
+	(*list) = (*list)->next;
+	(*list)->str = malloc(size + 1);
+	if ((*list)->str == NULL)
 		return (1);
 	while (i < size)
 	{
-		list->str[i] = buff[i];
+		(*list)->str[i] = buff[i];
 		i++;
 	}
-	list->str[size] = 0;
+	(*list)->str[size] = 0;
 	return (0);
 }
 
 // Read the contents of the file pointed to by fd until it reaches either the end of
 // the file or a \n character into a linked list
-int	ft_readfile(t_list *list, int fd)
+int	ft_readfile(t_list **list, int fd)
 {
 	char	buff[256];
 	int	count;
@@ -96,25 +97,26 @@ char	*ft_returnstring(t_list **list, int len)
 	i = 0;
 	j = 0;
 	temp = *list;
-	ret = malloc(len + 1);
-	while (temp->next != NULL)
+	ret = malloc(len + 2);
+	if (ret == NULL)
+		return (NULL);
+	while (temp)
 	{
 		i = 0;
-		while (temp->str[i] != '\n' && temp->str[i])
-		{
-			ret[j] = temp->str[i];
-			i++;
-			j++;
-		}
-		temp = temp->next;
+		while (temp->str[i] && temp->str[i - 1] != '\n')
+			ret[j++] = temp->str[i++];
+		if (temp->next != NULL)
+			temp = temp->next;
+		else
+			break ;
 	}
-	ret[len] = 0;
+	ret[len + 1] = 0;
 	return (ret);
 }
 
 // Trim the string by removing everything up until the \n
 // and then copying it over to another str
-void	ft_trimstring(t_list *lastnode)
+void	ft_trimstring(t_list **lastnode)
 {
 	int	i;
 	int	j;
@@ -123,21 +125,21 @@ void	ft_trimstring(t_list *lastnode)
 
 	i = 0;
 	j = 0;
-	while (lastnode->str[i] != '\n')
+	while ((*lastnode)->str[i] != '\n')
 		i++;
 	size = i;
-	while (lastnode->str[size])
+	while ((*lastnode)->str[size])
 		size++;
 	trimmed_str = malloc(size + 1);
 	while (i < size)
 	{
-		trimmed_str[j] = lastnode->str[i];
+		trimmed_str[j] = (*lastnode)->str[i];
 		j++;
 		i++;
 	}
 	trimmed_str[size] = 0;
-	free(lastnode->str);
-	lastnode->str = trimmed_str;
+	free((*lastnode)->str);
+	(*lastnode)->str = trimmed_str;
 }
 
 // Free everything until the lastnode and changing the head of the list to the lastnode
@@ -150,10 +152,10 @@ void	ft_destroylist(t_list **list, t_list *lastnode)
 	{
 		*list = temp;
 		temp = (*list)->next;
-		free(temp->str);
+		free((*list)->str);
 		free(*list);
 	}
-	ft_trimstring(lastnode);
+	ft_trimstring(&lastnode);
 	*list = lastnode;
 }
 
@@ -169,14 +171,17 @@ char	*ft_getstring(t_list **list)
 	i = 0;
 	len = 0;
 	temp = *list;
-	while (temp->next != NULL)
+	while (temp)
 	{
 		while (temp->str[i] != '\n' && temp->str[i])
 		{
 			len++;
 			i++;
 		}
-		temp = temp->next;
+		if (temp->next != NULL)
+			temp = temp->next;
+		else
+			break ;
 	}
 	ret = ft_returnstring(list, len);
 	ft_destroylist(list, temp);
