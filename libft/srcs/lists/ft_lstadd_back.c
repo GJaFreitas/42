@@ -6,16 +6,23 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:37:39 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/17 17:48:40 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:06:22 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "libft.h"
 
 void	ft_lstadd_back(t_list **head, t_list *node)
 {
 	t_list	*temp;
 
+	if (!head || !node)
+		return ;
+	if (!*head)
+	{
+		*head = node;
+		return ;
+	}
 	temp = *head;
 	while (temp->next != NULL)
 		temp = temp->next;

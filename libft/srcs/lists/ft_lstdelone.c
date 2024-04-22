@@ -6,14 +6,17 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:40:56 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/17 17:48:55 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:14:01 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "libft.h"
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	(*del)(lst->content);
+	if (!lst || !del)
+		return ;
+	if (lst->content != NULL)
+		(*del)(lst->content);
 	free(lst);
 }
