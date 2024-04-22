@@ -3,24 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 10:11:56 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/21 17:10:13 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/22 17:18:30 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/22 18:16:06 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "get_next_line.h"
 
-// Reads input from fd until a \n character or an EOF
 char	*get_next_line(int fd)
 {
-	char	*ret;
-	static t_list	**list;
+	static t_list	*list;
+	char		*return_string;
 
-	list = malloc(sizeof(size_t *));
-	*list = NULL;
-	if (ft_readfile(list, fd))
-		return (NULL);
-	ret = ft_getstring(list);
-	return (ret);
+	if (list == NULL)
+	{
+		list = malloc(sizeof(t_list));
+		list->next = NULL;
+		list->str = NULL;
+	}
+	ft_read(list, fd);
+	return_string = ft_getstring(&list);
+	return (return_string);
 }

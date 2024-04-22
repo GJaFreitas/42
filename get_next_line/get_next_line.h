@@ -6,16 +6,16 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:10:37 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/21 17:08:34 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:15:57 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H_
 # define GET_NEXT_LINE_H_
 
-#ifndef BUFFER_SIZE
-#define BUFFER_SIZE 50
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 50
+# endif
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -27,7 +27,7 @@ typedef struct s_list
 }	t_list;
 
 char	*get_next_line(int fd);
-int	ft_readfile(t_list **list, int fd);
+void	ft_read(t_list *list, int fd);
 char	*ft_getstring(t_list **list);
 
-# endif
+#endif
