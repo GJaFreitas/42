@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 17:19:28 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/22 18:39:15 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:49:10 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ void	ft_read(t_list *list, int fd)
 {
 	char	buf[BUFFER_SIZE + 1];
 	int	size;
-	int	i;
 
-	i = 0;
 	if ((read(fd, NULL, 0)) == -1)
 		return ;
 	while ((size = read(fd, buf, BUFFER_SIZE)) != 0)
@@ -100,15 +98,13 @@ int	ft_copyandfree(char *ret, t_list **list)
 
 char	*ft_getstring(t_list **list)
 {
-	t_list	*temp;
 	char	*ret;
 	int	size;
 	int	i;
 
-	temp = *list;
 	i = 0;
 	size = 0;
-	while ((*list)->str[i] != '\n')
+	while ((*list)->str[i - 1] != '\n' && (*list)->str[i])
 	{
 		if ((*list)->str[i++] == 0)
 		{
@@ -117,6 +113,8 @@ char	*ft_getstring(t_list **list)
 		}
 		size++;
 	}
+	if (size == 0)
+		return (NULL);
 	ret = malloc(size + 2);
 	i = ft_copyandfree(ret, list);
 	ft_copybuf(*list, NULL, i + 1, 0);

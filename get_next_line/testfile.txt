@@ -1,4 +1,8 @@
 this is a test file hi
 heres another line of text
 
+hellooooooooo vietnam
+uhhh	epa isto foi um tab yey \0
 
+isto e uma funcao para ler um ficheiro
+e retornar tudo ate um \n
