@@ -1,0 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/19 10:10:37 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/04/22 18:15:57 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef GET_NEXT_LINE_H_
+# define GET_NEXT_LINE_H_
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 50
+# endif
+
+# include <stdlib.h>
+# include <unistd.h>
+
+char    *get_line(char *string, int fd);
+
+#endif
