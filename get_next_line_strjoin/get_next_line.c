@@ -4,7 +4,14 @@ char    *get_next_line(int fd)
 {
     static char *string;
     char    *ret;
+    char    *temp;
 
-    ret = get_line(string);
+    temp = string;
+    if (string == NULL)
+    {
+	    string = malloc(1);
+	    *string = 0;
+    }
+    ret = get_line(temp, fd);
     return (ret);
 }

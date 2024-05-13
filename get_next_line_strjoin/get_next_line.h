@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:10:37 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/22 18:15:57 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:39:02 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+char	*get_next_line(int fd);
 char    *get_line(char *string, int fd);
 
 #endif
