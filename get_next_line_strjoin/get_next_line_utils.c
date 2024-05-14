@@ -1,74 +1,80 @@
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void    ft_strjoin(t_data *data, char const *s2)
 {
-	int		total_len;
-	int		i;
-	char	*new_str;
+    char    *new_str;
+    int     i;
+    int     j;
 
-	i = 0;
-	total_len = 0;
-	while (s1[i++])
-		total_len++;
-	i = 0;
-	while (s2[i++])
-		total_len++;
-	new_str = malloc(total_len + 1);
-	if (new_str == NULL)
-		return (NULL);
-	i = 0;
-	while (*(s1++))
-		new_str[i++] = *s1;
-	while (*(s2++))
-		new_str[i++] = *s2;
-	new_str[i] = 0;
-	free((char *)s1);
-	return (new_str);
+    i = 0;
+    j = 0;
+    new_str = malloc(data->size + 1);
+    while (data->leftover[i])
+    {
+        new_str[i] = data->leftover[i];
+        i++;
+    }
+    while (i < data->size)
+        new_str[i++] = s2[j++];
+    new_str[i] = 0;
+    free(data->leftover);
+    data->leftover = new_str;
 }
 
-char	*ft_getline(char *string, int count, int iteration)
+void    ft_parsestr(t_data *data, int size)
 {
-	char	*ret;
-	char	*str;
-	int	i;
-	int	j;
+    char    *new_str;
+    int     i;
+    int     j;
 
-	i = 0;
-	j = 0;
-	ret = malloc(count);
-	while (string[i] && string[i] != '\n')
-	{
-		ret[i] = string[i];
-		i++;
-	}
-	ret[i++] = '\n';
-	ret[i] = 0;
-	str = malloc((iteration * BUFFER_SIZE) - count + 1);
-	while (string[i])
-		str[j++] = string[i++];
-	str[j] = 0;
-	free(string);
-	string = str;
-	return (ret);
+    i = 0;
+    new_str = malloc(size);
+    while (data->leftover[i] && data->leftover[i] != '\n')
+        i++;
+    while (data->leftover[i])
+    {
+        new_str[j] = data->leftover[i];
+        i++;
+        j++;
+    }
+    new_str[j] = 0;
+    free(data->leftover);
+    data->leftover = new_str;
 }
 
-char    *get_line(char *string, int fd)
+char	*ft_getline(t_data *data, int count)
 {
-	char    buff[BUFFER_SIZE];
-	char    *ret;
-	int     count;
-	int	iteration;
+    char	*ret;
+    int	    i;
 
-	count = 0;
-	iteration = 0;
-	while ((count = read(fd, buff, BUFFER_SIZE)) != 0)
-	{
-		iteration++;
-		string = ft_strjoin(string, buff);
-		while (string[count] && string[count++] != '\n');
-		if (string[count - 1] == '\n')
-			break ;
-	}
-	ret = ft_getline(string, count, iteration);
-	return (ret);
+    i = 0;
+    ret = malloc(count);
+    while (i < count)
+    {
+        ret[i] = data->leftover[i];
+        i++;
+    }
+    ret[i] = 0;
+    ft_parsestr(data, data->size - count);
+    return (ret);
+}
+
+char    *read_line(t_data *data, int fd)
+{
+    char    buff[BUFFER_SIZE];
+    char    *ret;
+    int     bytes_read;
+    int     count;
+
+    count = 0;
+    while ((bytes_read = read(fd, buff, BUFFER_SIZE)) != 0)
+    {
+        data->size += bytes_read;
+        ft_strjoin(data, buff);
+        while (data->leftover[count] && data->leftover[count++] != '\n');
+        if (data->leftover[count - 1] == '\n')
+            break ;
+    }
+    ret = ft_getline(data, count);
+    return (ret);
 }

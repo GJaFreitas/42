@@ -20,7 +20,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef struct s_data
+{
+    // Whats left after a whole line has been returned from get_next_line
+    char    *leftover;
+    // Size of the leftover string
+    int     size;
+} t_data;
+
 char	*get_next_line(int fd);
-char    *get_line(char *string, int fd);
+char    *read_line(t_data *data, int fd);
+char	*ft_getline(t_data *data, int count);
 
 #endif
