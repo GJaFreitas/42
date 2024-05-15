@@ -1,1 +1,1 @@
-cc -g -Wall -Wextra -Werror -D BUFFER_SIZE=42 *.c
+cc -g -Wall -Wextra -Werror -D BUFFER_SIZE=2 *.c

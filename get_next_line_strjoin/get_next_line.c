@@ -8,14 +8,14 @@ char    *get_next_line(int fd)
     int     i;
 
     i = 0;
-    temp = data;
-    if (temp == NULL)
+    if (data == NULL)
     {
-        temp = malloc(sizeof(t_data));
-        temp->leftover = malloc(1);
-        *(temp->leftover) = 0;
-        temp->size = 0;
+        data = malloc(sizeof(t_data));
+        data->leftover = malloc(1);
+        *(data->leftover) = 0;
+        data->size = 1;
     }
+    temp = data;
     while (temp->leftover[i] && temp->leftover[i] != '\n')
         i++;
     if (temp->leftover[i] == '\n')

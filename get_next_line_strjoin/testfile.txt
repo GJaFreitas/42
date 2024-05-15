@@ -6,7 +6,3 @@ uhhh	epa isto foi um tab yey \0
 
 isto e uma funcao para ler um ficheiro
 e retornar tudo ate um \n
-
-NJAVBKJFSABD AOd a
-W ddoihWAOI dljAODWIIIIIIIIIIHHHHHHHHHDwhaAAAAAAAAAAAAAAAAAAAAAAAAAD
-jwd AAAADDDDDDDDDDDDDDDDDDDDDDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
