@@ -19,7 +19,7 @@ char    *get_next_line(int fd)
     while (temp->leftover[i] && temp->leftover[i] != '\n')
         i++;
     if (temp->leftover[i] == '\n')
-        ret = ft_getline(temp, i);
+        ret = ft_getline(temp, i + 1);
     else
         ret = read_line(temp, fd);
     return (ret);

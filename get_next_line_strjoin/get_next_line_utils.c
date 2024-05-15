@@ -47,12 +47,25 @@ void    ft_parsestr(t_data *data, int size)
     data->size = size;
 }
 
+char    *ft_empty_line(t_data *data)
+{
+    char    *ret;
+
+    ret = malloc(2);
+    ret[0] = '\n';
+    ret[1] = 0;
+    ft_parsestr(data, data->size - 0);
+    return (ret);
+}
+
 char	*ft_getline(t_data *data, int count)
 {
     char	*ret;
     int	    i;
 
-    if (data->leftover[0] == 0)
+    if (count == 0 && data->leftover[0] == '\n')
+        return (ft_empty_line(data));
+    if (count == 0)
     {
         free(data->leftover);
         free(data);
