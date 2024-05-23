@@ -6,12 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:36:10 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/18 10:34:12 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:38:54 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../libft.h"
 
-// Assumes there is enough space in dest, this function was made for ft_printf
 int	ft_strcat(char *dst, const char *src)
 {
 	int	i;
@@ -21,7 +20,7 @@ int	ft_strcat(char *dst, const char *src)
 	i = 0;
 	dstsize = ft_strlen(dst);
 	j = dstsize + 1;
-	while (src[i])
+	while (src[i] && i < dstsize)
 	{
 		dst[j] = src[i];
 		j++;

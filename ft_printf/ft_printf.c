@@ -11,75 +11,30 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
-
-static int	ft_write_printf(char *s)
-{
-	int	count;
-
-	count = 0;
-	while (*s)
-	{
-		write(1, s, 1);
-		s++;
-		count++;
-	}
-	free(s);
-	return (count);
-}
-
-static int	data(char c, va_list args)
-{
-	int	count;
-
-	count = 1;
-	if (c == 'i' || c == 'd')
-		count = ft_write_printf(ft_itoa(va_arg(args, int)));
-	else if (c == 'u')
-		count = ft_write_printf(ft_uitoa(va_arg(args, int)));
-	else if (c == 'c')
-		ft_putchar(va_arg(args, int));
-	else if (c == 's')
-		count = ft_putstr(va_arg(args, char *));
-	else if (c == 'x')
-		count = ft_write_printf(ft_itox(va_arg(args, int)));
-	else if (c == 'X')
-		count = ft_write_printf(ft_itox_up(va_arg(args, int)));
-	else if (c == 'p')
-		count = ft_write_printf(ft_itoptr(va_arg(args, size_t)));
-	else
-		count = 0;
-	return (count);
-}
-// Max int protection for itox and itoX
 
 int	ft_printf(const char *input, ...)
 {
 	va_list	arg_list;
+    t_data  *data;
 	int		count;
+	int		i;
 
-	if (!input)
-		return (-1);
-	va_start(arg_list, input);
-	count = 0;
-	while (*input)
-	{
-		if (*input == '%')
-		{
-			input++;
-			if (*input != '%')
-			{
-				count--;
-				count += data(*(char *)input, arg_list);
-			}
-			else
-				ft_putchar(*input);
-		}
-		else
-			ft_putchar(*input);
-		count++;
-		input++;
-	}
-	va_end(arg_list);
+    data = ft_initialize();
+    i = 0;
+    while (input[i])
+    {
+        if (input[i] != '%')
+        {
+            write(1, &input[i], 1);
+            data->count += 1;
+        }
+        else
+        {
+           i += ft_parse(data, input, arg_list);
+           ft_printdata(data, arg_list, input[i]);
+        }
+        i++;
+    }
+    free(data);
 	return (count);
 }
