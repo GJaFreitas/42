@@ -1,4 +1,3 @@
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 int    ft_parse(t_data *data, const char *input, va_list arg_list)

@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 void    ft_printdata(t_data *data, va_list arg_list, char specifier)
 {
