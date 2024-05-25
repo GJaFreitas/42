@@ -85,7 +85,7 @@ char	*ft_getline(t_data *data, int count)
 
 char    *read_line(t_data *data, int fd)
 {
-    char    buff[BUFFER_SIZE];
+    char    buff[BUFFER_SIZE + 1];
     char    *ret;
     int     bytes_read;
     int     count;
@@ -95,6 +95,7 @@ char    *read_line(t_data *data, int fd)
     {
         if (bytes_read == -1)
             return (NULL);
+        buff[BUFFER_SIZE] = 0;
         data->size += bytes_read;
         ft_strjoin(data, buff);
         while (data->leftover[count] && data->leftover[count++] != '\n');
