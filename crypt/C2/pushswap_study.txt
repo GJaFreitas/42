@@ -1,0 +1,9 @@
+file.bfe:VABB7yO9xm7xWXROeASsmsgnY0o0sDMJev7zFHhwQS8mvM8V5xQQp
+Lc6cDCFXDWTiFzZ2H9skYkiJ/DpQtnM/uZ0
+
+i theorize that its a "blowfish" crypt, either "VABB7yO9xm7xWXROeASsmsgnY0o0sDMJev7zFHhwQS8mvM8V5xQQp" is a hash key
+and "Lc6cDCFXDWTiFzZ2H9skYkiJ/DpQtnM/uZ0" is a string to be decrypted or its the other way around
+
+after further reading it seems that to be able to decrypt this i will require a bruteforce aproach, lets find some tools
+
+hashcat is what ive found, not sure how to use it but lets bruteforce that too lmao
