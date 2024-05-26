@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:10:37 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/22 18:15:57 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:39:02 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-char    *get_line(char *string, int fd);
+typedef struct s_data
+{
+    // Whats left after a whole line has been returned from get_next_line
+    char    *leftover;
+    // Size of the leftover string
+    int     size;
+} t_data;
+
+char	*get_next_line(int fd);
+char    *read_line(t_data *data, int fd);
+char	*ft_getline(t_data *data, int count);
 
 #endif

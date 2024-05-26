@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:28:38 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/12 12:09:53 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/19 16:40:53 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	int	i;
 
 	i = 0;
+	if (!s || !f)
+		return ;
 	while (s[i])
 	{
-		(*f)(i, s);
+		(*f)(i, s + i);
 		i++;
 	}
 }
