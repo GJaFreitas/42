@@ -47,15 +47,31 @@ void    ft_parsestr(t_data *data, int size)
     data->size = size;
 }
 
-char    *ft_empty_line(t_data *data)
+// TODO
+// Empty line - flag == \n
+// EOF
+// Problem: if data->leftover = "c\0" and count is 0 it will count
+// as EOF, since there is no \n in the end and the file as been
+// read already. I need to find a way to go around this
+// Perhaps on the ft_getline function?
+char    *ft_edge_case(t_data *data, int flag)
 {
     char    *ret;
 
-    ret = malloc(2);
-    ret[0] = '\n';
-    ret[1] = 0;
-    ft_parsestr(data, data->size - 0);
-    return (ret);
+    if (flag == '\n')
+    {
+        ret = malloc(2);
+        ret[0] = '\n';
+        ret[1] = 0;
+        ft_parsestr(data, data->size - 0);
+        return (ret);
+    }
+    else
+    {
+        free(data->leftover);
+        free(data);
+        return (NULL);
+    }
 }
 
 char	*ft_getline(t_data *data, int count)
@@ -63,14 +79,8 @@ char	*ft_getline(t_data *data, int count)
     char	*ret;
     int	    i;
 
-    if (count == 0 && data->leftover[0] == '\n')
-        return (ft_empty_line(data));
     if (count == 0)
-    {
-        free(data->leftover);
-        free(data);
-        return (NULL);
-    }
+        return (ft_edge_case(data, (int)data->leftover[0]));
     i = 0;
     ret = malloc(count + 1);
     while (i < count)
@@ -95,7 +105,7 @@ char    *read_line(t_data *data, int fd)
     {
         if (bytes_read == -1)
             return (NULL);
-        buff[BUFFER_SIZE] = 0;
+        buff[bytes_read] = 0;
         data->size += bytes_read;
         ft_strjoin(data, buff);
         while (data->leftover[count] && data->leftover[count++] != '\n');
