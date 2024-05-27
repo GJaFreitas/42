@@ -23,7 +23,7 @@ void    ft_strjoin(t_data *data, char const *s2)
     free(temp);
 }
 
-void    ft_parsestr(t_data *data, int size)
+void    ft_parsestr(t_data *data, unsigned int size)
 {
     char    *new_str;
     int     i;
@@ -34,7 +34,8 @@ void    ft_parsestr(t_data *data, int size)
     new_str = malloc(size + 1);
     while (data->leftover[i] && data->leftover[i] != '\n')
         i++;
-    i++;
+    if (data->leftover[i] == '\n')
+        i++;
     while (data->leftover[i])
     {
         new_str[j] = data->leftover[i];
@@ -58,20 +59,27 @@ char    *ft_edge_case(t_data *data, int flag)
 {
     char    *ret;
 
+    ret = NULL;
     if (flag == '\n')
     {
         ret = malloc(2);
         ret[0] = '\n';
         ret[1] = 0;
         ft_parsestr(data, data->size - 0);
-        return (ret);
     }
-    else
+    else if (flag == 0)
     {
         free(data->leftover);
         free(data);
-        return (NULL);
     }
+    else
+    {
+        flag = 0;
+        while (data->leftover[flag])
+            flag++;
+        ret = ft_getline(data, flag);
+    }
+    return (ret);
 }
 
 char	*ft_getline(t_data *data, int count)
@@ -101,6 +109,8 @@ char    *read_line(t_data *data, int fd)
     int     count;
 
     count = 0;
+    ret = NULL;
+    buff[0] = 0;
     while ((bytes_read = read(fd, buff, BUFFER_SIZE)) != 0)
     {
         if (bytes_read == -1)
@@ -112,6 +122,7 @@ char    *read_line(t_data *data, int fd)
         if (data->leftover[count - 1] == '\n')
             break ;
     }
-    ret = ft_getline(data, count);
+    if (data->leftover[0] != 0)
+        ret = ft_getline(data, count);
     return (ret);
 }
