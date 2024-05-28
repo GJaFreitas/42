@@ -1,6 +1,8 @@
 #include "ft_printf/ft_printf.h"
 #include <stdio.h>
 
+// TODO:
+// hex is printing in the wrong order??????????
 int main(int argc, char **argv)
 {
 	(void)argc;
