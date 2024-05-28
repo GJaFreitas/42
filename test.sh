@@ -7,5 +7,4 @@ cd ft_printf && make re >/dev/null || make
 make clean
 cd ..
 cc -g printftester.c ft_printf/libftprintf.a
-clear
 ./a.out

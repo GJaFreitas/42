@@ -1,4 +1,4 @@
-#include "ft_printf/libftprintf.h"
+#include "ft_printf/ft_printf.h"
 #include <stdio.h>
 
 int main(int argc, char **argv)
@@ -7,13 +7,11 @@ int main(int argc, char **argv)
 	void	*ptr;
 	int	i = 42;
 	ptr = NULL;
-	/*
 	ft_printf("Testing Testing printf\n");
 	ft_printf("Void *:\n");
 	ft_printf("%p\n", ptr);
 	printf("Normal printf: %p\n", ptr);
-	ft_printf("Printing a %% without a specifier after:\n");
-	ft_printf("Its eating the \\n \n");
+	ft_printf("Printing a %% without a specifier after:%\n");
 	printf("Normal printf: %\n");
 	ft_printf("Int, hex, char, unsigned max\n");
 	ft_printf("Int: %d\n", 42);
@@ -25,6 +23,7 @@ int main(int argc, char **argv)
 	printf("Hex: %X\n", 42);
 	printf("Char: %c\n", 42);
 	printf("Unsigned: %u\n", 4294967295);
+    /*
 	ft_printf("Stringssss\n");
 	ft_printf("%s", "this whole thing is a string\n");
 	printf("Normal printf: %s", "this whole thing is a string\n");
@@ -39,5 +38,4 @@ int main(int argc, char **argv)
 	They both seg fault, nice.
 
 	*/
-	ft_printf("%\n");
 }

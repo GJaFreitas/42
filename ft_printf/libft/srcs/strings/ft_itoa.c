@@ -19,7 +19,7 @@ static void	ft_writenum(int c, char *s)
 	*s = c;
 }
 
-static void	ft_putnbr(int nb, char *s)
+static void	ft_putnbr(long int nb, char *s)
 {
 	char	num;
 
@@ -57,7 +57,7 @@ static void	init(char *temp)
 	}
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long int n)
 {
 	char	*str;
 	char	temp[12];

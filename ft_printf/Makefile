@@ -17,7 +17,7 @@ CFLAGS = -g -Wall -Wextra -Werror
 NAME = libftprintf.a
 
 SRCS = $(wildcard libft/srcs/*/*.c)
-SRCS += ft_printf.c 
+SRCS += $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a
 
