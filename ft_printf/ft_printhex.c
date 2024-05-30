@@ -1,19 +1,37 @@
 #include "ft_printf.h"
 
+static void ft_rev(char *str, int len)
+{
+    int i;
+    int j;
+    char    temp;
+
+    i = 0;
+    j = len;
+    while (i < j)
+    {
+        temp = str[i];
+        str[i] = str[j];
+        str[j] = temp;
+        i++;
+        j--;
+    }
+}
+
 static int  ft_printhex(unsigned long int num, char *hex)
 {
-    int count;
+    int     count;
+    char    number[12];
 
     count = 0;
     while (num)
     {
-        if ((num / 16) < 10)
-            write(1, &hex[num % 16], 1);
-        else
-            write(1, &hex[num / 16], 1);
+        number[count] = hex[num % 16];
         count++;
         num /= 16;
     }
+    ft_rev(number, count - 1);
+    write(1, number, count);
     return (count);
 }
 
