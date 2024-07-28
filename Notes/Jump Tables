@@ -1,0 +1,32 @@
+A jump table is a way to circumvent the use of if elses when calling for other functions.
+
+For example:
+´´´
+void foo(int input)
+{
+	if (input == 1)
+		func1();
+	if (input == 2)
+		func2();
+	else if (input == 3)
+		func3();
+}
+
+would be writen as:
+
+static void **jumpTable = 
+{
+	/* Pointer to func 1 */ func1,
+	/* Pointer to func 2 */ func2,
+	/* Pointer to func 3 */ func3,
+	/* Pointer to func 4 */ func4
+}
+
+void foo(int input)
+{
+	*(jumpTable[input]);
+}
+´´´
+making this an O(1) implementation.
+
+of course it is useless for something so small but for calling error functions for example it could be usefull.
