@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:16:44 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/17 18:03:06 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:16:03 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	allocpy(char **arr, char *s, char c)
 		{
 			*arr = ft_substr(s, 0, temp - s);
 			if (*arr == NULL)
-				destroy(&arr_cpy);
+				return (destroy(&arr_cpy));
 			s = temp;
 			++arr;
 		}
@@ -76,6 +76,8 @@ char	**ft_split(char const *s, char c)
 	if (!*s)
 	{
 		arr = malloc(sizeof(char *));
+		if (!arr)
+			return (NULL);
 		*arr = NULL;
 		return (arr);
 	}

@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/04/18 17:20:53 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/08/19 15:23:08 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ NAME = libftprintf.a
 SRCS = $(wildcard libft/srcs/*/*.c)
 SRCS += $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
-LIBFT = libft/libft.a
 
 HEAD = includes
 

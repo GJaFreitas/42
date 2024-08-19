@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 18:30:50 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/22 15:38:18 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:17:50 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	slen = ft_strlen((char *)s);
 	if (start > slen)
 		return (ft_strdup(""));
+	slen = ft_strlen((char *)s + start);
 	if (len > slen)
 		len = slen;
 	sub_str = malloc(len + 1);

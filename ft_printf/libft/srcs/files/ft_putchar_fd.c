@@ -6,13 +6,13 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:31:23 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/10 17:32:16 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:13:40 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "../../libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, sizeof(c));
+	write(fd, &c, 1);
 }

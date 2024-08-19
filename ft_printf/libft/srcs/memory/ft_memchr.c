@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:08:56 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 18:39:28 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:15:17 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "../../libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:21:32 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/17 18:03:00 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:33:59 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_writenum(int c, char *s)
 	*s = c;
 }
 
-static void	ft_putnbr(long int nb, char *s)
+static void	ft_putnbr(int nb, char *s)
 {
 	char	num;
 
