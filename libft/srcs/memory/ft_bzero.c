@@ -6,15 +6,15 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:19:37 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/17 17:49:34 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/22 15:22:41 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include <stddef.h>
 
 void	ft_bzero(void *s, size_t n)
 {
-	while (n > 0)
+	while (n)
 	{
 		*(unsigned char *)s = 0;
 		s++;

@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:38:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 18:49:22 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/19 16:38:55 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ void	ft_lstadd_back(t_list **head, t_list *node);
 void	ft_lstadd_front(t_list **head, t_list *node);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif

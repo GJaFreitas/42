@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:21:56 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/19 17:08:59 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/05/01 14:23:22 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 void	ft_lstadd_front(t_list **head, t_list *node)
 {
-	t_list	*temp;
-
 	if (!head || !node)
 		return ;
-	temp = *head;
-	node->next = temp;
+	node->next = *head;
 	*head = node;
 }
