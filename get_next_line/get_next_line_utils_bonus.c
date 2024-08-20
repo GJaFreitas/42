@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:14:05 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/08/16 19:36:56 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/20 19:33:29 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ char	*ft_strjoin(char *str, char *buffer)
 	if (buffer[0] == 0 && str && str[0] == 0)
 		return (NULL);
 	ret_str = malloc(ft_strlen(str, 0) + ft_strlen(buffer, 1) + 2);
+	if (!ret_str)
+	{
+		free(str);
+		return (NULL);
+	}
 	while (str && str[j])
 		ret_str[i++] = str[j++];
 	j = 0;
