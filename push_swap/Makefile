@@ -14,12 +14,12 @@ CC = cc
 
 CFLAGS = -g -Wall -Wextra -Werror
 
-NAME = pushswap.a
+NAME = push_swap.a
 
-SRCS = $(wildcard libft/srcs/*/*.c)
-SRCS += $(wildcard *.c)
+SRCS = $(wildcard *.c)
+SRCS += $(wildcard libft/srcs/*/*.c)
+SRCS += $(wildcard libft/ft_printf/*.c)
 OBJS = $(SRCS:.c=.o)
-LIBFT = libft/libft.a
 
 HEAD = includes
 
@@ -32,7 +32,7 @@ RANLIB = ranlib
 .c.o:
 	@$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) -I $(HEAD)
 
-$(NAME) : $(OBJS)	
+$(NAME) : $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
 	@$(RANLIB) $(NAME)
 
