@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_charint.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/22 12:27:07 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/08/22 12:27:12 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_printchar(char c)
@@ -35,5 +47,5 @@ int	ft_printint(int n)
 
 int	ft_printuint(unsigned int n)
 {
-	return(ft_putnbr_base(n, BASE_10, 0));
+	return (ft_putnbr_base(n, BASE_10, 0));
 }

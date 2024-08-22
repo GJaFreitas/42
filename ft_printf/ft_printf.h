@@ -6,12 +6,12 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:24:53 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/08/22 12:13:31 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/22 12:23:38 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include <unistd.h>

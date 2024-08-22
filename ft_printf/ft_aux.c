@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_aux.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/22 12:24:51 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/08/22 12:24:52 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_putnbr_base(unsigned long int nbr, char *base, int total)
@@ -18,4 +30,3 @@ int	ft_putnbr_base(unsigned long int nbr, char *base, int total)
 	}
 	return (total);
 }
-
