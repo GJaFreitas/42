@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	ft_putnbr_base(unsigned int nbr, char *base, int total)
+int	ft_putnbr_base(unsigned long int nbr, char *base, int total)
 {
 	int		bl;
 	char	c;

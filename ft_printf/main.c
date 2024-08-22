@@ -412,6 +412,18 @@ int main(void)
 	}
 	printf("\n");
 
+	// 32 - '\0' character
+	printf("32 - \'\\0\' character\n");
+	len_ft = ft_printf("\'\\0\' character: %c\n", '\0');
+	len_orig = printf("\'\\0\' character: %c\n", '\0');
+	if (len_ft != len_orig) {
+		printf("KO: Mismatch in printing empty string\n");
+		printf("My output: %d\nCorrect output: %d\n", len_ft, len_orig);
+		return(1);
+		all_tests_passed = 0;
+	}
+	printf("\n");
+
 	// Final result
 	if (all_tests_passed) 
 		printf("----------------\n OK - All ft_printf tests passed\n");

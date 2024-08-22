@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:24:53 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/08/19 16:11:57 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/22 12:13:31 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 int		ft_printf(char *input, ...);
 int		ft_nexus(char input, va_list args);
-int		ft_putnbr_base(unsigned int nbr, char *base, int total);
+int		ft_putnbr_base(unsigned long int nbr, char *base, int total);
 int		ft_printchar(char c);
 int		ft_printstring(char *str);
 int		ft_printint(int n);
