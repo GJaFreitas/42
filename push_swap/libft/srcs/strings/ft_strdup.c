@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:42:31 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 18:51:36 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:16:12 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
 char	*ft_strdup(const char *s)
 {

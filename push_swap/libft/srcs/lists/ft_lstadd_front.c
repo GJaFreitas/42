@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:21:56 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/05/01 14:23:22 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:14:17 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
 void	ft_lstadd_front(t_list **head, t_list *node)
 {

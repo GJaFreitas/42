@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:32:02 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/17 17:44:37 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:15:00 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

@@ -15,6 +15,7 @@
 
 #include <stdio.h>
 #include "libft/libft.h"
+#include "libft/ft_printf.h"
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -22,13 +23,5 @@ typedef struct {
 	int	*arr;
 	int	top;
 } Stack;
-
-void	push_swap(char *input);
-void    ft_swap_top(Stack *stack);
-void    ft_double_swap(Stack *a, Stack *b);
-void    ft_push(Stack *origin, Stack *dest);
-void    ft_reverse_rotate(Stack *stack);
-void    ft_rotate(Stack *stack);
-void    ft_logic(Stack *a, Stack *b);
 
 #endif

@@ -17,8 +17,6 @@ CFLAGS = -g -Wall -Wextra -Werror
 NAME = push_swap.a
 
 SRCS = $(wildcard *.c)
-SRCS += $(wildcard libft/srcs/*/*.c)
-SRCS += $(wildcard libft/ft_printf/*.c)
 OBJS = $(SRCS:.c=.o)
 
 HEAD = includes
@@ -33,22 +31,26 @@ RANLIB = ranlib
 	@$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) -I $(HEAD)
 
 $(NAME) : $(OBJS)
+	@echo "Making really hard, really making it quite well"
+	@make -C libft
 	@$(AR) $(NAME) $(OBJS)
 	@$(RANLIB) $(NAME)
 
 all: $(NAME)
 
 clean:
-	cd libft && make clean
-	$(RM) *.o
+	@echo "cleaning"
+	@cd libft && make clean
+	@$(RM) *.o
 
 fclean:
-	cd libft && make fclean
-	make clean
-	$(RM) $(NAME)
+	@echo "deepcleaning"
+	@cd libft && make fclean
+	@$(RM) *.o
+	@$(RM) $(NAME)
 
 re:
-	make fclean
-	make
+	@make fclean
+	@make
 
-.PHONY: all clean fclean
+.PHONY: all clean fclean libft

@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:31:05 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/05/13 15:45:29 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:15:12 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
 // nmemb = n members of size x
 void	*ft_calloc(size_t nmemb, size_t size)

@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:19:37 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/22 15:22:41 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:15:07 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "../../libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

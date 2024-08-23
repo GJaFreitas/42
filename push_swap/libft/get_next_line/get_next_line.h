@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 17:22:55 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/08/19 15:17:26 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/08/13 16:07:33 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/08/16 19:51:54 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{
-	char	*ret_str;
-	int		i;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 50
+# endif
 
-	i = 0;
-	if (s[0] == 0)
-		return (ft_strdup(""));
-	ret_str = ft_calloc(ft_strlen((char *)s) + 1, sizeof(char));
-	if (!ret_str)
-		return (NULL);
-	while (s[i])
-	{
-		ret_str[i] = (*f)(i, s[i]);
-		i++;
-	}
-	ret_str[i] = 0;
-	return (ret_str);
-}
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+
+char	*get_next_line(int fd);
+char	*ft_strjoin_gnl(char *str, char *buffer);
+int		ft_strlen_gnl(char *s, int flag);
+
+#endif
