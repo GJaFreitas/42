@@ -6,23 +6,31 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:31:05 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/17 17:49:39 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:45:29 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
-#include <limits.h>
+#include "libft.h"
 
 // nmemb = n members of size x
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
+	size_t	n;
 
-	if (nmemb * size > INT_MAX)
-		return (NULL);
 	if (nmemb == 0 || size == 0)
-		return (malloc(1));
-	ptr = malloc(nmemb * size);
-	ft_memset(ptr, 0, nmemb * size);
+	{
+		ptr = malloc(0);
+		if (ptr == NULL)
+			return (NULL);
+		return (ptr);
+	}
+	n = nmemb * size;
+	if (size != n / nmemb)
+		return (NULL);
+	ptr = malloc(n);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, n);
 	return (ptr);
 }

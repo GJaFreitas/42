@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:38:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/06/21 00:27:43 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/04/19 16:38:55 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
-int	    ft_atoi_mod(const char *str, char **size);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -66,5 +65,6 @@ void	ft_lstadd_back(t_list **head, t_list *node);
 void	ft_lstadd_front(t_list **head, t_list *node);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif

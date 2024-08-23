@@ -14,7 +14,7 @@
 #define PUSH_SWAP_H
 
 #include <stdio.h>
-#include "libft/ft_printf/ft_printf.h"
+#include "libft/libft.h"
 #include <stdlib.h>
 #include <unistd.h>
 

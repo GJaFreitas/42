@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/06/21 00:32:32 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/04/17 18:27:01 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ NAME = libft.a
 # --- DEPENDENCIES ---------------- #
 
 SRCS = $(wildcard srcs/*/*.c)
-SRCS += $(wildcard ft_printf/*.c)
 OBJS = $(SRCS:.c=.o)
 
 DEPS = libft.h
@@ -48,7 +47,6 @@ $(NAME) : $(OBJS)
 all: $(NAME)
 
 clean:
-	$(RM) */*.o
 	$(RM) */*/*.o
 
 fclean:
