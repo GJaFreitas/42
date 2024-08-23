@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 12:25:06 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/05/01 14:44:23 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:14:50 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

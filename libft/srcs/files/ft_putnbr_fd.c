@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:38:10 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/22 15:57:32 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:13:52 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
 static void	ft_putnbr(long int nb, int fd)
 {

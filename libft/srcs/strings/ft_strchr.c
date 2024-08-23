@@ -6,10 +6,10 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:59:38 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/22 17:55:02 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:16:08 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+#include "../../libft.h"
 
 char	*ft_strchr(const char *s, int ch)
 {

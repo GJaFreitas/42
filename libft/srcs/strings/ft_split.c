@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:16:44 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/19 16:38:34 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:16:03 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
 static void	destroy(char ***arr)
 {

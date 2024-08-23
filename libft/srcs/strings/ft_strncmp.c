@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:04:46 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/16 16:03:37 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:17:30 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "../../libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

@@ -6,10 +6,10 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:44:21 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/08 19:31:56 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:16:44 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
+#include "../../libft.h"
 
 size_t	ft_strlen(const char *str)
 {

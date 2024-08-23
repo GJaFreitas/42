@@ -6,11 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:47:41 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/04/08 15:37:55 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:15:35 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "../../libft.h"
 
 void	*ft_memset(void	*s, int c, size_t n)
 {
