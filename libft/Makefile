@@ -25,6 +25,8 @@ NAME = libft.a
 # --- DEPENDENCIES ---------------- #
 
 SRCS = $(wildcard srcs/*/*.c)
+SRCS += $(wildcard ft_printf/*.c)
+SRCS += $(wildcard get_next_line/*.c)
 OBJS = $(SRCS:.c=.o)
 
 DEPS = libft.h
@@ -48,6 +50,7 @@ all: $(NAME)
 
 clean:
 	$(RM) */*/*.o
+	$(RM) */*.o
 
 fclean:
 	make clean
