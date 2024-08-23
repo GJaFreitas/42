@@ -22,7 +22,7 @@
 # include <stdio.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *str, char *buffer);
-int		ft_strlen(char *s, int flag);
+char	*ft_strjoin_gnl(char *str, char *buffer);
+int		ft_strlen_gnl(char *s, int flag);
 
 #endif

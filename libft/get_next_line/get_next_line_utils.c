@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *s, int flag)
+int	ft_strlen_gnl(char *s, int flag)
 {
 	int	len;
 
@@ -43,7 +43,7 @@ void	ft_parse(char *buffer, int written)
 		buffer[i++] = 0;
 }
 
-char	*ft_strjoin(char *str, char *buffer)
+char	*ft_strjoin_gnl(char *str, char *buffer)
 {
 	char	*ret_str;
 	int		i;
@@ -53,7 +53,7 @@ char	*ft_strjoin(char *str, char *buffer)
 	j = 0;
 	if (buffer[0] == 0 && str && str[0] == 0)
 		return (NULL);
-	ret_str = malloc(ft_strlen(str, 0) + ft_strlen(buffer, 1) + 2);
+	ret_str = malloc(ft_strlen_gnl(str, 0) + ft_strlen_gnl(buffer, 1) + 2);
 	if (!ret_str)
 	{
 		free(str);

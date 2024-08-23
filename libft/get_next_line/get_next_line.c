@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
@@ -22,10 +22,10 @@ char	*get_next_line(int fd)
 	return_str = NULL;
 	while (buffer[fd][0] || read(fd, buffer[fd], BUFFER_SIZE) > 0)
 	{
-		return_str = ft_strjoin(return_str, buffer[fd]);
+		return_str = ft_strjoin_gnl(return_str, buffer[fd]);
 		if (return_str == NULL)
 			return (NULL);
-		if (return_str[ft_strlen(return_str, 1)] == '\n')
+		if (return_str[ft_strlen_gnl(return_str, 1)] == '\n')
 			return (return_str);
 	}
 	return (return_str);
