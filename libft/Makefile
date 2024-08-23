@@ -43,7 +43,7 @@ RANLIB = ranlib
 	@$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) -I $(HEAD)
 
 $(NAME) : $(OBJS)
-	@echo "making :)"
+	@echo "making in libft :)"
 	@$(AR) $(NAME) $(OBJS)
 	@$(RANLIB) $(NAME)
 
