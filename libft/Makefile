@@ -40,24 +40,28 @@ AR = ar rc
 RANLIB = ranlib
 
 .c.o:
-	$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) -I $(HEAD)
+	@$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) -I $(HEAD)
 
 $(NAME) : $(OBJS)
-	$(AR) $(NAME) $(OBJS)
-	$(RANLIB) $(NAME)
+	@echo "making :)"
+	@$(AR) $(NAME) $(OBJS)
+	@$(RANLIB) $(NAME)
 
 all: $(NAME)
 
 clean:
-	$(RM) */*/*.o
-	$(RM) */*.o
+	@echo "cleaning in libft"
+	@$(RM) */*/*.o
+	@$(RM) */*.o
 
 fclean:
-	make clean
-	$(RM) $(NAME)
+	@echo "deepcleaning in libft"
+	@$(RM) */*/*.o
+	@$(RM) */*.o
+	@$(RM) $(NAME)
 
 re:
-	make fclean
-	make
+	@make fclean
+	@make
 
 .PHONY: all clean fclean
