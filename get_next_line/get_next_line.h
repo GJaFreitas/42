@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:07:33 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/08/20 19:30:37 by gjacome-         ###   ########.fr       */
+/*   Updated: 2024/08/24 16:02:30 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *str, char *buffer);
-int		ft_strlen(char *s, int flag);
+int		ft_strlen(char *s);
 
 #endif
