@@ -1,0 +1,5 @@
+posso fazer:
+
+	return (free(buffer), NULL);
+
+a norminete deixa e so da return na ultima coisa
