@@ -1,5 +1,6 @@
 #include "../includes/lib.h"
 
+// Normal rgb system 0 <= x <= 255 (0, 0, 0) is white
 int	encode_rgb(byte red, byte green, byte blue)
 {
 	return ( red << 16 | green << 8 | blue);

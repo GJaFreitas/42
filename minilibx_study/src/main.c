@@ -70,11 +70,11 @@ int	handle_input(int keycode, t_data data)
 		exit(0);
 	}
 	if (keycode == XK_r)
-		color_screen(data, 0xff0000);
+		color_screen(data, encode_rgb(255, 0, 0));
 	else if (keycode == XK_g)
-		color_screen(data, 0xff00);
+		color_screen(data, encode_rgb(0, 255, 0));
 	else if (keycode == XK_b)
-		color_screen(data, 0xff);
+		color_screen(data, encode_rgb(0, 0, 255));
 	// ...(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y)
 	// x and y is the place to put the image starting at the uppermost left corner
 	// see explanation of 2D screen representation on 1D array in file:
