@@ -4,7 +4,6 @@
 // Window Sizes
 # define WIDTH 800
 # define LENGHT 800
-# define IMG_LEN 50
 
 
 // X11 Masks
@@ -21,12 +20,21 @@
 # define ON_KEYMOUSEUP	5
 # define ON_MOUSEMOVE	6
 
+typedef struct s_square
+{
+	unsigned short int	x;
+	unsigned short int	y;
+	unsigned short int	size;
+	int			color;
+}	t_square;
 
 // Struct for creating images
 typedef struct s_img
 {
 	void	*img_ptr;
-	char	*img_pixels_ptr;
+	char	*address;
+	int	h;
+	int	w;
 	int	bits_per_pixel;
 	int	endian;
 	int	line_len;

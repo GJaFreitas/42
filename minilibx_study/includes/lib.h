@@ -10,5 +10,10 @@
 // Rendering functions
 void	color_screen(t_data data, int color);
 int	encode_rgb(byte red, byte green, byte blue);
+int	encode_trgb(byte opacity, byte red, byte green, byte blue);
+void	pixel_put_optimization(t_img img, int x, int y, int color);
+
+void	draw_square(int x, int y, int size, int color, t_data data);
+void	the_walking_square(t_data data);
 
 #endif

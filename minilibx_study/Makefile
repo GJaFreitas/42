@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/08/25 18:45:27 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/08/25 20:03:59 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LFLAGS = -lXext -lX11 -lm -lz
 
 # --- NAME ---------------------- #
 
-NAME = fun
+NAME = fun.out
 
 # --- DIRECTORIES ------------------- #
 
@@ -77,6 +77,6 @@ re:
 	@make
 
 run: all
-	./$(NAME)
+	valgrind ./$(NAME)
 
 .PHONY: all clean fclean re
