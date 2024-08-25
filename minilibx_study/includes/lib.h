@@ -2,8 +2,9 @@
 # define LIB_H
 
 // Window Sizes
-# define WIDTH 600
-# define LENGHT 400
+# define WIDTH 800
+# define LENGHT 800
+# define IMG_LEN 50
 
 
 // X11 Masks
@@ -21,19 +22,32 @@
 # define ON_MOUSEMOVE	6
 
 
-# include "libs/libft/libft.h"
-# include "libs/libft/ft_printf.h"
-# include "libs/minilibx-linux/mlx.h"
+# include "../libs/libft/libft.h"
+# include "../libs/libft/ft_printf.h"
+# include "../libs/minilibx-linux/mlx.h"
 # include <X11/keysym.h>
+
+// Struct for creating images
+typedef struct s_img
+{
+	void	*img_ptr;
+	char	*img_pixels_ptr;
+	int	bits_per_pixel;
+	int	endian;
+	int	line_len;
+}	t_img;
 
 // Struct with all mlx pointers
 typedef struct
 {
 	void	*mlx_ptr;
 	void	*mlx_window;
+	t_img	*img;
 } 	s_data;
 typedef s_data *t_data;
 
 typedef unsigned char	byte;
+
+void	color_screen(t_data data, int color);
 
 #endif
