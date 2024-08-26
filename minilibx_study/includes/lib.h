@@ -22,7 +22,6 @@ void	pixel_put_optimization(t_img img, int x, int y, int color);
 
 // Square.c
 void	draw_square(int x, int y, int size, int color, t_data data);
-void	the_walking_square(t_data data);
 void	walk(int keycode, void *data);
 void	start_screen(t_data data);
 

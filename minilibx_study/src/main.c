@@ -1,29 +1,4 @@
 #include "../includes/lib.h"
-/*
-
-typedef struct	s_xvar
-{
-	Display		*display;
-	Window		root;
-	int			screen;
-	int			depth;
-	Visual		*visual;
-	Colormap	cmap;
-	int			private_cmap;
-	t_win_list	*win_list;
-	int			(*loop_hook)();
-	void		*loop_param;
-	int			use_xshm;
-	int			pshm_format;
-	int			do_flush;
-	int			decrgb[6];
-	Atom		wm_delete_window;
-	Atom		wm_protocols;
-	int 		end_loop;
-}				t_xvar;
-
-*/
-
 
 int	handle_input(int keycode, t_data data)
 {

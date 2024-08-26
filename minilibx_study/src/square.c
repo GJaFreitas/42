@@ -44,19 +44,6 @@ void	draw_square(int x, int y, int size, int color, t_data data)
 	free(square);
 }
 
-void	the_walking_square(t_data data)
-{
-	t_square	*square;
-	square = make_square(0, 0, 10, encode_trgb(190, 0, 200, 50));
-	while (square->x < 400)
-	{
-		render_square(*square, square->x, square->y, *(data->img));
-		square->x++;
-		square->y++;
-	}
-	free(square);
-}
-
 void	start_screen(t_data data)
 {
 	t_square	*square;
@@ -73,27 +60,27 @@ void	walk(int keycode, void *data)
 	if (keycode == XK_w)
 	{
 		color_screen((t_data)data, 0);
-		// Evil ass casts right here, why? because i didnt feel like chaging the other fucntions
-		render_square(*((t_square*)square), ((t_square*)square)->x, ((t_square*)square)->y - 50, *(((t_data)data)->img));
 		((t_square*)square)->y -= 50;
+		// Evil ass casts right here, why? because i didnt feel like chaging the other fucntions
+		render_square(*((t_square*)square), ((t_square*)square)->x, ((t_square*)square)->y, *(((t_data)data)->img));
 	}
 	if (keycode == XK_a)
 	{
 		color_screen((t_data)data, 0);
-		render_square(*((t_square*)square), ((t_square*)square)->x - 50, ((t_square*)square)->y, *(((t_data)data)->img));
 		((t_square*)square)->x -= 50;
+		render_square(*((t_square*)square), ((t_square*)square)->x, ((t_square*)square)->y, *(((t_data)data)->img));
 	}
 	if (keycode == XK_s)
 	{
 		color_screen((t_data)data, 0);
-		render_square(*((t_square*)square), ((t_square*)square)->x, ((t_square*)square)->y + 50, *(((t_data)data)->img));
 		((t_square*)square)->y += 50;
+		render_square(*((t_square*)square), ((t_square*)square)->x, ((t_square*)square)->y, *(((t_data)data)->img));
 	}
 	if (keycode == XK_d)
 	{
 		color_screen((t_data)data, 0);
-		render_square(*((t_square*)square), ((t_square*)square)->x + 50, ((t_square*)square)->y, *(((t_data)data)->img));
 		((t_square*)square)->x += 50;
+		render_square(*((t_square*)square), ((t_square*)square)->x, ((t_square*)square)->y, *(((t_data)data)->img));
 	}
 	if (keycode == 0)
 	{
@@ -104,5 +91,7 @@ void	walk(int keycode, void *data)
 		return ;
 	}
 	if (keycode == -1)
+		// My love of void* cannot be expressed trough the English language
+		// except perhaps trough embarassing poetry
 		free(square);
 }

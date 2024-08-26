@@ -22,9 +22,6 @@ int	mlx_destructor(t_data data)
 	return (0);
 }
 
-// Error returns a 1
-// If no errors occur then returns 0
-
 t_img	*img_init()
 {
 	t_img	*img;
@@ -53,7 +50,8 @@ t_data	data_init()
 		return (mlx_destructor(data), NULL);
 	// If it segfaults at this point it would have SIGSEV earlier so no worries 🥰
 	data->img->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH, LENGHT);
-	data->img->address = mlx_get_data_addr(data->img->img_ptr, &data->img->bits_per_pixel,
-					&data->img->line_len, &data->img->endian);
+	data->img->address = mlx_get_data_addr(
+				data->img->img_ptr, &data->img->bits_per_pixel,
+				&data->img->line_len, &data->img->endian);
 	return (data);
 }
