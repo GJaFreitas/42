@@ -1,29 +1,24 @@
 #include "../includes/lib.h"
 
-int	handle_input(int keycode, t_data data)
+int	handle_input(int keycode, t_game game)
 {
 	if (keycode == XK_Escape)
 	{
-		mlx_destructor(data);
-		exit(0);
+		exit(game_end(game, 0));
 	}
 
-	render(data);
+	render(game->mlx_data);
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_game	game;
 
-	(void) argv;
-	(void) argc;
-	data = data_init();
-	if (data == NULL)
-		return (ft_printf("Error\n"), 1);
+	game = game_init(argc, argv);
 	//mlx_hook(data->mlx_window, 2, KPRESS_M, handle_input, data);
-	mlx_key_hook(data->mlx_window, handle_input, data);
-	mlx_loop(data->mlx_ptr);
+	mlx_key_hook(game->mlx_data->mlx_window, handle_input, game->mlx_data);
+	mlx_loop(game->mlx_data->mlx_ptr);
 	ft_printf("No problems\n");
-	return ((int)mlx_destructor(data));
+	return (game_end(game, 0));
 }

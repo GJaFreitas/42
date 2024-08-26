@@ -22,13 +22,15 @@ unsigned char	*get_map(int fd, int *linecount)
 	return (map);
 }
 
-void	load_map(char *file_path)
+t_map	load_map(char *file_path)
 {
 	t_map	map;
 	int	fd;
 
+	map = malloc(sizeof(s_map));
 	fd = open(file_path, O_RDONLY);
-	map.fd = fd;
-	map.map = get_map(fd, &(map.row));
-	map.col = ft_strlen_gnl((char*)(map.map), 1);
+	map->fd = fd;
+	map->map = get_map(fd, &(map->row));
+	map->col = ft_strlen_gnl((char*)(map->map), 1);
+	return (map);
 }

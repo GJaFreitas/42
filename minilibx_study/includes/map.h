@@ -7,6 +7,7 @@ typedef struct s_map
 	int		col;
 	int		row;
 	int		fd;
-} t_map;
+} s_map;
+typedef s_map *t_map;
 
 #endif
