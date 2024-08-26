@@ -9,20 +9,9 @@
 # include <X11/keysym.h>
 # include <fcntl.h>
 
-typedef struct s_game
-{
-	t_map	map;
-	t_data	mlx_data;
-} s_game;
-typedef s_game *t_game;
-
 // Data initialization and destruction
-void	img_destructor(t_img *img, void *mlx_ptr);
-int	mlx_destructor(t_data data);
-t_img	*img_init();
+int	data_destructor(t_data data);
 t_data	data_init();
-t_game	game_init(int argc, char **argv);
-int	game_end(t_game game, int ret_value);
 
 // Rendering functions
 void	render(t_data data);

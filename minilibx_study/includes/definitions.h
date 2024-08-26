@@ -20,6 +20,8 @@
 # define ON_KEYMOUSEUP	5
 # define ON_MOUSEMOVE	6
 
+# include "map.h"
+
 typedef struct s_square
 {
 	unsigned short int	x;
@@ -40,12 +42,13 @@ typedef struct s_img
 	int	line_len;
 }	t_img;
 
-// Struct with all mlx pointers
+// Struct with all mlx pointers and map
 typedef struct
 {
 	void	*mlx_ptr;
 	void	*mlx_window;
 	t_img	*img;
+	t_map	map;
 } 	s_data;
 typedef s_data *t_data;
 

@@ -9,6 +9,7 @@ unsigned char	*get_map(int fd, int *linecount)
 	// Weird notation here but im not going to dedicate to much time
 	// trying to figure out how to best write this condition
 	// if only norminette let me assing inside the condition
+	map = NULL;
 	buf = (byte*)1;
 	*linecount = 0;
 	while (buf)
