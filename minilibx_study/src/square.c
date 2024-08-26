@@ -56,3 +56,53 @@ void	the_walking_square(t_data data)
 	}
 	free(square);
 }
+
+void	start_screen(t_data data)
+{
+	t_square	*square;
+
+	square = make_square(WIDTH>>1, LENGHT>>1, 50, encode_rgb(255, 0, 0));
+	render_square(*square, square->x, square->y, *(data->img));
+	walk(0, (void*)square);
+	mlx_put_image_to_window(data->mlx_ptr, data->mlx_window, data->img->img_ptr, 0, 0);
+}
+
+void	walk(int keycode, void *data)
+{
+	static void	*square;
+	if (keycode == XK_w)
+	{
+		color_screen((t_data)data, 0);
+		// Evil ass casts right here, why? because i didnt feel like chaging the other fucntions
+		render_square(*((t_square*)square), ((t_square*)square)->x, ((t_square*)square)->y - 50, *(((t_data)data)->img));
+		((t_square*)square)->y -= 50;
+	}
+	if (keycode == XK_a)
+	{
+		color_screen((t_data)data, 0);
+		render_square(*((t_square*)square), ((t_square*)square)->x - 50, ((t_square*)square)->y, *(((t_data)data)->img));
+		((t_square*)square)->x -= 50;
+	}
+	if (keycode == XK_s)
+	{
+		color_screen((t_data)data, 0);
+		render_square(*((t_square*)square), ((t_square*)square)->x, ((t_square*)square)->y + 50, *(((t_data)data)->img));
+		((t_square*)square)->y += 50;
+	}
+	if (keycode == XK_d)
+	{
+		color_screen((t_data)data, 0);
+		render_square(*((t_square*)square), ((t_square*)square)->x + 50, ((t_square*)square)->y, *(((t_data)data)->img));
+		((t_square*)square)->x += 50;
+	}
+	if (keycode == 0)
+	{
+		// This almost feels ilegal but oh well
+		// using void* to the max here, with one argument i can
+		// pass either the square or the t_data pointer
+		square = data;
+		return ;
+	}
+	if (keycode == -1)
+		free(square);
+}

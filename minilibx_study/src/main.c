@@ -81,18 +81,18 @@ int	handle_input(int keycode, t_data data)
 {
 	if (keycode == XK_Escape)
 	{
+		walk(-1, data);
 		mlx_destructor(data);
 		exit(0);
 	}
-	if (keycode == XK_r)
-		color_screen(data, encode_rgb(255, 0, 0));
-	else if (keycode == XK_g)
-		color_screen(data, encode_rgb(0, 255, 0));
-	else if (keycode == XK_b)
-		color_screen(data, encode_rgb(0, 0, 255));
-	else if (keycode == XK_s)
-		the_walking_square(data);
-		//draw_square(50, 50, 100, encode_trgb(190, 150, 150, 0), data);
+	else
+		walk(keycode, data);
+
+
+
+
+
+
 	// ...(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y)
 	// x and y is the place to put the image starting at the uppermost left corner
 	// see explanation of 2D screen representation on 1D array in file:
@@ -119,6 +119,9 @@ int	main(int argc, char **argv)
 					      &data->img->line_len, &data->img->endian);
 	if (!data->img->address)
 		return (mlx_destructor(data));
+
+
+	start_screen(data);
 
 	//mlx_hook(data->mlx_window, 2, KPRESS_M, handle_input, data);
 	mlx_key_hook(data->mlx_window, handle_input, data);
