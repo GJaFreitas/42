@@ -1,11 +1,13 @@
 #ifndef LIB_H
 # define LIB_H
 
+# include "map.h"
 # include "definitions.h"
 # include "../libs/libft/libft.h"
 # include "../libs/libft/ft_printf.h"
 # include "../libs/minilibx-linux/mlx.h"
 # include <X11/keysym.h>
+# include <fcntl.h>
 
 // Data initialization and destruction
 void	img_destructor(t_img *img, void *mlx_ptr);
