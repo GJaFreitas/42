@@ -3,8 +3,6 @@
 // Rbg encoding but with extra opacity parameter
 int	encode_trgb(byte opacity, byte red, byte green, byte blue)
 {
-	if (opacity > 255 || red > 255 || green > 255 || blue > 255)
-		return (0);
 	return (opacity << 24 | red << 16 | green << 8 | blue);
 }
 
@@ -12,8 +10,6 @@ int	encode_trgb(byte opacity, byte red, byte green, byte blue)
 // No opacity option
 int	encode_rgb(byte red, byte green, byte blue)
 {
-	if (red > 255 || green > 255 || blue > 255)
-		return (0);
 	return ( red << 16 | green << 8 | blue);
 }
 
