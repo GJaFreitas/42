@@ -23,7 +23,6 @@ void	data_init(t_data *data)
 {
 	data->canvas.h = LENGHT;
 	data->canvas.w = WIDTH;
-	data->map = NULL;
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return ;

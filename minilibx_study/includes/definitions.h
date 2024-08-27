@@ -23,7 +23,11 @@
 # include "map.h"
 # include <X11/keysym.h>
 
+
+typedef unsigned char	byte;
+
 typedef struct s_data t_data;
+typedef struct o_square o_square;
 
 typedef struct s_square
 {
@@ -45,6 +49,27 @@ typedef struct s_img
 	int	line_len;
 }	t_img;
 
+struct vector
+{
+	int	x;
+	int	y;
+};
+
+struct o_square
+{
+	t_img	canvas;
+	struct vector	pos;
+	int	turn;
+	int	color;
+	short	size;
+
+	void	(*constructor)(o_square*);
+	void	(*walk)(o_square*, int);
+	void	(*change_color)(o_square*, int);
+	void	(*start)(o_square*);
+	void	(*shoot)(o_square*);
+};
+
 // Struct with all mlx pointers and map
 struct s_data
 {
@@ -52,8 +77,8 @@ struct s_data
 	void	*mlx_window;
 	t_img	canvas;
 	t_map	map;
+	o_square	*s;
 };
 
-typedef unsigned char	byte;
 
 #endif

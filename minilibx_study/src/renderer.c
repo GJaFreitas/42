@@ -1,9 +1,20 @@
 #include "../includes/lib.h"
+#include <unistd.h>
 
-// Assumes a valid (t_data *) and renders the whole screen
-// this will be the only function called to render the screen from now on
-int	render(t_data data)
+// This function should be called like: render(NULL)
+// Only as render(data) the first time in the main function
+int	render(t_data *init)
 {
+	static void	*ptr;
+	t_data		data;
+	if (init)
+	{
+		ptr = init;
+		clear_screen(init);
+	}
+	data = *(t_data*)ptr;
+
+
 	// ...(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y)
 	// x and y is the place to put the image starting at the uppermost left corner
 	// see explanation of 2D screen representation on 1D array in function
@@ -11,6 +22,36 @@ int	render(t_data data)
 	mlx_put_image_to_window(data.mlx_ptr, data.mlx_window,
 			 data.canvas.img_ptr, 0, 0);
 	return (0);
+}
+
+void	start_screen(t_data *data)
+{
+	render(data);
+	render(NULL);
+}
+
+void	clear_screen(t_data *init)
+{
+	static void	*ptr;
+	t_data	data;
+	if (init)
+		ptr = init;
+	data = *(t_data*)ptr;
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (y < LENGHT)
+	{
+		while (x < WIDTH)
+		{
+			pixel_put_optimization(data.canvas, x, y, 0);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
 }
 
 // Rbg encoding but with extra opacity parameter

@@ -13,9 +13,9 @@ void	render_square(t_square square, int x_offset, int y_offset, t_img img)
 	int	x = x_offset;
 	int	y = y_offset;
 
-	while (y < (y_offset + square.size) && y <= img.h)
+	while (y >= 0 && y < (y_offset + square.size) && y < img.h)
 	{
-		while (x < (x_offset + square.size) && x <= img.w)
+		while (x >= 0 && x < (x_offset + square.size) && x < img.w)
 		{
 			pixel_put_optimization(img, x, y, square.color);
 			x++;
@@ -28,25 +28,15 @@ void	render_square(t_square square, int x_offset, int y_offset, t_img img)
 // Draws a single square
 void	draw_square(int x, int y, int size, int color, t_data data)
 {
-	t_square	square;
 	t_square	s;
 
+	(void)size;
+	(void)color;
 	s.size = 10;
 	s.x = 150;
 	s.y = 150;
 	s.color = encode_rgb(254, 140, 1);
-	make_square(&square, x, y, size, color);
 	render_square(s, x, y, data.canvas);
-}
-
-void	start_screen(t_data data)
-{
-	static t_square	square;
-
-	make_square(&square, WIDTH>>1, LENGHT>>1, 50, encode_rgb(255, 0, 0));
-	render_square(square, square.x, square.y, data.canvas);
-	walk(0, (void*)&square);
-	render(data);
 }
 
 void	walk(int keycode, void *data)
@@ -85,5 +75,5 @@ void	walk(int keycode, void *data)
 		square = data;
 		return ;
 	}
-	render(*(t_data*)data);
+	render(NULL);
 }

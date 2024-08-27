@@ -12,9 +12,11 @@
 // Data initialization and destruction
 void	data_destructor(t_data *data);
 void	data_init(t_data *data);
+void	start_screen(t_data *data);
 
 // Rendering functions
-int	render(t_data data);
+int	render(t_data *init);
+void	clear_screen(t_data *init);
 void	color_screen(t_data data, int color);
 int	encode_rgb(byte red, byte green, byte blue);
 int	encode_trgb(byte opacity, byte red, byte green, byte blue);
@@ -23,9 +25,8 @@ void	pixel_put_optimization(t_img img, int x, int y, int color);
 // Map functions
 t_map	load_map(char *file_path);
 
-// Square.c
+// Square object
+void	constructor(o_square *s, t_img canvas);
 void	draw_square(int x, int y, int size, int color, t_data data);
-void	walk(int keycode, void *data);
-void	start_screen(t_data data);
 
 #endif
