@@ -21,6 +21,9 @@
 # define ON_MOUSEMOVE	6
 
 # include "map.h"
+# include <X11/keysym.h>
+
+typedef struct s_data t_data;
 
 typedef struct s_square
 {
@@ -43,14 +46,13 @@ typedef struct s_img
 }	t_img;
 
 // Struct with all mlx pointers and map
-typedef struct
+struct s_data
 {
 	void	*mlx_ptr;
 	void	*mlx_window;
-	t_img	*img;
+	t_img	canvas;
 	t_map	map;
-} 	s_data;
-typedef s_data *t_data;
+};
 
 typedef unsigned char	byte;
 

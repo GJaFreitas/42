@@ -10,11 +10,11 @@
 # include <fcntl.h>
 
 // Data initialization and destruction
-int	data_destructor(t_data data);
-t_data	data_init();
+void	data_destructor(t_data *data);
+void	data_init(t_data *data);
 
 // Rendering functions
-void	render(t_data data);
+int	render(t_data data);
 void	color_screen(t_data data, int color);
 int	encode_rgb(byte red, byte green, byte blue);
 int	encode_trgb(byte opacity, byte red, byte green, byte blue);

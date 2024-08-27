@@ -2,14 +2,15 @@
 
 // Assumes a valid (t_data *) and renders the whole screen
 // this will be the only function called to render the screen from now on
-void	render(t_data data)
+int	render(t_data data)
 {
 	// ...(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y)
 	// x and y is the place to put the image starting at the uppermost left corner
 	// see explanation of 2D screen representation on 1D array in function
 	// pixel_put_optimization
-	mlx_put_image_to_window(data->mlx_ptr, data->mlx_window,
-			 data->img->img_ptr, 0, 0);
+	mlx_put_image_to_window(data.mlx_ptr, data.mlx_window,
+			 data.canvas.img_ptr, 0, 0);
+	return (0);
 }
 
 // Rbg encoding but with extra opacity parameter
@@ -51,7 +52,7 @@ void	color_screen(t_data data, int color)
 	{
 		while (x < WIDTH)
 		{
-			pixel_put_optimization(*(data->img), x, y, color);
+			pixel_put_optimization(data.canvas, x, y, color);
 			x++;
 		}
 		x = 0;
