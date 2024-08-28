@@ -41,5 +41,6 @@ struct s_vector
 };
 
 t_vector	*vector(t_vector *vector);
+void		*new_vector(void);
 
 #endif

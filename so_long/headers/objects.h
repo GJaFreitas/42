@@ -28,6 +28,7 @@ struct s_object
 	t_type			type;
 	t_pos_vector		pos;
 	double			hp;
+	t_sprite		*sprite;
 
 	void			(*render)();
 	void			(*update)();
@@ -45,8 +46,9 @@ struct s_game
 	t_type			type;
 	t_pos_vector		pos;
 	double			hp;
+	t_sprite		*sprite;
 
-	void			(*render)();
+	void			(*render)(t_canva *img);
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
@@ -56,11 +58,14 @@ struct s_game
 	void			(*damage)(double);
 	t_sprite		*(*get_sprite)();
 
-	void			*objects;
-	void			*keys;
-	void			*to_render;
-	void			*interactions;
+	byte			players;
+	byte			in_menu;
+	t_vector			*objects;
+	t_vector			*keys;
+	t_vector			*to_render;
+	t_vector			*interactions;
 	void			(*start)();
+	void			(*add_obj)(t_object *o);
 };
 
 struct s_player
@@ -68,6 +73,7 @@ struct s_player
 	t_type			type;
 	t_pos_vector		pos;
 	double			hp;
+	t_sprite		*sprite;
 
 	void			(*render)();
 	void			(*update)();
@@ -88,6 +94,7 @@ struct s_hud
 	t_type			type;
 	t_pos_vector		pos;
 	double			hp;
+	t_sprite		*sprite;
 
 	void			(*render)();
 	void			(*update)();
@@ -105,6 +112,7 @@ struct s_door
 	t_type			type;
 	t_pos_vector		pos;
 	double			hp;
+	t_sprite		*sprite;
 
 	void			(*render)();
 	void			(*update)();
@@ -125,6 +133,7 @@ struct s_enemy
 	t_type			type;
 	t_pos_vector		pos;
 	double			hp;
+	t_sprite		*sprite;
 
 	void			(*render)();
 	void			(*update)();
@@ -142,6 +151,7 @@ struct s_menu
 	t_type			type;
 	t_pos_vector		pos;
 	double			hp;
+	t_sprite		*sprite;
 
 	void			(*render)();
 	void			(*update)();
@@ -158,7 +168,10 @@ struct s_menu
 };
 
 
+t_object	*object(t_object *object);
 void	*constructor(size_t size);
-void	start_game(void);
+t_game	*start_game(void);
+t_game	*game(void);
+t_object	*new_menu();
 
 #endif
