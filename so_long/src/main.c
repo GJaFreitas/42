@@ -15,6 +15,9 @@ int	main(int argc, char **argv)
 	(void)argv;
 	start_engine("Gaming", WIDTH, HEIGHT);
 	start_game();
-	mlx_loop_hook(engine()->mlx, game_loop, NULL);
-	return (harbinger_of_chaos(), 0);
+	//mlx_loop_hook(engine()->mlx, game_loop, NULL);
+	mlx_loop(engine()->mlx);
+	return (0);
 }
+
+// the hooks, no matter where they are called seem to be giving problems

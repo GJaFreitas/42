@@ -55,7 +55,7 @@ t_game	*game(void)
 	return (&game);
 }
 
-t_game	*start_game(void)
+void	start_game(void)
 {
 	game()->in_menu = 1;		
 	game()->objects = new_vector();
@@ -64,5 +64,4 @@ t_game	*start_game(void)
 	game()->interactions = new_vector();
 	game()->add_obj = __add_obj;
 	game()->add_obj((t_object*)new_menu);
-	return (game());
 }

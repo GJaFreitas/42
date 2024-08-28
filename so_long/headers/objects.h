@@ -170,7 +170,7 @@ struct s_menu
 
 t_object	*object(t_object *object);
 void	*constructor(size_t size);
-t_game	*start_game(void);
+void	start_game(void);
 t_game	*game(void);
 t_object	*new_menu();
 

@@ -17,6 +17,6 @@ struct s_engine
 };
 
 t_engine	*engine(void);
-t_engine	*start_engine(char *title, int w, int h);
+void		start_engine(char *title, int w, int h);
 
 #endif
