@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 12:44:21 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/08/19 15:16:44 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/08/13 16:07:33 by gjacome-          #+#    #+#             */
+/*   Updated: 2024/08/16 19:51:54 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../libft.h"
 
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2048
+# endif
+
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+
+char	*get_next_line(int fd);
+char	*ft_strjoin_gnl(char *str, char *buffer);
+int		ft_strlen_gnl(char *s, int flag);
+
+#endif

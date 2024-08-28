@@ -25,6 +25,8 @@ NAME = libft.a
 # --- DEPENDENCIES ---------------- #
 
 SRCS = $(wildcard srcs/*/*.c)
+SRCS += $(wildcard ft_printf/*.c)
+SRCS += $(wildcard get_next_line/*.c)
 OBJS = $(SRCS:.c=.o)
 
 DEPS = libft.h
@@ -38,23 +40,28 @@ AR = ar rc
 RANLIB = ranlib
 
 .c.o:
-	$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) -I $(HEAD)
+	@$(CC) -c $(CFLAGS) $< -o $(<:.c=.o) -I $(HEAD)
 
 $(NAME) : $(OBJS)
-	$(AR) $(NAME) $(OBJS)
-	$(RANLIB) $(NAME)
+	@echo "making in libft :)"
+	@$(AR) $(NAME) $(OBJS)
+	@$(RANLIB) $(NAME)
 
 all: $(NAME)
 
 clean:
-	$(RM) */*/*.o
+	@echo "cleaning in libft"
+	@$(RM) */*/*.o
+	@$(RM) */*.o
 
 fclean:
-	make clean
-	$(RM) $(NAME)
+	@echo "deepcleaning in libft"
+	@$(RM) */*/*.o
+	@$(RM) */*.o
+	@$(RM) $(NAME)
 
 re:
-	make fclean
-	make
+	@make fclean
+	@make
 
 .PHONY: all clean fclean
