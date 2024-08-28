@@ -21,7 +21,7 @@ LFLAGS = -lXext -lX11 -lm -lz
 
 # --- NAME ---------------------- #
 
-NAME = fun.out
+NAME = so_long.out
 
 # --- DIRECTORIES ------------------- #
 
@@ -32,7 +32,8 @@ SRCS_DIR = ./src
 
 # --- DEPENDENCIES ---------------- #
 
-SRCS =	$(wildcard src/*.c)
+SRCS =	$(wildcard src/*/*.c)
+SRCS += ./src/main.c
 OBJS =	$(SRCS:%.c=%.o)
 
 MLX = libs/minilibx-linux/libmlx.a
