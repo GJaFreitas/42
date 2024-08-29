@@ -35,10 +35,3 @@ void	*new_vector(void)
 	return (v);
 }
 
-// Changes the "this vector"
-// another way of saying it changes the current working vector
-t_vector	*vector(t_vector *vector)
-{
-	fthis()->vector = vector;
-	return (vector);
-}

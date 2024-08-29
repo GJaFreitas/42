@@ -63,10 +63,12 @@ t_element	*__vec_add(void *value)
 	e->next = NULL;
 	e->destroy = (void*)fthis()->vector->destroy_element;
 	if (!fthis()->vector->size)
+	{
 		fthis()->vector->begin = e;
+		fthis()->vector->end = e;
+	}
 	else
 		fthis()->vector->end->next = e;
-	fthis()->vector->end = e;
 	e->index = fthis()->vector->size;
 	fthis()->vector->size++;
 	return (e);

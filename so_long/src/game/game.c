@@ -27,20 +27,35 @@ struct s_game
 void	__add_obj(t_object *o);
 
 // Iterates trough all objects in the game and adds them to the next frame
-void	__render_game(t_canva *canva)
+static void	__render_game()
 {
 	t_element	*i;
+	t_object	*o;
 
 	i = vector(game()->to_render)->begin;
 	while (i)
 	{
-		object(i->value);
-		fthis()->object->render(canva);
+		o = object(i->value);
+		o->render();
 		i = i->next;
 	}
 }
 
-void	__destroy_game(void)
+static void	__key_events(char *keys, int event)
+{
+	t_element	*i;
+	t_object	*o;
+
+	i = vector(game()->keys)->begin;
+	while (i)
+	{
+		o = object(i->value);
+		o->func_keys(keys, event);
+		i = i->next;
+	}
+}
+
+static void	__destroy_game(void)
 {
 	vector(game()->objects)->destroy();
 	vector(game()->interactions)->destroy();
@@ -63,5 +78,8 @@ void	start_game(void)
 	game()->to_render = new_vector();
 	game()->interactions = new_vector();
 	game()->add_obj = __add_obj;
-	game()->add_obj((t_object*)new_menu);
+	game()->render = __render_game;
+	game()->func_keys = __key_events;
+	game()->destructor = __destroy_game;
+	game()->add_obj((t_object*)new_menu());
 }

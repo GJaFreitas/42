@@ -34,7 +34,7 @@ struct s_object
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_key)(t_object*);
+	void			(*func_keys)(char *keys, int event);
 	void			(*func_mouse)(t_object*);
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
@@ -48,11 +48,11 @@ struct s_game
 	double			hp;
 	t_sprite		*sprite;
 
-	void			(*render)(t_canva *img);
+	void			(*render)();
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_key)(t_object*);
+	void			(*func_keys)(char *keys, int event);
 	void			(*func_mouse)(t_object*);
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
@@ -64,7 +64,6 @@ struct s_game
 	t_vector			*keys;
 	t_vector			*to_render;
 	t_vector			*interactions;
-	void			(*start)();
 	void			(*add_obj)(t_object *o);
 };
 
@@ -79,7 +78,7 @@ struct s_player
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_key)(t_object*);
+	void			(*func_keys)(char *keys, int event);
 	void			(*func_mouse)(t_object*);
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
@@ -100,7 +99,7 @@ struct s_hud
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_key)(t_object*);
+	void			(*func_keys)(char *keys, int event);
 	void			(*func_mouse)(t_object*);
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
@@ -118,7 +117,7 @@ struct s_door
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_key)(t_object*);
+	void			(*func_keys)(char *keys, int event);
 	void			(*func_mouse)(t_object*);
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
@@ -139,7 +138,7 @@ struct s_enemy
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_key)(t_object*);
+	void			(*func_keys)(char *keys, int event);
 	void			(*func_mouse)(t_object*);
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
@@ -157,7 +156,7 @@ struct s_menu
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_key)(t_object*);
+	void			(*func_keys)(char *keys, int event);
 	void			(*func_mouse)(t_object*);
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);

@@ -34,9 +34,3 @@ void	*constructor(size_t size)
 	((t_object *)o)->pos.y = 0;
 	return (o);
 }
-
-t_object	*object(t_object *object)
-{
-	fthis()->object = object;
-	return (object);
-}
