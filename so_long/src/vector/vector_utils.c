@@ -17,14 +17,16 @@ void	__vec_rm_index(int index)
 {
 	t_element	*current;
 	t_element	*prev;
+	int		i;
 
+	i = 0;
 	if (!fthis()->vector || index > fthis()->vector->size || index < 1)
 		return ;
 	current = fthis()->vector->begin;
 	prev = NULL;
 	while (current)
 	{
-		if (index == current->index)
+		if (index == i++)
 		{
 			if (current->next && prev)
 				prev->next = current->next;
