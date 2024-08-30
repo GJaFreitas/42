@@ -19,5 +19,6 @@ void	__generic_destructor()
 {
 	mlx_destroy_image(engine()->mlx,
 		   fthis()->object->sprite->img);
-	free_safe(fthis()->object->get_sprite());
+	// The only free not protected agaisnt double free
+	free(fthis()->object->get_sprite());
 }

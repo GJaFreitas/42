@@ -30,14 +30,13 @@ struct s_vector
 	t_element		*(*add)(void	*value);
 	void			*(*get)(int	index);
 	t_element		*(*set_at_index)(int index, void *value);
-	void			(*remove_this)(t_element	*e);
 	void			(*remove_index)(int index);
 	void			(*remove_first)();
 	void			(*for_each)(void (*fun)(t_element *e, void *v), void *o);
 	void			(*remove_value)(void *value);
 	void			(*remove_all)(void);;
 	void			(*destroy)();
-	void			(*destroy_element)(t_element	*e);
+	void			(*destroy_element)(void **e);
 };
 
 t_vector	*vector(t_vector *vector);

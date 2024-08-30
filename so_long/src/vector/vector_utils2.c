@@ -8,7 +8,7 @@
 void	__vec_destructor(void)
 {
 	fthis()->vector->remove_all();
-	free_safe(fthis()->vector);
+	free_safe((void**)&fthis()->vector);
 }
 
 void	__vec_rm_rf(void)
@@ -24,8 +24,7 @@ void	__vec_rm_rf(void)
 	{
 		prev = current;
 		current = current->next;
-		prev->destroy(prev);
-		free_safe(prev);
+		free_safe((void**)&prev);
 	}
 	fthis()->vector->begin = NULL;
 	fthis()->vector->end = NULL;
@@ -53,7 +52,7 @@ void	__vec_rm_val(void *value)
 			else
 				fthis()->vector->begin = current->next;
 			current->destroy(current);
-			free_safe(current);
+			free_safe((void**)&current);
 			fthis()->vector->size--;
 			current = prev;
 		}
@@ -74,7 +73,7 @@ void	__vec_rm_first()
 	else
 		fthis()->vector->begin = NULL;
 	first->destroy(first);
-	free_safe(first);
+	free_safe((void**)&first);
 	fthis()->vector->size--;
 }
 

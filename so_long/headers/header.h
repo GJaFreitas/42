@@ -38,7 +38,7 @@
 
 //	Memory manipulation
 void		*malloc_safe(size_t __size);
-int		free_safe(void *v);
+int		free_safe(void **v);
 void		harbinger_of_chaos(void);
 //	*******************
 

@@ -1,7 +1,6 @@
 #include "../../headers/header.h"
 
 void	__vec_rm_index(int index);
-void	__destroy_element(t_element *e);
 t_element	*__vec_add(void *value);
 t_element	*__vec_set_value_index(int index, void *value);
 void	*__vec_get_val(int index);
@@ -10,7 +9,7 @@ void	__vec_rm_rf(void);
 void	__vec_rm_val(void *value);
 void	__vec_rm_first();
 void	__vec_exec_on_each(void (*fun)(t_element *e, void *v), void *v);
-void	__destroy_element(t_element *e);
+void	__destroy_element(void **e);
 
 void	*new_vector(void)
 {

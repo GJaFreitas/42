@@ -78,6 +78,6 @@ re:
 	@make
 
 run: re
-	valgrind ./$(NAME)
+	valgrind --leak-check=full --track-origins=yes ./$(NAME)
 
 .PHONY: all clean fclean re

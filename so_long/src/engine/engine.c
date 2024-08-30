@@ -11,7 +11,7 @@ static void	__destroy_all(void)
 	if (engine()->win)
 		mlx_destroy_window(engine()->mlx, engine()->win);
 	mlx_destroy_display(engine()->mlx);
-	free_safe(engine()->mlx);
+	free_safe(&engine()->mlx);
 }
 
 t_engine	*engine(void)

@@ -13,6 +13,7 @@
 
 // I need more lines to make this accept index = 0
 // so ill make another function to remove the first element
+// TODO: THIS IS BROKEN BECAUSE OF THE NEW free_safe FUNCTION
 void	__vec_rm_index(int index)
 {
 	t_element	*current;
@@ -33,7 +34,7 @@ void	__vec_rm_index(int index)
 			else if (prev)
 				prev->next = NULL;
 			current->destroy(current);
-			free_safe(current);
+			free_safe((void**)&current);
 			fthis()->vector->size--;
 			return ;
 		}
@@ -42,9 +43,9 @@ void	__vec_rm_index(int index)
 	}
 }
 
-void	__destroy_element(t_element *e)
+void	__destroy_element(void **e)
 {
-	free_safe(e->value);
+	free_safe(e);
 }
 
 // if vector is empty then put new element at begining

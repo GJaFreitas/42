@@ -1,22 +1,27 @@
 #include "../../headers/header.h"
 
-// Returns 0 if v was NULL and 1 if v was sucessfully freed
-int	free_safe(void *v)
+// Frees a mem address and sets it to NULL to avoid double frees
+int	free_safe(void **v)
 {
-	if (!v)
-		return (0);
-	free(v);
-	return (1);
+	if (*v != NULL)
+	{
+		free(*v);
+		*v = NULL;
+		return (1);
+	}
+	return (0);
+
 }
 
-
 // Checks both if size is > 0 and the malloc return
-// if malloc gives NULL then exits the program
+// if malloc gives NULL then fuck it everything is destroyed
+// and chaos is brought upon everyone and everything without
+// impunity, no one is safe, all memory shall be freed
+// and the program shall exit in a fiery fashion
 void	*malloc_safe(size_t __size)
 {
 	void	*v;
 
-	// TODO: change exit function to destroy all allocated memory?
 	if (__size < 1)
 		return (NULL);
 	v = malloc(__size);

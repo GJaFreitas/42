@@ -59,6 +59,7 @@ static void	__destroy_objects()
 	while (i)
 	{
 		object(i->value)->destructor();
+		free_safe(&i->value);
 		i = i->next;
 	}
 }
@@ -70,6 +71,7 @@ static void	__destroy_game(void)
 	vector(game()->interactions)->destroy();
 	vector(game()->keys)->destroy();
 	vector(game()->to_render)->destroy();
+	vector(game()->mouse)->destroy();
 }
 
 t_game	*game(void)
