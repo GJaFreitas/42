@@ -2,15 +2,35 @@
 #include <unistd.h>
 
 
+/*
+t_sprite	*__load_img(char *texture_name)
+{
+	t_sprite	*new_sprite;
+
+	new_sprite = malloc_safe(sizeof(t_sprite));
+	new_sprite->img = mlx_xpm_file_to_image(engine()->mlx,
+				texture_name,
+				&new_sprite->width,
+				&new_sprite->height);
+	new_sprite->address = mlx_get_data_addr(new_sprite->img,
+				&new_sprite->bpp,
+				&new_sprite->line_length,
+				&new_sprite->endian);
+	return (new_sprite);
+}
+*/
+
 static t_sprite	*__create_img(void)
 {
-	t_sprite	*img;
+	t_sprite	*sprite;
 
-	img = malloc_safe(sizeof(t_sprite));
-	img = mlx_new_image(engine()->mlx, WIDTH, HEIGHT);
-	img->address = mlx_get_data_addr(img->img, &img->bpp, \
-				  &img->line_length, &img->endian);
-	return (img);
+	sprite = malloc_safe(sizeof(t_sprite));
+	sprite->width = WIDTH;
+	sprite->height = HEIGHT;
+	sprite->img = mlx_new_image(engine()->mlx, WIDTH, HEIGHT);
+	sprite->address = mlx_get_data_addr(sprite->img, &sprite->bpp, \
+				  &sprite->line_length, &sprite->endian);
+	return (sprite);
 }
 
 static byte	__draw_pixel(t_sprite *img, int x, int y, int color)
@@ -27,6 +47,7 @@ static byte	__draw_pixel(t_sprite *img, int x, int y, int color)
 	return (1);
 }
 
+/*
 static void	__draw_line_hor(t_sprite *img, int y)
 {
 	int	x;
@@ -50,32 +71,43 @@ static void	__draw_line_ver(t_sprite *img, int x)
 		y++;
 	}
 }
+*/
 
+int	encode_trgb(byte opacity, byte red, byte green, byte blue)
+{
+	return (opacity << 24 | red << 16 | green << 8 | blue);
+}
+
+// TODO: Fadeout function
+// Not entirely sure why its not putting the image int the window every loop
 void	fadeout(void)
 {
 	t_sprite	*img;
 	t_pos_vector	pos;
+	int		alpha;
 
+	alpha = 1;
 	pos.x = 0;
-	pos.y = 0;
-	pos.w = WIDTH - 1;
-	pos.h = HEIGHT - 1;
 	img = __create_img();
-	while (pos.x < WIDTH)
+	while (alpha <= 255)
 	{
-		__draw_line_hor(img, pos.y);
-		__draw_line_hor(img, pos.h);
-		__draw_line_ver(img, pos.x);
-		__draw_line_ver(img, pos.w);
-		mlx_put_image_to_window(engine()->mlx, engine()->win, img, 0, 0);
-		pos.x++;
-		pos.y++;
-		pos.h--;
-		pos.w--;
-		usleep(10);
-		
+		while (pos.x < WIDTH)
+		{
+			pos.y = 0;
+			while (pos.y < HEIGHT)
+			{
+				__draw_pixel(img, pos.x, pos.y, encode_trgb(alpha, 0, 0, 0));
+				pos.y++;
+			}
+			pos.x++;
+		}
+		mlx_put_image_to_window(engine()->mlx, engine()->win, img->img, 0, 0);
+		printf("alpha: %d\n", alpha);
+		usleep(1000000);
+		alpha *= 2;
+		if (alpha == 256)
+			alpha = 255;
 	}
-	game()->render();
-	mlx_destroy_image(engine()->mlx, img);
+	mlx_destroy_image(engine()->mlx, img->img);
 	free_safe((void**)&img);
 }

@@ -10,8 +10,8 @@ typedef struct pos_vector t_pos_vector;
 
 struct s_sprite
 {
-	void	*img;
-	char	*address;
+	void		*img;
+	char		*address;
 	int		bpp;
 	int		line_length;
 	int		endian;

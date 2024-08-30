@@ -33,7 +33,8 @@ int	__key_press(int key, void *v)
 int	__key_release(int key, void *v)
 {	
 	(void)v;
+	if (engine()->keys[__key(key)])
+		engine()->keys_pressed--;
 	engine()->keys[__key(key)] = 0;
-	engine()->keys_pressed--;
 	return (0);
 }
