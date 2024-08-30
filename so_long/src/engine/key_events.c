@@ -23,12 +23,10 @@ int	__key_press(int key, void *v)
 {
 	(void)v;
 	if (key == XK_Escape)
-		exit(0);
-	/*
+		harbinger_of_chaos();
 	engine()->keys[__key(key)] = 1;
 	engine()->keys_pressed++;
 	input_handler(engine()->keys, ON_KEYDOWN);
-	*/
 	return (0);
 }
 

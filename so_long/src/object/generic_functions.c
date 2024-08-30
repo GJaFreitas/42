@@ -1,11 +1,23 @@
 #include "../../headers/header.h"
 
+/*
 
-t_sprite	*__generic_load_sprite(char *path)
+void	*constructor(size_t size)
 {
-	t_sprite	*s;
+	t_object	*o;
 
-	s = malloc_safe(sizeof(t_sprite));
-	s = mlx_xpm_file_to_image(engine()->mlx, path, &s->width, &s->height);
-	return (s);
+	o = malloc_safe(size);
+	o->type = OBJECT;
+	o->get_sprite = __generic_get_sprite;
+	o->pos.x = 0;
+	o->pos.y = 0;
+	return (o);
+}
+*/
+
+void	__generic_destructor()
+{
+	mlx_destroy_image(engine()->mlx,
+		   fthis()->object->sprite->img);
+	free_safe(fthis()->object->get_sprite());
 }

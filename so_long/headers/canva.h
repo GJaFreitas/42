@@ -6,6 +6,8 @@ typedef struct s_sprite t_sprite;
 
 # define COLOR_TRANSPARENT 0xd411aa
 
+typedef struct pos_vector t_pos_vector;
+
 struct s_sprite
 {
 	void	*img;
@@ -23,6 +25,8 @@ struct s_canva
 	t_sprite	*(*load_img)(char *texture_name);
 	unsigned char	(*draw_pixel)(int x, int y, int color);
 	void		(*draw_img)(t_sprite *sprite, int x, int y);
+	void		(*scale_img)(t_sprite *sprite, t_pos_vector vec);
+	void		(*destroy)();
 };
 
 t_canva		*canva(void);

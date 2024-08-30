@@ -30,13 +30,11 @@ void	__add_obj(t_object *o);
 static void	__render_game()
 {
 	t_element	*i;
-	t_object	*o;
 
 	i = vector(game()->to_render)->begin;
 	while (i)
 	{
-		o = object(i->value);
-		o->render();
+		object(i->value)->render();
 		i = i->next;
 	}
 }
@@ -44,19 +42,30 @@ static void	__render_game()
 static void	__key_events(char *keys, int event)
 {
 	t_element	*i;
-	t_object	*o;
 
 	i = vector(game()->keys)->begin;
 	while (i)
 	{
-		o = object(i->value);
-		o->func_keys(keys, event);
+		object(i->value)->func_keys(keys, event);
+		i = i->next;
+	}
+}
+
+static void	__destroy_objects()
+{
+	t_element	*i;
+
+	i = vector(game()->objects)->begin;
+	while (i)
+	{
+		object(i->value)->destructor();
 		i = i->next;
 	}
 }
 
 static void	__destroy_game(void)
 {
+	__destroy_objects();
 	vector(game()->objects)->destroy();
 	vector(game()->interactions)->destroy();
 	vector(game()->keys)->destroy();
@@ -75,6 +84,7 @@ void	start_game(void)
 	game()->in_menu = 1;		
 	game()->objects = new_vector();
 	game()->keys = new_vector();
+	game()->mouse = new_vector();
 	game()->to_render = new_vector();
 	game()->interactions = new_vector();
 	game()->add_obj = __add_obj;

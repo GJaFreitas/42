@@ -21,7 +21,7 @@ void	*malloc_safe(size_t __size)
 		return (NULL);
 	v = malloc(__size);
 	if (!v)
-		exit(-1);
+		harbinger_of_chaos();
 	ft_bzero(v, __size);
 	return (v);
 }

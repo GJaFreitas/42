@@ -19,8 +19,10 @@ typedef struct s_menu t_menu;
 // Position in relation to the top left corner of screen
 typedef struct pos_vector
 {
-	int	x;
-	int	y;
+	float	x;
+	float	y;
+	float	w;
+	float	h;
 }	t_pos_vector;
 
 struct s_object
@@ -62,6 +64,7 @@ struct s_game
 	byte			in_menu;
 	t_vector			*objects;
 	t_vector			*keys;
+	t_vector			*mouse;
 	t_vector			*to_render;
 	t_vector			*interactions;
 	void			(*add_obj)(t_object *o);

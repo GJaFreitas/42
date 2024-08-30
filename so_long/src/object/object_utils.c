@@ -19,18 +19,23 @@ struct s_object
 	t_sprite		*(*get_sprite)();
 };
 */
-t_sprite	*__generic_load_sprite(char *path);
+void	__generic_destructor();
+
+static t_sprite	*__generic_get_sprite()
+{
+	return (fthis()->object->sprite);
+}
 
 // Returns a new instance of an object with variable size
 void	*constructor(size_t size)
 {
-	void	*o;
+	t_object	*o;
 
 	o = malloc_safe(size);
-	((t_object *)o)->sprite = malloc_safe(sizeof(t_sprite));
-	((t_object *)o)->type = OBJECT;
-	((t_object *)o)->get_sprite = __generic_load_sprite;
-	((t_object *)o)->pos.x = 0;
-	((t_object *)o)->pos.y = 0;
+	o->type = OBJECT;
+	o->get_sprite = __generic_get_sprite;
+	o->destructor = __generic_destructor;
+	o->pos.x = 0;
+	o->pos.y = 0;
 	return (o);
 }

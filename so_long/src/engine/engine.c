@@ -10,7 +10,6 @@ static void	__destroy_all(void)
 {
 	if (engine()->win)
 		mlx_destroy_window(engine()->mlx, engine()->win);
-	//if (((t_xvar*)engine()->mlx)->display)
 	mlx_destroy_display(engine()->mlx);
 	free_safe(engine()->mlx);
 }
@@ -29,10 +28,10 @@ void	start_engine(char *title, int w, int h)
 	engine()->mlx = mlx_init();
 	engine()->win = mlx_new_window(engine()->mlx, w, h, title);
 	engine()->destroy = __destroy_all;
+	mlx_hook(engine()->win, ON_KEYDOWN, KPRESS_M, __key_press, NULL);
 	/*
-	mlx_hook(engine()->mlx, ON_KEYDOWN, KPRESS_M, __key_press, NULL);
-	mlx_hook(engine()->mlx, ON_KEYUP, KRELEASE_M, __key_release, NULL);
-	mlx_hook(engine()->mlx, ON_KEYMOUSEUP, BRELEASE_M, __mouse_release, NULL);
-	mlx_mouse_hook(engine()->mlx, __mouse_move, NULL);
+	mlx_hook(engine()->win, ON_KEYUP, KRELEASE_M, __key_release, NULL);
+	mlx_hook(engine()->win, ON_KEYMOUSEUP, BRELEASE_M, __mouse_release, NULL);
+	mlx_mouse_hook(engine()->win, __mouse_move, NULL);
 	*/
 }

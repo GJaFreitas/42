@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/08/27 14:59:05 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/08/29 16:33:51 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ re:
 	@make fclean
 	@make
 
-run: all
+run: re
 	valgrind ./$(NAME)
 
 .PHONY: all clean fclean re
