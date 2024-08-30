@@ -33,7 +33,6 @@ void	__vec_rm_index(int index)
 				prev->next = current->next;
 			else if (prev)
 				prev->next = NULL;
-			current->destroy(current);
 			free_safe((void**)&current);
 			fthis()->vector->size--;
 			return ;
@@ -62,7 +61,6 @@ t_element	*__vec_add(void *value)
 	e = malloc_safe(sizeof(t_element));
 	e->value = value;
 	e->next = NULL;
-	e->destroy = (void*)fthis()->vector->destroy_element;
 	if (!fthis()->vector->size)
 	{
 		fthis()->vector->begin = e;
@@ -91,7 +89,8 @@ t_element	*__vec_set_value_index(int index, void *value)
 	{
 		if (i == index)
 		{
-			current->destroy(current);
+			object(current->value)->destructor();
+			free_safe(&current->value);
 			current->value = value;
 			return (current);
 		}

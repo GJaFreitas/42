@@ -19,12 +19,9 @@ struct s_object
 	t_sprite		*(*get_sprite)();
 };
 */
-void	__generic_destructor();
-
-static t_sprite	*__generic_get_sprite()
-{
-	return (fthis()->object->sprite);
-}
+void	__generic_destructor(void);
+void	__generic_render(void);
+t_sprite	*__generic_get_sprite(void);
 
 // Returns a new instance of an object with variable size
 void	*constructor(size_t size)
@@ -33,9 +30,10 @@ void	*constructor(size_t size)
 
 	o = malloc_safe(size);
 	o->type = OBJECT;
+	o->func_keys = NULL;
+	o->func_mouse = NULL;
+	o->render = __generic_render;
 	o->get_sprite = __generic_get_sprite;
 	o->destructor = __generic_destructor;
-	o->pos.x = 0;
-	o->pos.y = 0;
 	return (o);
 }

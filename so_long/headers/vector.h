@@ -5,7 +5,7 @@
 // Basically and array of void* that can manage its own memory
 // and do a bunch of other cool stuff
 
-# include "e_type.h"
+# include "helper_structs.h"
 
 typedef struct s_vector t_vector;
 typedef struct s_element t_element;
@@ -15,7 +15,6 @@ struct s_element
 	void			*value;
 	int				index;
 	struct s_element	*next;
-	void			(*destroy)(void *value);
 };
 
 // Destroy -> destroys instance
@@ -36,7 +35,6 @@ struct s_vector
 	void			(*remove_value)(void *value);
 	void			(*remove_all)(void);;
 	void			(*destroy)();
-	void			(*destroy_element)(void **e);
 };
 
 t_vector	*vector(t_vector *vector);

@@ -39,14 +39,26 @@ static void	__render_game()
 	}
 }
 
-static void	__key_events(char *keys, int event)
+static void	__key_events()
 {
 	t_element	*i;
 
 	i = vector(game()->keys)->begin;
 	while (i)
 	{
-		object(i->value)->func_keys(keys, event);
+		object(i->value)->func_keys(engine()->keys);
+		i = i->next;
+	}
+}
+
+static void	__mouse_events()
+{
+	t_element	*i;
+
+	i = vector(game()->mouse)->begin;
+	while (i)
+	{
+		object(i->value)->func_mouse();
 		i = i->next;
 	}
 }
@@ -81,9 +93,20 @@ t_game	*game(void)
 	return (&game);
 }
 
+// Destroys the menu object and starts the game for real
+static void	__start_the_show(void)
+{
+	game()->in_menu = 0;
+	__destroy_objects();
+	vector(game()->objects)->remove_first();
+	vector(game()->to_render)->remove_first();
+	vector(game()->mouse)->remove_first();
+	vector(game()->keys)->remove_first();
+	game()->add_obj((t_object*)new_bg());
+}
+
 void	start_game(void)
 {
-	game()->in_menu = 1;		
 	game()->objects = new_vector();
 	game()->keys = new_vector();
 	game()->mouse = new_vector();
@@ -92,6 +115,8 @@ void	start_game(void)
 	game()->add_obj = __add_obj;
 	game()->render = __render_game;
 	game()->func_keys = __key_events;
+	game()->func_mouse = __mouse_events;
 	game()->destructor = __destroy_game;
 	game()->add_obj((t_object*)new_menu());
+	game()->startgame = __start_the_show;
 }

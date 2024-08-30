@@ -1,6 +1,5 @@
 #include "../../headers/header.h"
 
-void	input_handler(byte *keys, byte event);
 // a will be in position 0 of the engine()->keys array
 // z will be at 25 of course
 // 0 to 9 will be 26 to 35
@@ -24,9 +23,10 @@ int	__key_press(int key, void *v)
 	(void)v;
 	if (key == XK_Escape)
 		harbinger_of_chaos();
+	printf("Keycode: %d\nMy key: %d", key, __key(key));
+	if (!engine()->keys[__key(key)])
+		engine()->keys_pressed++;
 	engine()->keys[__key(key)] = 1;
-	engine()->keys_pressed++;
-	input_handler(engine()->keys, ON_KEYDOWN);
 	return (0);
 }
 
@@ -35,12 +35,5 @@ int	__key_release(int key, void *v)
 	(void)v;
 	engine()->keys[__key(key)] = 0;
 	engine()->keys_pressed--;
-	input_handler(engine()->keys, ON_KEYDOWN);
 	return (0);
-}
-
-void	input_handler(byte *keys, byte event)
-{
-	(void)keys;
-	(void)event;
 }

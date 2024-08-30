@@ -3,7 +3,7 @@
 // Frees a mem address and sets it to NULL to avoid double frees
 int	free_safe(void **v)
 {
-	if (*v != NULL)
+	if (v && *v != NULL)
 	{
 		free(*v);
 		*v = NULL;

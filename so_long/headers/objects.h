@@ -1,7 +1,7 @@
 #ifndef OBJECTS_H
 # define OBJECTS_H
 
-# include "e_type.h"
+# include "helper_structs.h"
 # include "canva.h"
 # include "vector.h"
 # include "../libs/libft/libft.h"
@@ -16,15 +16,6 @@ typedef struct s_door t_door;
 typedef struct s_enemy t_enemy;
 typedef struct s_menu t_menu;
 
-// Position in relation to the top left corner of screen
-typedef struct pos_vector
-{
-	float	x;
-	float	y;
-	float	w;
-	float	h;
-}	t_pos_vector;
-
 struct s_object
 {
 	t_type			type;
@@ -36,8 +27,8 @@ struct s_object
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_keys)(char *keys, int event);
-	void			(*func_mouse)(t_object*);
+	void			(*func_keys)(byte *keys);
+	void			(*func_mouse)();
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
 	t_sprite		*(*get_sprite)();
@@ -54,8 +45,8 @@ struct s_game
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_keys)(char *keys, int event);
-	void			(*func_mouse)(t_object*);
+	void			(*func_keys)();
+	void			(*func_mouse)();
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
 	t_sprite		*(*get_sprite)();
@@ -68,6 +59,7 @@ struct s_game
 	t_vector			*to_render;
 	t_vector			*interactions;
 	void			(*add_obj)(t_object *o);
+	void			(*startgame)();
 };
 
 struct s_player
@@ -81,8 +73,8 @@ struct s_player
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_keys)(char *keys, int event);
-	void			(*func_mouse)(t_object*);
+	void			(*func_keys)(byte *keys);
+	void			(*func_mouse)();
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
 	t_sprite		*(*get_sprite)();
@@ -102,8 +94,8 @@ struct s_hud
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_keys)(char *keys, int event);
-	void			(*func_mouse)(t_object*);
+	void			(*func_keys)(byte *keys);
+	void			(*func_mouse)();
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
 	t_sprite		*(*get_sprite)();
@@ -120,8 +112,8 @@ struct s_door
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_keys)(char *keys, int event);
-	void			(*func_mouse)(t_object*);
+	void			(*func_keys)(byte *keys);
+	void			(*func_mouse)();
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
 	t_sprite		*(*get_sprite)();
@@ -141,8 +133,8 @@ struct s_enemy
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_keys)(char *keys, int event);
-	void			(*func_mouse)(t_object*);
+	void			(*func_keys)(byte *keys);
+	void			(*func_mouse)();
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
 	t_sprite		*(*get_sprite)();
@@ -159,8 +151,8 @@ struct s_menu
 	void			(*update)();
 	void			(*destructor)();
 	void			(*collision)(t_object*);
-	void			(*func_keys)(char *keys, int event);
-	void			(*func_mouse)(t_object*);
+	void			(*func_keys)(byte *keys);
+	void			(*func_mouse)();
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
 	t_sprite		*(*get_sprite)();
@@ -175,5 +167,6 @@ void	*constructor(size_t size);
 void	start_game(void);
 t_game	*game(void);
 t_object	*new_menu();
+t_object	*new_bg();
 
 #endif

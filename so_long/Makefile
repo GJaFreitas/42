@@ -33,6 +33,7 @@ SRCS_DIR = ./src
 # --- DEPENDENCIES ---------------- #
 
 SRCS =	$(wildcard src/*/*.c)
+SRCS += $(wildcard src/object/*/*.c)
 SRCS += ./src/main.c
 OBJS =	$(SRCS:%.c=%.o)
 
@@ -77,7 +78,10 @@ re:
 	@make fclean
 	@make
 
-run: re
+run_debug: re
 	valgrind --leak-check=full --track-origins=yes ./$(NAME)
+
+run: re
+	./$(NAME)
 
 .PHONY: all clean fclean re
