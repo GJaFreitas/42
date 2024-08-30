@@ -2,11 +2,17 @@
 
 static void	__menu_buttons()
 {
-		printf("HALLO\n");
 	if (engine()->mouse.x >= 777 && engine()->mouse.x <= 1490 && \
 			engine()->mouse.y >= 490 && engine()->mouse.y <= 632)
+	{
 		game()->startgame();
-	ft_printf("x: %d | y: %d\n", engine()->mouse.x, engine()->mouse.y);
+	}
+}
+
+static void	__keys(byte *keys)
+{
+	if (keys[0])
+		fadeout();
 }
 
 // Returns a new instance of the menu object
@@ -20,6 +26,7 @@ t_object	*new_menu()
 	menu->pos.h = HEIGHT;
 	menu->sprite = canva()->load_img("textures/menu.xpm");
 	menu->func_mouse = __menu_buttons;
+	menu->func_keys = __keys;
 	return ((t_object *)menu);
 }
 

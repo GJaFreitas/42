@@ -42,4 +42,8 @@ int		free_safe(void **v);
 void		harbinger_of_chaos(void);
 //	*******************
 
+//	Misc
+void		fadeout(void);
+//	******************
+
 #endif

@@ -101,7 +101,6 @@ static void	__start_the_show(void)
 	vector(game()->objects)->remove_first();
 	vector(game()->to_render)->remove_first();
 	vector(game()->mouse)->remove_first();
-	vector(game()->keys)->remove_first();
 	game()->add_obj((t_object*)new_bg());
 }
 
