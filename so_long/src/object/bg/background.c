@@ -9,6 +9,7 @@ t_object	*new_bg()
 	bg->type = BG;
 	bg->pos.w = WIDTH;
 	bg->pos.h = HEIGHT;
+	//bg->render = __generic_render_bg;
 	bg->sprite = canva()->load_img("textures/grass.xpm");
 	return ((t_object *)bg);
 }

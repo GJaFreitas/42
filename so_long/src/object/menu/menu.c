@@ -2,7 +2,6 @@
 
 static void	__menu_buttons()
 {
-	printf("x: %f\ny: %f\n", engine()->mouse.x, engine()->mouse.y);
 	if (engine()->mouse.x >= 777 && engine()->mouse.x <= 1490 && \
 			engine()->mouse.y >= 490 && engine()->mouse.y <= 632)
 	{
@@ -12,8 +11,7 @@ static void	__menu_buttons()
 
 static void	__keys(byte *keys)
 {
-	if (keys[0])
-		fadeout();
+	(void)keys;
 }
 
 // Returns a new instance of the menu object

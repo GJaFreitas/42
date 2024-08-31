@@ -31,6 +31,8 @@ static void	__render_game()
 {
 	t_element	*i;
 
+	if (!game()->in_menu)
+		printf("HALLO render\n");
 	i = vector(game()->to_render)->begin;
 	while (i)
 	{
@@ -43,6 +45,8 @@ static void	__key_events()
 {
 	t_element	*i;
 
+	if (!game()->in_menu)
+		printf("HALLO keys\n");
 	i = vector(game()->keys)->begin;
 	while (i)
 	{
@@ -55,6 +59,8 @@ static void	__mouse_events()
 {
 	t_element	*i;
 
+	if (!game()->in_menu)
+		printf("HALLO mouse\n");
 	i = vector(game()->mouse)->begin;
 	while (i)
 	{
@@ -97,7 +103,6 @@ static void	__rm_this(t_element *e, void *v)
 {
 	if (e->type == *(t_type*)v)
 		fthis()->vector->remove_this(e);
-	printf("RM THIS CALL\n");
 }
 
 static void	__remove_obj(t_type type)
@@ -114,27 +119,22 @@ static void	__remove_obj(t_type type)
 		}
 		i = i->next;
 	}
-	// TODO: uhhh im not even sure tbh, theres 5 calls to the
-	// for each functions and yet it only calls the first 4
-	// if i change the order the last one is the only that isnt called
-	// what the hell is going on?????????
-	//
-	// ?????????????????????????????????????
 	vector(game()->objects)->for_each(__rm_this, &type);
 	vector(game()->mouse)->for_each(__rm_this, &type);
 	vector(game()->keys)->for_each(__rm_this, &type);
 	vector(game()->to_render)->for_each(__rm_this, &type);
-
-	// This one isnt called???
 	vector(game()->interactions)->for_each(__rm_this, &type);
 }
 
 // Destroys the menu object and starts the game for real
 static void	__start_the_show(void)
 {
-	game()->in_menu = 0;
 	game()->rm_obj_type(MENU);
+	game()->in_menu = 0;
 	game()->add_obj(new_bg());
+	game()->add_obj(new_player());
+	if (!game()->in_menu)
+		printf("HALLO\n");
 }
 
 void	start_game(void)

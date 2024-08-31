@@ -23,7 +23,6 @@ int	__key_press(int key, void *v)
 	(void)v;
 	if (key == XK_Escape)
 		harbinger_of_chaos();
-	printf("Keycode: %d\nMy key: %d", key, __key(key));
 	if (!engine()->keys[__key(key)])
 		engine()->keys_pressed++;
 	engine()->keys[__key(key)] = 1;
