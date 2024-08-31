@@ -97,6 +97,7 @@ static void	__rm_this(t_element *e, void *v)
 {
 	if (e->type == *(t_type*)v)
 		fthis()->vector->remove_this(e);
+	printf("RM THIS CALL\n");
 }
 
 static void	__remove_obj(t_type type)
@@ -113,11 +114,19 @@ static void	__remove_obj(t_type type)
 		}
 		i = i->next;
 	}
+	// TODO: uhhh im not even sure tbh, theres 5 calls to the
+	// for each functions and yet it only calls the first 4
+	// if i change the order the last one is the only that isnt called
+	// what the hell is going on?????????
+	//
+	// ?????????????????????????????????????
 	vector(game()->objects)->for_each(__rm_this, &type);
-	vector(game()->interactions)->for_each(__rm_this, &type);
+	vector(game()->mouse)->for_each(__rm_this, &type);
 	vector(game()->keys)->for_each(__rm_this, &type);
 	vector(game()->to_render)->for_each(__rm_this, &type);
-	vector(game()->mouse)->for_each(__rm_this, &type);
+
+	// This one isnt called???
+	vector(game()->interactions)->for_each(__rm_this, &type);
 }
 
 // Destroys the menu object and starts the game for real
@@ -125,7 +134,7 @@ static void	__start_the_show(void)
 {
 	game()->in_menu = 0;
 	game()->rm_obj_type(MENU);
-	game()->add_obj((t_object*)new_bg());
+	game()->add_obj(new_bg());
 }
 
 void	start_game(void)
@@ -140,7 +149,7 @@ void	start_game(void)
 	game()->func_keys = __key_events;
 	game()->func_mouse = __mouse_events;
 	game()->destructor = __destroy_game;
-	game()->add_obj((t_object*)new_menu());
+	game()->add_obj(new_menu());
 	game()->rm_obj_type = __remove_obj;
 	game()->startgame = __start_the_show;
 }

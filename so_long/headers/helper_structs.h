@@ -11,6 +11,7 @@ typedef enum e_type
 	ENEMY,
 	WALL,
 	MENU,
+	BG,
 }	t_type;
 
 typedef struct pos_vector
