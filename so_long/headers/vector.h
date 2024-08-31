@@ -14,6 +14,7 @@ struct s_element
 {
 	void			*value;
 	int				index;
+	t_type			type;
 	struct s_element	*next;
 };
 
@@ -33,7 +34,8 @@ struct s_vector
 	void			(*remove_first)();
 	void			(*for_each)(void (*fun)(t_element *e, void *v), void *o);
 	void			(*remove_value)(void *value);
-	void			(*remove_all)(void);;
+	void			(*remove_all)(void);
+	void			(*remove_this)(t_element *e);
 	void			(*destroy)();
 };
 

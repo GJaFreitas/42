@@ -11,10 +11,3 @@ t_object	*new_bg()
 	bg->sprite = canva()->load_img("textures/grass.xpm");
 	return ((t_object *)bg);
 }
-
-/*
-void	menu_buttons(byte *keys, byte event)
-{
-}
-*/
-

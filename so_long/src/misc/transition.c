@@ -1,6 +1,4 @@
 #include "../../headers/header.h"
-#include <unistd.h>
-
 
 /*
 t_sprite	*__load_img(char *texture_name)
@@ -103,7 +101,7 @@ void	fadeout(void)
 		}
 		mlx_put_image_to_window(engine()->mlx, engine()->win, img->img, 0, 0);
 		printf("alpha: %d\n", alpha);
-		usleep(1000000);
+		usleep(100);
 		alpha *= 2;
 		if (alpha == 256)
 			alpha = 255;

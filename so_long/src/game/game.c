@@ -93,14 +93,38 @@ t_game	*game(void)
 	return (&game);
 }
 
+static void	__rm_this(t_element *e, void *v)
+{
+	if (e->type == *(t_type*)v)
+		fthis()->vector->remove_this(e);
+}
+
+static void	__remove_obj(t_type type)
+{
+	t_element	*i;
+
+	i = vector(game()->objects)->begin;
+	while (i)
+	{
+		if (object(i->value)->type == type)
+		{
+			object(i->value)->destructor();
+			free_safe(&i->value);
+		}
+		i = i->next;
+	}
+	vector(game()->objects)->for_each(__rm_this, &type);
+	vector(game()->interactions)->for_each(__rm_this, &type);
+	vector(game()->keys)->for_each(__rm_this, &type);
+	vector(game()->to_render)->for_each(__rm_this, &type);
+	vector(game()->mouse)->for_each(__rm_this, &type);
+}
+
 // Destroys the menu object and starts the game for real
 static void	__start_the_show(void)
 {
 	game()->in_menu = 0;
-	__destroy_objects();
-	vector(game()->objects)->remove_first();
-	vector(game()->to_render)->remove_first();
-	vector(game()->mouse)->remove_first();
+	game()->rm_obj_type(MENU);
 	game()->add_obj((t_object*)new_bg());
 }
 
@@ -117,5 +141,6 @@ void	start_game(void)
 	game()->func_mouse = __mouse_events;
 	game()->destructor = __destroy_game;
 	game()->add_obj((t_object*)new_menu());
+	game()->rm_obj_type = __remove_obj;
 	game()->startgame = __start_the_show;
 }

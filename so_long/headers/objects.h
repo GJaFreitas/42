@@ -59,6 +59,7 @@ struct s_game
 	t_vector			*to_render;
 	t_vector			*interactions;
 	void			(*add_obj)(t_object *o);
+	void			(*rm_obj_type)(t_type type);
 	void			(*startgame)();
 };
 
@@ -80,7 +81,7 @@ struct s_player
 	t_sprite		*(*get_sprite)();
 
 	void			(*move)(t_pos_vector);
-	void			(*attack)(); // will have to pass info on the mouse?
+	void			(*attack)();
 };
 
 struct s_hud
@@ -168,5 +169,6 @@ void	start_game(void);
 t_game	*game(void);
 t_object	*new_menu();
 t_object	*new_bg();
+t_object	*new_player();
 
 #endif

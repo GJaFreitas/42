@@ -5,6 +5,25 @@
 	void			(*destroy_element)(t_element	*e);
 */
 
+void	__remove_this(t_element *e)
+{
+	t_element	*current;
+	t_element	*prev;
+
+	current = fthis()->vector->begin;
+	prev = current;
+	while (current != e)
+	{
+		prev = current;
+		current = current->next;
+	}
+	if (prev != current)
+		prev->next = current->next;
+	else
+		fthis()->vector->begin = current->next;
+	free_safe((void**)&current);
+}
+
 void	__vec_destructor(void)
 {
 	fthis()->vector->remove_all();

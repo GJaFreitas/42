@@ -9,6 +9,7 @@ void	__vec_rm_rf(void);
 void	__vec_rm_val(void *value);
 void	__vec_rm_first();
 void	__vec_exec_on_each(void (*fun)(t_element *e, void *v), void *v);
+void	__remove_this(t_element *e);
 
 void	*new_vector(void)
 {
@@ -28,6 +29,7 @@ void	*new_vector(void)
 	v->remove_all = __vec_rm_rf;
 	v->remove_index = __vec_rm_index;
 	v->remove_value = __vec_rm_val;
+	v->remove_this = __remove_this;
 	vector(v);
 	return (v);
 }

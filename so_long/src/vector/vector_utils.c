@@ -61,6 +61,7 @@ t_element	*__vec_add(void *value)
 	e = malloc_safe(sizeof(t_element));
 	e->value = value;
 	e->next = NULL;
+	e->type = ((t_object*)value)->type;
 	if (!fthis()->vector->size)
 	{
 		fthis()->vector->begin = e;

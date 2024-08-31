@@ -22,6 +22,7 @@ t_object	*new_menu()
 
 	game()->in_menu = 1;
 	menu = constructor(sizeof(t_menu));
+	menu->type = MENU;
 	menu->pos.w = WIDTH;
 	menu->pos.h = HEIGHT;
 	menu->sprite = canva()->load_img("textures/menu.xpm");
