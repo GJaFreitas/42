@@ -4,7 +4,8 @@
 // another way of saying it changes the current working vector
 t_vector	*vector(t_vector *vector)
 {
-	fthis()->vector = vector;
+	if (vector)
+		fthis()->vector = vector;
 	return (vector);
 }
 
@@ -12,7 +13,8 @@ t_vector	*vector(t_vector *vector)
 // another way of saying it changes the current working object
 t_object	*object(t_object *object)
 {
-	fthis()->object = object;
+	if (object)
+		fthis()->object = object;
 	return (object);
 }
 

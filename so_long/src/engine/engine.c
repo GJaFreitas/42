@@ -28,9 +28,9 @@ void	start_engine(char *title, int w, int h)
 	engine()->mlx = mlx_init();
 	engine()->win = mlx_new_window(engine()->mlx, w, h, title);
 	engine()->destroy = __destroy_all;
-	mlx_hook(engine()->win, ON_KEYDOWN, KPRESS_M, __key_press, NULL);
-	mlx_hook(engine()->win, ON_KEYUP, KRELEASE_M, __key_release, NULL);
-	mlx_mouse_hook(engine()->win, __mouse_release, NULL);
+	mlx_hook(engine()->win, ON_KEYDOWN, KPRESS_M, __key_press, engine());
+	mlx_hook(engine()->win, ON_KEYUP, KRELEASE_M, __key_release, engine());
+	mlx_mouse_hook(engine()->win, __mouse_release, engine());
 	/*
 	mlx_hook(engine()->win, ON_KEYMOUSEUP, BRELEASE_M, __mouse_release, NULL);
 	*/

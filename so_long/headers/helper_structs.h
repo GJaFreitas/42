@@ -3,15 +3,15 @@
 
 typedef enum e_type
 {
-	OBJECT,
-	GAME,
-	PLAYER,
-	HUD,
-	DOOR,
-	ENEMY,
-	WALL,
+	OBJECT = 0,
 	MENU,
 	BG,
+	WALL,
+	DOOR,
+	PLAYER,
+	ENEMY,
+	HUD,
+	GAME,
 }	t_type;
 
 typedef enum e_keys
@@ -42,6 +42,11 @@ typedef enum e_keys
 	X_KEY,
 	Y_KEY,
 	Z_KEY,
+	SPACE_KEY,
+	ARROWLEFT_KEY,
+	ARROWUP_KEY,
+	ARROWRIGHT_KEY,
+	ARROWDOWN_KEY,
 }	t_keys;
 
 typedef struct pos_vector

@@ -170,5 +170,7 @@ t_game	*game(void);
 t_object	*new_menu();
 t_object	*new_bg();
 t_object	*new_player();
+t_object	*new_player2();
+t_object	*new_lezard();
 
 #endif

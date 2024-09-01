@@ -1,29 +1,5 @@
 #include "../../headers/header.h"
 
-/*
-struct s_game
-{
-	t_type			type;
-	t_pos_vector		pos;
-	double			hp;
-
-	void			(*render)();
-	void			(*update)();
-	void			(*destructor)();
-	void			(*collision)(t_object*);
-	void			(*func_key)(t_object*);
-	void			(*func_mouse)(t_object*);
-	void			(*set_pos)(t_pos_vector);
-	void			(*damage)(double);
-	t_sprite		*(*get_sprite)();
-
-	void			*objects;
-	void			*keys;
-	void			*to_render;
-	void			*interactions;
-	void			(*start)();
-};
-*/
 void	__add_obj(t_object *o);
 
 // Iterates trough all objects in the game and adds them to the next frame
@@ -31,8 +7,6 @@ static void	__render_game()
 {
 	t_element	*i;
 
-	if (!game()->in_menu)
-		printf("HALLO render\n");
 	i = vector(game()->to_render)->begin;
 	while (i)
 	{
@@ -45,13 +19,12 @@ static void	__key_events()
 {
 	t_element	*i;
 
-	if (!game()->in_menu)
-		printf("HALLO keys\n");
 	i = vector(game()->keys)->begin;
 	while (i)
 	{
 		object(i->value)->func_keys(engine()->keys);
-		i = i->next;
+		if (i)
+			i = i->next;
 	}
 }
 
@@ -59,13 +32,12 @@ static void	__mouse_events()
 {
 	t_element	*i;
 
-	if (!game()->in_menu)
-		printf("HALLO mouse\n");
 	i = vector(game()->mouse)->begin;
 	while (i)
 	{
 		object(i->value)->func_mouse();
-		i = i->next;
+		if (i)
+			i = i->next;
 	}
 }
 
@@ -132,9 +104,10 @@ static void	__start_the_show(void)
 	game()->rm_obj_type(MENU);
 	game()->in_menu = 0;
 	game()->add_obj(new_bg());
+	game()->add_obj(new_lezard());
+	game()->add_obj(new_lezard());
 	game()->add_obj(new_player());
-	if (!game()->in_menu)
-		printf("HALLO\n");
+	printf("HALLO\n");
 }
 
 void	start_game(void)

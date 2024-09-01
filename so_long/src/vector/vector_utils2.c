@@ -111,3 +111,23 @@ void	__vec_exec_on_each(void (*fun)(t_element *e, void *v), void *v)
 		current = current->next;
 	}
 }
+
+void	__vec_exec_on_index(void (*fun)(t_element *e, void *v), void *v, int index)
+{
+	t_element	*current;
+	int		i;
+
+	i = 0;
+	if (!fthis()->vector || !v)
+		return ;
+	current = fthis()->vector->begin;
+	while (current)
+	{
+		if (i++ == index)
+		{
+			fun(current, v);
+			return ;
+		}
+		current = current->next;
+	}
+}

@@ -13,7 +13,6 @@ typedef struct s_element t_element;
 struct s_element
 {
 	void			*value;
-	int				index;
 	t_type			type;
 	struct s_element	*next;
 };
@@ -33,6 +32,7 @@ struct s_vector
 	void			(*remove_index)(int index);
 	void			(*remove_first)();
 	void			(*for_each)(void (*fun)(t_element *e, void *v), void *o);
+	void			(*for_index)(void (*fun)(t_element *e, void *v), void *o, int index);
 	void			(*remove_value)(void *value);
 	void			(*remove_all)(void);
 	void			(*remove_this)(t_element *e);

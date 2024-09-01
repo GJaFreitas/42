@@ -44,6 +44,7 @@ void		harbinger_of_chaos(void);
 
 //	Misc
 void		fadeout(void);
+int		game_loop(void);
 //	******************
 
 #endif

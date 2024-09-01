@@ -29,10 +29,10 @@ void	__vec_rm_index(int index)
 	{
 		if (index == i++)
 		{
-			if (current->next && prev)
+			if (prev)
 				prev->next = current->next;
-			else if (prev)
-				prev->next = NULL;
+			else
+				fthis()->vector->begin = current->next;
 			free_safe((void**)&current);
 			fthis()->vector->size--;
 			return ;
@@ -47,11 +47,31 @@ void	__destroy_element(void **e)
 	free_safe(e);
 }
 
-// if vector is empty then put new element at begining
-// else put it after the end
-// the end is now the new element (in first case it is also the begining)
-// element index is the previus vector size
-// vector size goes up by one 
+void	__ordered_add(t_element *e)
+{
+	t_element	*current;
+	t_element	*prev;
+
+	current = fthis()->vector->begin;
+	prev = current;
+	while (current)
+	{
+		if (current->type < e->type)
+		{
+			prev = current;
+			current = current->next;
+		}
+		else
+		{
+			prev->next = e;
+			e->next = current;
+			return ;
+		}
+	}
+	prev->next = e;
+	e->next = current;
+}
+
 t_element	*__vec_add(void *value)
 {
 	t_element	*e;
@@ -68,8 +88,8 @@ t_element	*__vec_add(void *value)
 		fthis()->vector->end = e;
 	}
 	else
-		fthis()->vector->end->next = e;
-	e->index = fthis()->vector->size;
+		__ordered_add(e);
+	//fthis()->vector->end->next = e;
 	fthis()->vector->size++;
 	return (e);
 }

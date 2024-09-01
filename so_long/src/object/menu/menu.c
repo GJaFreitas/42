@@ -9,10 +9,12 @@ static void	__menu_buttons()
 	}
 }
 
+/*
 static void	__keys(byte *keys)
 {
 	(void)keys;
 }
+*/
 
 // Returns a new instance of the menu object
 t_object	*new_menu()
@@ -26,7 +28,7 @@ t_object	*new_menu()
 	menu->pos.h = HEIGHT;
 	menu->sprite = canva()->load_img("textures/menu.xpm");
 	menu->func_mouse = __menu_buttons;
-	menu->func_keys = __keys;
+	//menu->func_keys = __keys;
 	return ((t_object *)menu);
 }
 

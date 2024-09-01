@@ -2,10 +2,9 @@
 
 int	game_loop(void)
 {
-	game()->func_mouse();
-	if (engine()->keys_pressed > 0)
-		game()->func_keys();
 	game()->render();
+	game()->func_keys();
+	game()->func_mouse();
 	mlx_put_image_to_window(engine()->mlx, engine()->win,
 			 canva()->data.img, 0, 0);
 	return(0);
