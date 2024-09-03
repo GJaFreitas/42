@@ -35,6 +35,7 @@
 # include "vector.h"
 # include "canva.h"
 # include "this.h"
+# include "map.h"
 
 //	Memory manipulation
 void		*malloc_safe(size_t __size);

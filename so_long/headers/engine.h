@@ -16,7 +16,7 @@ struct s_engine
 	t_pos_vector		mouse;
 	void			(*destroy)(void);
 	int			keys_pressed;
-	byte			keys[100];
+	byte			keys[75000];
 };
 
 t_engine	*engine(void);

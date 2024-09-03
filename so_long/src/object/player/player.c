@@ -8,13 +8,25 @@ static void	__player_mouse()
 
 static void	__player_keys(byte *keys)
 {
-	if (keys[(t_keys)W_KEY])
+	if (keys[XK_w])
 		fthis()->object->pos.y -= 5;
-	if (keys[(t_keys)A_KEY])
+	if (keys[XK_a])
 		fthis()->object->pos.x -= 5;
-	if (keys[(t_keys)S_KEY])
+	if (keys[XK_s])
 		fthis()->object->pos.y += 5;
-	if (keys[(t_keys)D_KEY])
+	if (keys[XK_d])
+		fthis()->object->pos.x += 5;
+}
+
+static void	__player_keys2(byte *keys)
+{
+	if (keys[XK_Up])
+		fthis()->object->pos.y -= 5;
+	if (keys[XK_Left])
+		fthis()->object->pos.x -= 5;
+	if (keys[XK_Down])
+		fthis()->object->pos.y += 5;
+	if (keys[XK_Right])
 		fthis()->object->pos.x += 5;
 }
 
@@ -22,14 +34,17 @@ static void	__player_mouse()
 {
 }
 
-t_object	*new_player()
+t_object	*new_player(t_type playernum)
 {
 	t_player	*player;
 
 	player = constructor(sizeof(t_player));
-	player->type = PLAYER;
+	player->type = playernum;
 	player->sprite = canva()->load_img("textures/player.xpm");
-	player->func_keys = __player_keys;
+	if (playernum == PLAYER)
+		player->func_keys = __player_keys;
+	else
+		player->func_keys = __player_keys2;
 	player->func_mouse = __player_mouse;
 	player->pos.x = WIDTH >> 1;
 	player->pos.y = HEIGHT >> 1;

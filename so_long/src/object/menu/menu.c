@@ -5,6 +5,7 @@ static void	__menu_buttons()
 	if (engine()->mouse.x >= 777 && engine()->mouse.x <= 1490 && \
 			engine()->mouse.y >= 490 && engine()->mouse.y <= 632)
 	{
+		vector(game()->to_remove)->add(fthis()->object);
 		game()->startgame();
 	}
 }

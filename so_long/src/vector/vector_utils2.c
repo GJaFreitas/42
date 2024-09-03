@@ -73,10 +73,9 @@ void	__vec_rm_val(void *value)
 				prev->next = current->next;
 			else
 				fthis()->vector->begin = current->next;
-			object(current->value)->destructor();
 			free_safe((void**)&current);
 			fthis()->vector->size--;
-			current = prev;
+			return ;
 		}
 		prev = current;
 		current = current->next;

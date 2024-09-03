@@ -5,6 +5,7 @@ int	game_loop(void)
 	game()->render();
 	game()->func_keys();
 	game()->func_mouse();
+	game()->rm_obj();
 	mlx_put_image_to_window(engine()->mlx, engine()->win,
 			 canva()->data.img, 0, 0);
 	return(0);

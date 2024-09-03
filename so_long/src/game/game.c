@@ -1,58 +1,10 @@
 #include "../../headers/header.h"
 
+void	__destroy_objects();
+void	__mouse_events();
+void	__key_events();
+void	__render_game();
 void	__add_obj(t_object *o);
-
-// Iterates trough all objects in the game and adds them to the next frame
-static void	__render_game()
-{
-	t_element	*i;
-
-	i = vector(game()->to_render)->begin;
-	while (i)
-	{
-		object(i->value)->render();
-		i = i->next;
-	}
-}
-
-static void	__key_events()
-{
-	t_element	*i;
-
-	i = vector(game()->keys)->begin;
-	while (i)
-	{
-		object(i->value)->func_keys(engine()->keys);
-		if (i)
-			i = i->next;
-	}
-}
-
-static void	__mouse_events()
-{
-	t_element	*i;
-
-	i = vector(game()->mouse)->begin;
-	while (i)
-	{
-		object(i->value)->func_mouse();
-		if (i)
-			i = i->next;
-	}
-}
-
-static void	__destroy_objects()
-{
-	t_element	*i;
-
-	i = vector(game()->objects)->begin;
-	while (i)
-	{
-		object(i->value)->destructor();
-		free_safe(&i->value);
-		i = i->next;
-	}
-}
 
 static void	__destroy_game(void)
 {
@@ -62,6 +14,7 @@ static void	__destroy_game(void)
 	vector(game()->keys)->destroy();
 	vector(game()->to_render)->destroy();
 	vector(game()->mouse)->destroy();
+	vector(game()->to_remove)->destroy();
 }
 
 t_game	*game(void)
@@ -71,43 +24,35 @@ t_game	*game(void)
 	return (&game);
 }
 
-static void	__rm_this(t_element *e, void *v)
-{
-	if (e->type == *(t_type*)v)
-		fthis()->vector->remove_this(e);
-}
-
-static void	__remove_obj(t_type type)
+static void	__remove_obj()
 {
 	t_element	*i;
+	void		*temp;
 
-	i = vector(game()->objects)->begin;
+	i = vector(game()->to_remove)->begin;
 	while (i)
 	{
-		if (object(i->value)->type == type)
-		{
-			object(i->value)->destructor();
-			free_safe(&i->value);
-		}
-		i = i->next;
+		vector(game()->objects)->remove_value(i->value);
+		vector(game()->mouse)->remove_value(i->value);
+		vector(game()->keys)->remove_value(i->value);
+		vector(game()->interactions)->remove_value(i->value);
+		vector(game()->to_render)->remove_value(i->value);
+		object(i->value)->destructor();
+		temp = i->value;
+		vector(game()->to_remove)->remove_value(temp);
+		free_safe(&temp);
+		i = vector(game()->to_remove)->begin;
 	}
-	vector(game()->objects)->for_each(__rm_this, &type);
-	vector(game()->mouse)->for_each(__rm_this, &type);
-	vector(game()->keys)->for_each(__rm_this, &type);
-	vector(game()->to_render)->for_each(__rm_this, &type);
-	vector(game()->interactions)->for_each(__rm_this, &type);
 }
 
 // Destroys the menu object and starts the game for real
 static void	__start_the_show(void)
 {
-	game()->rm_obj_type(MENU);
 	game()->in_menu = 0;
 	game()->add_obj(new_bg());
-	game()->add_obj(new_lezard());
-	game()->add_obj(new_lezard());
-	game()->add_obj(new_player());
-	printf("HALLO\n");
+	game()->add_obj(new_bg());
+	game()->add_obj(new_player(PLAYER2));
+	game()->add_obj(new_player(PLAYER));
 }
 
 void	start_game(void)
@@ -117,12 +62,13 @@ void	start_game(void)
 	game()->mouse = new_vector();
 	game()->to_render = new_vector();
 	game()->interactions = new_vector();
+	game()->to_remove = new_vector();
 	game()->add_obj = __add_obj;
 	game()->render = __render_game;
 	game()->func_keys = __key_events;
 	game()->func_mouse = __mouse_events;
 	game()->destructor = __destroy_game;
 	game()->add_obj(new_menu());
-	game()->rm_obj_type = __remove_obj;
+	game()->rm_obj = __remove_obj;
 	game()->startgame = __start_the_show;
 }

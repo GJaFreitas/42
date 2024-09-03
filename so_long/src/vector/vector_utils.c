@@ -47,6 +47,19 @@ void	__destroy_element(void **e)
 	free_safe(e);
 }
 
+/*
+	OBJECT = 0,
+	MENU,
+	BG,
+	WALL,
+	DOOR,
+	PLAYER,
+	ENEMY,
+	HUD,
+	GAME,
+*/
+
+/*
 void	__ordered_add(t_element *e)
 {
 	t_element	*current;
@@ -71,6 +84,7 @@ void	__ordered_add(t_element *e)
 	prev->next = e;
 	e->next = current;
 }
+*/
 
 t_element	*__vec_add(void *value)
 {
@@ -82,14 +96,12 @@ t_element	*__vec_add(void *value)
 	e->value = value;
 	e->next = NULL;
 	e->type = ((t_object*)value)->type;
-	if (!fthis()->vector->size)
-	{
+	if (!fthis()->vector->begin)
 		fthis()->vector->begin = e;
-		fthis()->vector->end = e;
-	}
 	else
-		__ordered_add(e);
-	//fthis()->vector->end->next = e;
+		fthis()->vector->end->next = e;
+	fthis()->vector->end = e;
+		//__ordered_add(e);
 	fthis()->vector->size++;
 	return (e);
 }

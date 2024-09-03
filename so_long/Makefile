@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/09/01 15:30:03 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/09/03 15:09:32 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ re:
 	@make
 
 run_debug: re
-	valgrind --leak-check=full --track-origins=yes ./$(NAME)
+	valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full ./$(NAME)
 
 run: re
 	./$(NAME)

@@ -58,8 +58,9 @@ struct s_game
 	t_vector			*mouse;
 	t_vector			*to_render;
 	t_vector			*interactions;
+	t_vector			*to_remove;
 	void			(*add_obj)(t_object *o);
-	void			(*rm_obj_type)(t_type type);
+	void			(*rm_obj)();
 	void			(*startgame)();
 };
 
@@ -169,8 +170,6 @@ void	start_game(void);
 t_game	*game(void);
 t_object	*new_menu();
 t_object	*new_bg();
-t_object	*new_player();
-t_object	*new_player2();
-t_object	*new_lezard();
+t_object	*new_player(t_type playernum);
 
 #endif
