@@ -3,6 +3,7 @@
 
 # include "helper_structs.h"
 # include "canva.h"
+#include "map.h"
 # include "vector.h"
 # include "../libs/libft/libft.h"
 
@@ -59,6 +60,7 @@ struct s_game
 	t_vector			*to_render;
 	t_vector			*interactions;
 	t_vector			*to_remove;
+	t_map				*maps[128];
 	void			(*add_obj)(t_object *o);
 	void			(*rm_obj)();
 	void			(*startgame)();
