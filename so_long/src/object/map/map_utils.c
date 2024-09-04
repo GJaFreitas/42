@@ -2,48 +2,41 @@
 
 static int	__strjoin_map(char *s1, char *s2)
 {
-	int		total_len;
-	char	*new_str;
 	int		ret;
 
 	if (!s2)
 		return (0);
 	ret = ft_strlen(s2);
-	total_len = (ft_strlen((char *)s1) + ret + 1);
-	new_str = malloc_safe(total_len);
-	ft_strlcpy(new_str, s1, total_len);
-	ft_strlcat(new_str, s2, total_len);
+	ft_strlcat(s1, s2, ret + 1);
 	free_safe((void**)&s2);
-	free_safe((void**)&s1);
-	s1 = new_str;
 	return (ret);
 }
 
 // rows should be initialized in the main map constructor
 void	__load_map(char *filepath, t_map *s_map)
 {
-	char	*buffer;
+	char	buffer[2048];
 	int		fd;
+	int		buf;
 	int		i;
 	int		j;
 
 	i = 0;
-	j = 0;
+	buf = 0;
 	fd = open(filepath, O_RDONLY);
-	buffer = malloc_safe(sizeof(char *));
 	while (__strjoin_map(buffer, get_next_line(fd)))
 		s_map->row++;
 	s_map->row++;
-	while (buffer[s_map->col] != '\n')
-		s_map->col++;
-	s_map->col++;
+	while (buffer[s_map->col++] != '\n')
+		;
 	s_map->map_ptr = malloc_safe(sizeof(char *) * s_map->row + 1);
 	while (i < s_map->row)
 	{
 		s_map->map_ptr[i] = malloc_safe(s_map->col);
-		while (*buffer != '\n')
-			s_map->map_ptr[i][j] = (*buffer)++;
-		buffer++;
+		j = 0;
+		while (buffer[buf] != '\n')
+			s_map->map_ptr[i][j++] = buffer[buf++];
+		buf++;
 		i++;
 	}
 	free_safe((void**)&buffer);
