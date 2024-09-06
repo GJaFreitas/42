@@ -50,8 +50,7 @@ static void	__start_the_show(void)
 {
 	game()->in_menu = 0;
 	game()->add_obj(new_bg());
-	game()->add_obj(new_bg());
-	game()->add_obj(new_player(PLAYER2));
+	game()->add_obj((t_object*)game()->maps[0]);
 	game()->add_obj(new_player(PLAYER));
 }
 

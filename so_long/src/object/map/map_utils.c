@@ -87,6 +87,7 @@ static void	__map_handler(char c, t_map *s_map, t_pos_vector pos)
 		__load_coords(&s_map->exit, pos.y, pos.x, &s_map->error);
 	else if (c == 'B')
 	{
+		printf("inimigooo x: %.2f, y: %.2f\n", pos.x, pos.y);
 		while (s_map->enemies[i++].x)
 			;
 		__load_coords(&s_map->enemies[i], pos.y, pos.x, NULL);

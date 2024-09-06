@@ -6,6 +6,7 @@ typedef enum e_type
 	OBJECT = 0,
 	MENU,
 	BG,
+	MAP,
 	WALL,
 	DOOR,
 	PLAYER,

@@ -22,5 +22,3 @@ int	main(int argc, char **argv)
 	mlx_loop(engine()->mlx);
 	return (0);
 }
-
-// the hooks, no matter where they are called seem to be giving problems

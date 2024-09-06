@@ -100,7 +100,6 @@ void	fadeout(void)
 			pos.x++;
 		}
 		mlx_put_image_to_window(engine()->mlx, engine()->win, img->img, 0, 0);
-		printf("alpha: %d\n", alpha);
 		usleep(100);
 		alpha *= 2;
 		if (alpha == 256)
