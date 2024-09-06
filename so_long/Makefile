@@ -82,6 +82,6 @@ run_debug: re
 	valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full ./$(NAME)
 
 run: re
-	./$(NAME) /maps/map1.ber
+	./$(NAME) ./maps/map1.ber
 
 .PHONY: all clean fclean re

@@ -14,6 +14,7 @@ struct s_map
 	t_pos_vector		start;
 	t_pos_vector		exit;
 	t_pos_vector		enemies[128];
+	t_pos_vector		collectibles[128];
 	byte			error;
 };
 
