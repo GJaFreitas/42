@@ -5,7 +5,7 @@ void	__add_obj(t_object *o)
 {
 	if (!o)
 		return ;
-	vector(game()->objects)->add(o);
+	vector(game()->objects)->add(object(o));
 	if (o->func_keys != NULL)
 		vector(game()->keys)->add(o);
 	if (o->func_mouse != NULL)

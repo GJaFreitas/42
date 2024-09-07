@@ -20,6 +20,8 @@ void	__generic_destructor(void)
 	mlx_destroy_image(engine()->mlx,
 		   fthis()->object->sprite->img);
 	// The only free not protected agaisnt double free
+	// Which isnt a problem since if this was called the
+	// whole memory region will be freed and set to null anyway
 	free(fthis()->object->get_sprite());
 }
 

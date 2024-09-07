@@ -12,7 +12,6 @@ static int	__strjoin_map(char *s1, char *s2)
 	return (ret);
 }
 
-// rows should be initialized in the main map constructor
 void	__load_map(int fd, t_map *s_map)
 {
 	char	buffer[2048];
@@ -30,7 +29,7 @@ void	__load_map(int fd, t_map *s_map)
 	s_map->map_ptr = malloc_safe(sizeof(char *) * s_map->row + 1);
 	while (i < s_map->row)
 	{
-		s_map->map_ptr[i] = malloc_safe(s_map->col);
+		s_map->map_ptr[i] = malloc_safe(s_map->col + 1);
 		j = 0;
 		while (buffer[buf] != '\n' && buffer[buf])
 			s_map->map_ptr[i][j++] = buffer[buf++];

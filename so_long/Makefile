@@ -79,7 +79,8 @@ re:
 	@make
 
 run_debug: re
-	valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full ./$(NAME)
+	valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full ./$(NAME) ./maps/map1.ber
+
 
 run: re
 	./$(NAME) ./maps/map1.ber
