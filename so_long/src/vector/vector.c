@@ -11,6 +11,7 @@ void	__vec_rm_first();
 void	__vec_exec_on_each(void (*fun)(t_element *e, void *v), void *v);
 void	__vec_exec_on_index(void (*fun)(t_element *e, void *v), void *v, int index);
 void	__remove_this(t_element *e);
+void	__vec_sort(void);
 
 void	*new_vector(void)
 {
@@ -32,6 +33,7 @@ void	*new_vector(void)
 	v->remove_index = __vec_rm_index;
 	v->remove_value = __vec_rm_val;
 	v->remove_this = __remove_this;
+	v->sort = __vec_sort;
 	vector(v);
 	return (v);
 }

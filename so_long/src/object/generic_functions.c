@@ -29,8 +29,7 @@ void	__generic_render(void)
 {
 	canva()->scale_img(
 		fthis()->object->get_sprite(), \
-		(t_pos_vector){ fthis()->object->pos.x, fthis()->object->pos.y, \
-		fthis()->object->pos.w, fthis()->object->pos.h});
+		fthis()->object->pos);
 	//mlx_put_image_to_window(engine()->mlx, engine()->win,
 			 //fthis()->object->get_sprite()->img, fthis()->object->pos.x, fthis()->object->pos.y);
 }

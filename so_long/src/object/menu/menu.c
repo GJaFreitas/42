@@ -32,10 +32,3 @@ t_object	*new_menu()
 	//menu->func_keys = __keys;
 	return ((t_object *)menu);
 }
-
-/*
-void	menu_buttons(byte *keys, byte event)
-{
-}
-*/
-

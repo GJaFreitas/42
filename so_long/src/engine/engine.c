@@ -21,8 +21,9 @@ t_engine	*engine(void)
 	return (&engine);
 }
 
-void	start_engine(char *title, int w, int h)
+void	start_engine(char *title, int w, int h, char **argv)
 {
+	engine()->argv = argv;
 	engine()->height = h;
 	engine()->width = w;
 	engine()->mlx = mlx_init();

@@ -37,6 +37,7 @@ struct s_vector
 	void			(*remove_all)(void);
 	void			(*remove_this)(t_element *e);
 	void			(*destroy)();
+	void			(*sort)();
 };
 
 t_vector	*vector(t_vector *vector);

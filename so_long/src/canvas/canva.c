@@ -4,6 +4,7 @@ byte		__draw_pixel(int x, int y, int color);
 t_sprite	*__load_img(char *texture_name);
 void		__draw_img(t_sprite *img, int x_offset, int y_offset);
 void		__scale_img(t_sprite *img, t_pos_vector vec);
+void		__clear_screen(void);
 
 void	__destroy_canva(void)
 {
@@ -19,6 +20,7 @@ t_canva	*canva(void)
 
 void	start_screen(void)
 {
+	canva()->scale_factor = 1;
 	canva()->data.width = engine()->width;
 	canva()->data.height = engine()->height;
 	canva()->data.img = mlx_new_image(engine()->mlx, WIDTH, HEIGHT);
@@ -30,5 +32,6 @@ void	start_screen(void)
 	canva()->draw_pixel = __draw_pixel;
 	canva()->draw_img = __draw_img;
 	canva()->scale_img = __scale_img;
+	canva()->clear_screen = __clear_screen;
 	canva()->destroy = __destroy_canva;
 }

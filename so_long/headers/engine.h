@@ -17,9 +17,10 @@ struct s_engine
 	void			(*destroy)(void);
 	int			keys_pressed;
 	byte			keys[75000];
+	char			**argv;
 };
 
 t_engine	*engine(void);
-void		start_engine(char *title, int w, int h);
+void		start_engine(char *title, int w, int h, char **argv);
 
 #endif

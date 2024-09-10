@@ -1,39 +1,20 @@
 #include "../../../headers/header.h"
 
+void	__draw_walls(t_map *s_map);
 void	__map_realloc(char **map, int rows);
 void	__load_map(int fd, t_map *s_map);
 void	__load_coords(t_pos_vector *pos, int x, int y, byte *error);
 byte	__map_check(t_map *s_map);
 
-static t_sprite	*__get_sprite(int flag)
+// Pass 'e' for the enemy sprite, 'c' for collectible and nothing for
+// the map sprite
+static t_sprite	*__get_sprite(char flag)
 {
-	if (flag)
+	if (flag == 'e')
 		return (((t_map*)fthis()->object)->enemy_sprite);
-	return (((t_map*)fthis()->object)->collectible_sprite);
-}
-
-static void	__render_map(void)
-{
-	int	i;
-
-	i = 0;
-	while (((t_map*)fthis()->object)->enemies[i].x\
-		|| ((t_map*)fthis()->object)->collectibles[i].x)
-	{
-		if (((t_map*)fthis()->object)->enemies[i].x)
-			canva()->scale_img(__get_sprite(1),\
-		(t_pos_vector){((t_map*)fthis()->object)->enemies[i].x,\
-				((t_map*)fthis()->object)->enemies[i].y,\
-				((t_map*)fthis()->object)->pos.w,\
-				((t_map*)fthis()->object)->pos.h});
-		if (((t_map*)fthis()->object)->collectibles[i].x)
-			canva()->scale_img(__get_sprite(0),\
-		(t_pos_vector){((t_map*)fthis()->object)->collectibles[i].x,\
-				((t_map*)fthis()->object)->collectibles[i].y,\
-				((t_map*)fthis()->object)->pos.w,\
-				((t_map*)fthis()->object)->pos.h});
-		i++;
-	}
+	if (flag == 'c')
+		return (((t_map*)fthis()->object)->collectible_sprite);
+	return (((t_map*)fthis()->object)->sprite);
 }
 
 static void	__destroy_map(void)
@@ -49,9 +30,9 @@ static void	__destroy_map(void)
 	mlx_destroy_image(engine()->mlx, s_map->sprite->img);
 	mlx_destroy_image(engine()->mlx, s_map->enemy_sprite->img);
 	mlx_destroy_image(engine()->mlx, s_map->collectible_sprite->img);
-	free(s_map->get_sprite());
-	free(__get_sprite(1));
 	free(__get_sprite(0));
+	free(__get_sprite('e'));
+	free(__get_sprite('c'));
 }
 
 t_map	*new_map(char *filepath)
@@ -61,13 +42,16 @@ t_map	*new_map(char *filepath)
 	map = constructor(sizeof(t_map));
 	map->type = MAP;
 	__load_map(open(filepath, O_RDONLY), map);
-	map->render = __render_map;
+	map->render = NULL;
 	map->destructor = __destroy_map;
 	map->collectible_sprite = canva()->load_img("textures/steel.xpm");
 	map->enemy_sprite = canva()->load_img("textures/slime.xpm");
 	map->sprite = canva()->load_img("textures/slime.xpm");
-	map->pos.w = 100;
-	map->pos.h = 100;
+	map->get_sprite = __get_sprite;
+	canva()->scale_factor = scale_to(map->col, map->row);
+	canva()->scale_factor_e = canva()->scale_factor / 2;
+	map->pos.h = map->row * canva()->scale_factor;
+	map->pos.w = map->col * canva()->scale_factor;
 	if (__map_check(map))
 		map->destructor();
 	return (map);

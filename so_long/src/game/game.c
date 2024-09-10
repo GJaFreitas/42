@@ -17,13 +17,6 @@ static void	__destroy_game(void)
 	vector(game()->to_remove)->destroy();
 }
 
-t_game	*game(void)
-{
-	static t_game	game;
-
-	return (&game);
-}
-
 static void	__remove_obj()
 {
 	t_element	*i;
@@ -49,9 +42,14 @@ static void	__remove_obj()
 static void	__start_the_show(void)
 {
 	game()->in_menu = 0;
+	canva()->clear_screen();
 	game()->add_obj(new_bg());
-	game()->add_obj((t_object*)game()->maps[0]);
-	game()->add_obj(new_player(PLAYER));
+	if (engine()->argv)
+	{
+		game()->maps[0] = new_map(engine()->argv[1]);
+		game()->add_obj((t_object*)game()->maps[0]);
+	}
+	vector(game()->to_render)->sort();
 }
 
 void	start_game(void)
@@ -70,4 +68,11 @@ void	start_game(void)
 	game()->add_obj(new_menu());
 	game()->rm_obj = __remove_obj;
 	game()->startgame = __start_the_show;
+}
+
+t_game	*game(void)
+{
+	static t_game	game;
+
+	return (&game);
 }

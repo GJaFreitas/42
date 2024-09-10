@@ -3,7 +3,7 @@
 
 # include "helper_structs.h"
 # include "canva.h"
-#include "map.h"
+# include "map.h"
 # include "vector.h"
 # include "../libs/libft/libft.h"
 
@@ -15,6 +15,10 @@ typedef struct s_player t_player;
 typedef struct s_hud t_hud;
 typedef struct s_door t_door;
 typedef struct s_enemy t_enemy;
+typedef struct s_collectible t_collectible;
+typedef struct s_start t_start;
+typedef struct s_exit t_exit;
+typedef struct s_wall t_wall;
 typedef struct s_menu t_menu;
 
 struct s_object
@@ -61,6 +65,8 @@ struct s_game
 	t_vector			*interactions;
 	t_vector			*to_remove;
 	t_map				*maps[128];
+	byte				walls[1080][1920];
+	int				moves;
 	void			(*add_obj)(t_object *o);
 	void			(*rm_obj)();
 	void			(*startgame)();
@@ -144,6 +150,78 @@ struct s_enemy
 	t_sprite		*(*get_sprite)();
 };
 
+struct s_collectible
+{
+	t_type			type;
+	t_pos_vector		pos;
+	double			hp;
+	t_sprite		*sprite;
+
+	void			(*render)();
+	void			(*update)();
+	void			(*destructor)();
+	void			(*collision)(t_object*);
+	void			(*func_keys)(byte *keys);
+	void			(*func_mouse)();
+	void			(*set_pos)(t_pos_vector);
+	void			(*damage)(double);
+	t_sprite		*(*get_sprite)();
+};
+
+struct s_start
+{
+	t_type			type;
+	t_pos_vector		pos;
+	double			hp;
+	t_sprite		*sprite;
+
+	void			(*render)();
+	void			(*update)();
+	void			(*destructor)();
+	void			(*collision)(t_object*);
+	void			(*func_keys)(byte *keys);
+	void			(*func_mouse)();
+	void			(*set_pos)(t_pos_vector);
+	void			(*damage)(double);
+	t_sprite		*(*get_sprite)();
+};
+
+struct s_exit
+{
+	t_type			type;
+	t_pos_vector		pos;
+	double			hp;
+	t_sprite		*sprite;
+
+	void			(*render)();
+	void			(*update)();
+	void			(*destructor)();
+	void			(*collision)(t_object*);
+	void			(*func_keys)(byte *keys);
+	void			(*func_mouse)();
+	void			(*set_pos)(t_pos_vector);
+	void			(*damage)(double);
+	t_sprite		*(*get_sprite)();
+};
+
+struct s_wall
+{
+	t_type			type;
+	t_pos_vector		pos;
+	double			hp;
+	t_sprite		*sprite;
+
+	void			(*render)();
+	void			(*update)();
+	void			(*destructor)();
+	void			(*collision)(t_object*);
+	void			(*func_keys)(byte *keys);
+	void			(*func_mouse)();
+	void			(*set_pos)(t_pos_vector);
+	void			(*damage)(double);
+	t_sprite		*(*get_sprite)();
+};
+
 struct s_menu
 {
 	t_type			type;
@@ -172,6 +250,11 @@ void	start_game(void);
 t_game	*game(void);
 t_object	*new_menu();
 t_object	*new_bg();
-t_object	*new_player(t_type playernum);
+t_object	*new_player(float x, float y);;
+t_object	*new_enemy(float x, float y);
+t_object	*new_collectible(float x, float y);
+t_object	*new_exit(float x, float y);
+t_object	*new_start(float x, float y);
+t_object	*new_wall(float x, float y);
 
 #endif

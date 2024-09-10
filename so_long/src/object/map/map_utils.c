@@ -40,7 +40,7 @@ void	__load_map(int fd, t_map *s_map)
 	close(fd);
 }
 
-void	__load_coords(t_pos_vector *pos, int x, int y, byte *error)
+void	__load_coords(char c, t_pos_vector *pos, float x, float y, byte *error)
 {
 	if (error && pos->x && pos->y)
 	{
@@ -49,10 +49,14 @@ void	__load_coords(t_pos_vector *pos, int x, int y, byte *error)
 	}
 	pos->x = x;
 	pos->y = y;
+	if (c == 'E')
+		game()->add_obj(new_exit(x, y));
+	else if (c == 'P')
+		game()->add_obj(new_start(x, y));
 }
 
 // Checks if the outside of the map is walls
-static byte	__check_walls(t_map *s_map)
+byte	__check_walls(t_map *s_map)
 {
 	char		**map;
 	int		i;
@@ -75,54 +79,18 @@ static byte	__check_walls(t_map *s_map)
 	return (0);	
 }
 
-static void	__map_handler(char c, t_map *s_map, t_pos_vector pos)
+void	__map_handler(char c, t_map *s_map, t_pos_vector pos)
 {
-	int	i;
-
-	i = 0;
 	if (c == 'P')
-		__load_coords(&s_map->start, pos.y, pos.x, &s_map->error);
+		__load_coords(c, &s_map->start, pos.y, pos.x, &s_map->error);
 	else if (c == 'E')
-		__load_coords(&s_map->exit, pos.y, pos.x, &s_map->error);
+		__load_coords(c, &s_map->exit, pos.y, pos.x, &s_map->error);
 	else if (c == 'B')
-	{
-		printf("inimigooo x: %.2f, y: %.2f\n", pos.x, pos.y);
-		while (s_map->enemies[i++].x)
-			;
-		__load_coords(&s_map->enemies[i], pos.y, pos.x, NULL);
-	}
+		game()->add_obj(new_enemy(pos.y, pos.x));
 	else if (c == 'C')
-	{
-		while (s_map->collectibles[i++].x)
-			;
-		__load_coords(&s_map->collectibles[i], pos.y, pos.x, NULL);
-	}
+		game()->add_obj(new_collectible(pos.y, pos.x));
+	else if (c == '1')
+		game()->add_obj(new_wall(pos.y, pos.x));
 	else
 		s_map->error = 1;
-}
-
-// returns the error flags value
-byte	__map_check(t_map *s_map)
-{
-	char		**map;
-	int		i;
-	int		j;
-	
-	i = 0;
-	map = s_map->map_ptr;
-	if (__check_walls(s_map))
-		return (1);
-	while (i < s_map->row)
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] != '1' && map[i][j] != '0')
-				__map_handler(map[i][j], s_map,\
-					(t_pos_vector){i, j, 0, 0});
-			j++;
-		}
-		i++;
-	}
-	return (s_map->error);
 }

@@ -26,10 +26,14 @@ struct s_canva
 	unsigned char	(*draw_pixel)(int x, int y, int color);
 	void		(*draw_img)(t_sprite *sprite, int x, int y);
 	void		(*scale_img)(t_sprite *sprite, t_pos_vector vec);
+	void		(*clear_screen)();
 	void		(*destroy)();
+	float			scale_factor;
+	float			scale_factor_e;
 };
 
 t_canva		*canva(void);
 void		start_screen(void);
+float		scale_to(int w, int h);
 
 #endif

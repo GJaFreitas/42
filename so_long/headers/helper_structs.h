@@ -9,9 +9,12 @@ typedef enum e_type
 	MAP,
 	WALL,
 	DOOR,
+	START,
 	PLAYER,
 	PLAYER2,
 	ENEMY,
+	COLLECTIBLE,
+	EXIT,
 	HUD,
 	GAME,
 }	t_type;
