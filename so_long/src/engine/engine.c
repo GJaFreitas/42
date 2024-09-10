@@ -1,5 +1,4 @@
 #include "../../headers/header.h"
-#include "../../libs/minilibx-linux/mlx_int.h"
 
 int	__key_press(int key, void *v);
 int	__key_release(int key, void *v);

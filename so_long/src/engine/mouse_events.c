@@ -4,11 +4,11 @@
 int	__mouse_release(int button, int x,int y, void *param)
 {
 	(void)button;
-	(void)param;
 	mlx_mouse_get_pos(engine()->mlx, engine()->win,\
 		   &x, &y);
 	((t_engine*)param)->mouse.x = x;
 	((t_engine*)param)->mouse.y = y;
+	game()->func_mouse();
 	return (0);
 }
 

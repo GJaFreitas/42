@@ -55,6 +55,16 @@ static void	__player_keys(byte *keys)
 
 static void	__player_mouse()
 {
+	t_pos_vector vec;
+	float	x;
+	float	y;
+
+	x = engine()->mouse.x - game()->player->pos.x;
+	y = engine()->mouse.y - game()->player->pos.y;
+	vec.x = x / canva()->scale_factor;
+	vec.y = y / canva()->scale_factor;
+	if (!game()->fireball)
+		game()->add_obj(new_fireball(vec));
 }
 
 t_object	*new_player(float x, float y)
@@ -70,5 +80,6 @@ t_object	*new_player(float x, float y)
 	player->pos.h = canva()->scale_factor_e;
 	player->pos.x = x;
 	player->pos.y = y;
+	game()->player = player;
 	return (object((t_object*)player));
 }

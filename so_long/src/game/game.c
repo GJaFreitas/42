@@ -5,12 +5,13 @@ void	__mouse_events();
 void	__key_events();
 void	__render_game();
 void	__add_obj(t_object *o);
+void	__update_game();
 
 static void	__destroy_game(void)
 {
 	__destroy_objects();
 	vector(game()->objects)->destroy();
-	vector(game()->interactions)->destroy();
+	vector(game()->to_update)->destroy();
 	vector(game()->keys)->destroy();
 	vector(game()->to_render)->destroy();
 	vector(game()->mouse)->destroy();
@@ -28,7 +29,7 @@ static void	__remove_obj()
 		vector(game()->objects)->remove_value(i->value);
 		vector(game()->mouse)->remove_value(i->value);
 		vector(game()->keys)->remove_value(i->value);
-		vector(game()->interactions)->remove_value(i->value);
+		vector(game()->to_update)->remove_value(i->value);
 		vector(game()->to_render)->remove_value(i->value);
 		object(i->value)->destructor();
 		temp = i->value;
@@ -58,12 +59,13 @@ void	start_game(void)
 	game()->keys = new_vector();
 	game()->mouse = new_vector();
 	game()->to_render = new_vector();
-	game()->interactions = new_vector();
+	game()->to_update = new_vector();
 	game()->to_remove = new_vector();
 	game()->add_obj = __add_obj;
 	game()->render = __render_game;
 	game()->func_keys = __key_events;
 	game()->func_mouse = __mouse_events;
+	game()->update = __update_game;
 	game()->destructor = __destroy_game;
 	game()->add_obj(new_menu());
 	game()->rm_obj = __remove_obj;

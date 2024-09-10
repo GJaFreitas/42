@@ -32,6 +32,7 @@ void	*constructor(size_t size)
 	o->type = OBJECT;
 	o->func_keys = NULL;
 	o->func_mouse = NULL;
+	o->update = NULL;
 	o->render = __generic_render;
 	o->get_sprite = __generic_get_sprite;
 	o->destructor = __generic_destructor;

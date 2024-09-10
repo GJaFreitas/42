@@ -12,6 +12,8 @@ void	__add_obj(t_object *o)
 		vector(game()->mouse)->add(o);
 	if (o->render != NULL)
 		vector(game()->to_render)->add(o);
+	if (o->update != NULL)
+		vector(game()->to_update)->add(o);
 }
 
 // Iterates trough all objects in the game and adds them to the next frame
