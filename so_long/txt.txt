@@ -1,2 +1,0 @@
-se estiver a pressionar qualquer tecla isto funciona senao da sempre
-segfault
