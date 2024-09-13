@@ -45,7 +45,7 @@ static void	__start_the_show(void)
 	game()->in_menu = 0;
 	canva()->clear_screen();
 	game()->add_obj(new_bg());
-	if (engine()->argv)
+	if (engine()->argc)
 	{
 		game()->maps[0] = new_map(engine()->argv[1]);
 		game()->add_obj((t_object*)game()->maps[0]);

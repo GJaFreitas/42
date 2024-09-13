@@ -5,7 +5,7 @@ static void	__put_pixel(int x, int y)
 	game()->walls[y][x] = 1;
 }
 
-void	__populate_array(t_pos_vector vec)
+static void	__populate_array(t_pos_vector vec)
 {
 	int 	x;
 	int	y;

@@ -1,15 +1,5 @@
 #include "../../../headers/header.h"
 
-/*
- *
-	if (keys[XK_w] && !game()->walls[(int)pos.y - 5][(int)pos.x]\
-	&& !game()->walls[(int)(pos.y + pos.h - 5)][(int)pos.x])
-
-	pos.y - 5 é a parte de cima do avatar
-	pos.y + pos.h - 5 é a parte de baixo do avatar 
- *
- */
-
 static int	__collision_check_y(t_pos_vector pos, int mov)
 {
 	return (!game()->walls[(int)pos.y + mov][(int)pos.x]\
@@ -53,6 +43,9 @@ static void	__player_keys(byte *keys)
 	}
 }
 
+#define FIREBALL_SPEED 10;
+
+// Calculates the direction and then shoots the fireball taking care to not divide by 0
 static void	__player_mouse()
 {
 	t_pos_vector vec;
@@ -61,10 +54,21 @@ static void	__player_mouse()
 
 	x = engine()->mouse.x - game()->player->pos.x;
 	y = engine()->mouse.y - game()->player->pos.y;
-	vec.x = x / canva()->scale_factor;
-	vec.y = y / canva()->scale_factor;
+	if (x == 0)
+		vec = (t_pos_vector){ 0, y / f_abs(y), 0, 0 };
+	else
+	{
+		vec.x = (x / canva()->scale_factor);
+		vec.y = (y / canva()->scale_factor) / f_abs(vec.x);
+		vec.x /= f_abs(vec.x);
+	}
+	vec.x *= FIREBALL_SPEED;
+	vec.y *= FIREBALL_SPEED;
 	if (!game()->fireball)
+	{
 		game()->add_obj(new_fireball(vec));
+		(void)vec;
+	}
 }
 
 t_object	*new_player(float x, float y)

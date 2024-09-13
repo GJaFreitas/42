@@ -8,7 +8,7 @@ int	__mouse_release(int button, int x,int y, void *param)
 		   &x, &y);
 	((t_engine*)param)->mouse.x = x;
 	((t_engine*)param)->mouse.y = y;
-	game()->func_mouse();
+	engine()->mouse_press = 1;
 	return (0);
 }
 

@@ -20,13 +20,14 @@ t_engine	*engine(void)
 	return (&engine);
 }
 
-void	start_engine(char *title, int w, int h, char **argv)
+void	start_engine(char *title, char **argv, int argc)
 {
 	engine()->argv = argv;
-	engine()->height = h;
-	engine()->width = w;
+	engine()->argc = argc;
+	engine()->height = HEIGHT;
+	engine()->width = WIDTH;
 	engine()->mlx = mlx_init();
-	engine()->win = mlx_new_window(engine()->mlx, w, h, title);
+	engine()->win = mlx_new_window(engine()->mlx, WIDTH, HEIGHT, title);
 	engine()->destroy = __destroy_all;
 	mlx_hook(engine()->win, ON_KEYDOWN, KPRESS_M, __key_press, engine());
 	mlx_hook(engine()->win, ON_KEYUP, KRELEASE_M, __key_release, engine());

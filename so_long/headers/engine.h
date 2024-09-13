@@ -16,11 +16,13 @@ struct s_engine
 	t_pos_vector		mouse;
 	void			(*destroy)(void);
 	int			keys_pressed;
+	int			mouse_press;
 	byte			keys[75000];
+	int			argc;
 	char			**argv;
 };
 
 t_engine	*engine(void);
-void		start_engine(char *title, int w, int h, char **argv);
+void		start_engine(char *title, char **argv, int argc);
 
 #endif

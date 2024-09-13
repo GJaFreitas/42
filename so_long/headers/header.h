@@ -46,6 +46,11 @@ void		harbinger_of_chaos(void);
 //	Misc
 void		fadeout(void);
 int		game_loop(void);
+int		collides(t_pos_vector pos1, t_pos_vector pos2);
+int		rng(int lowerbound, int upperbound);
+float		f_abs(float val);
+double		d_abs(double val);
+int		i_abs(int val);
 //	******************
 
 #endif

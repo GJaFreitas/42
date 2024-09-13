@@ -53,6 +53,7 @@ void	__mouse_events()
 		object(i->value)->func_mouse();
 		i = i->next;
 	}
+	engine()->mouse_press = 0;
 }
 
 void	__destroy_objects()
