@@ -51,6 +51,7 @@ static void	__start_the_show(void)
 		game()->add_obj((t_object*)game()->maps[0]);
 	}
 	vector(game()->to_render)->sort();
+	harbinger_of_chaos();
 }
 
 void	start_game(void)

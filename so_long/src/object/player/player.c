@@ -72,7 +72,8 @@ static void	__player_mouse()
 	vec.y *= FIREBALL_SPEED;
 	if (!game()->fireball)
 	{
-		game()->add_obj(new_fireball(vec));
+		// TODO: fix the damn objects
+		//game()->add_obj(new_fireball(vec));
 	}
 }
 

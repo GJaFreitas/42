@@ -33,6 +33,7 @@ static void	__destroy_map(void)
 	free(__get_sprite(0));
 	free(__get_sprite('e'));
 	free(__get_sprite('c'));
+	ft_printf("Invalid map detected\n");
 }
 
 t_map	*new_map(char *filepath)

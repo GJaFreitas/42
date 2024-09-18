@@ -40,13 +40,8 @@ void	__load_map(int fd, t_map *s_map)
 	close(fd);
 }
 
-void	__load_coords(char c, t_pos_vector *pos, float x, float y, byte *error)
+void	__load_coords(char c, t_pos_vector *pos, float x, float y)
 {
-	if (error && pos->x && pos->y)
-	{
-		*error = 1;
-		return ;
-	}
 	pos->x = x;
 	pos->y = y;
 	if (c == 'E')
@@ -82,9 +77,9 @@ byte	__check_walls(t_map *s_map)
 void	__map_handler(char c, t_map *s_map, t_pos_vector pos)
 {
 	if (c == 'P')
-		__load_coords(c, &s_map->start, pos.y, pos.x, &s_map->error);
+		__load_coords(c, &s_map->start, pos.y, pos.x);
 	else if (c == 'E')
-		__load_coords(c, &s_map->exit, pos.y, pos.x, &s_map->error);
+		__load_coords(c, &s_map->exit, pos.y, pos.x);
 	else if (c == 'B')
 		game()->add_obj(new_enemy(pos.y, pos.x));
 	else if (c == 'C')
