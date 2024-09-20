@@ -12,6 +12,10 @@ static int	__strjoin_map(char *s1, char *s2)
 	return (ret);
 }
 
+// Diabolical return() for the sake of lines ahead
+
+// Assume fd is valid since its treated in the new_map function
+// if it isn't it will be 0
 void	__load_map(int fd, t_map *s_map)
 {
 	char	buffer[2048];
@@ -21,6 +25,8 @@ void	__load_map(int fd, t_map *s_map)
 
 	i = 0;
 	buf = 0;
+	if (!fd)
+		return (s_map->map_ptr = NULL, (void)0);
 	ft_bzero(buffer, 2048);
 	while (__strjoin_map(buffer, get_next_line(fd)))
 		s_map->row++;

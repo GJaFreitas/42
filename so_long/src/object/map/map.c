@@ -36,13 +36,25 @@ static void	__destroy_map(void)
 	ft_printf("Invalid map detected\n");
 }
 
+static int	__fd_check(int fd)
+{
+	int	check;
+
+	check = read(fd, NULL, 0);
+	if (check == -1)
+		return (0);
+	return (fd);
+}
+
 t_map	*new_map(char *filepath)
 {
 	t_map	*map;
 
 	map = constructor(sizeof(t_map));
 	map->type = MAP;
-	__load_map(open(filepath, O_RDONLY), map);
+	__load_map(__fd_check(open(filepath, O_RDONLY)), map);
+	if (map->map_ptr == NULL)
+		return (NULL);
 	map->render = NULL;
 	map->destructor = __destroy_map;
 	map->collectible_sprite = canva()->load_img("textures/steel.xpm");
