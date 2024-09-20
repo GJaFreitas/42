@@ -65,10 +65,12 @@ struct s_game
 	t_vector			*to_render;
 	t_vector			*to_update;
 	t_vector			*to_remove;
+	t_vector			*to_add;
 	t_map				*maps[128];
 	byte				walls[1080][1920];
 	int				moves;
 	void			(*add_obj)(t_object *o);
+	void			(*add_queue)();
 	void			(*rm_obj)();
 	void			(*startgame)();
 	byte			fireball;

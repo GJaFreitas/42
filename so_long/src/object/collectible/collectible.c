@@ -13,7 +13,7 @@ static void	__new()
 		y = rng(0, HEIGHT);
 	}
 	// TODO: fix the damn objects
-	//game()->add_obj(new_collectible(x, y));
+	vector(game()->to_add)->add(new_collectible(x, y));
 	vector(game()->to_render)->sort();
 }
 

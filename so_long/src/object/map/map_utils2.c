@@ -9,11 +9,11 @@ byte	__map_check(t_map *s_map)
 	char		**map;
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	map = s_map->map_ptr;
 	if (__check_walls(s_map))
-		return (1);
+		return (s_map->error = 1, 1);
 	while (i < s_map->row)
 	{
 		j = 0;

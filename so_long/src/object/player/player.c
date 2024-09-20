@@ -73,7 +73,7 @@ static void	__player_mouse()
 	if (!game()->fireball)
 	{
 		// TODO: fix the damn objects
-		//game()->add_obj(new_fireball(vec));
+		vector(game()->to_add)->add(new_fireball(vec));
 	}
 }
 

@@ -24,7 +24,7 @@ static void	__destroy_map(void)
 
 	i = 0;
 	s_map = (t_map*)fthis()->object;
-	while (i < s_map->row)
+	while (s_map->map_ptr && i < s_map->row)
 		free_safe((void**)&s_map->map_ptr[i++]);
 	free_safe((void**)&s_map->map_ptr);
 	mlx_destroy_image(engine()->mlx, s_map->sprite->img);
@@ -33,7 +33,6 @@ static void	__destroy_map(void)
 	free(__get_sprite(0));
 	free(__get_sprite('e'));
 	free(__get_sprite('c'));
-	ft_printf("Invalid map detected\n");
 }
 
 static int	__fd_check(int fd)
@@ -66,6 +65,9 @@ t_map	*new_map(char *filepath)
 	map->pos.h = map->row * canva()->scale_factor;
 	map->pos.w = map->col * canva()->scale_factor;
 	if (__map_check(map))
+	{
+		ft_printf("Invalid map detected\n");
 		map->destructor();
+	}
 	return (map);
 }

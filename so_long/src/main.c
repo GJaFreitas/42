@@ -7,6 +7,7 @@ int	game_loop(void)
 		game()->func_keys();
 	game()->update();
 	game()->rm_obj();
+	game()->add_queue();
 	if (engine()->mouse_press)
 		game()->func_mouse();
 	mlx_put_image_to_window(engine()->mlx, engine()->win,

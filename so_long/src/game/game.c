@@ -6,6 +6,7 @@ void	__key_events();
 void	__render_game();
 void	__add_obj(t_object *o);
 void	__update_game();
+void	__add_queue();
 
 static void	__destroy_game(void)
 {
@@ -51,7 +52,6 @@ static void	__start_the_show(void)
 		game()->add_obj((t_object*)game()->maps[0]);
 	}
 	vector(game()->to_render)->sort();
-	harbinger_of_chaos();
 }
 
 void	start_game(void)
@@ -62,6 +62,7 @@ void	start_game(void)
 	game()->to_render = new_vector();
 	game()->to_update = new_vector();
 	game()->to_remove = new_vector();
+	game()->to_add = new_vector();
 	game()->add_obj = __add_obj;
 	game()->render = __render_game;
 	game()->func_keys = __key_events;
@@ -69,6 +70,7 @@ void	start_game(void)
 	game()->update = __update_game;
 	game()->destructor = __destroy_game;
 	game()->add_obj(new_menu());
+	game()->add_queue = __add_queue;
 	game()->rm_obj = __remove_obj;
 	game()->startgame = __start_the_show;
 }
