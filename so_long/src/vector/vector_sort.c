@@ -3,7 +3,7 @@
 // Returns 0 if a comes after b
 static int	__compare_obj(void *a, void *b)
 {
-	return ((((t_object *)a)->type > ((t_object *)b)->type));
+	return ((((t_object *)a)->type < ((t_object *)b)->type));
 }
 
 static void FrontBackSplit(t_element *source,
@@ -77,5 +77,6 @@ static void	__vec_mergesort(t_element** headRef, int (*compare)(void *a, void *b
 
 void	__vec_sort(void)
 {
+	return ;
 	__vec_mergesort(&fthis()->vector->begin, __compare_obj);
 }

@@ -67,7 +67,7 @@ t_map	*new_map(char *filepath)
 	if (__map_check(map))
 	{
 		ft_printf("Invalid map detected\n");
-		map->destructor();
+		harbinger_of_chaos();
 	}
 	return (map);
 }

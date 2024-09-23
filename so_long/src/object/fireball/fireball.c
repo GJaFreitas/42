@@ -1,13 +1,13 @@
 #include "../../../headers/header.h"
 
-void	__fireball_mov(void)
+static void	__fireball_mov(void)
 {
 	t_fireball	*fireball;
 
 	fireball = (t_fireball*)fthis()->object;
 	fireball->pos.x += fireball->shot_vec.x;
 	fireball->pos.y += fireball->shot_vec.y;
-	if (game()->walls[(int)fireball->pos.x][(int)fireball->pos.y])
+	if (game()->obj_colision(fireball->pos))
 	{
 		game()->fireball = 0;
 		vector(game()->to_remove)->add(fthis()->object);

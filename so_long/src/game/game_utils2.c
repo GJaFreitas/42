@@ -12,17 +12,17 @@ void	__update_game()
 	}
 }
 
-// adds all queued objects and removes them from the queue after
-void	__add_queue()
+// Verifies if pos collides with any rendered object
+int	__obj_colision(t_pos_vector pos)
 {
 	t_element	*i;
 
-	i = vector(game()->to_add)->begin;
+	i = vector(game()->to_render)->begin;
 	while (i)
 	{
-		game()->add_obj(i->value);
+		if (collides(pos, object(i->value)->pos))
+			return (1);
 		i = i->next;
 	}
-	vector(game()->to_render)->sort();
-	vector(game()->to_add)->remove_all();
+	return (0);
 }
