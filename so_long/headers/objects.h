@@ -94,6 +94,7 @@ struct s_player
 
 	void			(*move)(t_pos_vector);
 	void			(*attack)();
+	int			collectibles;
 };
 
 struct s_fireball

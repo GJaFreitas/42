@@ -2,6 +2,5 @@
 
 int	rng(int lowerbound, int upperbound)
 {
-	return (rand() %\
-	(upperbound - lowerbound + 1) + lowerbound);
+	return ((rand() % (upperbound - lowerbound + 1)) + lowerbound);
 }

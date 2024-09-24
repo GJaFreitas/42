@@ -12,7 +12,7 @@ void	__update_game()
 	}
 }
 
-// Verifies if pos collides with any rendered object not part of the list
+// Verifies if pos collides with any rendered object not part of the list passed to it
 int	__obj_colision(t_pos_vector pos, t_type *list)
 {
 	t_element	*i;

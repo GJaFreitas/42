@@ -16,6 +16,7 @@ int	game_loop(void)
 
 int	main(int argc, char **argv)
 {
+	srand(time(NULL));
 	start_engine("Gaming", argv, argc);
 	start_screen();
 	start_game();

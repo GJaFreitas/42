@@ -45,17 +45,19 @@ static void	__player_keys(byte *keys)
 	}
 }
 
-#define FIREBALL_SPEED 30;
+#define FIREBALL_SPEED 30
+#define FIREBALL_COOLDOWN 1
 
-static int	__cooldown(time_t current)
+static int	__cooldown(clock_t *last, clock_t current)
 {
-	static time_t	last;
 	double		time_past;
 
-	time_past = difftime(last, current);
-	last = current;
-	if (time_past > 3)
+	time_past = (double)(current - *last) / CLOCKS_PER_SEC;
+	if (time_past > FIREBALL_COOLDOWN)
+	{
+		*last = current;
 		return (1);
+	}
 	return (0);
 }
 
@@ -71,14 +73,15 @@ static void	__vec_normalization(float *x, float *y)
 // Calculates the direction and then shoots the fireball taking care to not divide by 0
 static void	__player_mouse()
 {
-	t_pos_vector vec;
+	static clock_t	init;
+	t_pos_vector 	vec;
 
 	vec.x = engine()->mouse.x - game()->player->pos.x;
 	vec.y = engine()->mouse.y - game()->player->pos.y;
 	__vec_normalization(&vec.x, &vec.y);
 	vec.x *= FIREBALL_SPEED;
 	vec.y *= FIREBALL_SPEED;
-	if (__cooldown(time(NULL)))
+	if (__cooldown(&init, clock()))
 		game()->add_obj(new_fireball(vec));
 }
 

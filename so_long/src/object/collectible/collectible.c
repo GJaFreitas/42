@@ -1,5 +1,6 @@
 #include "../../../headers/header.h"
 
+/*
 static void	__new()
 {
 	int	x;
@@ -7,21 +8,26 @@ static void	__new()
 
 	x = 0;
 	y = 0;
-	while (!game()->walls[x][y])
+	while (!game()->obj_colision((t_pos_vector)\
+		{x, y, canva()->scale_factor_e, canva()->scale_factor_e},\
+		(int[]){PLAYER, START, EXIT, COLLECTIBLE, BG, 0}))
 	{
 		x = rng(0, WIDTH);
 		y = rng(0, HEIGHT);
 	}
+	printf("Coll x: %d y: %d\n", x, y);
 	game()->add_obj(new_collectible(x, y));
 	vector(game()->to_render)->sort();
 }
+*/
 
 static void	__update_col(void)
 {
 	if (collides(game()->player->pos, fthis()->object->pos))
 	{
 		vector(game()->to_remove)->add(fthis()->object);
-		__new();
+		game()->player->collectibles++;
+		//__new();
 	}
 }
 
