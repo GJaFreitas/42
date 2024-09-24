@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 	start_engine("Gaming", argv, argc);
 	start_screen();
 	start_game();
+	//count_overall(WALL);
 	mlx_loop_hook(engine()->mlx, game_loop, NULL);
 	mlx_loop(engine()->mlx);
 	return (0);

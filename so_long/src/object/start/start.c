@@ -15,5 +15,5 @@ t_object	*new_start(float x, float y)
 	game()->add_obj(new_player(\
 			    start->pos.x + start->pos.w / 4,\
 			    start->pos.y + start->pos.h / 4));
-	return (object((t_object*)start));
+	return ((t_object*)start);
 }

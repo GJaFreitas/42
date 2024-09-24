@@ -6,7 +6,7 @@ void	__key_events();
 void	__render_game();
 void	__add_obj(t_object *o);
 void	__update_game();
-int	__obj_colision(t_pos_vector pos);
+int	__obj_colision(t_pos_vector pos, int *list);
 
 static void	__destroy_game(void)
 {
@@ -27,14 +27,14 @@ static void	__remove_obj()
 	i = vector(game()->to_remove)->begin;
 	while (i)
 	{
+		temp = i->value;
 		vector(game()->objects)->remove_value(i->value);
 		vector(game()->mouse)->remove_value(i->value);
 		vector(game()->keys)->remove_value(i->value);
 		vector(game()->to_update)->remove_value(i->value);
 		vector(game()->to_render)->remove_value(i->value);
-		object(i->value)->destructor();
-		temp = i->value;
-		vector(game()->to_remove)->remove_value(temp);
+		vector(game()->to_remove)->remove_value(i->value);
+		object(temp)->destructor();
 		free_safe(&temp);
 		i = vector(game()->to_remove)->begin;
 	}
@@ -72,6 +72,9 @@ void	start_game(void)
 	game()->rm_obj = __remove_obj;
 	game()->obj_colision = __obj_colision;
 	game()->startgame = __start_the_show;
+	// TODO: Remove this
+	vector(game()->to_remove)->add(fthis()->object);
+	game()->startgame();
 }
 
 t_game	*game(void)

@@ -28,6 +28,8 @@
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <limits.h>
+# include <math.h>
+# include <time.h>
 
 
 # include "objects.h"
@@ -51,6 +53,8 @@ int		rng(int lowerbound, int upperbound);
 float		f_abs(float val);
 double		d_abs(double val);
 int		i_abs(int val);
+int		out_of_bounds(t_pos_vector pos);
+void		count_overall(t_type type);
 //	******************
 
 #endif

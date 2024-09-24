@@ -12,16 +12,29 @@ void	__update_game()
 	}
 }
 
-// Verifies if pos collides with any rendered object
-int	__obj_colision(t_pos_vector pos)
+// Verifies if pos collides with any rendered object not part of the list
+int	__obj_colision(t_pos_vector pos, t_type *list)
 {
 	t_element	*i;
+	int		index;
+	int		flag;
 
+	index = 0;
 	i = vector(game()->to_render)->begin;
 	while (i)
 	{
-		if (collides(pos, object(i->value)->pos))
+		flag = 0;
+		index = 0;
+		while (list[index])
+			if (i->type == list[index++])
+			{
+				flag = 1;
+				break ;
+			}
+		if (!flag && collides(pos, ((t_object*)(i->value))->pos))
+		{
 			return (1);
+		}
 		i = i->next;
 	}
 	return (0);

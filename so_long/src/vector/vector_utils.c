@@ -90,7 +90,7 @@ t_element	*__vec_add(void *value)
 {
 	t_element	*e;
 
-	if (!fthis()->vector || !value)
+	if (!fthis()->vector || !value || ((t_object*)value)->type > GAME)
 		return (NULL);
 	e = malloc_safe(sizeof(t_element));
 	e->value = value;

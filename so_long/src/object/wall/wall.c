@@ -36,7 +36,7 @@ t_object	*new_wall(float x, float y)
 	t_wall	*wall;
 
 	wall = constructor(sizeof(t_wall));
-	wall->type = START;
+	wall->type = WALL;
 	wall->sprite = canva()->load_img("textures/wall.xpm");
 	wall->pos.w = canva()->scale_factor;
 	wall->pos.h = canva()->scale_factor;

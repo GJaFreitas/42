@@ -10,3 +10,10 @@ int	collides(t_pos_vector pos1, t_pos_vector pos2)
 		return (1);
 	return (0);
 }
+
+// Returns 1 if position is outside boundary of the screen
+int	out_of_bounds(t_pos_vector pos)
+{
+	return ((pos.x > WIDTH || pos.x < 0)
+	|| (pos.y > HEIGHT || pos.y < 0));
+}

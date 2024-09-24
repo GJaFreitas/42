@@ -36,5 +36,5 @@ void	*constructor(size_t size)
 	o->render = __generic_render;
 	o->get_sprite = __generic_get_sprite;
 	o->destructor = __generic_destructor;
-	return (o);
+	return (object(o));
 }

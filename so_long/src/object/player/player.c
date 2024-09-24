@@ -1,4 +1,6 @@
 #include "../../../headers/header.h"
+#include <math.h>
+#include <time.h>
 
 static int	__collision_check_y(t_pos_vector pos, int mov)
 {
@@ -43,34 +45,40 @@ static void	__player_keys(byte *keys)
 	}
 }
 
-#define FIREBALL_SPEED 10;
+#define FIREBALL_SPEED 30;
+
+static int	__cooldown(time_t current)
+{
+	static time_t	last;
+	double		time_past;
+
+	time_past = difftime(last, current);
+	last = current;
+	if (time_past > 3)
+		return (1);
+	return (0);
+}
+
+static void	__vec_normalization(float *x, float *y)
+{
+	double	module;
+
+	module = sqrt((*x * *x) + (*y * *y));
+	*x /= module;
+	*y /= module;
+}
 
 // Calculates the direction and then shoots the fireball taking care to not divide by 0
 static void	__player_mouse()
 {
 	t_pos_vector vec;
-	float	x;
-	float	y;
 
-	x = engine()->mouse.x - game()->player->pos.x;
-	y = engine()->mouse.y - game()->player->pos.y;
-	if (x == 0)
-		vec = (t_pos_vector){ 0, (y / f_abs(y)), 0, 0 };
-	else if (x > y)
-	{
-		vec.x = (x / canva()->scale_factor);
-		vec.y = (y / canva()->scale_factor) / f_abs(vec.x);
-		vec.x /= f_abs(vec.x);
-	}
-	else
-	{
-		vec.y = (y / canva()->scale_factor);
-		vec.x = (x / canva()->scale_factor) / f_abs(vec.y);
-		vec.y /= f_abs(vec.y);
-	}
+	vec.x = engine()->mouse.x - game()->player->pos.x;
+	vec.y = engine()->mouse.y - game()->player->pos.y;
+	__vec_normalization(&vec.x, &vec.y);
 	vec.x *= FIREBALL_SPEED;
 	vec.y *= FIREBALL_SPEED;
-	if (!game()->fireball)
+	if (__cooldown(time(NULL)))
 		game()->add_obj(new_fireball(vec));
 }
 
@@ -88,5 +96,5 @@ t_object	*new_player(float x, float y)
 	player->pos.x = x;
 	player->pos.y = y;
 	game()->player = player;
-	return (object((t_object*)player));
+	return ((t_object*)player);
 }
