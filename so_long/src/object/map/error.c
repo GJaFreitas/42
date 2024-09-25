@@ -2,7 +2,7 @@
 
 void	__print_error_msg(byte *error)
 {
-	ft_printf("Invalid map:\n\n");
+	ft_printf("Invalid map:\n");
 	if (error[0])
 		ft_printf("Unknown char: %c\n", error[0]);
 	if (error[1])
@@ -17,5 +17,5 @@ void	__print_error_msg(byte *error)
 		ft_printf("Multiple exits\n");
 	if (error[6])
 		ft_printf("No collectibles\n");
-	ft_printf("Aborting\nCalling cleaning crew\n'Free all this up boys!'\n");
+	ft_printf("\nAborting:\nCalling cleaning crew\n'Free all this up boys!'\n");
 }

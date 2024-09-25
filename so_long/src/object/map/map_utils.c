@@ -76,14 +76,14 @@ byte	__check_walls(t_map *s_map)
 	i = 0;
 	map = s_map->map_ptr;
 	while (i < s_map->col)
-		if (map[0][i] != '1' &&\
+		if (map[0][i] != '1' ||\
 			map[s_map->row - 1][i] != '1')
 			return (1);
 		else
 			i++;
 	i = 0;
 	while (i < s_map->row)
-		if (map[i][0] != '1' &&\
+		if (map[i][0] != '1' ||\
 			map[i][s_map->col - 1] != '1')
 			return (1);
 		else
