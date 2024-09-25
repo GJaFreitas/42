@@ -5,6 +5,7 @@ void	__map_realloc(char **map, int rows);
 void	__load_map(int fd, t_map *s_map);
 void	__load_coords(t_pos_vector *pos, int x, int y, byte *error);
 byte	__map_check(t_map *s_map);
+void	__print_error_msg(byte *error);
 
 // Pass 'e' for the enemy sprite, 'c' for collectible and nothing for
 // the map sprite
@@ -66,7 +67,7 @@ t_map	*new_map(char *filepath)
 	map->pos.w = map->col * canva()->scale_factor;
 	if (__map_check(map))
 	{
-		ft_printf("Invalid map detected\n");
+		__print_error_msg(map->error);
 		harbinger_of_chaos();
 	}
 	return (map);

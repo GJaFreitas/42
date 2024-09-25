@@ -47,14 +47,24 @@ void	__load_map(int fd, t_map *s_map)
 }
 
 // TODO: Make this function report an error if there is more than 1 exit or start
-void	__load_coords(char c, t_pos_vector *pos, float x, float y)
+void	__load_coords(char c, t_map *s_map, float x, float y)
 {
-	pos->x = x;
-	pos->y = y;
+	if (c == 'P' && s_map->start.x)
+		return (s_map->error[4] = 1, (void)0);
+	if (c == 'E' && s_map->exit.x)
+		return (s_map->error[5] = 1, (void)0);
 	if (c == 'E')
+	{
+		s_map->exit.x = x;
+		s_map->exit.y = y;
 		game()->add_obj(new_exit(x, y));
+	}
 	else if (c == 'P')
+	{
+		s_map->start.x = x;
+		s_map->start.y = y;
 		game()->add_obj(new_start(x, y));
+	}
 }
 
 // Checks if the outside of the map is walls
@@ -84,9 +94,9 @@ byte	__check_walls(t_map *s_map)
 void	__map_handler(char c, t_map *s_map, t_pos_vector pos)
 {
 	if (c == 'P')
-		__load_coords(c, &s_map->start, pos.y, pos.x);
+		__load_coords(c, s_map, pos.y, pos.x);
 	else if (c == 'E')
-		__load_coords(c, &s_map->exit, pos.y, pos.x);
+		__load_coords(c, s_map, pos.y, pos.x);
 	else if (c == 'B')
 		game()->add_obj(new_enemy(pos.y, pos.x));
 	else if (c == 'C')
@@ -94,5 +104,5 @@ void	__map_handler(char c, t_map *s_map, t_pos_vector pos)
 	else if (c == '1')
 		game()->add_obj(new_wall(pos.y, pos.x));
 	else
-		s_map->error = 1;
+		s_map->error[0] = c;
 }

@@ -34,7 +34,12 @@ struct s_map
 	t_pos_vector		collectibles[128];
 	t_sprite		*enemy_sprite;
 	t_sprite		*collectible_sprite;
-	byte			error;
+	// List of errors:
+	// Walls are wrong
+	// No start, no exit, 2 starts, 2 exits
+	// No collectibles
+	// Unrecognized char
+	byte			error[7];
 };
 
 t_map	*new_map(char *filepath);

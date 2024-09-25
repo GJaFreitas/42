@@ -55,6 +55,7 @@ double		d_abs(double val);
 int		i_abs(int val);
 int		out_of_bounds(t_pos_vector pos);
 void		count_overall(t_type type);
+int		count_obj(t_type type);
 //	******************
 
 #endif
