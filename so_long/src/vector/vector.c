@@ -1,6 +1,5 @@
 #include "../../headers/header.h"
 
-void	__vec_rm_index(int index);
 t_element	*__vec_add(void *value);
 t_element	*__vec_set_value_index(int index, void *value);
 void	*__vec_get_val(int index);
@@ -30,7 +29,6 @@ void	*new_vector(void)
 	v->for_index = __vec_exec_on_index;
 	v->remove_first = __vec_rm_first;
 	v->remove_all = __vec_rm_rf;
-	v->remove_index = __vec_rm_index;
 	v->remove_value = __vec_rm_val;
 	v->remove_this = __remove_this;
 	v->sort = __vec_sort;

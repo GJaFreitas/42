@@ -46,7 +46,6 @@ void	__load_map(int fd, t_map *s_map)
 	close(fd);
 }
 
-// TODO: Make this function report an error if there is more than 1 exit or start
 void	__load_coords(char c, t_map *s_map, float x, float y)
 {
 	if (c == 'P' && s_map->start.x)

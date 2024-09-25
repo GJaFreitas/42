@@ -11,37 +11,6 @@
 	void			(*destroy_element)(t_element	*e);
 */
 
-// I need more lines to make this accept index = 0
-// so ill make another function to remove the first element
-// TODO: THIS IS BROKEN BECAUSE OF THE NEW free_safe FUNCTION
-void	__vec_rm_index(int index)
-{
-	t_element	*current;
-	t_element	*prev;
-	int		i;
-
-	i = 0;
-	if (!fthis()->vector || index > fthis()->vector->size || index < 1)
-		return ;
-	current = fthis()->vector->begin;
-	prev = NULL;
-	while (current)
-	{
-		if (index == i++)
-		{
-			if (prev)
-				prev->next = current->next;
-			else
-				fthis()->vector->begin = current->next;
-			free_safe((void**)&current);
-			fthis()->vector->size--;
-			return ;
-		}
-		prev = current;
-		current = current->next;
-	}
-}
-
 void	__destroy_element(void **e)
 {
 	free_safe(e);
