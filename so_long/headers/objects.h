@@ -190,6 +190,8 @@ struct s_collectible
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
 	t_sprite		*(*get_sprite)();
+
+	byte			is_render;
 };
 
 struct s_start

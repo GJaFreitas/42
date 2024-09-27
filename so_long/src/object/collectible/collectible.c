@@ -21,12 +21,22 @@ static void	__new()
 }
 */
 
+static void	__col_render(void)
+{
+	if (((t_collectible*)fthis()->object)->is_render)
+		canva()->scale_img(
+			fthis()->object->get_sprite(), \
+			fthis()->object->pos);
+	//mlx_put_image_to_window(engine()->mlx, engine()->win,
+			 //fthis()->object->get_sprite()->img, fthis()->object->pos.x, fthis()->object->pos.y);
+}
+
 static void	__update_col(void)
 {
-	if (collides(game()->player->pos, fthis()->object->pos))
+	if (((t_collectible*)fthis()->object)->is_render && collides(game()->player->pos, fthis()->object->pos))
 	{
-		vector(game()->to_remove)->add(fthis()->object);
 		game()->player->collectibles++;
+		((t_collectible*)fthis()->object)->is_render = 0;
 		//__new();
 	}
 }
@@ -36,7 +46,9 @@ t_object	*new_collectible(float x, float y)
 	t_collectible	*collectible;
 
 	collectible = constructor(sizeof(t_collectible));
+	collectible->is_render = 1;
 	collectible->type = COLLECTIBLE;
+	collectible->render = __col_render;
 	collectible->sprite = canva()->load_img("textures/steel.xpm");
 	collectible->pos.x = x * canva()->scale_factor;
 	collectible->pos.y = y * canva()->scale_factor;

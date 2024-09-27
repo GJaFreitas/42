@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/09/25 13:58:53 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/09/27 12:36:50 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,6 @@ run_debug: re
 
 
 run: re
-	./$(NAME) ./maps/map1.ber
+	./$(NAME) ./maps/map2.ber
 
 .PHONY: all clean fclean re
