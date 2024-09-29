@@ -25,7 +25,7 @@ int	__obj_colision(t_pos_vector pos, t_type *list)
 	{
 		flag = 0;
 		index = 0;
-		while (list[index])
+		while (list && list[index])
 			if (i->type == list[index++])
 			{
 				flag = 1;
