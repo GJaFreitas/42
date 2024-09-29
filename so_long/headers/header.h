@@ -50,12 +50,16 @@ void		fadeout(void);
 int		game_loop(void);
 int		collides(t_pos_vector pos1, t_pos_vector pos2);
 int		rng(int lowerbound, int upperbound);
-float		f_abs(float val);
-double		d_abs(double val);
-int		i_abs(int val);
 int		out_of_bounds(t_pos_vector pos);
 void		count_overall(t_type type);
 int		count_obj(t_type type);
+//	******************
+
+//	Math
+void		__vec_normalization(float *x, float *y);
+float		f_abs(float val);
+double		d_abs(double val);
+int		i_abs(int val);
 //	******************
 
 #endif
