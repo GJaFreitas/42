@@ -26,7 +26,7 @@ t_object	*new_fireball(t_pos_vector vec)
 	fireball = constructor(sizeof(t_fireball));
 	fireball->type = FIREBALL;
 	fireball->update = __fireball_mov;
-	fireball->sprite = canva()->load_img("textures/steel.xpm");
+	fireball->sprite = canva()->load_img("textures/fireball.xpm");
 	fireball->pos.w = canva()->scale_factor_e / 2;
 	fireball->pos.h = canva()->scale_factor_e / 2;
 	fireball->pos.x = game()->player->pos.x + (game()->player->pos.w / 2);
