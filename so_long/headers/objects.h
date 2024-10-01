@@ -70,9 +70,8 @@ struct s_game
 	int				moves;
 	void			(*add_obj)(t_object *o);
 	void			(*rm_obj)();
-	int			(*obj_colision)(t_pos_vector pos, int *list);
+	t_object		*(*obj_colision)(t_pos_vector pos, t_type *list);
 	void			(*startgame)();
-	byte			fireball;
 };
 
 struct s_player

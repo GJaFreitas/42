@@ -1,16 +1,20 @@
 #include "../../../headers/header.h"
 
+// TODO: add explosion?
 static void	__fireball_mov(void)
 {
 	t_fireball	*fireball;
+	t_object	*colide;
 
 	fireball = (t_fireball*)fthis()->object;
 	fireball->pos.x += fireball->shot_vec.x;
 	fireball->pos.y += fireball->shot_vec.y;
-	if (game()->obj_colision(fireball->pos, (int[]){PLAYER, START, EXIT, COLLECTIBLE, BG, 0})
-     		|| out_of_bounds(fireball->pos))
+	colide = game()->obj_colision(fireball->pos, (t_type[]){WALL, ENEMY, 0});
+	if (colide && colide->type == WALL)
+		vector(game()->to_remove)->add(fthis()->object);
+	else if (colide && colide->type == ENEMY)
 	{
-		game()->fireball = 0;
+		colide->hp -= 101;
 		vector(game()->to_remove)->add(fthis()->object);
 	}
 }
@@ -19,7 +23,6 @@ t_object	*new_fireball(t_pos_vector vec)
 {
 	t_fireball	*fireball;
 
-	game()->fireball = 1;
 	fireball = constructor(sizeof(t_fireball));
 	fireball->type = FIREBALL;
 	fireball->update = __fireball_mov;

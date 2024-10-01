@@ -6,7 +6,7 @@ void	__key_events();
 void	__render_game();
 void	__add_obj(t_object *o);
 void	__update_game();
-int	__obj_colision(t_pos_vector pos, int *list);
+t_object	*__obj_colision(t_pos_vector pos, t_type *list);
 
 static void	__destroy_game(void)
 {

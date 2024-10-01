@@ -1,5 +1,4 @@
 #include "../../../headers/header.h"
-#include <math.h>
 #include <time.h>
 
 #ifndef PLAYER_SPEED
@@ -84,15 +83,24 @@ static void	__player_mouse()
 		game()->add_obj(new_fireball(vec));
 }
 
+// TODO: GAME OVER
+static void	__player_update()
+{
+	if (game()->player->hp <= 0)
+		printf("YOU DEAD\n");
+}
+
 t_object	*new_player(float x, float y)
 {
 	t_player	*player;
 
 	player = constructor(sizeof(t_player));
+	player->hp = 100;
 	player->type = PLAYER;
 	player->sprite = canva()->load_img("textures/player.xpm");
 	player->func_keys = __player_keys;
 	player->func_mouse = __player_mouse;
+	player->update = __player_update;
 	player->pos.w = canva()->scale_factor_e;
 	player->pos.h = canva()->scale_factor_e;
 	player->pos.x = x;
