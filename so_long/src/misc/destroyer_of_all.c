@@ -5,5 +5,5 @@ void	harbinger_of_chaos(void)
 	canva()->destroy();
 	game()->destructor();
 	engine()->destroy();
-	exit(1);
+	exit(0);
 }

@@ -21,7 +21,6 @@ static void	__clear_wall()
 	e = (t_enemy *)fthis()->object;
 	if (!__check_wall(e, __calc_vec(e, &dummy)))
 	{
-		printf("HALLO\n");
 		return (e->update = __update_enemy, (void)7);
 	}
 	if (!flag)

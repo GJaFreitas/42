@@ -30,7 +30,6 @@ void	__get_vec(t_enemy *e, t_pos_vector *vec)
 	__calc_vec(e, vec);
 	x = __collision_check_x(e->pos, ENEMY_SPEED * (vec->x / f_abs(vec->x)));
 	y = __collision_check_y(e->pos, ENEMY_SPEED * (vec->y / f_abs(vec->y)));
-	printf("NEW VEC, x = %d y = %d\n", x, y);
 	if (x && y)
 	{
 		__new_vec(vec);
