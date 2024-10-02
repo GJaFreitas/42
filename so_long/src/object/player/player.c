@@ -131,11 +131,10 @@ static void	__player_mouse()
 		__mouse_right();
 }
 
-// TODO: GAME OVER
 static void	__player_update()
 {
 	if (game()->player->hp <= 0)
-		printf("YOU DEAD\n");
+		harbinger_of_chaos();
 }
 
 t_object	*new_player(float x, float y)

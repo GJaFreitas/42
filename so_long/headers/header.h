@@ -53,6 +53,7 @@ int		rng(int lowerbound, int upperbound);
 int		out_of_bounds(t_pos_vector pos);
 void		count_overall(t_type type);
 int		count_obj(t_type type);
+void		game_over(void);
 //	******************
 
 //	Math
