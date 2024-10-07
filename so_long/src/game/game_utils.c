@@ -11,11 +11,7 @@ void	__add_obj(t_object *o)
 	if (o->func_mouse != NULL)
 		vector(game()->mouse)->add(o);
 	if (o->render != NULL)
-	{
 		vector(game()->to_render)->add(o);
-		// TODO: Not sure about this line here
-		vector(game()->to_render)->sort();
-	}
 	if (o->update != NULL)
 		vector(game()->to_update)->add(o);
 }

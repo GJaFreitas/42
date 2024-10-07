@@ -4,8 +4,6 @@
 # define ENEMY_SPEED 4
 #endif
 
-int	__collision_check_x(t_pos_vector pos, int mov);
-int	__collision_check_y(t_pos_vector pos, int mov);
 void	__calc_vec(t_enemy *e, t_pos_vector *vec);
 
 static void	__new_vec(t_pos_vector *vec)
@@ -28,8 +26,8 @@ void	__get_vec(t_enemy *e, t_pos_vector *vec)
 	int	y;
 
 	__calc_vec(e, vec);
-	x = __collision_check_x(e->pos, ENEMY_SPEED * (vec->x / f_abs(vec->x)));
-	y = __collision_check_y(e->pos, ENEMY_SPEED * (vec->y / f_abs(vec->y)));
+	x = collision_check_x(e->pos, ENEMY_SPEED * (vec->x / f_abs(vec->x)));
+	y = collision_check_y(e->pos, ENEMY_SPEED * (vec->y / f_abs(vec->y)));
 	if (x && y)
 	{
 		__new_vec(vec);

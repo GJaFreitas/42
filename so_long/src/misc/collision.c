@@ -17,3 +17,19 @@ int	out_of_bounds(t_pos_vector pos)
 	return ((pos.x > WIDTH || pos.x < 0)
 	|| (pos.y > HEIGHT || pos.y < 0));
 }
+
+int	collision_check_y(t_pos_vector pos, int mov)
+{
+	return (!game()->walls[(int)pos.y + mov][(int)pos.x]\
+	&& !game()->walls[(int)(pos.y + mov)][(int)(pos.x + pos.w)]\
+	&& !game()->walls[(int)(pos.y + pos.h + mov)][(int)(pos.x + pos.w)]\
+	&& !game()->walls[(int)(pos.y + pos.h + mov)][(int)(pos.x)]);
+}
+
+int	collision_check_x(t_pos_vector pos, int mov)
+{
+	return (!game()->walls[(int)pos.y][(int)pos.x + mov]\
+	&& !game()->walls[(int)(pos.y)][(int)(pos.x + pos.w + mov)]\
+	&& !game()->walls[(int)(pos.y + pos.h)][(int)(pos.x + pos.w + mov)]\
+	&& !game()->walls[(int)(pos.y + pos.h)][(int)(pos.x + mov)]);
+}

@@ -38,6 +38,7 @@
 # include "canva.h"
 # include "this.h"
 # include "map.h"
+# include "grid.h"
 
 //	Memory manipulation
 void		*malloc_safe(size_t __size);
@@ -49,6 +50,8 @@ void		harbinger_of_chaos(void);
 void		fadeout(void);
 int		game_loop(void);
 int		collides(t_pos_vector pos1, t_pos_vector pos2);
+int		collision_check_y(t_pos_vector pos, int mov);
+int		collision_check_x(t_pos_vector pos, int mov);
 int		rng(int lowerbound, int upperbound);
 int		out_of_bounds(t_pos_vector pos);
 void		count_overall(t_type type);

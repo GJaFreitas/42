@@ -7,8 +7,6 @@
 t_pos_vector	__calc_vec(t_enemy *e, t_pos_vector *vec);
 void	__get_vec(t_enemy *e, t_pos_vector *vec);
 int	__check_wall(t_enemy *e, t_pos_vector vec);
-int	__collision_check_x(t_pos_vector pos, int mov);
-int	__collision_check_y(t_pos_vector pos, int mov);
 static void	__update_enemy();
 
 static void	__clear_wall()
@@ -56,10 +54,15 @@ static void	__update_enemy()
 		return (vector(game()->to_remove)->add(e), (void)69);
 	if (__cooldown(&init, clock()) && game()->obj_colision(e->pos, (t_type[]){PLAYER, 0}))
 		game()->player->hp -= 25;
+	printf("Enemy grid pos x: %.2f, y: %.2f\n", grid()->nodeFromPos(e->pos)->pos.x, grid()->nodeFromPos(e->pos)->pos.y);
+	(void)vec;
+	__clear_wall();
+	/*
 	if (__check_wall(e, __calc_vec(e, &vec)))
 		return (e->update = __clear_wall, (void)7);
 	e->pos.x -= vec.x;
 	e->pos.y -= vec.y;
+	*/
 }
 
 t_object	*new_enemy(float x, float y)

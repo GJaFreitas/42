@@ -49,9 +49,8 @@ static void	__start_the_show(void)
 	{
 		game()->maps[0] = new_map(engine()->argv[1]);
 		game()->add_obj((t_object*)game()->maps[0]);
+		newGrid();
 	}
-	// TODO: If i decide to keep the sorting every new object thing this goes
-	vector(game()->to_render)->sort();
 }
 
 void	start_game(void)

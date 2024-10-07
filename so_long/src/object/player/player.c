@@ -9,58 +9,35 @@
 #ifndef FIREBALL_COOLDOWN
 #define FIREBALL_COOLDOWN 1
 #endif
-#ifndef DASH_COOLDOWN
-#define DASH_COOLDOWN 0.5
-#endif
-#ifndef DASH_DISTANCE
-#define DASH_DISTANCE 15
-#endif
-
-static int	__collision_check_y(t_pos_vector pos, int mov)
-{
-	return (!game()->walls[(int)pos.y + mov][(int)pos.x]\
-	&& !game()->walls[(int)(pos.y + mov)][(int)(pos.x + pos.w)]\
-	&& !game()->walls[(int)(pos.y + pos.h + mov)][(int)(pos.x + pos.w)]\
-	&& !game()->walls[(int)(pos.y + pos.h + mov)][(int)(pos.x)]);
-}
-
-static int	__collision_check_x(t_pos_vector pos, int mov)
-{
-	return (!game()->walls[(int)pos.y][(int)pos.x + mov]\
-	&& !game()->walls[(int)(pos.y)][(int)(pos.x + pos.w + mov)]\
-	&& !game()->walls[(int)(pos.y + pos.h)][(int)(pos.x + pos.w + mov)]\
-	&& !game()->walls[(int)(pos.y + pos.h)][(int)(pos.x + mov)]);
-}
 
 static void	__player_keys(byte *keys)
 {
 	t_pos_vector	pos;
 
 	pos = fthis()->object->pos;
-	if (keys[XK_w] && __collision_check_y(pos, -PLAYER_SPEED))
+	if (keys[XK_w] && collision_check_y(pos, -PLAYER_SPEED))
 	{
 		fthis()->object->pos.y -= PLAYER_SPEED;
 		game()->moves++;
 	}
-	if (keys[XK_a] && __collision_check_x(pos, -PLAYER_SPEED))
+	if (keys[XK_a] && collision_check_x(pos, -PLAYER_SPEED))
 	{
 		fthis()->object->pos.x -= PLAYER_SPEED;
 		game()->moves++;
 	}
-	if (keys[XK_s] && __collision_check_y(pos, PLAYER_SPEED))
+	if (keys[XK_s] && collision_check_y(pos, PLAYER_SPEED))
 	{
 		fthis()->object->pos.y += PLAYER_SPEED;
 		game()->moves++;
 	}
-	if (keys[XK_d] && __collision_check_x(pos, PLAYER_SPEED))
+	if (keys[XK_d] && collision_check_x(pos, PLAYER_SPEED))
 	{
 		fthis()->object->pos.x += PLAYER_SPEED;
 		game()->moves++;
 	}
 }
 
-
-static int	__cooldown(clock_t *last, clock_t current, float cooldown)
+int	__cooldown(clock_t *last, clock_t current, float cooldown)
 {
 	double		time_past;
 
@@ -88,53 +65,22 @@ void	__mouse_left()
 		game()->add_obj(new_fireball(vec));
 }
 
-int	__dash_check(t_pos_vector vec, int mult)
-{
-	if (__collision_check_x(game()->player->pos, vec.x * mult)\
-	&& __collision_check_y(game()->player->pos, vec.y * mult))
-		return (1);
-	return (0);
-}
+void	__mouse_right();
 
-void	__dash(t_pos_vector vec)
-{
-	t_player	*p;
-	int		i;
-
-	p = game()->player;
-	i = DASH_DISTANCE;
-	while (__dash_check(vec, -(i--)))
-		;
-	p->pos.x -= vec.x * i;
-	p->pos.y -= vec.y * i;
-}
-
-void	__mouse_right()
-{
-	static clock_t	init;
-	t_pos_vector 	vec;
-
-	vec.x = engine()->mouse.x - game()->player->pos.x;
-	vec.y = engine()->mouse.y - game()->player->pos.y;
-	__vec_normalization(&vec.x, &vec.y);
-	if (__cooldown(&init, clock(), DASH_COOLDOWN))
-		__dash(vec);
-}
-
-// 1 - left click
-// 3 - right click
 static void	__player_mouse()
 {
 	if (engine()->mouse_press == 1)
 		__mouse_left();
 	else if (engine()->mouse_press == 3)
-		__mouse_right();
+		return ;
+		//__mouse_right();
 }
 
 static void	__player_update()
 {
 	if (game()->player->hp <= 0)
 		harbinger_of_chaos();
+	printf("player grid pos x: %.2f, y: %.2f\n", grid()->nodeFromPos(fthis()->object->pos)->pos.x, grid()->nodeFromPos(fthis()->object->pos)->pos.y);
 }
 
 t_object	*new_player(float x, float y)
