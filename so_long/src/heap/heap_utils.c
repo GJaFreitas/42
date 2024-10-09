@@ -17,14 +17,11 @@ void	__sort_down(t_item item, t_heap *heap)
 	if (!heap)
 		return ;
 	parentIndex = (item.index - 1) / 2;
-	while (1)
+	parentItem = heap->items[parentIndex];
+	if (heap->compare(item, parentItem, heap->sortFunc) < 0)
 	{
-		parentItem = heap->items[parentIndex];
-		if (heap->compare(item, parentItem, heap->sortFunc) < 0)
-		{
-			heap->swap(&item, &parentItem);
-			heap->sortUp(heap->items[parentIndex], heap);
-		}
+		heap->swap(&item, &parentItem);
+		heap->sortDown(heap->items[parentIndex], heap);
 	}
 }
 
@@ -36,14 +33,11 @@ void	__sort_up(t_item item, t_heap *heap)
 	if (!heap)
 		return ;
 	parentIndex = (item.index - 1) / 2;
-	while (1)
+	parentItem = heap->items[parentIndex];
+	if (heap->compare(item, parentItem, heap->sortFunc) > 0)
 	{
-		parentItem = heap->items[parentIndex];
-		if (heap->compare(item, parentItem, heap->sortFunc) > 0)
-		{
-			heap->swap(&item, &parentItem);
-			heap->sortUp(heap->items[parentIndex], heap);
-		}
+		heap->swap(&item, &parentItem);
+		heap->sortUp(heap->items[parentIndex], heap);
 	}
 }
 
