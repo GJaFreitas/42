@@ -1,6 +1,6 @@
 #include "../../../headers/header.h"
 
-t_node	*__nodeFromPos(t_pos_vector pos)
+t_gridnode	*__nodeFromPos(t_pos_vector pos)
 {
 	int	x;
 	int	y;

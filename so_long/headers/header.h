@@ -39,6 +39,7 @@
 # include "this.h"
 # include "map.h"
 # include "grid.h"
+# include "heap.h"
 
 //	Memory manipulation
 void		*malloc_safe(size_t __size);

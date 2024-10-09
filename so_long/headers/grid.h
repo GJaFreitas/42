@@ -6,9 +6,9 @@
 typedef unsigned char byte;
 
 typedef struct s_grid t_grid;
-typedef struct s_node t_node;
+typedef struct s_gridnode t_gridnode;
 
-struct s_node
+struct s_gridnode
 {
 	byte		walkable;
 	t_pos_vector	pos;
@@ -16,17 +16,17 @@ struct s_node
 
 struct s_grid
 {
-	t_node		***grid;
+	t_gridnode		***grid;
 	t_pos_vector	mapSize;
 	float		nodeRadius;
 	int		gridSizeX;
 	int		gridSizeY;
 
-	t_node		*(*nodeFromPos)(t_pos_vector pos);
+	t_gridnode		*(*nodeFromPos)(t_pos_vector pos);
 };
 
 t_grid	*grid();
 void	newGrid();
-t_node	*newNode(byte _walkable, t_pos_vector _pos);
+t_gridnode	*newNode(byte _walkable, t_pos_vector _pos);
 
 #endif

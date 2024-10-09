@@ -1,6 +1,6 @@
 #include "../../../headers/header.h"
 
-t_node	*__nodeFromPos(t_pos_vector pos);
+t_gridnode	*__nodeFromPos(t_pos_vector pos);
 
 // Return true if no colision
 byte	__check_wal(int x, int y, float size)
@@ -11,30 +11,30 @@ byte	__check_wal(int x, int y, float size)
 	game()->walls[(int)(x + size)][(int)(y + size)]));
 }
 
-t_node	*newNode(byte _walkable, t_pos_vector _pos)
+t_gridnode	*newNode(byte _walkable, t_pos_vector _pos)
 {
-	t_node	*ret_node;
+	t_gridnode	*ret_gridnode;
 
-	ret_node = malloc_safe(sizeof(t_node));
-	ret_node->walkable = _walkable;
-	ft_memcpy(&ret_node->pos, &_pos, sizeof(t_pos_vector));
-	return (ret_node);
+	ret_gridnode = malloc_safe(sizeof(t_gridnode));
+	ret_gridnode->walkable = _walkable;
+	ft_memcpy(&ret_gridnode->pos, &_pos, sizeof(t_pos_vector));
+	return (ret_gridnode);
 }
 
 // Return a 2D array of node pointers
-t_node	***__create_grid(t_grid s_grid)
+t_gridnode	***__create_grid(t_grid s_grid)
 {
-	t_node	***grid;
+	t_gridnode	***grid;
 	int	y;
 	int	x;
 
 	y = 0;
-	grid = malloc_safe(sizeof(t_node **) * (s_grid.gridSizeY + 1));
-	while (y < s_grid.gridSizeY)
+	grid = malloc_safe(sizeof(t_gridnode **) * (s_grid.gridSizeY + 1));
+	while (y < s_grid.gridSizeX)
 	{
-		grid[y] = malloc_safe(sizeof(t_node *) * (s_grid.gridSizeX + 1));
+		grid[y] = malloc_safe(sizeof(t_gridnode *) * (s_grid.gridSizeX + 1));
 		x = 0;
-		while (x < s_grid.gridSizeX)
+		while (x < s_grid.gridSizeY)
 		{
 			grid[y][x] = newNode(__check_wal(x, y, s_grid.nodeRadius*2), (t_pos_vector){x, y, 0,0});
 			x++;
@@ -43,6 +43,9 @@ t_node	***__create_grid(t_grid s_grid)
 	}
 	return (grid);
 }
+
+// This ↑ function may be a little confusing because of the switched X and Y but that is just bc
+// I was too lazy to actually switch the variables and instead just switched the gridSize one
 
 void	newGrid()
 {

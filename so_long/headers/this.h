@@ -6,6 +6,7 @@
 
 typedef struct s_vector t_vector;
 typedef struct s_object t_object;
+typedef struct s_tree t_tree;
 
 typedef struct s_this t_this;
 
