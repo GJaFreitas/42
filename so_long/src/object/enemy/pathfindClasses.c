@@ -1,6 +1,9 @@
 #include "../../../headers/header.h"
 
 t_gridnode	*__nodeFromPos(t_pos_vector pos);
+t_hashtable	*__populate_table();
+char		*__get_key(t_gridnode *node);
+t_list		*__get_neighbours(t_gridnode *node);
 
 // Return true if no colision
 byte	__check_wal(int x, int y, float size)
@@ -11,12 +14,14 @@ byte	__check_wal(int x, int y, float size)
 	game()->walls[(int)(x + size)][(int)(y + size)]));
 }
 
-t_gridnode	*newNode(byte _walkable, t_pos_vector _pos)
+t_gridnode	*newNode(byte _walkable, t_pos_vector _pos, int gridX, int gridY)
 {
 	t_gridnode	*ret_gridnode;
 
 	ret_gridnode = malloc_safe(sizeof(t_gridnode));
 	ret_gridnode->walkable = _walkable;
+	ret_gridnode->gridX = gridX;
+	ret_gridnode->gridY = gridY;
 	ft_memcpy(&ret_gridnode->pos, &_pos, sizeof(t_pos_vector));
 	return (ret_gridnode);
 }
@@ -36,7 +41,8 @@ t_gridnode	***__create_grid(t_grid s_grid)
 		x = 0;
 		while (x < s_grid.gridSizeY)
 		{
-			grid[y][x] = newNode(__check_wal(x, y, s_grid.nodeRadius*2), (t_pos_vector){x, y, 0,0});
+			grid[y][x] = newNode(__check_wal(x, y, s_grid.nodeRadius*2),\
+			(t_pos_vector){x, y, 0,0}, x, y);
 			x++;
 		}
 		y++;
@@ -53,6 +59,8 @@ void	newGrid()
 	grid()->gridSizeX = (int)(WIDTH / (grid()->nodeRadius * 2));
 	grid()->gridSizeY = (int)(HEIGHT / (grid()->nodeRadius * 2));
 	grid()->grid = __create_grid(*(grid()));
+	grid()->key = __get_key;
+	grid()->get_neighbours = __get_neighbours;
 }
 
 t_grid	*grid()

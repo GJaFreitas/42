@@ -15,3 +15,8 @@ void	__for_each(void (*fun)(t_item *), t_heap *heap)
 	while (index < heap->itemCount)
 		fun(&heap->items[index++]);
 }
+
+void	*__heap_pop_first(t_heap *heap)
+{
+	return (heap->remove(heap->items[0], heap);
+}

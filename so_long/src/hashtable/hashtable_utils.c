@@ -1,12 +1,4 @@
 #include "../../headers/header.h"
-#include <stdint.h>
-
-/*
-	void	(*insert)(const char *key, void *value, t_hashtable *self);
-	void	(*destroy)(t_hashtable *self);
-	void	(*remove)(const char *key, t_hashtable *self);
-	void	(*lookup)(const char *key, t_hashtable *self);
-*/
 
 int	__insert(const char *key, void *value, t_hashtable *self)
 {
@@ -15,7 +7,7 @@ int	__insert(const char *key, void *value, t_hashtable *self)
 
 	if (!key || !value || !self)
 		return (0);
-	index = self->hashf(key);
+	index = hti(self, key);
 	if (self->lookup(key, self) != NULL)
 		return (0);
 	e = malloc_safe(sizeof(t_entry));
@@ -31,7 +23,7 @@ void	*__lookup(const char *key, t_hashtable *self)
 
 	if (!key || !self)
 		return (NULL);
-	tmp = self->elements[self->hashf(key)];
+	tmp = self->elements[hti(self, key)];
 	while (tmp && ft_strncmp(key, tmp->key, 128))
 		tmp = tmp->next;
 	if (!tmp)
@@ -47,7 +39,7 @@ void	__remove(const char *key, t_hashtable *self)
 
 	if (!key || !self)
 		return ;
-	index = self->hashf(key);
+	index = hti(self, key);
 	tmp = self->elements[index];
 	prev = NULL;
 	while (tmp && ft_strncmp(key, tmp->key, 128))
@@ -62,6 +54,7 @@ void	__remove(const char *key, t_hashtable *self)
 	else
 		prev->next = tmp->next;
 	free(tmp->value);
+	free(tmp->key);
 	free(tmp);
 }
 
@@ -74,7 +67,7 @@ void	*__pull_out(const char *key, t_hashtable *self)
 
 	if (!key || !self)
 		return (NULL);
-	index = self->hashf(key);
+	index = hti(self, key);
 	tmp = self->elements[index];
 	prev = NULL;
 	while (tmp && ft_strncmp(key, tmp->key, 128))
@@ -89,6 +82,7 @@ void	*__pull_out(const char *key, t_hashtable *self)
 	else
 		prev->next = tmp->next;
 	ret = tmp->value;
+	free(tmp->key);
 	free(tmp);
 	return (ret);
 }
@@ -110,6 +104,7 @@ void	__destroy(t_hashtable *self, void (*boom)(void *))
 			boom(tmp->value);
 			prev = tmp;
 			tmp = tmp->next;
+			free(prev->key);
 			free(prev);
 		}
 		i++;

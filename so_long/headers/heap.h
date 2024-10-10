@@ -17,7 +17,8 @@ struct s_heap
 	t_item	items[HEAP_SIZE];
 	int		itemCount;
 	void	(*add)(void *value, t_heap *heap);
-	void	(*remove)(t_item item, t_heap *heap);
+	void	*(*remove)(t_item item, t_heap *heap);
+	void	*(*pop)(t_heap *heap);
 	void	(*sortUp)(t_item item, t_heap *heap);
 	void	(*sortDown)(t_item item, t_heap *heap);
 	void	(*swap)(t_item *item1, t_item *item2);

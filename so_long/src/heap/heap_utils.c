@@ -51,14 +51,16 @@ void	__heap_add(void *value, t_heap *heap)
 	heap->itemCount++;
 }
 
-void	__heap_remove(t_item item, t_heap *heap)
+void	*__heap_remove(t_item item, t_heap *heap)
 {
+	void	*ret;
 	int	index;
 
 	if (!heap)
-		return ;
+		return (NULL);
 	index = item.index;
-	free(heap->items[item.index].value);
+	ret = heap->items[index].value;
 	heap->swap(&item, &heap->items[heap->itemCount]);
 	heap->sortDown(heap->items[index], heap);
+	return (ret);
 }
