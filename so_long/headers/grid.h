@@ -2,6 +2,7 @@
 #define GRID_H
 
 #include "hashtable.h"
+#include "heap.h"
 #include "helper_structs.h"
 #include "../libs/libft/libft.h"
 
@@ -9,6 +10,16 @@ typedef unsigned char byte;
 
 typedef struct s_grid t_grid;
 typedef struct s_gridnode t_gridnode;
+typedef struct s_astar t_astar;
+
+struct s_astar
+{
+	t_heap		*openSet;
+	t_hashtable	*closedSet;
+	t_gridnode	*startNode;
+	t_gridnode	*targetNode;
+	t_list		*neighbours;
+};
 
 struct s_gridnode
 {

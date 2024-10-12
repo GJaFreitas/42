@@ -27,4 +27,6 @@ struct s_heap
 	int	(*sortFunc)(void *, void *);
 };
 
+t_heap	*new_heap(int (*sortFunc)(void *, void *));
+
 #endif

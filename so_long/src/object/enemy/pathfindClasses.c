@@ -59,13 +59,12 @@ void	newGrid()
 	grid()->gridSizeX = (int)(WIDTH / (grid()->nodeRadius * 2));
 	grid()->gridSizeY = (int)(HEIGHT / (grid()->nodeRadius * 2));
 	grid()->grid = __create_grid(*(grid()));
-	grid()->key = __get_key;
-	grid()->get_neighbours = __get_neighbours;
 }
 
 t_grid	*grid()
 {
-	static t_grid	grid = {0,{0,0,0,0},0,0,0,__nodeFromPos};
+	static t_grid	grid = {0,{0,0,0,0},0,0,0,\
+		__nodeFromPos,__get_neighbours,__get_key};
 
 	return (&grid);
 }
