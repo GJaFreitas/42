@@ -22,6 +22,7 @@ t_gridnode	*newNode(byte _walkable, t_pos_vector _pos, int gridX, int gridY)
 	ret_gridnode->walkable = _walkable;
 	ret_gridnode->gridX = gridX;
 	ret_gridnode->gridY = gridY;
+	ret_gridnode->key = grid()->key(ret_gridnode);
 	ft_memcpy(&ret_gridnode->pos, &_pos, sizeof(t_pos_vector));
 	return (ret_gridnode);
 }

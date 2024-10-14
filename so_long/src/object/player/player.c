@@ -80,7 +80,6 @@ static void	__player_update()
 {
 	if (game()->player->hp <= 0)
 		harbinger_of_chaos();
-	printf("player grid pos x: %.2f, y: %.2f\n", grid()->nodeFromPos(fthis()->object->pos)->pos.x, grid()->nodeFromPos(fthis()->object->pos)->pos.y);
 }
 
 t_object	*new_player(float x, float y)

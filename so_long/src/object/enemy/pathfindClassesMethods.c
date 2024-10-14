@@ -27,7 +27,7 @@ t_list	*__get_neighbours(t_gridnode *node)
 		while (y <= 1)
 		{
 			if (!x && !y)
-				continue ;
+				break ;
 			if (node->gridX + x >= 0 && node->gridX + x < grid()->gridSizeX
 			&& node->gridY + y >= 0 && node->gridY + y < grid()->gridSizeY)
 				ft_lstadd_front(&n, ft_lstnew(grid()->grid[node->gridX + x][node->gridY + y]));

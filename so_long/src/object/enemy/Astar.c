@@ -19,28 +19,34 @@ static void	__init_astar(t_astar *astar, t_pos_vector start, t_pos_vector target
 	astar->openSet->add(astar->startNode, astar->openSet);
 }
 
-// recursive list transversaltransversal
 static void	foreach(t_gridnode *current, t_list *list, t_astar *astar) 
 {
 	t_gridnode	*neighbour;
 	int		newCostToNeighbour;
 
-	while (list && (!((t_gridnode*)(list->content))->walkable\
-	|| astar->closedSet->contains(list->content, astar->closedSet)))
-		list = list->next;
-	if (!list)
-		return ;
-	neighbour = list->content;
-	newCostToNeighbour = current->gcost + get_distance(current->pos, neighbour->pos);
-	if (newCostToNeighbour < neighbour->gcost\
-	|| astar->openSet->contains(neighbour, astar->openSet))
+	while (list)
 	{
-		neighbour = __cost(neighbour, *astar);
-		neighbour->parent = current;
-		if (!astar->openSet->contains(neighbour, astar->openSet))
-			astar->openSet->add(neighbour, astar->openSet);
+		neighbour = list->content;
+		while (list && (!neighbour->walkable\
+			|| astar->closedSet->contains(neighbour->key, astar->closedSet)))
+		{
+			list = list->next;
+			neighbour = list->content;
+		}
+		if (!list)
+			return ;
+		neighbour = list->content;
+		newCostToNeighbour = current->gcost + get_distance(current->pos, neighbour->pos);
+		if (newCostToNeighbour < neighbour->gcost\
+			|| astar->openSet->contains(neighbour, astar->openSet))
+		{
+			neighbour = __cost(neighbour, *astar);
+			neighbour->parent = current;
+			if (!astar->openSet->contains(neighbour, astar->openSet))
+				astar->openSet->add(neighbour, astar->openSet);
+		}
+		list = list->next;
 	}
-	foreach(current, list, astar);
 }
 
 t_list	*retrace_path(t_gridnode *start, t_gridnode *target)
@@ -66,13 +72,13 @@ t_list	*astar(t_pos_vector start, t_pos_vector target)
 	while (astar.openSet->itemCount > 0)
 	{
 		current = __cost(astar.openSet->pop(astar.openSet), astar);
-		astar.closedSet->insert(grid()->key(current), current, astar.closedSet);
+		astar.closedSet->insert(current->key, current, astar.closedSet);
 		if (current == astar.targetNode)
 			return (retrace_path(astar.startNode, astar.targetNode));
 		astar.neighbours = grid()->get_neighbours(current);
 		foreach(current, astar.neighbours, &astar);
+		ft_lstclear(&astar.neighbours, placebo);
 	}
-	ft_lstclear(&astar.neighbours, placebo);
 	astar.openSet->destroy(astar.openSet);
 	astar.closedSet->destroy(astar.closedSet, placebo);
 	return (retrace_path(astar.startNode, astar.targetNode));
