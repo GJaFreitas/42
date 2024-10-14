@@ -4,13 +4,14 @@
 # define ENEMY_SPEED 4
 #endif
 
-void	__calc_vec(t_enemy *e, t_pos_vector *vec)
+t_pos_vector	__calc_vec(t_enemy *e, t_pos_vector *vec)
 {
-	vec->x = e->pos.x - game()->player->pos.x;
-	vec->y = e->pos.y - game()->player->pos.y;
+	t_pos_vector	direction;
+
+	direction.x = e->pos.x - vec->x;
+	direction.y = e->pos.y - vec->y;
 	__vec_normalization(&vec->x, &vec->y);
-	vec->x *= ENEMY_SPEED;
-	vec->y *= ENEMY_SPEED;
+	return (direction);
 }
 
 // Ret 1 if there is a colision with a wall

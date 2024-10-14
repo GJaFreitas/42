@@ -25,6 +25,7 @@ struct s_hashtable
 	void	(*destroy)(t_hashtable *self, void (*f)(void *));
 	void	(*remove)(const char *key, t_hashtable *self);
 	void	*(*lookup)(const char *key, t_hashtable *self);
+	int	(*contains)(const char *key, t_hashtable *self);
 	void	*(*pop)(const char *key, t_hashtable *self);
 };
 

@@ -68,6 +68,7 @@ struct s_game
 	t_map				*maps[128];
 	byte				walls[1080][1920];
 	int				moves;
+	byte				goodbye;
 	void			(*add_obj)(t_object *o);
 	void			(*rm_obj)();
 	t_object		*(*obj_colision)(t_pos_vector pos, t_type *list);

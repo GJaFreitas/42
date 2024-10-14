@@ -30,6 +30,7 @@ struct s_gridnode
 	int		gridX;
 	int		gridY;
 	t_pos_vector	pos;
+	t_gridnode	*parent;
 };
 
 struct s_grid

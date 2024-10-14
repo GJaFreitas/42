@@ -6,8 +6,10 @@ void	__heap_add(void *value, t_heap *heap);
 void	*__heap_remove(t_item item, t_heap *heap);
 void	__swap(t_item *item1, t_item *item2);
 int	__compare(t_item item1, t_item item2, int (*compare)(void *, void *));
-void	__for_each(void (*fun)(t_item *), t_heap *heap);
+void	__for_each(void (*fun)(t_item *, void *), void *v, t_heap *heap);
 void	*__heap_pop_first(t_heap *heap);
+int	__contains_heap(void *value, t_heap *heap);
+void	__destroy_heap(t_heap *heap);
 
 t_heap	*new_heap(int (*sortFunc)(void *, void *))
 {
@@ -23,5 +25,7 @@ t_heap	*new_heap(int (*sortFunc)(void *, void *))
 	heap->swap = __swap;
 	heap->compare = __compare;
 	heap->forEach = __for_each;
+	heap->contains = __contains_heap;
+	heap->destroy = __destroy_heap;
 	return (heap);
 }

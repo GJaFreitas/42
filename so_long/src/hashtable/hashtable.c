@@ -5,6 +5,7 @@ void	*__lookup(const char *key, t_hashtable *self);
 void	__remove(const char *key, t_hashtable *self);
 void	*__pull_out(const char *key, t_hashtable *self);
 void	__destroy(t_hashtable *self, void (*boom)(void *));
+int	__contains(const char *key, t_hashtable *self);
 
 // No this isnt an iterator its the hashtable index
 unsigned long	hti(t_hashtable *ht, const char *key)
@@ -43,6 +44,7 @@ t_hashtable	*new_hashtable(unsigned long size)
 	table->elements = malloc_safe(sizeof(t_entry *) * size);
 	table->insert = __insert;
 	table->lookup = __lookup;
+	table->contains = __contains;
 	table->pop = __pull_out;
 	table->remove = __remove;
 	table->destroy = __destroy;

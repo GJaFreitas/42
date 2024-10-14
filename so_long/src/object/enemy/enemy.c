@@ -7,26 +7,7 @@
 t_pos_vector	__calc_vec(t_enemy *e, t_pos_vector *vec);
 void	__get_vec(t_enemy *e, t_pos_vector *vec);
 int	__check_wall(t_enemy *e, t_pos_vector vec);
-static void	__update_enemy();
-
-static void	__clear_wall()
-{
-	t_pos_vector		dummy;
-	static t_pos_vector	vec;
-	static int		flag;
-	t_enemy			*e;
-
-	e = (t_enemy *)fthis()->object;
-	if (!__check_wall(e, __calc_vec(e, &dummy)))
-	{
-		return (e->update = __update_enemy, (void)7);
-	}
-	if (!flag)
-		__get_vec(e, &vec);
-	flag = 1;
-	e->pos.x -= vec.x;
-	e->pos.y -= vec.y;
-}
+t_list	*astar(t_pos_vector start, t_pos_vector target);
 
 static int	__cooldown(clock_t *last, clock_t current)
 {
@@ -41,28 +22,68 @@ static int	__cooldown(clock_t *last, clock_t current)
 	return (0);
 }
 
-// Pathfinding and attacking
-static void	__update_enemy()
+static void	walk_path(t_list **path, t_enemy *e)
 {
-	static clock_t	init;
-	t_enemy		*e;
-	t_pos_vector	vec;
+	t_list		*temp;
+	t_pos_vector 	direction;
+	t_gridnode	*node;
 
-	vec = (t_pos_vector){0, 0, 0, 0};
+
+	if (!path || !(*path) || !e)
+		return ;
+	node = (*path)->content;
+	direction = __calc_vec(e, &node->pos);
+	e->pos.x -= direction.x * ENEMY_SPEED;
+	e->pos.y -= direction.y * ENEMY_SPEED;
+	temp = (*path);
+	*path = (*path)->next;
+	free(temp);
+}
+
+void	placebo(void *p)
+{
+	(void)p;
+	return ;
+}
+
+// Pathfinding and attacking
+static void	__update_enemy(void)
+{
+	static	t_list	*path;
+	static	int	check = 10;
+	static	clock_t	init;
+	t_enemy		*e;
+
 	e = (t_enemy *)fthis()->object;
 	if (e->hp <= 0)
 		return (vector(game()->to_remove)->add(e), (void)69);
 	if (__cooldown(&init, clock()) && game()->obj_colision(e->pos, (t_type[]){PLAYER, 0}))
 		game()->player->hp -= 25;
-	printf("Enemy grid pos x: %.2f, y: %.2f\n", grid()->nodeFromPos(e->pos)->pos.x, grid()->nodeFromPos(e->pos)->pos.y);
-	(void)vec;
-	__clear_wall();
-	/*
-	if (__check_wall(e, __calc_vec(e, &vec)))
-		return (e->update = __clear_wall, (void)7);
-	e->pos.x -= vec.x;
-	e->pos.y -= vec.y;
-	*/
+	if (check == 10 || check == 0)
+	{
+		ft_lstclear(&path, placebo);
+		path = astar(e->pos, game()->player->pos);
+		check = 10;
+	}
+	else
+	{
+		walk_path(&path, e);
+		check--;
+	}
+	if (game()->goodbye || e->hp == 515)
+		ft_lstclear(&path, placebo);
+}
+
+static void	__destructor_enemy(void)
+{
+	t_enemy	*enemy;
+
+	enemy = (t_enemy*)fthis()->object;
+	mlx_destroy_image(engine()->mlx,
+		   enemy->sprite->img);
+	free(enemy->get_sprite());
+	enemy->hp = 515;
+	__update_enemy();
 }
 
 t_object	*new_enemy(float x, float y)
@@ -78,5 +99,6 @@ t_object	*new_enemy(float x, float y)
 	enemy->pos.x = x * canva()->scale_factor;
 	enemy->pos.y = y * canva()->scale_factor;
 	enemy->update = __update_enemy;
+	enemy->destructor = __destructor_enemy;
 	return (object((t_object*)enemy));
 }
