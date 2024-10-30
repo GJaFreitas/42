@@ -1,5 +1,13 @@
 #include "../../headers/header.h"
 
+/*
+	*
+	* Can't believe how much i was humbled by this, not only because whoever thought
+	* of this implementation is a goddamn genius but also because of how hard it was
+	* to replicate. And here i thought i was good with pointers.
+	*
+*/
+
 void	__swap(t_item *item1, t_item *item2)
 {
 	void	*temp;
@@ -11,17 +19,26 @@ void	__swap(t_item *item1, t_item *item2)
 
 void	__sort_down(t_item item, t_heap *heap)
 {
-	t_item	parentItem;
-	int	parentIndex;
+	t_item	leftChild;
+	t_item	rightChild;
+	int	rightIndex;
+	int	leftIndex;
 
 	if (!heap)
 		return ;
-	parentIndex = (item.index - 1) / 2;
-	parentItem = heap->items[parentIndex];
-	if (heap->compare(item, parentItem, heap->sortFunc) < 0)
+	rightIndex = 2 * (item.index + 2);
+	rightChild = heap->items[rightIndex];
+	leftIndex = 2 * (item.index + 1);
+	leftChild = heap->items[leftIndex];
+	if (heap->compare(item, leftChild, heap->sortFunc) < 0)
 	{
-		heap->swap(&item, &parentItem);
-		heap->sortDown(heap->items[parentIndex], heap);
+		heap->swap(&heap->items[item.index], &leftChild);
+		heap->sortDown(heap->items[leftIndex], heap);
+	}
+	else if (heap->compare(item, rightChild, heap->sortFunc) < 0)
+	{
+		heap->swap(&heap->items[item.index], &rightChild);
+		heap->sortDown(heap->items[rightIndex], heap);
 	}
 }
 
@@ -51,17 +68,17 @@ void	__heap_add(void *value, t_heap *heap)
 	heap->itemCount++;
 }
 
-void	*__heap_remove(t_item item, t_heap *heap)
+void	*__heap_remove(t_item *item, t_heap *heap)
 {
 	void	*ret;
 	int	index;
 
-	printf("X: %.2f, Y: %.2f\n", ((t_gridnode *)item.value)->pos.x, ((t_gridnode *)item.value)->pos.y);
+	printf("X: %.2f, Y: %.2f\n", ((t_gridnode *)item->value)->pos.x, ((t_gridnode *)item->value)->pos.y);
 	if (!heap)
 		return (NULL);
-	index = item.index;
+	index = item->index;
 	ret = heap->items[index].value;
-	heap->swap(&item, &heap->items[heap->itemCount]);
+	heap->swap(item, &heap->items[heap->itemCount]);
 	heap->sortDown(heap->items[index], heap);
 	return (ret);
 }

@@ -62,7 +62,6 @@ static void	__update_enemy(void)
 	if (check == 10 || check == 0)
 	{
 		ft_lstclear(&path, placebo);
-		printf("Astar\n");
 		path = astar(e->pos, game()->player->pos);
 		check = 10;
 	}

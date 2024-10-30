@@ -3,7 +3,7 @@
 void	__sort_down(t_item item, t_heap *heap);
 void	__sort_up(t_item item, t_heap *heap);
 void	__heap_add(void *value, t_heap *heap);
-void	*__heap_remove(t_item item, t_heap *heap);
+void	*__heap_remove(t_item *item, t_heap *heap);
 void	__swap(t_item *item1, t_item *item2);
 int	__compare(t_item item1, t_item item2, int (*compare)(void *, void *));
 void	__for_each(void (*fun)(t_item *, void *), void *v, t_heap *heap);

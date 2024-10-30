@@ -18,7 +18,7 @@ void	__for_each(void (*fun)(t_item *, void *), void *v, t_heap *heap)
 
 void	*__heap_pop_first(t_heap *heap)
 {
-	return (heap->remove(heap->items[0], heap));
+	return (heap->remove(&heap->items[0], heap));
 }
 
 int	__contains_heap(void *value, t_heap *heap)

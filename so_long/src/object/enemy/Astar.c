@@ -9,23 +9,6 @@ int	__compare_func(void *node1, void *node2)
 	return (((t_gridnode*)node1)->fcost - ((t_gridnode*)node2)->fcost);
 }
 
-void	__lstclear(t_list **head)
-{
-	t_list	*current;
-	t_list	*prev;
-
-	if (!head)
-		return ;
-	current = *head;
-	while (current)
-	{
-		prev = current;
-		current = current->next;
-		free(prev);
-	}
-	head = NULL;
-}
-
 static void	__init_astar(t_astar *astar, t_pos_vector start, t_pos_vector target)
 {
 	ft_bzero(astar, sizeof(t_astar));
@@ -37,7 +20,7 @@ static void	__init_astar(t_astar *astar, t_pos_vector start, t_pos_vector target
 	astar->openSet->add(astar->startNode, astar->openSet);
 }
 
-static void	foreach(t_gridnode *current,  t_astar *astar) 
+static void	foreach(t_gridnode *current, t_astar *astar) 
 {
 	t_gridnode	*neighbour;
 	int		newCostToNeighbour;
