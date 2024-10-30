@@ -42,7 +42,7 @@ t_gridnode	***__create_grid(t_grid s_grid)
 		x = 0;
 		while (x < s_grid.gridSizeY)
 		{
-			grid[y][x] = newNode(__check_wal(x, y, s_grid.nodeRadius*2),\
+			grid[y][x] = newNode(__check_wal(x, y, s_grid.nodeRadius*4),\
 			(t_pos_vector){x, y, 0,0}, x, y);
 			x++;
 		}
@@ -56,7 +56,7 @@ t_gridnode	***__create_grid(t_grid s_grid)
 
 void	newGrid()
 {
-	grid()->nodeRadius = (canva()->scale_factor_e / 2);
+	grid()->nodeRadius = (canva()->scale_factor_e / 4);
 	grid()->gridSizeX = (int)(WIDTH / (grid()->nodeRadius * 2));
 	grid()->gridSizeY = (int)(HEIGHT / (grid()->nodeRadius * 2));
 	grid()->grid = __create_grid(*(grid()));
