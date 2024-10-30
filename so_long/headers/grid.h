@@ -18,7 +18,7 @@ struct s_astar
 	t_hashtable	*closedSet;
 	t_gridnode	*startNode;
 	t_gridnode	*targetNode;
-	t_list		*neighbours;
+	void		**neighbours;
 };
 
 struct s_gridnode
@@ -42,8 +42,8 @@ struct s_grid
 	int		gridSizeX;
 	int		gridSizeY;
 
-	t_gridnode		*(*nodeFromPos)(t_pos_vector pos);
-	t_list		*(*get_neighbours)(t_gridnode *node);
+	t_gridnode	*(*nodeFromPos)(t_pos_vector pos);
+	void		(*get_neighbours)(t_gridnode *node, void **neighbours);
 	char		*(*key)(t_gridnode *node);
 };
 

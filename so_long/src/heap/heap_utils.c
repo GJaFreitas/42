@@ -56,6 +56,7 @@ void	*__heap_remove(t_item item, t_heap *heap)
 	void	*ret;
 	int	index;
 
+	printf("X: %.2f, Y: %.2f\n", ((t_gridnode *)item.value)->pos.x, ((t_gridnode *)item.value)->pos.y);
 	if (!heap)
 		return (NULL);
 	index = item.index;

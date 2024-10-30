@@ -3,7 +3,7 @@
 t_gridnode	*__nodeFromPos(t_pos_vector pos);
 t_hashtable	*__populate_table();
 char		*__get_key(t_gridnode *node);
-t_list		*__get_neighbours(t_gridnode *node);
+void		__get_neighbours(t_gridnode *node, void **neighbours);
 
 // Return true if no colision
 byte	__check_wal(int x, int y, float size)

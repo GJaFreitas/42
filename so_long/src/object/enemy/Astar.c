@@ -9,9 +9,27 @@ int	__compare_func(void *node1, void *node2)
 	return (((t_gridnode*)node1)->fcost - ((t_gridnode*)node2)->fcost);
 }
 
+void	__lstclear(t_list **head)
+{
+	t_list	*current;
+	t_list	*prev;
+
+	if (!head)
+		return ;
+	current = *head;
+	while (current)
+	{
+		prev = current;
+		current = current->next;
+		free(prev);
+	}
+	head = NULL;
+}
+
 static void	__init_astar(t_astar *astar, t_pos_vector start, t_pos_vector target)
 {
 	ft_bzero(astar, sizeof(t_astar));
+	astar->neighbours = malloc_safe(sizeof(void *) * 8);
 	astar->openSet = new_heap(__compare_func);
 	astar->closedSet = new_hashtable(HTABLE_SIZE);
 	astar->startNode = grid()->nodeFromPos(start);
@@ -19,23 +37,22 @@ static void	__init_astar(t_astar *astar, t_pos_vector start, t_pos_vector target
 	astar->openSet->add(astar->startNode, astar->openSet);
 }
 
-static void	foreach(t_gridnode *current, t_list *list, t_astar *astar) 
+static void	foreach(t_gridnode *current,  t_astar *astar) 
 {
 	t_gridnode	*neighbour;
 	int		newCostToNeighbour;
+	int		i;
 
-	while (list)
+	i = 0;
+	while (i < 8)
 	{
-		neighbour = list->content;
-		while (list && (!neighbour->walkable\
+		neighbour = astar->neighbours[i];
+		while (i < 8 && (!neighbour->walkable\
 			|| astar->closedSet->contains(neighbour->key, astar->closedSet)))
-		{
-			list = list->next;
-			neighbour = list->content;
-		}
-		if (!list)
+			neighbour = astar->neighbours[++i];
+		if (i >= 8)
 			return ;
-		neighbour = list->content;
+		neighbour = astar->neighbours[i];
 		newCostToNeighbour = current->gcost + get_distance(current->pos, neighbour->pos);
 		if (newCostToNeighbour < neighbour->gcost\
 			|| astar->openSet->contains(neighbour, astar->openSet))
@@ -45,7 +62,7 @@ static void	foreach(t_gridnode *current, t_list *list, t_astar *astar)
 			if (!astar->openSet->contains(neighbour, astar->openSet))
 				astar->openSet->add(neighbour, astar->openSet);
 		}
-		list = list->next;
+		i++;
 	}
 }
 
@@ -75,9 +92,8 @@ t_list	*astar(t_pos_vector start, t_pos_vector target)
 		astar.closedSet->insert(current->key, current, astar.closedSet);
 		if (current == astar.targetNode)
 			return (retrace_path(astar.startNode, astar.targetNode));
-		astar.neighbours = grid()->get_neighbours(current);
-		foreach(current, astar.neighbours, &astar);
-		ft_lstclear(&astar.neighbours, placebo);
+		grid()->get_neighbours(current, astar.neighbours);
+		foreach(current, &astar);
 	}
 	astar.openSet->destroy(astar.openSet);
 	astar.closedSet->destroy(astar.closedSet, placebo);

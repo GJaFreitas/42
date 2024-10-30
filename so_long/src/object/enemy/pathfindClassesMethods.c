@@ -14,12 +14,13 @@ t_gridnode	*__nodeFromPos(t_pos_vector pos)
 	return (grid()->grid[x][y]);
 }
 
-t_list	*__get_neighbours(t_gridnode *node)
+void	__get_neighbours(t_gridnode *node, void **neighbours)
 {
-	t_list	*n;
+	int	i;
 	int	x;
 	int	y;
 
+	i = 0;
 	x = -1;
 	while (x <= 1)
 	{
@@ -27,13 +28,12 @@ t_list	*__get_neighbours(t_gridnode *node)
 		while (y <= 1)
 		{
 			if (!x && !y)
-				break ;
-			if (node->gridX + x >= 0 && node->gridX + x < grid()->gridSizeX
+				;
+			else if (node->gridX + x >= 0 && node->gridX + x < grid()->gridSizeX
 			&& node->gridY + y >= 0 && node->gridY + y < grid()->gridSizeY)
-				ft_lstadd_front(&n, ft_lstnew(grid()->grid[node->gridX + x][node->gridY + y]));
+				neighbours[i++] = grid()->grid[node->gridX + x][node->gridY + y];
 			y++;
 		}
 		x++;
 	}
-	return (n);
 }
