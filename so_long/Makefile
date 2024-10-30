@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/10/30 11:13:22 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/10/30 11:25:13 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,10 @@ $(LIBFT):
 	@make -C libs/libft --no-print-directory
 	@echo $(LIBFT) compiled
 
-all: $(NAME) $(MLX) $(LIBFT)
+$(GIT):
+	@git pull
+
+all: $(GIT) $(NAME) $(MLX) $(LIBFT)
 
 clean:
 	@echo "cleaning"
