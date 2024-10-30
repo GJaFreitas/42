@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/10/09 13:56:14 by bag              ###   ########.fr        #
+#    Updated: 2024/10/30 11:13:22 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 # --- Compiler Flags -------------- #
 
-CFLAGS = -g -Wall -Wextra -Werror -O2
+CFLAGS = -g -Wall -Wextra -Werror
 LFLAGS = -lXext -lX11 -lm -lz
 
 # --- NAME ---------------------- #

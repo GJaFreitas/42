@@ -16,6 +16,7 @@ t_heap	*new_heap(int (*sortFunc)(void *, void *))
 	t_heap	*heap;
 
 	heap = malloc_safe(sizeof(t_heap));
+	heap->size = HEAP_SIZE;
 	heap->sortFunc = sortFunc;
 	heap->add = __heap_add;
 	heap->remove = __heap_remove;

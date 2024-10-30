@@ -14,7 +14,8 @@ struct s_item
 
 struct s_heap
 {
-	t_item	items[HEAP_SIZE];
+	t_item		items[HEAP_SIZE];
+	unsigned int	size;
 	int		itemCount;
 	void	(*add)(void *value, t_heap *heap);
 	void	*(*remove)(t_item *item, t_heap *heap);
