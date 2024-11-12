@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/11/12 15:18:10 by bag              ###   ########.fr        #
+#    Updated: 2024/11/12 15:31:29 by bag              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,4 +120,4 @@ re:
 	@make fclean
 	@make
 
-.PHONY: all clean fclean
+.PHONY: all clean fclean re
