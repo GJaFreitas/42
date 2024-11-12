@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Function to clean up when the script is terminated
+cleanup() {
+    echo "Server terminated. Cleaning up..."
+    make fclean
+    echo "Cleanup completed."
+}
+
+# Set up a trap for SIGINT (Ctrl+C)
+trap cleanup SIGINT
+
+# Run `make` to build the project
+make || { echo "Build failed!"; exit 1; }
+
+# Start the server process in the foreground
+echo "Starting server..."
+./server
+
+# After `./server` exits, call the cleanup function
+cleanup
