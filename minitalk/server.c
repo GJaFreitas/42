@@ -28,12 +28,12 @@ static void	handler(int sig, siginfo_t *info, void *context)
 			kill(info->si_pid, SIGUSR2);
 			return ;
 		}
-		ft_putchar_fd(c, 1);
+		write(1, &c, 1);
 		c = 0;
-		kill(info->si_pid, SIGUSR1);
 	}
 	else
 		c <<= 1;
+	kill(info->si_pid, SIGUSR1);
 }
 
 int	main(void)

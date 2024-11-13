@@ -7,9 +7,17 @@
 static void	handler(int sig)
 {
 	static int	count;
+	static int	bits;
 	
 	if (sig == SIGUSR1)
-		count++;
+	{
+		bits++;
+		if (bits == 8)
+		{
+			count++;
+			bits = 0;
+		}
+	}
 	else
 	{
 		ft_printf("Received: %d\n", count);
@@ -24,7 +32,7 @@ static void	handler(int sig)
 
 static void	client_function(int pid, char *message)
 {
-	int	i;
+	int		i;
 	unsigned char	c;
 	
 	while (1)
@@ -37,7 +45,7 @@ static void	client_function(int pid, char *message)
 				kill(pid, SIGUSR2);
 			else
 				kill(pid, SIGUSR1);
-			usleep(100);
+			pause();
 		}
 		message++;
 		if (!c)
