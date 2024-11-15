@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/11/12 15:31:29 by bag              ###   ########.fr        #
+#    Updated: 2024/11/15 10:26:05 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,13 +107,11 @@ all: $(NAME)
 
 clean:
 	@echo "cleaning in libft"
-	@$(RM) */*/*.o
-	@$(RM) */*.o
+	@$(RM) $(OBJS)
 
 fclean:
 	@echo "deepcleaning in libft"
-	@$(RM) */*/*.o
-	@$(RM) */*.o
+	@make clean
 	@$(RM) $(NAME)
 
 re:
