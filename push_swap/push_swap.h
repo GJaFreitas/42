@@ -1,27 +1,16 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 23:45:20 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/06/21 00:28:27 by gjacome-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
-#include <stdio.h>
-#include "libft/libft.h"
-#include "libft/ft_printf.h"
 #include <stdlib.h>
-#include <unistd.h>
+#include "libft/libft.h"
 
-typedef struct {
-	int	*arr;
-	int	top;
-} Stack;
+typedef struct s_dlist t_dlist;
+
+struct s_dlist
+{
+	int		n;
+	t_dlist		*prev;
+	t_dlist		*next;
+};
 
 #endif
