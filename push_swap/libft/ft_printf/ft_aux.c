@@ -1,4 +1,4 @@
-#include "../ft_printf.h"
+#include "../libft.h"
 
 int	ft_putnbr_base(unsigned int nbr, char *base, int total)
 {
