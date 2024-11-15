@@ -1,7 +1,18 @@
 #include "libft/libft.h"
+#include "minitalk.h"
 #include <unistd.h>
 #include <signal.h>
 
+// SIGUSR1 means server has finished processing a bit and is ready
+// for another one
+//
+// SIGUSR2 means the server has finished processing a byte and the next one should
+// start, also client counts it has a sent char
+//
+// SIGUSR2 && msg == "\0" means the message has been sent
+//
+// ******************************************************
+//
 // If sig == SIGUSR2 then the least significant bit of c is set to 1
 // This happens 8 times and everytime c is shifted to the left
 // This way using only 1's and 0's we can get a byte from the client
@@ -13,27 +24,54 @@
 // If the byte we recieved is set to all 0's then we send a signal to the client
 // to make it exit since the whole message has been received
 
+
+/*
+static void	debug(t_server s)
+{
+	ft_printf("\n\nDEBUG:\nstr > %s\ncount > %d\nc > %d\ni > %d\nsize > %d\n\n", s.str, s.count, s.c, s.i, s.size);
+}
+*/
+
+static void	size_received(t_server *s)
+{
+	s->str = malloc(s->c);
+	s->size = s->c;
+	s->count = 0;
+	s->c = 0;
+}
+
+static void	byte_received(t_server *s)
+{
+	write(1, s->str, s->size);
+	free(s->str);
+	s->i = 0;
+	s->str = NULL;
+}
+
 static void	handler(int sig, siginfo_t *info, void *context)
 {
-	static int		count;
-	static unsigned char	c;
+	static t_server	s;
 
 	(void)context;
-	c |= (sig == SIGUSR2);
-	if (++count == 8)
+	s.c |= (sig == SIGUSR2);
+	if (!s.str && ++s.count == 32)
+		size_received(&s);
+	else if (s.str && ++s.count == 8)
 	{
-		count = 0;
-		if (!c)
+		s.count = 0;
+
+		s.str[s.i++] = s.c;
+		if (!s.c)
 		{
-			kill(info->si_pid, SIGUSR2);
+			byte_received(&s);
+			kill(info->si_pid, SIGUSR1);
 			return ;
 		}
-		write(1, &c, 1);
-		c = 0;
+		s.c = 0;
 	}
 	else
-		c <<= 1;
-	kill(info->si_pid, SIGUSR1);
+		s.c <<= 1;
+	kill(info->si_pid, SIGUSR2);
 }
 
 int	main(void)

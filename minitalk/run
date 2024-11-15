@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Function to clean up when the script is terminated
 cleanup() {
     echo "Server terminated. Cleaning up..."
