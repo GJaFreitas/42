@@ -1,4 +1,4 @@
-#include "../ft_printf.h"
+#include "../libft.h"
 
 // Redirects to the appropriate printing fucntion
 

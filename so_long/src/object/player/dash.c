@@ -38,7 +38,6 @@ void	__mouse_right()
 	vec.x = engine()->mouse.x - game()->player->pos.x;
 	vec.y = engine()->mouse.y - game()->player->pos.y;
 	__vec_normalization(&vec.x, &vec.y);
-	printf("x: %.2f, y: %.2f\n", vec.x, vec.y);
 	if (__cooldown(&init, clock(), DASH_COOLDOWN))
 		__dash(vec);
 }

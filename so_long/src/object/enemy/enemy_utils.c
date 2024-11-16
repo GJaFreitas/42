@@ -10,7 +10,7 @@ t_pos_vector	__calc_vec(t_enemy *e, t_pos_vector *vec)
 
 	direction.x = e->pos.x - vec->x;
 	direction.y = e->pos.y - vec->y;
-	__vec_normalization(&vec->x, &vec->y);
+	__vec_normalization(&direction.x, &direction.y);
 	return (direction);
 }
 

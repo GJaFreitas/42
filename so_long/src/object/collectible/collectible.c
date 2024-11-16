@@ -15,7 +15,7 @@ static void	__new()
 		x = rng(0, WIDTH);
 		y = rng(0, HEIGHT);
 	}
-	printf("Coll x: %d y: %d\n", x, y);
+	ft_printf("Coll x: %d y: %d\n", x, y);
 	game()->add_obj(new_collectible(x, y));
 	vector(game()->to_render)->sort();
 }

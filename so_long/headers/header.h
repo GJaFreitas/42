@@ -23,7 +23,6 @@
 
 
 # include "../libs/libft/libft.h"
-# include "../libs/libft/ft_printf.h"
 # include "../libs/minilibx-linux/mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>

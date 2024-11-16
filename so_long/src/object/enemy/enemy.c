@@ -22,6 +22,7 @@ static int	__cooldown(clock_t *last, clock_t current)
 	return (0);
 }
 
+/*
 static void	walk_path(t_list **path, t_enemy *e)
 {
 	t_list		*temp;
@@ -39,6 +40,7 @@ static void	walk_path(t_list **path, t_enemy *e)
 	*path = (*path)->next;
 	free(temp);
 }
+*/
 
 void	placebo(void *p)
 {
@@ -49,9 +51,8 @@ void	placebo(void *p)
 // Pathfinding and attacking
 static void	__update_enemy(void)
 {
-	static	t_list	*path;
-	static	int	check = 10;
 	static	clock_t	init;
+	t_pos_vector	direction;
 	t_enemy		*e;
 
 	e = (t_enemy *)fthis()->object;
@@ -59,19 +60,9 @@ static void	__update_enemy(void)
 		return (vector(game()->to_remove)->add(e), (void)69);
 	if (__cooldown(&init, clock()) && game()->obj_colision(e->pos, (t_type[]){PLAYER, 0}))
 		game()->player->hp -= 25;
-	if (check == 10 || check == 0)
-	{
-		ft_lstclear(&path, placebo);
-		path = astar(e->pos, game()->player->pos);
-		check = 10;
-	}
-	else
-	{
-		walk_path(&path, e);
-		check--;
-	}
-	if (game()->goodbye || e->hp == 515)
-		ft_lstclear(&path, placebo);
+	direction = __calc_vec(e, &game()->player->pos);
+	e->pos.x += -direction.x * ENEMY_SPEED;
+	e->pos.y += -direction.y * ENEMY_SPEED;
 }
 
 static void	__destructor_enemy(void)

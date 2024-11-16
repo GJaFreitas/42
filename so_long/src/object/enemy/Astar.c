@@ -71,7 +71,6 @@ t_list	*astar(t_pos_vector start, t_pos_vector target)
 	__init_astar(&astar, start, target);
 	while (astar.openSet->itemCount > 0)
 	{
-		printf("astar loop\n");
 		current = __cost(astar.openSet->pop(astar.openSet), astar);
 		astar.closedSet->insert(current->key, current, astar.closedSet);
 		if (current == astar.targetNode)
