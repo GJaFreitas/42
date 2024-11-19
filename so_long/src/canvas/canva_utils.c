@@ -16,7 +16,7 @@ t_sprite	*__load_img(char *texture_name)
 	return (new_sprite);
 }
 
-byte	__draw_pixel(int x, int y, int color)
+byte	__draw_pixel(int x, int y, unsigned int color)
 {
 	char		*screen;
 	t_sprite	*img;
@@ -32,7 +32,7 @@ byte	__draw_pixel(int x, int y, int color)
 	return (1);
 }
 
-int	__get_color(t_sprite *img, int x, int y)
+unsigned int	__get_color(t_sprite *img, int x, int y)
 {
 	char		*screen;
 	int		color;

@@ -20,12 +20,14 @@ void	__add_obj(t_object *o)
 void	__render_game()
 {
 	t_element	*i;
+	int		in = 0;
 
 	i = vector(game()->to_render)->begin;
 	while (i)
 	{
 		object(i->value)->render();
 		i = i->next;
+		in++;
 	}
 }
 

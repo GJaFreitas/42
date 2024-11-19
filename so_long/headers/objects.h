@@ -132,7 +132,11 @@ struct s_hud
 	void			(*func_mouse)();
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
-	t_sprite		*(*get_sprite)();
+	t_sprite		*(*get_sprite)(int which);
+
+	t_sprite		*hpsprite;
+	t_sprite		*hpbar;
+	t_pos_vector		hpsize;
 };
 
 struct s_door
@@ -283,5 +287,6 @@ t_object	*new_exit(float x, float y);
 t_object	*new_start(float x, float y);
 t_object	*new_wall(float x, float y);
 t_object	*new_fireball(t_pos_vector vec);
+t_object	*new_hud();
 
 #endif
