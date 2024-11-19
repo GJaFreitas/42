@@ -1,5 +1,5 @@
 -Flood fill map check
 -Collectible counter on screen + exit logic
--HP bar on screen
 -Cooldown meter for fireball?
+
 -Fix stupid makefile
