@@ -47,7 +47,8 @@ static void	get_neighbours(t_map s_map, t_queue *q, t_pos_vector current, t_hash
 		while (y <= 1)
 		{
 			current_key = key(current.x + x, current.y + y);
-			if (!(!x && !y) && !visited->contains(current_key, visited)
+			if ((x || y) && !visited->contains(current_key, visited)
+			&& s_map.map_ptr[(int)current.x + x][(int)current.y + y] != '1'
 			&& current.x + x >= 0 && current.x + x < s_map.col
 			&& current.y + y >= 0 && current.y + y < s_map.row)
 			{
@@ -84,8 +85,7 @@ int	algo(t_map s_map, t_queue *q, t_pos_vector i, t_hashtable *visited)
 		visited->insert(current->key, current, visited);
 		get_neighbours(s_map, q, current->pos, visited);
 		if (current->pos.x == i.w && current->pos.y == i.h)
-			return (free(current), 0);
-		free(current); 
+			return (0);
 	}
 	return (1);
 }

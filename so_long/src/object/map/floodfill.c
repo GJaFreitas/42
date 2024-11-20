@@ -20,7 +20,7 @@ int	__flood_fill(t_map *s_map)
 	q->add(__create_element(i.x, i.y), q);
 	visited = new_hashtable(HTABLE_SIZE);
 	ret = algo(*s_map, q, i, visited);
-	visited->destroy(visited, placebo);
+	visited->destroy(visited, __destroy_element_map);
 	q->destroy(q, __destroy_element_map);
 	if (ret)
 		s_map->error[7] = 1;

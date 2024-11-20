@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/10/30 11:27:07 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/11/20 17:42:27 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ re:
 	@make
 
 run_debug: clean
-	valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full ./$(NAME) ./maps/map1.ber
+	valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full ./$(NAME) ./maps/map2.ber
 
 run: clean
 	./$(NAME) ./maps/map2.ber
