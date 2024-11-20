@@ -40,6 +40,7 @@
 # include "grid.h"
 # include "heap.h"
 # include "hashtable.h"
+# include "queue.h"
 
 //	Memory manipulation
 void		*malloc_safe(size_t __size);

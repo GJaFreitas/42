@@ -39,6 +39,8 @@ struct s_map
 	// No start, no exit, 2 starts, 2 exits
 	// No collectibles
 	// Unrecognized char
+	// TODO: Not a rectangle !!!!
+	// TODO: Start not connected to end!!!!
 	byte			error[7];
 };
 
