@@ -17,10 +17,18 @@ static void	__add_q(void *content, t_queue *q)
 {
 	t_element	*current;
 
+	if (!q->top)
+	{
+		current = malloc_safe(sizeof(t_element));
+		q->top = current;
+		current->value = content;
+		return ;
+	}
 	current = q->top;
-	while (current)
+	while (current && current->next)
 		current = current->next;
-	current = malloc_safe(sizeof(t_element));
+	current->next = malloc_safe(sizeof(t_element));
+	current = current->next;
 	current->value = content;
 }
 
