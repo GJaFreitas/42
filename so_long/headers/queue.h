@@ -12,8 +12,8 @@ struct s_queue
 
 	void		*(*pop)(t_queue *queue);
 	void		(*add)(void *content, t_queue *queue);
-	// Destructor with an option to destroy the contents stored or not
-	void		(*destroy)(t_queue *queue, int content);
+	// Destructor with optional content destruction
+	void		(*destroy)(t_queue *queue, void (*f)(void *));
 };
 
 t_queue	*new_queue(void);

@@ -24,7 +24,6 @@ struct s_vector
 {
 	t_element		*begin;
 	t_element		*end;
-	t_element		*next;
 	int				size;
 	t_element		*(*add)(void	*value);
 	void			*(*get)(int	index);

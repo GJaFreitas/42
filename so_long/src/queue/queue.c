@@ -25,7 +25,7 @@ static void	__add_q(void *content, t_queue *q)
 }
 
 // Destructor with an option to destroy the contents stored or not.
-static void	__destroy_q(t_queue *q, int content)
+static void	__destroy_q(t_queue *q, void (*f)(void *))
 {
 	t_element	*current;
 	t_element	*prev;
@@ -35,8 +35,8 @@ static void	__destroy_q(t_queue *q, int content)
 	{
 		prev = current;
 		current = current->next;
-		if (content)
-			free(prev->value);
+		if (f)
+			f(prev->value);
 		free(prev);
 	}
 	free(q);

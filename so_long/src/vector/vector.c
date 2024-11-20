@@ -20,7 +20,6 @@ void	*new_vector(void)
 	v->size = 0;
 	v->begin = NULL;
 	v->end = NULL;
-	v->next = NULL;
 	v->add = __vec_add;
 	v->set_at_index = __vec_set_value_index;
 	v->get = __vec_get_val;

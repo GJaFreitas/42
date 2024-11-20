@@ -17,5 +17,7 @@ void	__print_error_msg(byte *error)
 		ft_printf("Multiple exits\n");
 	if (error[6])
 		ft_printf("No collectibles\n");
+	if (error[7])
+		ft_printf("No path to end\n");
 	ft_printf("\nAborting:\nCalling cleaning crew\n'Free all this up boys!'\n");
 }

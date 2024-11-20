@@ -7,6 +7,13 @@
 typedef unsigned char byte;
 typedef struct s_map t_map;
 typedef struct s_object t_object;
+typedef struct s_ff t_ff;
+
+struct s_ff
+{
+	t_pos_vector	pos;
+	char		*key;
+};
 
 struct s_map
 {
@@ -41,7 +48,7 @@ struct s_map
 	// Unrecognized char
 	// TODO: Not a rectangle !!!!
 	// TODO: Start not connected to end!!!!
-	byte			error[7];
+	byte			error[8];
 };
 
 t_map	*new_map(char *filepath);
