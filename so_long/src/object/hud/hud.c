@@ -24,7 +24,8 @@ static void	__hud_destructor(void)
 	// The only free not protected agaisnt double free
 	// Which isnt a problem since if this was called the
 	// whole memory region will be freed and set to null anyway
-	free(fthis()->object->get_sprite());
+	free(hud->get_sprite(1));
+	free(hud->get_sprite(0));
 }
 
 static void	__hud_render(void)

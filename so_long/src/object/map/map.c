@@ -5,7 +5,7 @@ void	__map_realloc(char **map, int rows);
 void	__load_map(int fd, t_map *s_map);
 void	__load_coords(t_pos_vector *pos, int x, int y, byte *error);
 byte	__map_check(t_map *s_map);
-int	__flood_fill(t_map *s_map);
+void	__flood_fill_r(t_map *s_map, int x, int y);
 void	__print_error_msg(byte *error);
 
 // Pass 'e' for the enemy sprite, 'c' for collectible and nothing for
@@ -66,7 +66,10 @@ t_map	*new_map(char *filepath)
 	canva()->scale_factor_e = canva()->scale_factor / 2;
 	map->pos.h = map->row * canva()->scale_factor;
 	map->pos.w = map->col * canva()->scale_factor;
-	if (__map_check(map) || __flood_fill(map))
+	map->error[7] = 1;
+	map->error[8] = 1;
+	__flood_fill_r(map, 0, 0);
+	if (__map_check(map) || map->error[7] || map->error[8])
 	{
 		__print_error_msg(map->error);
 		harbinger_of_chaos();

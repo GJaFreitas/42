@@ -39,6 +39,7 @@ struct s_map
 	t_pos_vector		exit;
 	t_pos_vector		enemies[128];
 	t_pos_vector		collectibles[128];
+	unsigned int		collectible_num;
 	t_sprite		*enemy_sprite;
 	t_sprite		*collectible_sprite;
 	// List of errors:
@@ -46,9 +47,9 @@ struct s_map
 	// No start, no exit, 2 starts, 2 exits
 	// No collectibles
 	// Unrecognized char
-	// TODO: Not a rectangle !!!!
-	// TODO: Start not connected to end!!!!
-	byte			error[8];
+	// Start not connected to end
+	// Not all collectibles are collectible
+	byte			error[9];
 };
 
 t_map	*new_map(char *filepath);

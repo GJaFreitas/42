@@ -1,12 +1,7 @@
 #include "../../headers/header.h"
 
-int	adds = 0;
-int	pops = 0;
-int	destroys = 0;
-
 static void	*__pop_q(t_queue *q)
 {
-	pops++;
 	t_element	*pop;
 	void		*ret;
 
@@ -20,7 +15,6 @@ static void	*__pop_q(t_queue *q)
 
 static void	__add_q(void *content, t_queue *q)
 {
-	adds++;
 	t_element	*current;
 
 	if (!q->top)
@@ -52,12 +46,7 @@ static void	__destroy_q(t_queue *q, void (*f)(void *))
 		if (f)
 			f(prev->value);
 		free(prev);
-		destroys++;
 	}
-	printf("Adds: %d\n", adds);
-	printf("Pops: %d\n", pops);
-	printf("Destroys: %d\n", destroys);
-	printf("Net total: %d\n", adds - pops - destroys);
 	free(q);
 }
 

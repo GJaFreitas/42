@@ -1,5 +1,4 @@
--Flood fill map check
+-Fix Collectible collisions
 -Collectible counter on screen + exit logic
--Cooldown meter for fireball?
 
 -Fix stupid makefile
