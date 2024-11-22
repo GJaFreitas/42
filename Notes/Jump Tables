@@ -30,3 +30,5 @@ void foo(int input)
 making this an O(1) implementation.
 
 of course it is useless for something so small but for calling error functions for example it could be usefull.
+
+does the compiler do this already? why wouldnt it turn the if elses into a switch and the switch into a jumptable?
