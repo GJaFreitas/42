@@ -74,5 +74,6 @@ t_map	*new_map(char *filepath)
 		__print_error_msg(map->error);
 		harbinger_of_chaos();
 	}
+	game()->collectibles_num = map->collectible_num;
 	return (map);
 }

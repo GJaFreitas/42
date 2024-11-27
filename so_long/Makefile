@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/11/20 17:42:27 by gjacome-         ###   ########.fr        #
+#    Updated: 2024/11/27 13:45:48 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,10 +81,12 @@ re:
 	@make fclean
 	@make
 
-run_debug: clean
+run_debug:
+	make re
 	valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full ./$(NAME) ./maps/map2.ber
 
-run: clean
+run:
+	make re
 	./$(NAME) ./maps/map2.ber
 
 .PHONY: all clean fclean re

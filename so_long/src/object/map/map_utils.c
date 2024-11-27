@@ -99,7 +99,10 @@ void	__map_handler(char c, t_map *s_map, t_pos_vector pos)
 	else if (c == 'B')
 		game()->add_obj(new_enemy(pos.y, pos.x));
 	else if (c == 'C')
+	{
+		s_map->collectible_num++;
 		game()->add_obj(new_collectible(pos.y, pos.x));
+	}
 	else if (c == '1')
 		game()->add_obj(new_wall(pos.y, pos.x));
 	else

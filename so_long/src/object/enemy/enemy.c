@@ -22,26 +22,6 @@ static int	__cooldown(clock_t *last, clock_t current)
 	return (0);
 }
 
-/*
-static void	walk_path(t_list **path, t_enemy *e)
-{
-	t_list		*temp;
-	t_pos_vector 	direction;
-	t_gridnode	*node;
-
-
-	if (!path || !(*path) || !e)
-		return ;
-	node = (*path)->content;
-	direction = __calc_vec(e, &node->pos);
-	e->pos.x -= direction.x * ENEMY_SPEED;
-	e->pos.y -= direction.y * ENEMY_SPEED;
-	temp = (*path);
-	*path = (*path)->next;
-	free(temp);
-}
-*/
-
 void	placebo(void *p)
 {
 	(void)p;
@@ -61,8 +41,10 @@ static void	__update_enemy(void)
 	if (__cooldown(&init, clock()) && game()->obj_colision(e->pos, (t_type[]){PLAYER, 0}))
 		game()->player->hp -= 25;
 	direction = __calc_vec(e, &game()->player->pos);
-	e->pos.x += -direction.x * ENEMY_SPEED;
-	e->pos.y += -direction.y * ENEMY_SPEED;
+	if (collision_check_x(e->pos, -direction.x * ENEMY_SPEED))
+		e->pos.x += -direction.x * ENEMY_SPEED;
+	if (collision_check_y(e->pos, -direction.x * ENEMY_SPEED))
+		e->pos.y += -direction.y * ENEMY_SPEED;
 }
 
 static void	__destructor_enemy(void)

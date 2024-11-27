@@ -35,11 +35,9 @@ byte	__draw_pixel(int x, int y, unsigned int color)
 unsigned int	__get_color(t_sprite *img, int x, int y)
 {
 	char		*screen;
-	int		color;
 
 	screen = img->address + (y * img->line_length) + (x * (img->bpp / 8));
-	color = *(unsigned int *)screen;
-	return (color);
+	return (*(unsigned int*)screen);
 }
 
 void	__draw_img(t_sprite *img, int x_offset, int y_offset)

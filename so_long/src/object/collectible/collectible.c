@@ -37,7 +37,6 @@ static void	__update_col(void)
 	{
 		game()->player->collectibles++;
 		((t_collectible*)fthis()->object)->is_render = 0;
-		//__new();
 	}
 }
 

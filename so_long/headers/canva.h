@@ -4,7 +4,7 @@
 typedef struct s_canva t_canva;
 typedef struct s_sprite t_sprite;
 
-# define COLOR_TRANSPARENT 0xd411aa
+# define COLOR_TRANSPARENT 0
 
 typedef struct pos_vector t_pos_vector;
 

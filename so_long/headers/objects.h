@@ -21,6 +21,7 @@ typedef struct s_start t_start;
 typedef struct s_exit t_exit;
 typedef struct s_wall t_wall;
 typedef struct s_menu t_menu;
+typedef struct s_counter t_counter;
 
 struct s_object
 {
@@ -73,6 +74,7 @@ struct s_game
 	void			(*rm_obj)();
 	t_object		*(*obj_colision)(t_pos_vector pos, t_type *list);
 	void			(*startgame)();
+	unsigned int		collectibles_num;
 };
 
 struct s_player
@@ -94,7 +96,7 @@ struct s_player
 
 	void			(*move)(t_pos_vector);
 	void			(*attack)();
-	int			collectibles;
+	unsigned int		collectibles;
 };
 
 struct s_fireball
@@ -273,6 +275,26 @@ struct s_menu
 	void			(*end)();
 };
 
+struct s_counter
+{
+	t_type			type;
+	t_pos_vector		pos;
+	double			hp;
+	t_sprite		*sprite;
+
+	void			(*render)();
+	void			(*update)();
+	void			(*destructor)();
+	void			(*collision)(t_object*);
+	void			(*func_keys)(byte *keys);
+	void			(*func_mouse)();
+	void			(*set_pos)(t_pos_vector);
+	void			(*damage)(double);
+	t_sprite		*(*get_sprite)();
+
+	unsigned int		current;
+	t_sprite		*nums[10];
+};
 
 t_object	*object(t_object *object);
 void	*constructor(size_t size);
@@ -288,5 +310,6 @@ t_object	*new_start(float x, float y);
 t_object	*new_wall(float x, float y);
 t_object	*new_fireball(t_pos_vector vec);
 t_object	*new_hud();
+t_object	*new_counter();
 
 #endif

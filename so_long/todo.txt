@@ -1,4 +1,3 @@
--Fix Collectible collisions
 -Collectible counter on screen + exit logic
 
 -Fix stupid makefile
