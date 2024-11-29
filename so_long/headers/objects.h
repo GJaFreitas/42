@@ -290,7 +290,7 @@ struct s_counter
 	void			(*func_mouse)();
 	void			(*set_pos)(t_pos_vector);
 	void			(*damage)(double);
-	t_sprite		*(*get_sprite)();
+	t_sprite		*(*get_sprite)(int i);
 
 	unsigned int		current;
 	t_sprite		*nums[10];
