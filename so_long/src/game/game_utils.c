@@ -17,7 +17,7 @@ void	__add_obj(t_object *o)
 }
 
 // Iterates trough all objects in the game and adds them to the next frame
-void	__render_game()
+void	__render_game(void)
 {
 	t_element	*i;
 	int		in = 0;
@@ -32,7 +32,7 @@ void	__render_game()
 }
 
 // KEYS
-void	__key_events()
+void	__key_events(void)
 {
 	t_element	*i;
 
@@ -45,7 +45,7 @@ void	__key_events()
 }
 
 // MOUSE
-void	__mouse_events()
+void	__mouse_events(void)
 {
 	t_element	*i;
 
@@ -58,7 +58,7 @@ void	__mouse_events()
 	engine()->mouse_press = 0;
 }
 
-void	__destroy_objects()
+void	__destroy_objects(void)
 {
 	t_element	*i;
 

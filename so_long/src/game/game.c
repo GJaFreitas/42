@@ -19,7 +19,7 @@ static void	__destroy_game(void)
 	vector(game()->to_remove)->destroy();
 }
 
-static void	__remove_obj()
+static void	__remove_obj(void)
 {
 	t_element	*i;
 	void		*temp;

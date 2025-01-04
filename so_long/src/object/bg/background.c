@@ -1,6 +1,6 @@
 #include "../../../headers/header.h"
 
-t_object	*new_bg()
+t_object	*new_bg(void)
 {
 	t_object	*bg;
 

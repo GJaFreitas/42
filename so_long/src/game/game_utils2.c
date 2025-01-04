@@ -1,6 +1,6 @@
 #include "../../headers/header.h"
 
-void	__update_game()
+void	__update_game(void)
 {
 	t_element	*i;
 

@@ -51,7 +51,7 @@ int	__cooldown(clock_t *last, clock_t current, float cooldown)
 }
 
 // Calculates the direction and then shoots the fireball taking care to not divide by 0
-void	__mouse_left()
+void	__mouse_left(void)
 {
 	static clock_t	init;
 	t_pos_vector 	vec;
@@ -65,9 +65,9 @@ void	__mouse_left()
 		game()->add_obj(new_fireball(vec));
 }
 
-void	__mouse_right();
+void	__mouse_right(void);
 
-static void	__player_mouse()
+static void	__player_mouse(void)
 {
 	if (engine()->mouse_press == 1)
 		__mouse_left();
@@ -76,7 +76,7 @@ static void	__player_mouse()
 		//__mouse_right();
 }
 
-static void	__player_update()
+static void	__player_update(void)
 {
 	if (game()->player->hp <= 0)
 		harbinger_of_chaos();

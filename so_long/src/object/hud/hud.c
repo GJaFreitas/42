@@ -45,7 +45,7 @@ static void	__hud_render(void)
 	hud->hpsize.w = HP_SIZE;
 }
 
-t_object	*new_hud()
+t_object	*new_hud(void)
 {
 	t_hud	*hud;
 

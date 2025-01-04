@@ -1,5 +1,6 @@
 #include "../../../headers/header.h"
 
+/*
 static void	__counter_destructor(void)
 {
 	t_counter	*c;
@@ -42,3 +43,4 @@ t_object	*new_counter()
 	new->nums[0] = canva()->load_img("");
 	return ((t_object *)new);
 }
+*/

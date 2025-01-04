@@ -1,6 +1,6 @@
 #include "../../../headers/header.h"
 
-static void	__menu_buttons()
+static void	__menu_buttons(void)
 {
 	if (engine()->mouse.x >= 777 && engine()->mouse.x <= 1490 && \
 			engine()->mouse.y >= 490 && engine()->mouse.y <= 632)
@@ -11,7 +11,7 @@ static void	__menu_buttons()
 }
 
 // Returns a new instance of the menu object
-t_object	*new_menu()
+t_object	*new_menu(void)
 {
 	t_menu	*menu;
 
