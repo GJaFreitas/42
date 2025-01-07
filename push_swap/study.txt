@@ -1,0 +1,12 @@
+Good optimization strategy: Save the moves in a linked list and then optimize them when possible after parsing it.
+
+these can be optimized:
+sa + sb = ss; ra + rb = rr; rra + rrb = rrr
+
+these can dissapear:
+pa + pb; sa + sa; ra + rra
+
+Maybe checking if some chunk is already reverse sorted all the time is also a good idea
+
+
+An important part of the project is that time optimization is completely useless, checking things is free so its always worth it.

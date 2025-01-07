@@ -8,12 +8,12 @@ t_dlist	*newList()
 	return (list);
 }
 
-t_dlnode	*newNode(int n)
+t_dlnode	*newNode(void *content)
 {
 	t_dlnode	*new;
 
 	new = ft_calloc(1, sizeof(t_dlnode));
-	new->n = n;
+	new->content = content;
 	return (new);
 }
 
