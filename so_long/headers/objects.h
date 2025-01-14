@@ -292,7 +292,6 @@ struct s_counter
 	void			(*damage)(double);
 	t_sprite		*(*get_sprite)(int i);
 
-	unsigned int		current;
 	t_sprite		*nums[10];
 };
 
