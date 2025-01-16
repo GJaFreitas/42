@@ -36,3 +36,22 @@ int	stack_max(t_stack *stack)
 	}
 	return (temp);
 }
+
+int	stack_issorted(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	if (stack->a[i] >= stack->a[i + 1])
+	{
+		while (i < stack->size && stack->a[i] >= stack->a[i + 1])
+			i++;
+		return (stack->a[i] >= stack->a[i + 1]);
+	}
+	else
+	{
+		while (i < stack->size && stack->a[i] <= stack->a[i + 1])
+			i++;
+		return (stack->a[i] <= stack->a[i + 1]);
+	}
+}

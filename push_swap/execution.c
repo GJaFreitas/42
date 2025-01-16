@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	exec_instruction(t_stack *a, t_stack *b, char *str)
+static void	exec_instruction(t_stack *a, t_stack *b, char *str)
 {
 	if (!ft_strncmp(str, "sa", 3))
 		sa(a);

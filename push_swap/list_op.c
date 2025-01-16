@@ -15,10 +15,10 @@ t_dlist	*exec_instruction(char *str, int flag)
 
 static int	combination_checker(t_dlnode *current, char *i1, char *i2)
 {
-		if (!ft_strncmp(current->content, i1, 3)\
-      		&& !ft_strncmp(current->next->content, i2, 3)\
-      		||!ft_strncmp(current->content, i2, 3)\
-      		&& !ft_strncmp(current->next->content, i1, 3))
+		if ((!ft_strncmp(current->content, i1, 3)\
+      		&& !ft_strncmp(current->next->content, i2, 3))\
+      		||(!ft_strncmp(current->content, i2, 3)\
+      		&& !ft_strncmp(current->next->content, i1, 3)))
 		return (1);
 	return (0);
 }

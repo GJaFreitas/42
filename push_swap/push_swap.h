@@ -20,4 +20,7 @@ void	rra(t_stack *s);
 void	rrb(t_stack *s);
 void	rrr(t_stack *a, t_stack *b);
 
+t_stack	*ft_parse(char **argv, int argc, t_stack *a);
+void	ft_algo(t_stack *a, t_stack *b);
+
 #endif

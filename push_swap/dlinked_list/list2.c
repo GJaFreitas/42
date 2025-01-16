@@ -1,6 +1,6 @@
 #include "dlinked_list.h"
 
-void		addNext(t_dlist *l, t_dlnode *current, void *content)
+void		addNext(t_dlnode *current, void *content)
 {
 	t_dlnode	*new;
 	t_dlnode	*next;

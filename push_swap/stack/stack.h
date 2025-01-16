@@ -14,5 +14,6 @@ void	stack_rotate(t_stack *stack);
 void	stack_rev_rotate(t_stack *stack);
 int	stack_min(t_stack *stack);
 int	stack_max(t_stack *stack);
+int	stack_issorted(t_stack *stack);
 
 #endif
