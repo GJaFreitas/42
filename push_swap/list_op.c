@@ -2,17 +2,6 @@
 #include "libft/libft.h"
 #include "push_swap.h"
 
-t_dlist	*exec_instruction(char *str, int flag)
-{
-	static t_dlist	list;
-
-	if (flag)
-		addFront(newNode(str), &list);
-	else
-		return (&list);
-	return (NULL);
-}
-
 static int	combination_checker(t_dlnode *current, char *i1, char *i2)
 {
 		if ((!ft_strncmp(current->content, i1, 3)\

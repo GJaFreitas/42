@@ -1,7 +1,7 @@
 #include "stack.h"
 #include <limits.h>
 
-int	stack_min(t_stack *stack)
+int	stack_min(const t_stack *stack)
 {
 	int	i;
 	int	temp;
@@ -19,7 +19,7 @@ int	stack_min(t_stack *stack)
 	return (temp);
 }
 
-int	stack_max(t_stack *stack)
+int	stack_max(const t_stack *stack)
 {
 	int	i;
 	int	temp;
@@ -37,7 +37,7 @@ int	stack_max(t_stack *stack)
 	return (temp);
 }
 
-int	stack_issorted(t_stack *stack)
+int	stack_issorted(const t_stack *stack)
 {
 	int	i;
 
@@ -46,12 +46,17 @@ int	stack_issorted(t_stack *stack)
 	{
 		while (i < stack->size && stack->a[i] >= stack->a[i + 1])
 			i++;
-		return (stack->a[i] >= stack->a[i + 1]);
+		return (++i == stack->size);
 	}
 	else
 	{
 		while (i < stack->size && stack->a[i] <= stack->a[i + 1])
 			i++;
-		return (stack->a[i] <= stack->a[i + 1]);
+		return (++i == stack->size);
 	}
+}
+
+int	stack_empty(const t_stack *stack)
+{
+	return (stack->size == 0);
 }

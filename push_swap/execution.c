@@ -1,6 +1,7 @@
 #include "push_swap.h"
 
-static void	exec_instruction(t_stack *a, t_stack *b, char *str)
+// TODO: Finish this
+static void	__exec_instruction(t_stack *a, t_stack *b, char *str)
 {
 	if (!ft_strncmp(str, "sa", 3))
 		sa(a);
@@ -21,7 +22,8 @@ void	exec(t_stack *a, t_stack *b, t_dlist *list)
 	current = list->head;
 	while (current != NULL)
 	{
-		exec_instruction(a, b, current->content);
+		__exec_instruction(a, b, current->content);
+		printf("%s\n", (char*)current->content);
 		current = current->next;
 	}
 }

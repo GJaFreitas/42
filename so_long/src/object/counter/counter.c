@@ -6,7 +6,6 @@
 * For ease of programming im limiting the number of collectibles to 9
 */
 
->>>>>>> 676cee3 (counter stuff)
 static void	__counter_destructor(void)
 {
 	t_counter	*c;
@@ -62,4 +61,3 @@ t_object	*new_counter(void)
 	}
 	return ((t_object *)counter);
 }
-*/

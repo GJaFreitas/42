@@ -15,11 +15,12 @@ t_stack	*ft_parse(char **argv, int argc, t_stack *a)
 		nums = ft_split(argv[1], ' ');
 	}
 	else
-		nums = argv;
+		nums = &argv[1];
 	i = 0;
 	while ((split && nums[i] != NULL) || (!split && i < argc - 1))
 	{
 		a->a[i] = ft_atoi(nums[i]);
+		a->size++;
 		i++;
 		if (split)
 			free(nums[i]);

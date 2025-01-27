@@ -1,5 +1,6 @@
 #include "dlinked_list.h"
 
+// doesnt account for head or tail
 void		addNext(t_dlnode *current, void *content)
 {
 	t_dlnode	*new;
@@ -17,7 +18,7 @@ t_dlnode	*pop_head(t_dlist *l)
 	t_dlnode	*temp;
 
 	temp = l->head;
-	l->head = temp->next;
+	l->head = l->head->next;
 	l->size--;
 	return (temp);
 }

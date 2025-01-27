@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/01/16 16:28:49 by bag              ###   ########.fr        #
+#    Updated: 2025/01/22 17:11:03 by bag              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,16 @@ CFLAGS = -g -Wall -Wextra -Werror
 
 NAME = push_swap.out
 
+NODIR = --no-print-directory
+
 # --- DEPENDENCIES ---------------- #
 
 LIBFT = libft/libft.a
 
 SRCS = parsing.c \
+       moves.c \
        execution.c \
+       show.c \
        algo.c \
        dlinked_list/list2.c \
        dlinked_list/list.c \
@@ -39,28 +43,35 @@ SRCS = parsing.c \
        stack/stack2.c \
        stack/stack.c \
 
+OBJS = $(SRCS:.c=.o)
+
 RM = rm -f
 
-$(NAME) : $(LIBFT)
+.c.o:
+	@$(CC) -c $(CFLAGS) $< -o $(<:.c=.o)
+
+$(NAME) : $(LIBFT) $(OBJS)
 	@echo Making
-	@$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 all: $(NAME)
 
 $(LIBFT):
-	@make -C libft
+	@make -C libft $(NODIR)
 
 clean:
-	@echo "cleaning in libft"
 	@$(RM) $(OBJS)
 
 fclean:
-	@echo "deepcleaning in libft"
-	@make clean
+	@$(RM) $(OBJS)
 	@$(RM) $(NAME)
 
 re:
-	@make fclean
-	@make
+	@make fclean $(NODIR)
+	@make $(NODIR)
+
+test:
+	@make re $(NODIR)
+	./$(NAME) 3 2 1
 
 .PHONY: all clean fclean re

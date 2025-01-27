@@ -12,21 +12,19 @@ int	stack_pop(t_stack *stack)
 
 	if (stack->size > 0)
 	{
-		pop = stack->a[stack->size];
 		stack->size--;
+		pop = stack->a[stack->size];
 		return (pop);
 	}
 	return (0);
 }
 
-int	stack_peek(t_stack *stack, int n)
+int	stack_peek(const t_stack *stack, int n)
 {
 	int	i;
 
-	i = stack->size - n;
-	if (i > 0)
-		return (stack->a[i]);
-	return (0);
+	i = stack->size - n - 1;
+	return (stack->a[i]);
 }
 
 void	stack_rotate(t_stack *stack)
@@ -42,6 +40,7 @@ void	stack_rotate(t_stack *stack)
 		i--;
 	}
 	stack->a[0] = temp;
+	stack->size++;
 }
 
 void	stack_rev_rotate(t_stack *stack)
