@@ -58,7 +58,6 @@ int	main(int argc, char **argv)
 
 	if (__init_data(&data, argc - 1, argv))
 		return (1);
-	/*
 	stack_print(data.a);
 	if (stack_issorted(data.a))
 		;
@@ -66,10 +65,9 @@ int	main(int argc, char **argv)
 		ft_sort_three(&data);
 	else
 		chunk_sort(&data);
-	*/
 	//print_op(data.op_list);
 	stack_print(data.a);
-	test(&data);
+	//test(&data);
 	__terminate_data(&data);
 	return (0);
 }
