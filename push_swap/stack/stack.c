@@ -1,8 +1,13 @@
 #include "stack.h"
 
+/*
+	In some of the code i take into account that i need to do
+	stack->size - 1, in other parts my brain was apparently turned off
+*/
+
 void	stack_add(t_stack *stack, int num)
 {
-	if (stack->size < 500)
+	if (stack->size < STACK_SIZE)
 		stack->a[stack->size++] = num;
 }
 
@@ -19,31 +24,17 @@ int	stack_pop(t_stack *stack)
 	return (0);
 }
 
+// Takes a peek from the top of the stack
+// Beware dear user, n does not start from 0. The top of the stack is 1
 int	stack_peek(const t_stack *stack, int n)
 {
 	int	i;
 
-	i = stack->size - n - 1;
+	i = stack->size - n + 1 - 1;
 	return (stack->a[i]);
 }
 
 void	stack_rotate(t_stack *stack)
-{
-	int	i;
-	int	temp;
-
-	temp = stack_pop(stack);
-	i = stack->size - 1;
-	while (i >= 0)
-	{
-		stack->a[i + 1] = stack->a[i];
-		i--;
-	}
-	stack->a[0] = temp;
-	stack->size++;
-}
-
-void	stack_rev_rotate(t_stack *stack)
 {
 	int	i;
 	int	temp;
@@ -57,4 +48,21 @@ void	stack_rev_rotate(t_stack *stack)
 		i++;
 	}
 	stack_add(stack, temp);
+
+}
+
+void	stack_rev_rotate(t_stack *stack)
+{
+	int	i;
+	int	temp;
+
+	temp = stack_pop(stack);
+	i = stack->size - 1;
+	while (i >= 0)
+	{
+		stack->a[i + 1] = stack->a[i];
+		i--;
+	}
+	stack->a[0] = temp;
+	stack->size++;
 }

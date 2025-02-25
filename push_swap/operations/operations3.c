@@ -1,20 +1,26 @@
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
-void	ra(t_stack *s)
+void	ra(t_ps *data)
 {
-	stack_rotate(s);
-	ft_printf("ra\n");
+	if (data->a->size < 2)
+		return ;
+	stack_rotate(data->a);
+	save_move(data, o_ra);
 }
 
-void	rb(t_stack *s)
+void	rb(t_ps *data)
 {
-	stack_rotate(s);
-	ft_printf("rb\n");
+	if (data->b->size < 2)
+		return ;
+	stack_rotate(data->b);
+	save_move(data, o_rb);
 }
 
-void	rr(t_stack *a, t_stack *b)
-{
-	ra(a);
-	rb(b);
-	ft_printf("rr\n");
+void	rr(t_ps *data)
+{	
+	if (data->b->size < 2 || data->a->size < 2)
+		return ;
+	ra(data);
+	rb(data);
+	save_move(data, o_rr);
 }

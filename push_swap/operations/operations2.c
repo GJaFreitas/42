@@ -1,21 +1,27 @@
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
 // Reverse rotate stack "s"
-void	rra(t_stack *s)
+void	rra(t_ps *data)
 {
-	stack_rev_rotate(s);
-	ft_printf("rra\n");
+	if (data->a->size < 2)
+		return ;
+	stack_rev_rotate(data->a);
+	save_move(data, o_rra);
 }
 
-void	rrb(t_stack *s)
+void	rrb(t_ps *data)
 {
-	stack_rev_rotate(s);
-	ft_printf("rrb\n");
+	if (data->b->size < 2)
+		return ;
+	stack_rev_rotate(data->b);
+	save_move(data, o_rrb);
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rrr(t_ps *data)
 {
-	rra(a);
-	rrb(b);
-	ft_printf("rrr\n");
+	if (data->b->size < 2 || data->a->size < 2)
+		return ;
+	rra(data);
+	rrb(data);
+	save_move(data, o_rrr);
 }

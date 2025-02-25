@@ -37,23 +37,19 @@ int	stack_max(const t_stack *stack)
 	return (temp);
 }
 
+// Returns 1 if the stack is sorted either in ascending order or descending
 int	stack_issorted(const t_stack *stack)
 {
 	int	i;
 
 	i = 0;
-	if (stack->a[i] >= stack->a[i + 1])
+	while (i < stack->size - 1)
 	{
-		while (i < stack->size && stack->a[i] >= stack->a[i + 1])
-			i++;
-		return (++i == stack->size);
+		if (!(stack->a[i] < stack->a[i + 1]))
+			return (0);
+		i++;
 	}
-	else
-	{
-		while (i < stack->size && stack->a[i] <= stack->a[i + 1])
-			i++;
-		return (++i == stack->size);
-	}
+	return (1);
 }
 
 int	stack_empty(const t_stack *stack)
@@ -66,7 +62,11 @@ int	stack_find(const t_stack *stack, int n)
 	int	i;
 
 	i = 0;
-	while (stack->a[i] != n)
+	while (i < STACK_SIZE)
+	{
+		if (stack->a[i] == n)
+			return (i);
 		i++;
-	return (i);
+	}
+	return (501);
 }

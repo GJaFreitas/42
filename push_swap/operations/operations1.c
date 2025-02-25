@@ -1,50 +1,56 @@
 #include "../includes/push_swap.h"
 
-void	sa(t_stack *s)
+void	sa(t_ps *data)
 {
+	t_stack	*s;
 	int	temp;
 	int	temp2;
 
-	if (s->size < 1)
+	s = data->a;
+	if (s->size < 2)
 		return ;
 	temp = stack_pop(s);
 	temp2 = stack_pop(s);
 	stack_add(s, temp);
 	stack_add(s, temp2);
-	ft_printf("sa\n");
+	save_move(data, o_sa);
 }
 
-void	sb(t_stack *s)
+void	sb(t_ps *data)
 {
+	t_stack	*s;
 	int	temp;
 	int	temp2;
 
-	if (s->size < 1)
+	s = data->b;
+	if (s->size < 2)
 		return ;
 	temp = stack_pop(s);
 	temp2 = stack_pop(s);
 	stack_add(s, temp);
 	stack_add(s, temp2);
-	ft_printf("sb\n");
+	save_move(data, o_sb);
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	ss(t_ps *data)
 {
-	sa(a);
-	sb(b);
-	ft_printf("ss\n");
+	if (data->b->size < 2 || data->a->size < 2)
+		return ;
+	sa(data);
+	sb(data);
+	save_move(data, o_ss);
 }
 
-void	pa(t_stack *a, t_stack *b)
+void	pa(t_ps *data)
 {
-	if (b->size > 0)
-		stack_add(a, stack_pop(b));
-	ft_printf("pa\n");
+	if (data->b->size > 0)
+		stack_add(data->a, stack_pop(data->b));
+	save_move(data, o_pa);
 }
 
-void	pb(t_stack *a, t_stack *b)
+void	pb(t_ps *data)
 {
-	if (a->size > 0)
-		stack_add(b, stack_pop(a));
-	ft_printf("pb\n", b->size);
+	if (data->a->size > 0)
+		stack_add(data->b, stack_pop(data->a));
+	save_move(data, o_pb);
 }

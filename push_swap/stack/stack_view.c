@@ -1,18 +1,18 @@
 #include "../includes/push_swap.h"
 
-void	stack_print(const t_stack s)
+void	stack_print(const t_stack *s)
 {
 	int	i;
 
 	i = 0;
-	if (s.size == 0)
-		return (printf("Empty.\n"), (void)0);
+	if (s->size == 0)
+		return (ft_printf("Empty.\n"), (void)0);
 	ft_printf("[ ");
-	while (i < s.size)
+	while (i < s->size)
 	{
-		ft_printf("%d", s.a[i]);
+		ft_printf("%d", s->a[i]);
 		i++;
-		if (i < s.size)
+		if (i < s->size)
 			ft_printf(", ");
 	}
 	ft_printf(" ]");

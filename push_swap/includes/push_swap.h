@@ -5,27 +5,109 @@
 # include "../stack/stack.h"
 # include <stdlib.h>
 
+typedef short int bool;
+
 typedef struct s_ps
 {
-	t_stack	a;
-	t_stack	b;
+	t_stack	*a;
+	t_stack	*b;
 	t_list	*op_list;
-	bool 
+	bool	writing;
 } t_ps;
 
-void	pa(t_stack *a, t_stack *b);
-void	pb(t_stack *a, t_stack *b);
+typedef enum e_pos
+{
+	TOP_A,
+	BOTTOM_A,
+	TOP_B,
+	BOTTOM_B,
+}	t_pos;
 
-void	sa(t_stack *s);
-void	sb(t_stack *s);
-void	ss(t_stack *a, t_stack *b);
+typedef struct s_chunk
+{
+	t_pos	pos;
+	int	size;
+}	t_chunk;
 
-void	ra(t_stack *s);
-void	rb(t_stack *s);
-void	rr(t_stack *a, t_stack *b);
+typedef struct s_split_dest
+{
+	t_chunk	max;
+	t_chunk	mid;
+	t_chunk	min;
+}	t_split_dest;
 
-void	rra(t_stack *s);
-void	rrb(t_stack *s);
-void	rrr(t_stack *a, t_stack *b);
+typedef enum e_op
+{
+	o_null,
+	o_pa,
+	o_pb,
+	o_ra,
+	o_rb,
+	o_rr,
+	o_rra,
+	o_rrb,
+	o_rrr,
+	o_sa,
+	o_sb,
+	o_ss
+}	t_op;
 
+void	pa(t_ps *data);
+void	pb(t_ps *data);
+
+void	sa(t_ps *data);
+void	sb(t_ps *data);
+void	ss(t_ps *data);
+
+void	ra(t_ps *data);
+void	rb(t_ps *data);
+void	rr(t_ps *data);
+
+void	rra(t_ps *data);
+void	rrb(t_ps *data);
+void	rrr(t_ps *data);
+
+/*		Stack		*/
+
+t_stack	*map_stack(const t_stack *s);
+
+/* ------------------------------------ */
+
+/*		Debug		*/
+
+int	test(t_ps *data);
+
+/* ------------------------------------ */
+
+/*		Sorting		*/
+
+void	chunk_sort(t_ps *data);
+void	ft_sort_three(t_ps *data);
+
+
+void	sort_three(t_ps *data, t_chunk *to_sort);
+void	chunk_split(t_ps *data, t_chunk *to_split, t_split_dest *dest);
+void	set_pivots(t_pos pos, int size, int *piv1, int *piv2);
+void	set_split_dest(t_pos pos, t_chunk *min, t_chunk *mid, t_chunk *max);
+void	sort_one(t_ps *data, t_chunk *to_sort);
+void	sort_two(t_ps *data, t_chunk *to_sort);
+
+/* ------------------------------------ */
+
+/*		Chunk utils		*/
+
+int	chunk_max(t_ps *data, t_chunk *chunk);
+int	chunk_min(t_ps *data, t_chunk *chunk);
+int	chunk_get(t_ps *data, t_chunk *chunk, int n);
+int	move_from_to(t_ps *data, t_pos from, t_pos to);
+t_stack	*chunk_locate(t_ps *data, t_pos pos);
+
+/* ------------------------------------ */
+
+/*		Moves		*/
+
+void	save_move(t_ps *data, t_op op);
+void	print_op(t_list *current);
+
+/* ------------------------------------ */
 #endif
