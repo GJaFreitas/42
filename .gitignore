@@ -46,6 +46,7 @@ libft/tests
 *.idb
 *.pdb
 *.gdb
+vgcore.*
 
 # Kernel Module Compile Results
 *.mod*
