@@ -1,6 +1,7 @@
 #include "../includes/push_swap.h"
 
 // Sort 3 numbers in 2 instructions or less
+// change this
 void	ft_sort_three(t_ps *data)
 {
 	t_stack	*stack;

@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/02/25 00:05:16 by bag              ###   ########.fr        #
+#    Updated: 2025/02/25 18:01:35 by bag              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,6 +100,6 @@ re:
 
 test:
 	@make re $(NODIR)
-	valgrind --leak-check=full ./$(NAME) 1 5 2 4 3 111 27
+	valgrind --leak-check=full ./$(NAME) 1 5 2 4 3 111 27 63 277 89 28 45
 
 .PHONY: all clean fclean re

@@ -5,9 +5,17 @@ int	test(t_ps *data)
 {
 	t_chunk	b;
 
-	b.pos = BOTTOM_A;
+	b.pos = TOP_B;
 	b.size = 3;
+	pb(data);
+	pb(data);
+	pb(data);
+	printf("Start:\n");
+	stack_print(data->a);
 	sort_three(data, &b);
-	printf("TOP OF A: %d\n", stack_peek(data->a, 1));
+	printf("\n");
+	printf("End:\n");
+	stack_print(data->a);
+	printf("-------------\n");
 	return (0);
 }

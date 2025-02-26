@@ -1,11 +1,19 @@
 #include "../includes/push_swap.h"
 
+void	chunk_to_the_top(t_ps *data, t_chunk *to_sort)
+{
+	if (to_sort->pos == BOTTOM_B && data->b->size == to_sort->size)
+		to_sort->pos = TOP_B;
+	if (to_sort->pos == BOTTOM_A && data->a->size == to_sort->size)
+		to_sort->pos = TOP_A;
+}
 
 // Recursiveness is magic
 static void	recursive_magic(t_ps *data, t_chunk *to_sort)
 {
 	t_split_dest	dests;
 
+	chunk_to_the_top(data, to_sort);
 	if (to_sort->size <= 3)
 	{
 		if (to_sort->size == 3)

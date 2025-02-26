@@ -4,27 +4,27 @@ void	set_split_dest(t_pos pos, t_chunk *min, t_chunk *mid, t_chunk *max)
 {
 	if (pos == TOP_A)
 	{
-		min->pos = BOTTOM_B;
+		max->pos = BOTTOM_B;
 		mid->pos = TOP_B;
-		max->pos = BOTTOM_A;
+		min->pos = BOTTOM_A;
 	}
 	else if (pos == BOTTOM_A)
 	{
-		min->pos = BOTTOM_B;
+		max->pos = BOTTOM_B;
 		mid->pos = TOP_B;
-		max->pos = TOP_A;
+		min->pos = TOP_A;
 	}
 	else if (pos == TOP_B)
 	{
-		min->pos = BOTTOM_B;
+		max->pos = BOTTOM_B;
 		mid->pos = BOTTOM_A;
-		max->pos = TOP_A;
+		min->pos = TOP_A;
 	}
 	else if (pos == BOTTOM_B)
 	{
-		min->pos = TOP_B;
+		max->pos = TOP_B;
 		mid->pos = BOTTOM_A;
-		max->pos = TOP_A;
+		min->pos = TOP_A;
 	}
 }
 
@@ -58,6 +58,9 @@ void	set_pivots(t_pos pos, int size, int *piv1, int *piv2)
 		than (5 || 7)
 	
 	the final case is if it is a small value
+
+	         pivot1     pivot2
+	[    min   |   mid    |    max   ]
 
 */
 

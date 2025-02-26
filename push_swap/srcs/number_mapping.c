@@ -57,6 +57,20 @@ static void	__populate_indexed(t_stack *new, const t_stack *temp, const t_stack 
 		stack_add(new, 1 + stack_find(temp, s->a[i++]));
 }
 
+static int	__check_dup(t_stack *sorted)
+{
+	int	i;
+
+	i = 0;
+	while (i < sorted->size)
+	{
+		if (sorted->a[i] == sorted->a[i + 1])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 t_stack	*map_stack(const t_stack *s)
 {
 	t_stack *temp;
@@ -65,6 +79,8 @@ t_stack	*map_stack(const t_stack *s)
 	new = stack_new();
 	temp = stack_copy(s);
 	__quickSort(temp->a, 0, temp->size - 1);
+	if (__check_dup(temp))
+		return (ft_printf("Duplicate numbers\n"), NULL);
 	__populate_indexed(new, temp, s);
 	free(temp);
 	return (new);
