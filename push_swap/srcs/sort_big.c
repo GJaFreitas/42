@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-void	chunk_to_the_top(t_ps *data, t_chunk *to_sort)
+static void	chunk_to_the_top(t_ps *data, t_chunk *to_sort)
 {
 	if (to_sort->pos == BOTTOM_B && data->b->size == to_sort->size)
 		to_sort->pos = TOP_B;

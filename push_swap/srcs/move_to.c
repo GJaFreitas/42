@@ -5,11 +5,11 @@ static void	move_from_top_a(t_ps *data, t_pos to)
 	if (to == TOP_B)
 		pb(data);
 	else if (to == BOTTOM_A)
-		ra(data);
+		rra(data);
 	else if (to == BOTTOM_B)
 	{
 		pb(data);
-		rb(data);
+		rrb(data);
 	}
 }
 
@@ -18,45 +18,45 @@ static void	move_from_top_b(t_ps *data, t_pos to)
 	if (to == TOP_A)
 		pa(data);
 	else if (to == BOTTOM_B)
-		rb(data);
+		rrb(data);
 	else if (to == BOTTOM_A)
 	{
 		pa(data);
-		ra(data);
+		rra(data);
 	}
 }
 
 static void	move_from_bottom_a(t_ps *data, t_pos to)
 {
 	if (to == TOP_A)
-		rra(data);
+		ra(data);
 	else if (to == TOP_B)
 	{
-		rra(data);
+		ra(data);
 		pb(data);
 	}
 	else if (to == BOTTOM_B)
 	{
-		rra(data);
+		ra(data);
 		pb(data);
-		rb(data);
+		rrb(data);
 	}
 }
 
 static void	move_from_bottom_b(t_ps *data, t_pos to)
 {
 	if (to == TOP_B)
-		rrb(data);
+		rb(data);
 	else if (to == TOP_A)
 	{
-		rrb(data);
+		rb(data);
 		pa(data);
 	}
 	else if (to == BOTTOM_A)
 	{
-		rrb(data);
+		rb(data);
 		pa(data);
-		ra(data);
+		rra(data);
 	}
 }
 

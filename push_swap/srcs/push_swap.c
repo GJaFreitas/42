@@ -58,16 +58,24 @@ int	main(int argc, char **argv)
 
 	if (__init_data(&data, argc - 1, argv))
 		return (1);
-	stack_print(data.a);
+	//stack_print(data.a);
 	if (stack_issorted(data.a))
 		;
 	else if (data.a->size == 3)
 		ft_sort_three(&data);
 	else
 		chunk_sort(&data);
-	//print_op(data.op_list);
-	stack_print(data.a);
+	post_sort_opt(&data);
+	print_op(data.op_list);
+	//stack_print(data.a);
 	//test(&data);
 	__terminate_data(&data);
 	return (0);
 }
+
+/*
+	Benchmark for average number of moves over 100 iterations:
+
+	Pre optimization - 4655.39
+	Post sort optimization - 4426.42
+*/

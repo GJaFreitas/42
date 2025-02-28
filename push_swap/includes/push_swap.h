@@ -94,6 +94,15 @@ void	sort_two(t_ps *data, t_chunk *to_sort);
 
 /* ------------------------------------ */
 
+/*		Post Sort Optimization		*/
+
+void	post_sort_opt(t_ps *data);
+t_op	oposite_op(t_op op);
+void	remove_op(t_list *delete);
+t_op	_mergable(t_op first, t_op second);
+
+/* ------------------------------------ */
+
 /*		Chunk utils		*/
 
 int	chunk_max(t_ps *data, t_chunk *chunk);
@@ -108,6 +117,8 @@ t_stack	*chunk_locate(t_ps *data, t_pos pos);
 
 void	save_move(t_ps *data, t_op op);
 void	print_op(t_list *current);
+t_op	string_to_op(char *str);
+const char	*op_to_string(t_op op);
 
 /* ------------------------------------ */
 #endif

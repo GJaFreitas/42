@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/02/25 18:01:35 by bag              ###   ########.fr        #
+#    Updated: 2025/02/28 14:20:06 by bag              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,8 @@ SRCS = \
 	./srcs/chunk_splits.c \
 	./srcs/chunk_utils.c \
 	./srcs/move_to.c \
+	./srcs/post_sort_optimization.c \
+	./srcs/post_sort_utils.c \
 
 HEADERS = \
 	./includes/push_swap.h\
