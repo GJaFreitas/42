@@ -1,4 +1,1 @@
--Collectible counter on screen + exit logic
--Fix enemy getting stuck in walls
-
 -Fix stupid makefile
