@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-t_stack	*stack_new()
+t_stack	*stack_new(void)
 {
 	t_stack	*s;
 

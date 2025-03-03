@@ -25,7 +25,7 @@ int	ft_main_loop(char **input, va_list args)
 
 int	ft_printf(char *input, ...)
 {
-	int	count;
+	int		count;
 	va_list	args;
 
 	va_start(args, input);

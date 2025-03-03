@@ -48,7 +48,6 @@ void	stack_rotate(t_stack *stack)
 		i++;
 	}
 	stack_add(stack, temp);
-
 }
 
 void	stack_rev_rotate(t_stack *stack)

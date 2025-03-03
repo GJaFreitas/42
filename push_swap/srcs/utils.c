@@ -1,7 +1,5 @@
 #include "../includes/push_swap.h"
 
-// TODO: Check for duplicate numbers in stack
-
 const char	*op_to_string(t_op op)
 {
 	static const char	*strings[12];
@@ -53,14 +51,6 @@ void	save_move(t_ps *data, t_op op)
 	char	*content;
 
 	content = ft_strdup(op_to_string(op));
-	/*
-	printf("Operation: %s\n", content);
-	printf("Stack A:\n");
-	stack_print(data->a);
-	printf("\nStack B:\n");
-	stack_print(data->b);
-	printf("\n\n");
-	*/
 	ft_lstadd_back(&data->op_list, ft_lstnew(content));
 }
 

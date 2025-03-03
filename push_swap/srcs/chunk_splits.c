@@ -46,15 +46,18 @@ void	set_pivots(t_pos pos, int size, int *piv1, int *piv2)
 	Logic behind the logic:
 
 	if (next > max - pivot[0]):
-		max - pivot[0] is the top part of the chunk, since i have normalized the values in
+		max - pivot[0] is the top part of the chunk,
+		since i have normalized the values in
 		the stack if the chunk has size 10 then the values in there pretty much
 		are equal to the ints from 1 to 10, [1 - 10] then max - pivot[0] will be
 		2/3 of the way up or halfway up so == 5 || 7
 	
 	if (next > max - pivot[1]
 		following the same logic here if the value wasnt in max - pivot[0] but is
-		int max - pivot[1] then that means its a median value, in the middle of the nums
-		like 3 or 4 in the previous case, so next would be more than (3 || 4) and less
+		int max - pivot[1] then that means its a median value,
+		in the middle of the nums
+		like 3 or 4 in the previous case,
+		so next would be more than (3 || 4) and less
 		than (5 || 7)
 	
 	the final case is if it is a small value

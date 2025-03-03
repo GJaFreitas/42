@@ -37,9 +37,11 @@ t_op	_mergable(t_op first, t_op second)
 {
 	if ((first == o_ra && second == o_rb) || (first == o_rb && second == o_ra))
 		return (o_rr);
-	else if ((first == o_rra && second == o_rrb) || (first == o_rrb && second == o_rra))
+	else if ((first == o_rra && second == o_rrb)
+		|| (first == o_rrb && second == o_rra))
 		return (o_rrr);
-	else if ((first == o_sa && second == o_sb) || (first == o_sb && second == o_sa))
+	else if ((first == o_sa && second == o_sb)
+		|| (first == o_sb && second == o_sa))
 		return (o_ss);
 	else
 		return (0);
@@ -49,9 +51,11 @@ t_op	child_op(t_op first, t_op second)
 {
 	if ((first == o_ra && second == o_rb) || (first == o_rb && second == o_ra))
 		return (o_rr);
-	else if ((first == o_rra && second == o_rrb) || (first == o_rrb && second == o_rra))
+	else if ((first == o_rra && second == o_rrb)
+		|| (first == o_rrb && second == o_rra))
 		return (o_rrr);
-	else if ((first == o_sa && second == o_sb) || (first == o_sb && second == o_sa))
+	else if ((first == o_sa && second == o_sb)
+		|| (first == o_sb && second == o_sa))
 		return (o_ss);
 	else
 		return (515);

@@ -17,7 +17,7 @@ void	rb(t_ps *data)
 }
 
 void	rr(t_ps *data)
-{	
+{
 	if (data->b->size < 2 || data->a->size < 2)
 		return ;
 	ra(data);

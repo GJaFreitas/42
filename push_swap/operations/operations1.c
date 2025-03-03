@@ -3,8 +3,8 @@
 void	sa(t_ps *data)
 {
 	t_stack	*s;
-	int	temp;
-	int	temp2;
+	int		temp;
+	int		temp2;
 
 	s = data->a;
 	if (s->size < 2)
@@ -19,8 +19,8 @@ void	sa(t_ps *data)
 void	sb(t_ps *data)
 {
 	t_stack	*s;
-	int	temp;
-	int	temp2;
+	int		temp;
+	int		temp2;
 
 	s = data->b;
 	if (s->size < 2)

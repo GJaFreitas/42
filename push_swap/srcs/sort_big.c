@@ -37,5 +37,4 @@ void	chunk_sort(t_ps *data)
 	big_chunkaroo.pos = TOP_A;
 	big_chunkaroo.size = data->a->size;
 	recursive_magic(data, &big_chunkaroo);
-	//optimize_the_stuff(data);
 }

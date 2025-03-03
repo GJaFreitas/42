@@ -1,15 +1,13 @@
 #include "../includes/push_swap.h"
 
-static t_stack	*__init_stack(int argc, char **argv)
+static t_stack	*__init_stack(int argc, char **argv, int flag)
 {
 	t_stack	*temp;
 	t_stack	*ret;
 	char	**nums;
-	int	i;
-	int	flag;
+	int		i;
 
 	temp = stack_new();
-	flag = 0;
 	if (argc < 2)
 	{
 		nums = ft_split(argv[1], ' ');
@@ -38,7 +36,7 @@ static int	__init_data(t_ps *data, int argc, char **argv)
 	data->b = stack_new();
 	if (!data->b)
 		return (1);
-	data->a = __init_stack(argc, argv);
+	data->a = __init_stack(argc, argv, 0);
 	if (!data->a)
 		return (1);
 	return (0);
@@ -58,7 +56,6 @@ int	main(int argc, char **argv)
 
 	if (__init_data(&data, argc - 1, argv))
 		return (1);
-	//stack_print(data.a);
 	if (stack_issorted(data.a))
 		;
 	else if (data.a->size == 3)
@@ -67,8 +64,6 @@ int	main(int argc, char **argv)
 		chunk_sort(&data);
 	post_sort_opt(&data);
 	print_op(data.op_list);
-	//stack_print(data.a);
-	//test(&data);
 	__terminate_data(&data);
 	return (0);
 }

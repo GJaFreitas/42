@@ -43,7 +43,6 @@ void	sort_two(t_ps *data, t_chunk *to_sort)
 		move_from_to(data, to_sort->pos, TOP_A);
 	}
 	if (stack_peek(data->a, 1) < stack_peek(data->a, 2))
-     		sa(data);
+		sa(data);
 	to_sort->size -= 2;
 }
-

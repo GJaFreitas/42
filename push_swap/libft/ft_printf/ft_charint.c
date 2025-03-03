@@ -35,5 +35,5 @@ int	ft_printint(int n)
 
 int	ft_printuint(unsigned int n)
 {
-	return(ft_putnbr_base(n, BASE_10, 0));
+	return (ft_putnbr_base(n, BASE_10, 0));
 }

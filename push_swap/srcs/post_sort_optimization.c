@@ -5,7 +5,7 @@ static int	__no_mirrors(t_list *list)
 	t_list	*current;
 	t_list	*compare;
 	t_op	neutral_op;
-	int	n;
+	int		n;
 
 	n = 0;
 	current = list;
@@ -36,15 +36,15 @@ static void	__swap_op(t_list *current, t_op new_op)
 
 static int	__merge_opt(t_list *list)
 {
-	int	n;
 	t_list	*current;
 	t_op	op;
+	int		n;
 
 	n = 0;
 	current = list;
 	while (current && current->next)
 	{
-		op = _mergable(string_to_op(current->content),\
+		op = _mergable(string_to_op(current->content), \
 		string_to_op(current->next->content));
 		if (op)
 		{

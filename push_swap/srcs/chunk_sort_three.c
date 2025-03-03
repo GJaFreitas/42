@@ -2,13 +2,17 @@
 
 /*
 
-	These functions server 1 purpose, putting the biggest number in the right place.
-	if the three numbers we have are 3 2 1 all that matters is that the 3 goes to his
-	rightfull spot and then we call sort_two() and that handles the rest.
+	These functions server 1 purpose,
+	putting the biggest number in the right place.
+	if the three numbers we have are 3 2 1
+	all that matters is that the 3 goes to his
+	rightfull spot and then we call
+	sort_two() and that handles the rest.
 
 */
 
-static void	sort_three_top_a(t_ps *data, t_chunk *to_sort, t_stack *stk, int min)
+static void	sort_three_top_a(t_ps *data, t_chunk *to_sort,
+t_stack *stk, int min)
 {
 	if (stack_peek(stk, 1) == min)
 	{
@@ -28,7 +32,8 @@ static void	sort_three_top_a(t_ps *data, t_chunk *to_sort, t_stack *stk, int min
 	sort_two(data, to_sort);
 }
 
-static void	sort_three_top_b(t_ps *data, t_chunk *to_sort, t_stack *stk, int min)
+static void	sort_three_top_b(t_ps *data, t_chunk *to_sort,
+t_stack *stk, int min)
 {
 	pa(data);
 	if (stack_peek(stk, 1) == min)
@@ -50,7 +55,8 @@ static void	sort_three_top_b(t_ps *data, t_chunk *to_sort, t_stack *stk, int min
 	sort_two(data, to_sort);
 }
 
-static void	sort_three_bottom_a(t_ps *data, t_chunk *to_sort, t_stack *stk, int min)
+static void	sort_three_bottom_a(t_ps *data, t_chunk *to_sort,
+				t_stack *stk, int min)
 {
 	ra(data);
 	ra(data);
@@ -73,7 +79,8 @@ static void	sort_three_bottom_a(t_ps *data, t_chunk *to_sort, t_stack *stk, int 
 	sort_two(data, to_sort);
 }
 
-static void	sort_three_bottom_b(t_ps *data, t_chunk *to_sort, t_stack *stk, int min)
+static void	sort_three_bottom_b(t_ps *data, t_chunk *to_sort,
+				t_stack *stk, int min)
 {
 	rb(data);
 	rb(data);

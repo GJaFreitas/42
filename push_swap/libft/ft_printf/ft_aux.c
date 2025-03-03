@@ -18,4 +18,3 @@ int	ft_putnbr_base(unsigned int nbr, char *base, int total)
 	}
 	return (total);
 }
-

@@ -18,4 +18,3 @@ void	stack_print(const t_stack *s)
 	ft_printf(" ]");
 	ft_printf("\n");
 }
-

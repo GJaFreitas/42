@@ -4,7 +4,7 @@
 int	chunk_get(t_ps *data, t_chunk *chunk, int n)
 {
 	t_stack	*s;
-	int	i;
+	int		i;
 
 	s = chunk_locate(data, chunk->pos);
 	if (chunk->pos == TOP_A || chunk->pos == TOP_B)
@@ -34,9 +34,9 @@ t_stack	*chunk_locate(t_ps *data, t_pos pos)
 int	chunk_max(t_ps *data, t_chunk *chunk)
 {
 	t_stack	*s;
-	int	size;
-	int	max;
-	int	i;
+	int		size;
+	int		max;
+	int		i;
 
 	s = chunk_locate(data, chunk->pos);
 	size = chunk->size;
@@ -61,9 +61,9 @@ int	chunk_max(t_ps *data, t_chunk *chunk)
 int	chunk_min(t_ps *data, t_chunk *chunk)
 {
 	t_stack	*s;
-	int	size;
-	int	min;
-	int	i;
+	int		size;
+	int		min;
+	int		i;
 
 	s = chunk_locate(data, chunk->pos);
 	size = chunk->size;
