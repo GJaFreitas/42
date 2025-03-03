@@ -14,6 +14,7 @@ typedef enum e_type
 	FIREBALL,
 	ENEMY,
 	COLLECTIBLE,
+	COUNTER,
 	EXIT,
 	HUD,
 	GAME,

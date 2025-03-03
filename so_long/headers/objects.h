@@ -293,6 +293,7 @@ struct s_counter
 	t_sprite		*(*get_sprite)(int i);
 
 	t_sprite		*nums[10];
+	t_sprite		*bar;
 };
 
 t_object	*object(t_object *object);

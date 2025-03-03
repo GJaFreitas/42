@@ -2,6 +2,8 @@
 
 #define HP_SIZE 400
 
+// 1 - Deco
+// 0 - Bar
 static t_sprite	*__hud_sprites(int which)
 {
 	t_hud	*hud;
@@ -37,11 +39,9 @@ static void	__hud_render(void)
 	canva()->scale_img(
 		hud->get_sprite(0), \
 		hud->hpsize);
-	/*
 	canva()->scale_img(
 		hud->get_sprite(1), \
 		hud->pos);
-	*/
 	hud->hpsize.w = HP_SIZE;
 }
 
@@ -54,9 +54,9 @@ t_object	*new_hud(void)
 	hud->get_sprite = __hud_sprites;
 	hud->destructor = __hud_destructor;
 	hud->type = HUD;
-	hud->pos.x = 100;
-	hud->pos.y = 100;
-	hud->pos.w = 192*3;
+	hud->pos.x = -85;
+	hud->pos.y = -25;
+	hud->pos.w = 650;
 	hud->pos.h = 200;
 	hud->hpsprite = canva()->load_img("textures/hp.xpm");
 	hud->hpsize.x = 50;
@@ -64,5 +64,6 @@ t_object	*new_hud(void)
 	hud->hpsize.w = HP_SIZE;
 	hud->hpsize.h = 35;
 	hud->hpbar = canva()->load_img("textures/health-bar.xpm");
+	game()->add_obj(new_counter());
 	return ((t_object*)hud);
 }
