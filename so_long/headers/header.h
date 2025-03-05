@@ -2,6 +2,17 @@
 
 # define HEADER_H
 
+// Gameplay stuff
+#ifndef PLAYER_SPEED
+# define PLAYER_SPEED 5
+#endif
+#ifndef FIREBALL_SPEED
+#define FIREBALL_SPEED 30
+#endif
+#ifndef FIREBALL_COOLDOWN
+#define FIREBALL_COOLDOWN 1
+#endif
+
 // Window Sizes
 # define WIDTH 1920
 # define HEIGHT 1080

@@ -1,15 +1,5 @@
 #include "../../../headers/header.h"
 
-#ifndef PLAYER_SPEED
-# define PLAYER_SPEED 5
-#endif
-#ifndef FIREBALL_SPEED
-#define FIREBALL_SPEED 30
-#endif
-#ifndef FIREBALL_COOLDOWN
-#define FIREBALL_COOLDOWN 1
-#endif
-
 static void	__player_keys(byte *keys)
 {
 	t_pos_vector	pos;
@@ -56,9 +46,11 @@ void	__mouse_left(void)
 	static clock_t	init;
 	t_pos_vector 	vec;
 
-	vec.x = engine()->mouse.x - game()->player->pos.x;
-	vec.y = engine()->mouse.y - game()->player->pos.y;
+	vec.x = (engine()->mouse.x - game()->player->pos.x);
+	vec.y = (engine()->mouse.y - game()->player->pos.y);
+	printf("x: %f, y: %f\n", vec.x, vec.y);
 	__vec_normalization(&vec.x, &vec.y);
+	printf("x: %f, y: %f\n", vec.x, vec.y);
 	vec.x *= FIREBALL_SPEED;
 	vec.y *= FIREBALL_SPEED;
 	if (__cooldown(&init, clock(), FIREBALL_COOLDOWN))
@@ -73,8 +65,8 @@ static void	__player_mouse(void)
 		__mouse_left();
 	else if (engine()->mouse_press == 3)
 		return ;
-		//__mouse_right();
 }
+//__mouse_right();
 
 static void	__player_update(void)
 {
