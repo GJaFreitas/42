@@ -63,7 +63,7 @@ void	save_move(t_ps *data, t_op op)
 	char	*content;
 
 	content = ft_strdup(op_to_string(op));
-	ft_lstadd_back(&data->op_list, ft_lstnew(content));
+	ft_lstadd_front(&data->op_list, ft_lstnew(content));
 }
 
 void	print_op(t_list *current)

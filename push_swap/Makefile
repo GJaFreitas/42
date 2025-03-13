@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/02/28 14:20:06 by bag              ###   ########.fr        #
+#    Updated: 2025/03/13 22:55:18 by bag              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,10 +65,6 @@ SRCS += \
 	 ./stack/stack2.c \
 	 ./stack/stack_alloc.c \
 	 ./stack/stack_view.c \
-
-# Tests
-SRCS += \
-	 ./test.c \
 
 HEADERS += \
 	./stack/stack.h\
