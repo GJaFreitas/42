@@ -1,7 +1,7 @@
 #include "../../../headers/header.h"
 
 #ifndef ENEMY_SPEED
-# define ENEMY_SPEED 4
+# define ENEMY_SPEED 12
 #endif
 
 t_pos_vector	__calc_vec(t_enemy *e, t_pos_vector *vec);
@@ -41,9 +41,9 @@ static void	__update_enemy(void)
 	if (__cooldown(&init, clock()) && game()->obj_colision(e->pos, (t_type[]){PLAYER, 0}))
 		game()->player->hp -= 25;
 	direction = __calc_vec(e, &game()->player->pos);
-	if (collision_check_x(e->pos, -direction.x * ENEMY_SPEED))
+	if (collision_check_x(e->pos, -direction.x * (ENEMY_SPEED * 1.05)))
 		e->pos.x += -direction.x * ENEMY_SPEED;
-	if (collision_check_y(e->pos, -direction.x * ENEMY_SPEED))
+	if (collision_check_y(e->pos, -direction.y * (ENEMY_SPEED * 1.05)))
 		e->pos.y += -direction.y * ENEMY_SPEED;
 }
 
@@ -66,7 +66,7 @@ t_object	*new_enemy(float x, float y)
 	enemy = constructor(sizeof(t_enemy));
 	enemy->hp = 100;
 	enemy->type = ENEMY;
-	enemy->sprite = canva()->load_img("textures/slime.xpm");
+	enemy->sprite = canva()->load_img("textures/alien.xpm");
 	enemy->pos.w = canva()->scale_factor_e;
 	enemy->pos.h = canva()->scale_factor_e;
 	enemy->pos.x = x * canva()->scale_factor;

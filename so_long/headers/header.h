@@ -4,7 +4,7 @@
 
 // Gameplay stuff
 #ifndef PLAYER_SPEED
-# define PLAYER_SPEED 5
+# define PLAYER_SPEED 15
 #endif
 #ifndef FIREBALL_SPEED
 #define FIREBALL_SPEED 30

@@ -23,7 +23,6 @@ static void	__counter_destructor(void)
 	free(c->get_sprite(515));
 }
 
-// TODO: Add a bar between the two numbers
 static void	__counter_render(void)
 {
 	t_counter	*c;

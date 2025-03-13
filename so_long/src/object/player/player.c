@@ -48,9 +48,7 @@ void	__mouse_left(void)
 
 	vec.x = (engine()->mouse.x - game()->player->pos.x);
 	vec.y = (engine()->mouse.y - game()->player->pos.y);
-	printf("x: %f, y: %f\n", vec.x, vec.y);
 	__vec_normalization(&vec.x, &vec.y);
-	printf("x: %f, y: %f\n", vec.x, vec.y);
 	vec.x *= FIREBALL_SPEED;
 	vec.y *= FIREBALL_SPEED;
 	if (__cooldown(&init, clock(), FIREBALL_COOLDOWN))
