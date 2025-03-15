@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/03/13 22:55:18 by bag              ###   ########.fr        #
+#    Updated: 2025/03/15 16:34:29 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS = -g -Wall -Wextra -Werror
 
 # --- NAME ---------------------- #
 
-NAME = push_swap.out
+NAME = push_swap
 
 NODIR = --no-print-directory
 
