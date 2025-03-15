@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:28:11 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/10 16:28:11 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:45:35 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void		rr(t_ps *data);
 void		rra(t_ps *data);
 void		rrb(t_ps *data);
 void		rrr(t_ps *data);
+
+int			err(void);
 
 /*		Stack		*/
 

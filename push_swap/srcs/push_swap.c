@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:27:37 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/10 16:27:37 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:54:01 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static t_stack	*__init_stack(int argc, char **argv, int flag)
 // mapped form
 static int	__init_data(t_ps *data, int argc, char **argv)
 {
+	if (argc < 2)
+		return (1);
 	ft_memset(data, 0, sizeof(t_ps));
 	data->b = stack_new();
 	if (!data->b)
@@ -67,7 +69,7 @@ int	main(int argc, char **argv)
 	t_ps	data;
 
 	if (__init_data(&data, argc - 1, argv))
-		return (1);
+		return (err());
 	if (stack_issorted(data.a))
 		;
 	else if (data.a->size == 3)

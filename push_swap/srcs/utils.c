@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:27:46 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/10 16:27:46 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:45:00 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,10 @@ void	print_op(t_list *current)
 		ft_printf("%s\n", (char *)current->content);
 		current = current->next;
 	}
+}
+
+int	err(void)
+{
+	ft_printf("Error\n");
+	return (1);
 }

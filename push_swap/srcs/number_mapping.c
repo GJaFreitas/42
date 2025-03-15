@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:27:29 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/10 16:27:29 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:44:12 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ t_stack	*map_stack(const t_stack *s)
 	temp = stack_copy(s);
 	__quicksort(temp->a, 0, temp->size - 1);
 	if (__check_dup(temp))
-		return (ft_printf("Duplicate numbers\n"), NULL);
+		return (ft_printf("Error\n"), NULL);
 	__populate_indexed(new, temp, s);
 	free(temp);
 	return (new);
