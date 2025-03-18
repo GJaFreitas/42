@@ -1,12 +1,41 @@
 #include "../../../headers/header.h"
 
 #ifndef DASH_DISTANCE
-#define DASH_DISTANCE 15
-#endif
-#ifndef DASH_COOLDOWN
-#define DASH_COOLDOWN 0.5
+# define DASH_DISTANCE 15
 #endif
 
+#ifndef DASH_COOLDOWN
+# define DASH_COOLDOWN 0.5
+#endif
+
+int	__cooldown(clock_t *last, clock_t current, float cooldown)
+{
+	double		time_past;
+
+	time_past = (double)(current - *last) / CLOCKS_PER_SEC;
+	if (time_past > cooldown)
+	{
+		*last = current;
+		return (1);
+	}
+	return (0);
+}
+
+// Calculates the direction and then shoots the
+// fireball taking care to not divide by 0
+void	__mouse_left(void)
+{
+	static clock_t	init;
+	t_pos_vector	vec;
+
+	vec.x = (engine()->mouse.x - game()->player->pos.x);
+	vec.y = (engine()->mouse.y - game()->player->pos.y);
+	__vec_normalization(&vec.x, &vec.y);
+	vec.x *= FIREBALL_SPEED;
+	vec.y *= FIREBALL_SPEED;
+	if (__cooldown(&init, clock(), FIREBALL_COOLDOWN))
+		game()->add_obj(new_fireball(vec));
+}
 /*
 int	__cooldown(clock_t *last, clock_t current, float cooldown);
 

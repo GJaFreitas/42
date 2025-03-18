@@ -12,12 +12,12 @@ void	__check_components(t_map *s_map)
 		s_map->error[3] = 1;
 	if (!count_obj(COLLECTIBLE))
 		s_map->error[6] = 1;
-} 
+}
 
 // returns the error flags value
 byte	__map_check(t_map *s_map)
 {
-	char		**map;
+	char	**map;
 	int		i;
 	int		j;
 
@@ -32,7 +32,7 @@ byte	__map_check(t_map *s_map)
 		{
 			if (map[i][j] != '0')
 				__map_handler(map[i][j], s_map,\
-					(t_pos_vector){i, j, 0, 0});
+					(t_pos_vector) {i, j, 0, 0});
 			j++;
 		}
 		i++;

@@ -23,20 +23,19 @@ static void	__new()
 
 static void	__col_render(void)
 {
-	if (((t_collectible*)fthis()->object)->is_render)
-		canva()->scale_img(
+	if (((t_collectible *)fthis()->object)->is_render)
+		canva()->scale_img( \
 			fthis()->object->get_sprite(), \
 			fthis()->object->pos);
-	//mlx_put_image_to_window(engine()->mlx, engine()->win,
-			 //fthis()->object->get_sprite()->img, fthis()->object->pos.x, fthis()->object->pos.y);
 }
 
 static void	__update_col(void)
 {
-	if (((t_collectible*)fthis()->object)->is_render && collides(game()->player->pos, fthis()->object->pos))
+	if (((t_collectible *)fthis()->object)->is_render \
+		&& collides(game()->player->pos, fthis()->object->pos))
 	{
 		game()->player->collectibles++;
-		((t_collectible*)fthis()->object)->is_render = 0;
+		((t_collectible *)fthis()->object)->is_render = 0;
 	}
 }
 
@@ -54,5 +53,5 @@ t_object	*new_collectible(float x, float y)
 	collectible->pos.w = canva()->scale_factor_e;
 	collectible->pos.h = canva()->scale_factor_e;
 	collectible->update = __update_col;
-	return (object((t_object*)collectible));
+	return (object((t_object *)collectible));
 }

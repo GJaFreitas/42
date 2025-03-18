@@ -1,5 +1,5 @@
 #include "../../../headers/header.h"
-
+/*
 t_gridnode	*__cost(t_gridnode *node, t_astar astar);
 int		get_distance(t_pos_vector node1, t_pos_vector node2);
 void		placebo(void *p);
@@ -82,3 +82,4 @@ t_list	*astar(t_pos_vector start, t_pos_vector target)
 	astar.closedSet->destroy(astar.closedSet, placebo);
 	return (retrace_path(astar.startNode, astar.targetNode));
 }
+*/

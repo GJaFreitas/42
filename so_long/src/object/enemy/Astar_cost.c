@@ -1,6 +1,5 @@
 #include "../../../headers/header.h"
-
-
+/*
 int	get_distance(t_pos_vector node1, t_pos_vector node2)
 {
 	int	ret;
@@ -31,3 +30,4 @@ t_gridnode	*__cost(t_gridnode *node, t_astar astar)
 	node->fcost = node->gcost + node->hcost;
 	return (node);
 }
+*/

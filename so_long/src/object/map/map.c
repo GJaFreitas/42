@@ -13,10 +13,10 @@ void	__print_error_msg(byte *error);
 static t_sprite	*__get_sprite(char flag)
 {
 	if (flag == 'e')
-		return (((t_map*)fthis()->object)->enemy_sprite);
+		return (((t_map *)fthis()->object)->enemy_sprite);
 	if (flag == 'c')
-		return (((t_map*)fthis()->object)->collectible_sprite);
-	return (((t_map*)fthis()->object)->sprite);
+		return (((t_map *)fthis()->object)->collectible_sprite);
+	return (((t_map *)fthis()->object)->sprite);
 }
 
 static void	__destroy_map(void)
@@ -25,10 +25,10 @@ static void	__destroy_map(void)
 	int		i;
 
 	i = 0;
-	s_map = (t_map*)fthis()->object;
+	s_map = (t_map *)fthis()->object;
 	while (s_map->map_ptr && i < s_map->row)
-		free_safe((void**)&s_map->map_ptr[i++]);
-	free_safe((void**)&s_map->map_ptr);
+		free_safe((void **)&s_map->map_ptr[i++]);
+	free_safe((void **)&s_map->map_ptr);
 	mlx_destroy_image(engine()->mlx, s_map->sprite->img);
 	mlx_destroy_image(engine()->mlx, s_map->enemy_sprite->img);
 	mlx_destroy_image(engine()->mlx, s_map->collectible_sprite->img);
@@ -47,15 +47,8 @@ static int	__fd_check(int fd)
 	return (fd);
 }
 
-t_map	*new_map(char *filepath)
+static void	__map_init(t_map *map)
 {
-	t_map	*map;
-
-	map = constructor(sizeof(t_map));
-	map->type = MAP;
-	__load_map(__fd_check(open(filepath, O_RDONLY)), map);
-	if (map->map_ptr == NULL)
-		return (NULL);
 	map->render = NULL;
 	map->destructor = __destroy_map;
 	map->collectible_sprite = canva()->load_img("textures/steel.xpm");
@@ -68,6 +61,18 @@ t_map	*new_map(char *filepath)
 	map->pos.w = map->col * canva()->scale_factor;
 	map->error[7] = 1;
 	map->error[8] = 1;
+}
+
+t_map	*new_map(char *filepath)
+{
+	t_map	*map;
+
+	map = constructor(sizeof(t_map));
+	map->type = MAP;
+	__load_map(__fd_check(open(filepath, O_RDONLY)), map);
+	if (map->map_ptr == NULL)
+		return (NULL);
+	__map_init(map);
 	__flood_fill_r(map, 0, 0);
 	if (__map_check(map) || map->error[7] || map->error[8])
 	{

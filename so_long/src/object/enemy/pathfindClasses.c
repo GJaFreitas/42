@@ -1,5 +1,5 @@
 #include "../../../headers/header.h"
-
+/*
 t_gridnode	*__nodeFromPos(t_pos_vector pos);
 t_hashtable	*__populate_table();
 char		*__get_key(t_gridnode *node);
@@ -69,3 +69,4 @@ t_grid	*grid()
 
 	return (&grid);
 }
+*/

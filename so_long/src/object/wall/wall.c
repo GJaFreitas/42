@@ -7,10 +7,10 @@ static void	__put_pixel(int x, int y)
 
 static void	__populate_array(t_pos_vector vec)
 {
-	int 	x;
-	int	y;
-	t_pos_vector v;
-	
+	t_pos_vector	v;
+	int				x;
+	int				y;
+
 	y = 0;
 	v.y = 0;
 	v.h = vec.y / vec.h;
@@ -43,5 +43,5 @@ t_object	*new_wall(float x, float y)
 	wall->pos.x = x * canva()->scale_factor;
 	wall->pos.y = y * canva()->scale_factor;
 	__populate_array(wall->pos);
-	return (object((t_object*)wall));
+	return (object((t_object *)wall));
 }

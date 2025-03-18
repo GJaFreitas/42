@@ -19,8 +19,8 @@ struct s_object
 	t_sprite		*(*get_sprite)();
 };
 */
-void	__generic_destructor(void);
-void	__generic_render(void);
+void		__generic_destructor(void);
+void		__generic_render(void);
 t_sprite	*__generic_get_sprite(void);
 
 // Returns a new instance of an object with variable size

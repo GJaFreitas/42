@@ -5,9 +5,9 @@
 #endif
 
 t_pos_vector	__calc_vec(t_enemy *e, t_pos_vector *vec);
-void	__get_vec(t_enemy *e, t_pos_vector *vec);
-int	__check_wall(t_enemy *e, t_pos_vector vec);
-t_list	*astar(t_pos_vector start, t_pos_vector target);
+void			__get_vec(t_enemy *e, t_pos_vector *vec);
+int				__check_wall(t_enemy *e, t_pos_vector vec);
+t_list			*astar(t_pos_vector start, t_pos_vector target);
 
 static int	__cooldown(clock_t *last, clock_t current)
 {
@@ -31,14 +31,15 @@ void	placebo(void *p)
 // Pathfinding and attacking
 static void	__update_enemy(void)
 {
-	static	clock_t	init;
+	static clock_t	init;
 	t_pos_vector	direction;
-	t_enemy		*e;
+	t_enemy			*e;
 
 	e = (t_enemy *)fthis()->object;
 	if (e->hp <= 0)
 		return (vector(game()->to_remove)->add(e), (void)69);
-	if (__cooldown(&init, clock()) && game()->obj_colision(e->pos, (t_type[]){PLAYER, 0}))
+	if (__cooldown(&init, clock())
+		&& game()->obj_colision(e->pos, (t_type[]){PLAYER, 0}))
 		game()->player->hp -= 25;
 	direction = __calc_vec(e, &game()->player->pos);
 	if (collision_check_x(e->pos, -direction.x * (ENEMY_SPEED * 1.05)))
@@ -51,9 +52,8 @@ static void	__destructor_enemy(void)
 {
 	t_enemy	*enemy;
 
-	enemy = (t_enemy*)fthis()->object;
-	mlx_destroy_image(engine()->mlx,
-		   enemy->sprite->img);
+	enemy = (t_enemy *)fthis()->object;
+	mlx_destroy_image(engine()->mlx, enemy->sprite->img);
 	free(enemy->get_sprite());
 	enemy->hp = 515;
 	__update_enemy();
@@ -73,5 +73,5 @@ t_object	*new_enemy(float x, float y)
 	enemy->pos.y = y * canva()->scale_factor;
 	enemy->update = __update_enemy;
 	enemy->destructor = __destructor_enemy;
-	return (object((t_object*)enemy));
+	return (object((t_object *)enemy));
 }

@@ -5,7 +5,7 @@ static void	__update_exit(void)
 	t_enemy		*e;
 
 	e = (t_enemy *)fthis()->object;
-	if (game()->player->collectibles == game()->collectibles_num\
+	if (game()->player->collectibles == game()->collectibles_num \
 	&& collides(game()->player->pos, e->pos))
 	{
 		ft_printf("Eu tou a sair xd\n");
@@ -26,5 +26,5 @@ t_object	*new_exit(float x, float y)
 	exit->pos.h = canva()->scale_factor;
 	exit->pos.x = x * canva()->scale_factor;
 	exit->pos.y = y * canva()->scale_factor;
-	return (object((t_object*)exit));
+	return (object((t_object *)exit));
 }

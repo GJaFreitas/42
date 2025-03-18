@@ -1,5 +1,5 @@
 #include "../../../headers/header.h"
-
+/*
 t_gridnode	*__nodeFromPos(t_pos_vector pos)
 {
 	int	x;
@@ -37,3 +37,4 @@ void	__get_neighbours(t_gridnode *node, void **neighbours)
 		x++;
 	}
 }
+*/

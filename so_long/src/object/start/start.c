@@ -13,8 +13,8 @@ t_object	*new_start(float x, float y)
 	start->pos.x = x * canva()->scale_factor;
 	start->pos.y = y * canva()->scale_factor;
 	game()->add_obj(new_player(\
-			    start->pos.x + start->pos.w / 4,\
-			    start->pos.y + start->pos.h / 4));
+			start->pos.x + start->pos.w / 4,\
+			start->pos.y + start->pos.h / 4));
 	game()->add_obj(new_hud());
 	return ((t_object*)start);
 }
