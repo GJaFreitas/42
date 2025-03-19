@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:58:22 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/19 15:58:37 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:23:53 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,18 @@ void	free_stack(t_list **stack)
 		free(tmp);
 	}
 	free(stack);
+}
+
+void	free_doubly(t_dlist *list)
+{
+	t_dlist	*head;
+	t_dlist	*tmp;
+
+	head = list;
+	while (head)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
 }

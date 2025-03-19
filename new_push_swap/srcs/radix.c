@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:59:04 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/19 15:59:06 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:17:10 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	get_max_bits(t_list **stack)
 	return (max_bits);
 }
 
-void	radix_sort(t_list **stack_a, t_list **stack_b)
+void	radix_sort(t_ps *data)
 {
 	t_list	*head_a;
 	int		i;
@@ -41,22 +41,22 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
 	int		max_bits;
 
 	i = 0;
-	head_a = *stack_a;
+	head_a = *(data->stack_a);
 	size = ft_lstsize(head_a);
-	max_bits = get_max_bits(stack_a);
+	max_bits = get_max_bits(data->stack_a);
 	while (i < max_bits)
 	{
 		j = 0;
 		while (j++ < size)
 		{
-			head_a = *stack_a;
+			head_a = *(data->stack_a);
 			if (((head_a->index >> i) & 1) == 1)
-				ra(stack_a);
+				ra(data);
 			else
-				pb(stack_a, stack_b);
+				pb(data);
 		}
-		while (ft_lstsize(*stack_b) != 0)
-			pa(stack_a, stack_b);
+		while (ft_lstsize(*(data->stack_b)) != 0)
+			pa(data);
 		i++;
 	}
 }

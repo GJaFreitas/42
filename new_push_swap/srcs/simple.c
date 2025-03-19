@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:58:54 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/19 15:58:57 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:21:05 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,80 +28,80 @@ int	get_min(t_list **stack, int val)
 	return (min);
 }
 
-void	sort_3(t_list **stack_a)
+void	sort_3(t_ps *data)
 {
 	t_list	*head;
 
-	head = *stack_a;
-	if (is_sorted(stack_a))
+	head = *(data->stack_a);
+	if (is_sorted(data->stack_a))
 		return ;
-	if (head->index == get_min(stack_a, -1) \
-		&& head->next->index != get_min(stack_a, get_min(stack_a, -1)))
+	if (head->index == get_min(data->stack_a, -1) \
+		&& head->next->index != get_min(data->stack_a, get_min(data->stack_a, -1)))
 	{
-		ra(stack_a);
-		sa(stack_a);
-		rra(stack_a);
+		ra(data);
+		sa(data);
+		rra(data);
 	}
-	else if (head->index == get_min(stack_a, get_min(stack_a, -1)))
-		if (head->next->index == get_min(stack_a, -1))
-			sa(stack_a);
+	else if (head->index == get_min(data->stack_a, get_min(data->stack_a, -1)))
+		if (head->next->index == get_min(data->stack_a, -1))
+			sa(data);
 	else
-		rra(stack_a);
+		rra(data);
 	else
-		if (head->next->index == get_min(stack_a, -1))
-			ra(stack_a);
+		if (head->next->index == get_min(data->stack_a, -1))
+			ra(data);
 	else
 	{
-		sa(stack_a);
-		rra(stack_a);
+		sa(data);
+		rra(data);
 	}
 }
 
-void	sort_4(t_list **stack_a, t_list **stack_b)
+void	sort_4(t_ps *data)
 {
 	int	distance;
 
-	if (is_sorted(stack_a))
+	if (is_sorted(data->stack_a))
 		return ;
-	distance = get_distance(stack_a, get_min(stack_a, -1));
+	distance = get_distance(data->stack_a, get_min(data->stack_a, -1));
 	if (distance == 1)
-		ra(stack_a);
+		ra(data);
 	else if (distance == 2)
 	{
-		ra(stack_a);
-		ra(stack_a);
+		ra(data);
+		ra(data);
 	}
 	else if (distance == 3)
-		rra(stack_a);
-	if (is_sorted(stack_a))
+		rra(data);
+	if (is_sorted(data->stack_a))
 		return ;
-	pb(stack_a, stack_b);
-	sort_3(stack_a);
-	pa(stack_a, stack_b);
+	pb(data);
+	sort_3(data);
+	pa(data);
 }
 
-void	sort_5(t_list **stack_a, t_list **stack_b)
+void	sort_5(t_ps *data)
 {
 	int	distance;
 
-	distance = get_distance(stack_a, get_min(stack_a, -1));
+	distance = get_distance(data->stack_a, get_min(data->stack_a, -1));
 	if (distance == 1)
-		ra(stack_a);
+		ra(data);
 	else if (distance == 2)
 	{
-		ra(stack_a);
-		ra(stack_a);
+		ra(data);
+		ra(data);
 	}
 	else if (distance == 3)
 	{
-		rra(stack_a);
-		rra(stack_a);
+		rra(data);
+		rra(data);
 	}
 	else if (distance == 4)
-		rra(stack_a);
-	if (is_sorted(stack_a))
+		rra(data);
+	if (is_sorted(data->stack_a))
 		return ;
-	pb(stack_a, stack_b);
-	sort_4(stack_a, stack_b);
-	pa(stack_a, stack_b);
+	pb(data);
+	sort_4(data);
+	pa(data);
 }

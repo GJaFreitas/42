@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:59:18 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/19 15:59:19 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:26:58 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,25 @@ int	rotate(t_list **stack)
 	return (0);
 }
 
-int	ra(t_list **stack_a)
+void	ra(t_ps *data)
 {
-	if (rotate(stack_a) == -1)
-		return (-1);
-	ft_putendl_fd("ra", 1);
-	return (0);
+	if (rotate(data->stack_a) == -1)
+		return ;
+	save_move("ra", data);
 }
 
-int	rb(t_list **stack_b)
+void	rb(t_ps *data)
 {
-	if (rotate(stack_b) == -1)
-		return (-1);
-	ft_putendl_fd("rb", 1);
-	return (0);
+	if (rotate(data->stack_b) == -1)
+		return ;
+	save_move("rb", data);
 }
 
-int	rr(t_list **stack_a, t_list **stack_b)
+void	rr(t_ps *data)
 {
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
-		return (-1);
-	rotate(stack_a);
-	rotate(stack_b);
-	ft_putendl_fd("rr", 1);
-	return (0);
+	if ((ft_lstsize(*data->stack_a) < 2) || (ft_lstsize(*data->stack_b) < 2))
+		return ;
+	rotate(data->stack_a);
+	rotate(data->stack_b);
+	save_move("rr", data);
 }

@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:59:24 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/19 15:59:25 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:27:20 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,16 @@ int	push(t_list **stack_to, t_list **stack_from)
 	return (0);
 }
 
-int	pa(t_list **stack_a, t_list **stack_b)
+void	pa(t_ps *data)
 {
-	if (push(stack_a, stack_b) == -1)
-		return (-1);
-	ft_putendl_fd("pa", 1);
-	return (0);
+	if (push(data->stack_a, data->stack_b) == -1)
+		return ;
+	save_move("pa", data);
 }
 
-int	pb(t_list **stack_a, t_list **stack_b)
+void	pb(t_ps *data)
 {
-	if (push(stack_b, stack_a) == -1)
-		return (-1);
-	ft_putendl_fd("pb", 1);
-	return (0);
+	if (push(data->stack_b, data->stack_a) == -1)
+		return ;
+	save_move("pb", data);
 }

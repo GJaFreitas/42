@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:58:31 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/19 15:58:35 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:01:30 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	get_distance(t_list **stack, int index)
 	return (distance);
 }
 
-void	make_top(t_list **stack, int distance)
+/*
+void	make_top(t_ps *data, t_list **stack, int distance)
 {
 	t_list	*head;
 	int		tmp;
@@ -72,11 +73,12 @@ void	make_top(t_list **stack, int distance)
 	if (distance <= (ft_lstsize(head) / 2))
 	{
 		while (distance-- > 0)
-			ra(stack);
+			ra(data);
 	}
 	else
 	{
 		while (tmp-- > 0)
-			rra(stack);
+			rra(data);
 	}
 }
+*/

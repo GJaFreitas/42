@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/11/15 10:26:05 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/03/19 16:27:47 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,15 +46,6 @@ SRCS = \
 	./srcs/memory/ft_memchr.c \
 	./srcs/memory/ft_calloc.c \
 	./srcs/memory/ft_bzero.c \
-	./srcs/lists/ft_lstdelone.c \
-	./srcs/lists/ft_lstmap.c \
-	./srcs/lists/ft_lstnew.c \
-	./srcs/lists/ft_lstadd_front.c \
-	./srcs/lists/ft_lstadd_back.c \
-	./srcs/lists/ft_lstsize.c \
-	./srcs/lists/ft_lstiter.c \
-	./srcs/lists/ft_lstclear.c \
-	./srcs/lists/ft_lstlast.c \
 	./srcs/strings/ft_strjoin.c \
 	./srcs/strings/ft_itoa.c \
 	./srcs/strings/ft_strncmp.c \

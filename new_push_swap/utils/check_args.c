@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:58:48 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/19 15:59:00 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:45:02 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,23 @@ static int	ft_isnum(char *num)
 	return (1);
 }
 
+int	ft_strlen_mod(const char *str)
+{
+	int	i;
+	int	flag;
+
+	i = 0;
+	flag = 0;
+	while (str && *str == '0')
+	{
+		str++;
+		flag = 1;
+	}
+	if (!str && flag)
+		return (1);
+	return (ft_strlen(str));
+}
+
 void	ft_check_args(int argc, char **argv)
 {
 	int		i;
@@ -61,7 +78,7 @@ void	ft_check_args(int argc, char **argv)
 			ft_error("Error");
 		if (ft_contains(tmp, args, i))
 			ft_error("Error");
-		if (tmp < -2147483648 || tmp > 2147483647)
+		if (ft_strlen_mod(args[i]) < 1 || ft_strlen_mod(args[i]) > 11)
 			ft_error("Error");
 		i++;
 	}

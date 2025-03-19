@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:59:14 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/19 15:59:15 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:26:21 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,28 +38,25 @@ int	reverse_rotate(t_list **stack)
 	return (0);
 }
 
-int	rra(t_list **stack_a)
+void	rra(t_ps *data)
 {
-	if (reverse_rotate(stack_a) == -1)
-		return (-1);
-	ft_putendl_fd("rra", 1);
-	return (0);
+	if (reverse_rotate(data->stack_a) == -1)
+		return ;
+	save_move("rra", data);
 }
 
-int	rrb(t_list **stack_b)
+void	rrb(t_ps *data)
 {
-	if (reverse_rotate(stack_b) == -1)
-		return (-1);
-	ft_putendl_fd("rrb", 1);
-	return (0);
+	if (reverse_rotate(data->stack_b) == -1)
+		return ;
+	save_move("rrb", data);
 }
 
-int	rrr(t_list **stack_a, t_list **stack_b)
+void	rrr(t_ps *data)
 {
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
-		return (-1);
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
-	ft_putendl_fd("rrr", 1);
-	return (0);
+	if ((ft_lstsize(*data->stack_a) < 2) || (ft_lstsize(*data->stack_b) < 2))
+		return ;
+	reverse_rotate(data->stack_a);
+	reverse_rotate(data->stack_b);
+	save_move("rrr", data);
 }

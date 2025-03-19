@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/03/19 15:34:31 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/03/19 17:58:06 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,12 @@ SRCS += \
 	 ./utils/t_list.c \
 	 ./utils/t_list2.c \
 	 ./utils/utils.c \
+
+SRCS += \
+	 ./opti/doubly_list.c \
+	 ./opti/moves.c \
+	 ./opti/opti_utils.c \
+	 ./opti/optimization.c \
 
 OBJS = $(SRCS:.c=.o)
 
