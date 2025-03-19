@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:27:37 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/15 16:54:01 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:37:24 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_stack	*__init_stack(int argc, char **argv, int flag)
 // mapped form
 static int	__init_data(t_ps *data, int argc, char **argv)
 {
-	if (argc < 2)
+	if (argc < 2 || argc > 500)
 		return (1);
 	ft_memset(data, 0, sizeof(t_ps));
 	data->b = stack_new();
@@ -81,10 +81,3 @@ int	main(int argc, char **argv)
 	__terminate_data(&data);
 	return (0);
 }
-
-/*
-	Benchmark for average number of moves over 100 iterations:
-
-	Pre optimization - 4655.39
-	Post sort optimization - 4426.42
-*/

@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:27:46 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/15 16:45:00 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:35:52 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,11 @@ void	save_move(t_ps *data, t_op op)
 	ft_lstadd_back(&data->op_list, ft_lstnew(content));
 }
 
-void	print_op(t_list *current)
+void	print_op(t_list *list)
 {
+	t_list	*current;
+
+	current = list;
 	while (current)
 	{
 		ft_printf("%s\n", (char *)current->content);

@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:27:42 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/10 16:27:42 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:44:31 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static void	recursive_magic(t_ps *data, t_chunk *to_sort)
 	}
 	chunk_split(data, to_sort, &dests);
 	recursive_magic(data, &dests.min);
-	recursive_magic(data, &dests.mid);
-	recursive_magic(data, &dests.max);
+	//recursive_magic(data, &dests.mid);
+	//recursive_magic(data, &dests.max);
 }
 
 void	chunk_sort(t_ps *data)
