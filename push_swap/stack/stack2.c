@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:27:59 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/10 16:27:59 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:28:42 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,11 @@ int	stack_issorted(const t_stack *stack)
 	i = 0;
 	while (i < stack->size - 1)
 	{
-		if (!(stack->a[i] < stack->a[i + 1]))
+		if (!(stack->a[i] > stack->a[i + 1]))
 			return (0);
 		i++;
+		if (i >= stack->size)
+			return (1);
 	}
 	return (1);
 }

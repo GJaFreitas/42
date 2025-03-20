@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:28:11 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/18 17:26:53 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:41:01 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int			err(void);
 /*		Stack		*/
 
 t_stack		*map_stack(const t_stack *s);
+int			ft_check_args(int argc, char **argv);
 
 /* ------------------------------------ */
 
@@ -91,6 +92,7 @@ t_stack		*map_stack(const t_stack *s);
 
 void		chunk_sort(t_ps *data);
 void		ft_sort_three(t_ps *data);
+void		ft_sort_small(t_ps *data);
 
 void		sort_three(t_ps *data, t_chunk *to_sort);
 void		chunk_split(t_ps *data, t_chunk *to_split, t_split_dest *dest);

@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:27:37 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/20 17:11:13 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:42:42 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ static t_stack	*__init_stack(int argc, char **argv, int flag)
 // mapped form
 static int	__init_data(t_ps *data, int argc, char **argv)
 {
-	if (argc < 2 || argc > 500)
+	if (argc > 500)
+		return (1);
+	if (ft_check_args(argc, argv))
 		return (1);
 	ft_memset(data, 0, sizeof(t_ps));
 	data->b = stack_new();
@@ -68,12 +70,14 @@ int	main(int argc, char **argv)
 {
 	t_ps	data;
 
+	if (argc == 1)
+		return (0);
 	if (__init_data(&data, argc - 1, argv))
-		return (err());
+		return (__terminate_data(&data), err());
 	if (stack_issorted(data.a))
 		;
-	else if (data.a->size == 3)
-		ft_sort_three(&data);
+	else if (data.a->size <= 5)
+		ft_sort_small(&data);
 	else
 		chunk_sort(&data);
 	post_sort_opt(&data);

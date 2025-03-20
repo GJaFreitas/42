@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:27:46 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/20 16:52:56 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:59:23 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ void	print_op(t_list *list)
 
 int	err(void)
 {
-	ft_printf("Error\n");
+	ft_putstr_fd("Error\n", 2);
 	return (1);
 }

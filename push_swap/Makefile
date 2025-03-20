@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/03/20 14:13:51 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/03/20 17:49:15 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ LIBFT = libft/libft.a
 VPATH = srcs:operations:stack
 SRCS = \
 	number_mapping.c \
+	check_args.c \
 	sort_big.c \
 	utils.c \
 	sort_small.c \

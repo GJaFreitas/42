@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:27:44 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/20 15:52:25 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:40:30 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	ft_sort_three(t_ps *data)
 	stack = data->a;
 	if (stack_min(stack) == stack_peek(stack, 1))
 	{
-		ra(data);
+		rra(data);
 		if (!stack_issorted(stack))
 			sa(data);
 	}
 	else if (stack_max(stack) == stack_peek(stack, 1))
 	{
-		rra(data);
+		ra(data);
 		if (!stack_issorted(stack))
 			sa(data);
 	}
@@ -36,7 +36,7 @@ void	ft_sort_three(t_ps *data)
 		if (stack_min(stack) == stack->a[1])
 			sa(data);
 		else
-			rra(data);
+			ra(data);
 	}
 }
 
@@ -57,4 +57,30 @@ void	sort_two(t_ps *data, t_chunk *to_sort)
 	if (stack_peek(data->a, 1) > stack_peek(data->a, 2))
 		sa(data);
 	to_sort->size -= 2;
+}
+
+void	sort_five(t_ps *data)
+{
+	while (data->a->size > 3)
+	{
+		if (stack_peek(data->a, 1) == 1 || stack_peek(data->a, 1) == 2)
+			pb(data);
+		else
+			ra(data);
+	}
+	if (stack_peek(data->b, 1) > stack_peek(data->b, 2))
+		sb(data);
+	ft_sort_three(data);
+	pa(data);
+	pa(data);
+}
+
+void	ft_sort_small(t_ps *data)
+{
+	if (data->a->size == 5)
+		sort_five(data);
+	if (data->a->size == 3)
+		ft_sort_three(data);
+	else
+		chunk_sort(data);
 }
