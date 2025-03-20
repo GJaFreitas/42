@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:23:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/20 17:35:55 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:34:28 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int	ft_isspace(char c)
 
 long	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
 	long	total;
+	int		i;
+	int		sign;
 
 	sign = 1;
 	i = 0;

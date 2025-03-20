@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:38:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/20 17:36:26 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:34:06 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		ft_strlen_gnl(char *s, int flag);
 
 // Strings
 
+long	ft_atoi(const char *str);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
@@ -73,7 +74,6 @@ char	*ft_itoa(long int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-long		ft_atoi(const char *str);
 
 // Checks
 

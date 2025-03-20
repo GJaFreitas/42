@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:27:44 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/20 18:40:30 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:30:10 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,28 @@
 // change this
 void	ft_sort_three(t_ps *data)
 {
-	t_stack	*stack;
+	int	first;
+	int	second;
+	int	third;
 
-	stack = data->a;
-	if (stack_min(stack) == stack_peek(stack, 1))
-	{
-		rra(data);
-		if (!stack_issorted(stack))
-			sa(data);
-	}
-	else if (stack_max(stack) == stack_peek(stack, 1))
-	{
+	first = stack_peek(data->a, 1);
+	second = stack_peek(data->a, 2);
+	third = stack_peek(data->a, 3);
+	if (first > second && third > second && third > first)
+		sa(data);
+	else if (first > second && third > second && first > third)
 		ra(data);
-		if (!stack_issorted(stack))
-			sa(data);
-	}
-	else
+	else if (second > first && second > third && first > third)
+		rra(data);
+	else if (second > first && second > third && third > first)
 	{
-		if (stack_min(stack) == stack->a[1])
-			sa(data);
-		else
-			ra(data);
+		sa(data);
+		ra(data);
+	}
+	else if (first > second && second > third && first > third)
+	{
+		sa(data);
+		rra(data);
 	}
 }
 
