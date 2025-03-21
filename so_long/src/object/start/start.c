@@ -7,7 +7,7 @@ t_object	*new_start(float x, float y)
 
 	start = constructor(sizeof(t_start));
 	start->type = START;
-	start->sprite = canva()->load_img("textures/slime.xpm");
+	start->sprite = canva()->load_img("textures/start.xpm");
 	start->pos.w = canva()->scale_factor;
 	start->pos.h = canva()->scale_factor;
 	start->pos.x = x * canva()->scale_factor;
