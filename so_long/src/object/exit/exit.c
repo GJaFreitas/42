@@ -26,5 +26,6 @@ t_object	*new_exit(float x, float y)
 	exit->pos.h = canva()->scale_factor;
 	exit->pos.x = x * canva()->scale_factor;
 	exit->pos.y = y * canva()->scale_factor;
+
 	return (object((t_object *)exit));
 }

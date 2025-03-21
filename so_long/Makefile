@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/11/27 13:45:48 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/03/21 12:46:59 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS_DIR = ./src
 
 # --- DEPENDENCIES ---------------- #
 
+VPATH = src/*:src/*/*:src/object/*/*
 SRCS =	$(wildcard src/*/*.c)
 SRCS += $(wildcard src/object/*/*.c)
 SRCS += ./src/main.c

@@ -66,6 +66,7 @@ static void	__map_init(t_map *map)
 t_map	*new_map(char *filepath)
 {
 	t_map	*map;
+	int	errors;
 
 	map = constructor(sizeof(t_map));
 	map->type = MAP;
@@ -73,12 +74,10 @@ t_map	*new_map(char *filepath)
 	if (map->map_ptr == NULL)
 		return (NULL);
 	__map_init(map);
-	__flood_fill_r(map, 0, 0);
-	if (__map_check(map) || map->error[7] || map->error[8])
-	{
+	errors = __map_check(map);
+	__flood_fill_r(map, map->start.x, map->start.y);
+	if (errors || map->error[7] || map->error[8])
 		__print_error_msg(map->error);
-		harbinger_of_chaos();
-	}
 	game()->collectibles_num = map->collectible_num;
 	return (map);
 }

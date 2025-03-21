@@ -2,6 +2,7 @@
 
 void	__print_error_msg(byte *error)
 {
+	ft_printf("Error\n");
 	ft_printf("Invalid map:\n");
 	if (error[0])
 		ft_printf("Unknown char: %c\n", error[0]);
@@ -20,4 +21,5 @@ void	__print_error_msg(byte *error)
 	if (error[7])
 		ft_printf("No path to end\n");
 	ft_printf("\nAborting:\nCalling cleaning crew\n'Free all this up boys!'\n");
+	harbinger_of_chaos();
 }
