@@ -1,5 +1,16 @@
-#include "../../headers/header.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 15:41:43 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../../headers/header.h"
 
 void	__add_obj(t_object *o)
 {
@@ -20,14 +31,12 @@ void	__add_obj(t_object *o)
 void	__render_game(void)
 {
 	t_element	*i;
-	int		in = 0;
 
 	i = vector(game()->to_render)->begin;
 	while (i)
 	{
 		object(i->value)->render();
 		i = i->next;
-		in++;
 	}
 }
 

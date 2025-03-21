@@ -1,5 +1,17 @@
-#ifndef ENUM_H
-# define ENUM_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helper_structs.h                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 16:58:29 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 18:31:38 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef HELPER_STRUCTS_H
+# define HELPER_STRUCTS_H
 
 typedef enum e_type
 {
@@ -19,7 +31,6 @@ typedef enum e_type
 	HUD,
 	GAME,
 }	t_type;
-
 
 typedef struct pos_vector
 {

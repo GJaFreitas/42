@@ -1,10 +1,20 @@
-#include "../../headers/header.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vector_utils2.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 15:28:52 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../../headers/header.h"
 
 /*
 	void			(*destroy_element)(t_element	*e);
 */
-
 
 void	__vec_rm_rf(void)
 {
@@ -19,7 +29,7 @@ void	__vec_rm_rf(void)
 	{
 		prev = current;
 		current = current->next;
-		free_safe((void**)&prev);
+		free_safe((void **)&prev);
 	}
 	fthis()->vector->begin = NULL;
 	fthis()->vector->end = NULL;
@@ -46,7 +56,7 @@ void	__vec_rm_val(void *value)
 				prev->next = current->next;
 			else
 				fthis()->vector->begin = current->next;
-			free_safe((void**)&current);
+			free_safe((void **)&current);
 			fthis()->vector->size--;
 			return ;
 		}
@@ -55,7 +65,7 @@ void	__vec_rm_val(void *value)
 	}
 }
 
-void	__vec_rm_first()
+void	__vec_rm_first(void)
 {
 	t_element	*first;
 
@@ -66,7 +76,7 @@ void	__vec_rm_first()
 		fthis()->vector->begin = first->next;
 	else
 		fthis()->vector->begin = NULL;
-	free_safe((void**)&first);
+	free_safe((void **)&first);
 	fthis()->vector->size--;
 }
 
@@ -84,10 +94,11 @@ void	__vec_exec_on_each(void (*fun)(t_element *e, void *v), void *v)
 	}
 }
 
-void	__vec_exec_on_index(void (*fun)(t_element *e, void *v), void *v, int index)
+void	__vec_exec_on_index(void (*fun)(t_element *e, void *v),
+void *v, int index)
 {
 	t_element	*current;
-	int		i;
+	int			i;
 
 	i = 0;
 	if (!fthis()->vector || !v)

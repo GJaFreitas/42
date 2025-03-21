@@ -1,4 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 18:20:57 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../headers/header.h"
+
+void	__add_obj(t_object *o);
 
 static int	__strjoin_map(char *s1, char *s2)
 {
@@ -8,7 +22,7 @@ static int	__strjoin_map(char *s1, char *s2)
 		return (0);
 	ret = ft_strlen(s2);
 	ft_strlcat(s1, s2, ft_strlen(s1) + ret + 1);
-	free_safe((void**)&s2);
+	free_safe((void **)&s2);
 	return (ret);
 }
 
@@ -43,7 +57,6 @@ void	__load_map(int fd, t_map *s_map)
 		buf++;
 		i++;
 	}
-	close(fd);
 }
 
 void	__load_coords(char c, t_map *s_map, float x, float y)
@@ -56,38 +69,38 @@ void	__load_coords(char c, t_map *s_map, float x, float y)
 	{
 		s_map->exit.x = x;
 		s_map->exit.y = y;
-		game()->add_obj(new_exit(x, y));
+		__add_obj(new_exit(x, y));
 	}
 	else if (c == 'P')
 	{
 		s_map->start.x = x;
 		s_map->start.y = y;
-		game()->add_obj(new_start(x, y));
+		__add_obj(new_start(x, y));
 	}
 }
 
 // Checks if the outside of the map is walls
-byte	__check_walls(t_map *s_map)
+t_byte	__check_walls(t_map *s_map)
 {
 	char		**map;
-	int		i;
+	int			i;
 
 	i = 0;
 	map = s_map->map_ptr;
 	while (i < s_map->col)
-		if (map[0][i] != '1' ||\
+		if (map[0][i] != '1' || \
 			map[s_map->row - 1][i] != '1')
 			return (1);
-		else
-			i++;
+	else
+		i++;
 	i = 0;
 	while (i < s_map->row)
-		if (map[i][0] != '1' ||\
+		if (map[i][0] != '1' || \
 			map[i][s_map->col - 1] != '1')
 			return (1);
-		else
-			i++;
-	return (0);	
+	else
+		i++;
+	return (0);
 }
 
 void	__map_handler(char c, t_map *s_map, t_pos_vector pos)
@@ -97,14 +110,14 @@ void	__map_handler(char c, t_map *s_map, t_pos_vector pos)
 	else if (c == 'E')
 		__load_coords(c, s_map, pos.y, pos.x);
 	else if (c == 'B')
-		game()->add_obj(new_enemy(pos.y, pos.x));
+		__add_obj(new_enemy(pos.y, pos.x));
 	else if (c == 'C')
 	{
 		s_map->collectible_num++;
-		game()->add_obj(new_collectible(pos.y, pos.x));
+		__add_obj(new_collectible(pos.y, pos.x));
 	}
 	else if (c == '1')
-		game()->add_obj(new_wall(pos.y, pos.x));
+		__add_obj(new_wall(pos.y, pos.x));
 	else
 		s_map->error[0] = c;
 }

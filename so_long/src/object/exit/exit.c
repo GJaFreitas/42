@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 14:22:28 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../headers/header.h"
 
 static void	__update_exit(void)
@@ -23,6 +35,5 @@ t_object	*new_exit(float x, float y)
 	exit->pos.h = canva()->scale_factor;
 	exit->pos.x = x * canva()->scale_factor;
 	exit->pos.y = y * canva()->scale_factor;
-
 	return (object((t_object *)exit));
 }

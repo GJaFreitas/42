@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   memory.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 15:40:43 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/header.h"
 
 // Frees a mem address and sets it to NULL to avoid double frees
@@ -10,7 +22,6 @@ int	free_safe(void **v)
 		return (1);
 	}
 	return (0);
-
 }
 
 // Checks both if size is > 0 and the malloc return

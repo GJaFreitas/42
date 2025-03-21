@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   engine.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 15:11:50 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/header.h"
 
 int	__key_press(int key, void *v);
@@ -24,15 +36,15 @@ void	start_engine(char *title, char **argv, int argc)
 {
 	engine()->argv = argv;
 	engine()->argc = argc;
-	engine()->height = HEIGHT;
-	engine()->width = WIDTH;
+	engine()->height = HEIGHT_W;
+	engine()->width = WIDTH_W;
 	engine()->mlx = mlx_init();
-	engine()->win = mlx_new_window(engine()->mlx, WIDTH, HEIGHT, title);
+	engine()->win = mlx_new_window(engine()->mlx, WIDTH_W, HEIGHT_W, title);
 	engine()->destroy = __destroy_all;
 	mlx_hook(engine()->win, ON_KEYDOWN, KPRESS_M, __key_press, engine());
 	mlx_hook(engine()->win, ON_KEYUP, KRELEASE_M, __key_release, engine());
 	mlx_mouse_hook(engine()->win, __mouse_release, engine());
-	/*
+}
+/*
 	mlx_hook(engine()->win, ON_KEYMOUSEUP, BRELEASE_M, __mouse_release, NULL);
 	*/
-}

@@ -1,16 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vector.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 15:30:58 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/header.h"
 
 t_element	*__vec_add(void *value);
 t_element	*__vec_set_value_index(int index, void *value);
-void	*__vec_get_val(int index);
-void	__vec_destructor(void);
-void	__vec_rm_rf(void);
-void	__vec_rm_val(void *value);
-void	__vec_rm_first();
-void	__vec_exec_on_each(void (*fun)(t_element *e, void *v), void *v);
-void	__vec_exec_on_index(void (*fun)(t_element *e, void *v), void *v, int index);
-void	__remove_this(t_element *e);
-void	__vec_sort(void);
+void		*__vec_get_val(int index);
+void		__vec_destructor(void);
+void		__vec_rm_rf(void);
+void		__vec_rm_val(void *value);
+void		__vec_rm_first(void);
+void		__vec_exec_on_each(void (*fun)(t_element *e, void *v), void *v);
+void		__vec_exec_on_index(void (*fun)(t_element *e, void *v),
+				void *v, int index);
+void		__remove_this(t_element *e);
+void		__vec_sort(void);
 
 void	*new_vector(void)
 {

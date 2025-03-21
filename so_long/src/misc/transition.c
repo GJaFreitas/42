@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   transition.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 15:10:21 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/header.h"
 
 /*
@@ -18,20 +30,23 @@ t_sprite	*__load_img(char *texture_name)
 }
 */
 
+/*
 static t_sprite	*__create_img(void)
 {
 	t_sprite	*sprite;
 
 	sprite = malloc_safe(sizeof(t_sprite));
-	sprite->width = WIDTH;
-	sprite->height = HEIGHT;
-	sprite->img = mlx_new_image(engine()->mlx, WIDTH, HEIGHT);
+	sprite->width = WIDTH_W;
+	sprite->height = HEIGHT_W;
+	sprite->img = mlx_new_image(engine()->mlx, WIDTH_W, HEIGHT_W);
 	sprite->address = mlx_get_data_addr(sprite->img, &sprite->bpp, \
 				  &sprite->line_length, &sprite->endian);
 	return (sprite);
 }
+*/
 
-static byte	__draw_pixel(t_sprite *img, int x, int y, int color)
+/*
+static t_byte	__draw_pixel(t_sprite *img, int x, int y, int color)
 {
 	char		*screen;
 
@@ -44,6 +59,7 @@ static byte	__draw_pixel(t_sprite *img, int x, int y, int color)
 	*(unsigned int *)screen = color;
 	return (1);
 }
+*/
 
 /*
 static void	__draw_line_hor(t_sprite *img, int y)
@@ -51,19 +67,21 @@ static void	__draw_line_hor(t_sprite *img, int y)
 	int	x;
 
 	x = 0;
-	while (x < WIDTH)
+	while (x < width)
 	{
 		__draw_pixel(img, x, y, 0);
 		x++;
 	}
 }
+*/
 
+/*
 static void	__draw_line_ver(t_sprite *img, int x)
 {
 	int	y;
 
 	y = 0;
-	while (y < HEIGHT)
+	while (y < height)
 	{
 		__draw_pixel(img, x, y, 0);
 		y++;
@@ -71,13 +89,14 @@ static void	__draw_line_ver(t_sprite *img, int x)
 }
 */
 
-int	encode_trgb(byte opacity, byte red, byte green, byte blue)
+int	encode_trgb(t_byte opacity, t_byte red, t_byte green, t_byte blue)
 {
 	return (opacity << 24 | red << 16 | green << 8 | blue);
 }
 
 // TODO: Fadeout function
 // Not entirely sure why its not putting the image int the window every loop
+/*
 void	fadeout(void)
 {
 	t_sprite	*img;
@@ -89,10 +108,10 @@ void	fadeout(void)
 	img = __create_img();
 	while (alpha <= 255)
 	{
-		while (pos.x < WIDTH)
+		while (pos.x < WIDTH_W)
 		{
 			pos.y = 0;
-			while (pos.y < HEIGHT)
+			while (pos.y < heightg)
 			{
 				__draw_pixel(img, pos.x, pos.y, encode_trgb(alpha, 0, 0, 0));
 				pos.y++;
@@ -108,3 +127,4 @@ void	fadeout(void)
 	mlx_destroy_image(engine()->mlx, img->img);
 	free_safe((void**)&img);
 }
+*/

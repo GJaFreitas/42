@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 16:32:03 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/header.h"
 
-void	__destroy_objects();
-void	__mouse_events();
-void	__key_events();
-void	__render_game();
-void	__add_obj(t_object *o);
-void	__update_game();
+void		__destroy_objects(void);
+void		__mouse_events(void);
+void		__key_events(void);
+void		__render_game(void);
+void		__add_obj(t_object *o);
+void		__update_game(void);
 t_object	*__obj_colision(t_pos_vector pos, t_type *list);
 
 static void	__destroy_game(void)
@@ -48,8 +60,7 @@ static void	__start_the_show(void)
 	if (engine()->argc)
 	{
 		game()->maps[0] = new_map(engine()->argv[1]);
-		game()->add_obj((t_object*)game()->maps[0]);
-		//newGrid();
+		game()->add_obj((t_object *)game()->maps[0]);
 	}
 }
 
@@ -71,8 +82,6 @@ void	start_game(void)
 	game()->rm_obj = __remove_obj;
 	game()->obj_colision = __obj_colision;
 	game()->startgame = __start_the_show;
-	// TODO: Remove this
-	vector(game()->to_remove)->add(fthis()->object);
 	game()->startgame();
 }
 

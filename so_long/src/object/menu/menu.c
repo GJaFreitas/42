@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   menu.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 15:14:00 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../headers/header.h"
 
 static void	__menu_buttons(void)
@@ -18,8 +30,8 @@ t_object	*new_menu(void)
 	game()->in_menu = 1;
 	menu = constructor(sizeof(t_menu));
 	menu->type = MENU;
-	menu->pos.w = WIDTH;
-	menu->pos.h = HEIGHT;
+	menu->pos.w = WIDTH_W;
+	menu->pos.h = HEIGHT_W;
 	menu->sprite = canva()->load_img("textures/menu.xpm");
 	menu->func_mouse = __menu_buttons;
 	return ((t_object *)menu);

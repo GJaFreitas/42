@@ -1,17 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mouse_events.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 15:37:10 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/header.h"
 
 //**   mouse_hook(int button, int x,int y, void *param);
-int	__mouse_release(int button, int x,int y, void *param)
+int	__mouse_release(int button, int x, int y, void *param)
 {
 	(void)button;
-	mlx_mouse_get_pos(engine()->mlx, engine()->win,\
-		   &x, &y);
-	((t_engine*)param)->mouse.x = x;
-	((t_engine*)param)->mouse.y = y;
+	mlx_mouse_get_pos(engine()->mlx, engine()->win, \
+				&x, &y);
+	((t_engine *)param)->mouse.x = x;
+	((t_engine *)param)->mouse.y = y;
 	engine()->mouse_press = button;
 	return (0);
 }
-
 
 /*
 ** Queries the position of the mouse pointer relative to the origin of the
@@ -34,4 +45,3 @@ int		mlx_mouse_get_pos(t_xvar *xvar, t_win_list *win, \
 		win_x_return, win_y_return, &mask_return));
 }
 */
-

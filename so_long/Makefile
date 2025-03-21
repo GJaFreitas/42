@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/03/21 12:59:35 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/03/21 16:54:40 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ SRCS = \
 	./src/game/game_utils2.c \
 	./src/game/game_utils.c \
 	./src/misc/vec_normalization.c \
-	./src/misc/cooldown.c \
 	./src/misc/abs.c \
 	./src/misc/memory.c \
 	./src/misc/collision.c \
@@ -60,10 +59,6 @@ SRCS = \
 	./src/canvas/scale_coords.c \
 	./src/canvas/canva_utils2.c \
 	./src/canvas/canva.c \
-	./src/heap/heap_utils2.c \
-	./src/heap/heap.c \
-	./src/heap/heap_utils.c \
-	./src/queue/queue.c \
 	./src/main.c \
 	./src/object/hud/hud.c \
 	./src/object/bg/background.c \
@@ -82,12 +77,7 @@ SRCS = \
 	./src/object/object_utils.c \
 	./src/object/enemy/enemy_utils.c \
 	./src/object/enemy/enemy.c \
-	./src/object/enemy/Astar_cost.c \
-	./src/object/enemy/pathfindClassesUtils.c \
 	./src/object/enemy/enemy_utils2.c \
-	./src/object/enemy/pathfindClasses.c \
-	./src/object/enemy/Astar.c \
-	./src/object/enemy/pathfindClassesMethods.c \
 	./src/object/wall/wall.c \
 	./src/object/menu/menu.c \
 	./src/object/fireball/fireball.c \

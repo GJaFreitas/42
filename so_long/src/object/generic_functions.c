@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   generic_functions.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 18:26:24 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/header.h"
 
 /*
@@ -15,18 +27,28 @@ void	*constructor(size_t size)
 }
 */
 
+void	__scale_img(t_sprite *img, t_pos_vector vec);
+
 void	__generic_destructor(void)
 {
 	mlx_destroy_image(engine()->mlx, \
-		   fthis()->object->sprite->img);
+			fthis()->object->sprite->img);
 	free(fthis()->object->get_sprite());
 }
 
+// Norminette is so useless
+// "Too many instructions in a single line"
+// and who are you to say how many instructions
+// a line should have??? more than 1 is too much lol
+// good luck using function pointers with these
+// bogus rules
 void	__generic_render(void)
 {
-	canva()->scale_img( \
-		fthis()->object->get_sprite(), \
-		fthis()->object->pos);
+	t_object	*obj;
+
+	obj = fthis()->object;
+	__scale_img(obj->get_sprite(), \
+			obj->pos);
 }
 
 t_sprite	*__generic_get_sprite(void)

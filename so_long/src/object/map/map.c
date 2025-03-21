@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 18:18:07 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../headers/header.h"
 
 void	__draw_walls(t_map *s_map);
 void	__map_realloc(char **map, int rows);
 void	__load_map(int fd, t_map *s_map);
-void	__load_coords(t_pos_vector *pos, int x, int y, byte *error);
-byte	__map_check(t_map *s_map);
+void	__load_coords(t_pos_vector *pos, int x, int y, t_byte *error);
+t_byte	__map_check(t_map *s_map);
 void	__flood_fill_r(t_map *s_map, int x, int y);
-void	__print_error_msg(byte *error);
+void	__print_error_msg(t_byte *error);
 
 // Pass 'e' for the enemy sprite, 'c' for collectible and nothing for
 // the map sprite
@@ -66,11 +78,14 @@ static void	__map_init(t_map *map)
 t_map	*new_map(char *filepath)
 {
 	t_map	*map;
-	int	errors;
+	int		errors;
+	int		fd;
 
 	map = constructor(sizeof(t_map));
 	map->type = MAP;
-	__load_map(__fd_check(open(filepath, O_RDONLY)), map);
+	fd = __fd_check(open(filepath, O_RDONLY));
+	__load_map(fd, map);
+	close(fd);
 	if (map->map_ptr == NULL)
 		return (NULL);
 	__map_init(map);

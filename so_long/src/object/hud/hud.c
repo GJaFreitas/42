@@ -1,6 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hud.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/03/21 18:25:25 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../headers/header.h"
 
 #define HP_SIZE 400
+
+void	__scale_img(t_sprite *img, t_pos_vector vec);
 
 // 1 - Deco
 // 0 - Bar
@@ -20,12 +34,9 @@ static void	__hud_destructor(void)
 
 	hud = (t_hud *)fthis()->object;
 	mlx_destroy_image(engine()->mlx,
-		   hud->get_sprite(1)->img);
+		hud->get_sprite(1)->img);
 	mlx_destroy_image(engine()->mlx,
-		   hud->get_sprite(0)->img);
-	// The only free not protected agaisnt double free
-	// Which isnt a problem since if this was called the
-	// whole memory region will be freed and set to null anyway
+		hud->get_sprite(0)->img);
 	free(hud->get_sprite(1));
 	free(hud->get_sprite(0));
 }
@@ -36,10 +47,10 @@ static void	__hud_render(void)
 
 	hud = (t_hud *)fthis()->object;
 	hud->hpsize.w = hud->hpsize.w * (game()->player->hp / 100);
-	canva()->scale_img(
+	__scale_img(
 		hud->get_sprite(0), \
 		hud->hpsize);
-	canva()->scale_img(
+	__scale_img(
 		hud->get_sprite(1), \
 		hud->pos);
 	hud->hpsize.w = HP_SIZE;
@@ -65,5 +76,5 @@ t_object	*new_hud(void)
 	hud->hpsize.h = 35;
 	hud->hpbar = canva()->load_img("textures/health-bar.xpm");
 	game()->add_obj(new_counter());
-	return ((t_object*)hud);
+	return ((t_object *)hud);
 }
