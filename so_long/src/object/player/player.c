@@ -25,6 +25,7 @@ static void	__player_keys(byte *keys)
 		fthis()->object->pos.x += PLAYER_SPEED;
 		game()->moves++;
 	}
+	ft_printf("%d\n", game()->moves);
 }
 
 void	__mouse_left(void);
