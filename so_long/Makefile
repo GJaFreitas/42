@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/03/21 12:46:59 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/03/21 12:59:35 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,74 @@ NAME = so_long.out
 MLXDIR = ./libs/minilibx-linux
 LIBFTDIR = ./libs/libft
 OBJS_DIR = ./objs
-SRCS_DIR = ./src
+###▼▼▼<src-updater-do-not-edit-or-remove>▼▼▼
+# **************************************************************************** #
+# **   Generated with https://github.com/lorenuars19/makefile-src-updater   ** #
+# **************************************************************************** #
+
+SRCS = \
+	./src/game/game.c \
+	./src/game/game_utils2.c \
+	./src/game/game_utils.c \
+	./src/misc/vec_normalization.c \
+	./src/misc/cooldown.c \
+	./src/misc/abs.c \
+	./src/misc/memory.c \
+	./src/misc/collision.c \
+	./src/misc/rand.c \
+	./src/misc/this.c \
+	./src/misc/debug.c \
+	./src/misc/game_over.c \
+	./src/misc/transition.c \
+	./src/misc/destroyer_of_all.c \
+	./src/engine/key_events.c \
+	./src/engine/engine.c \
+	./src/engine/mouse_events.c \
+	./src/vector/vector_utils.c \
+	./src/vector/vector_sort.c \
+	./src/vector/vector.c \
+	./src/vector/vector_utils3.c \
+	./src/vector/vector_utils2.c \
+	./src/canvas/canva_utils.c \
+	./src/canvas/scale_coords.c \
+	./src/canvas/canva_utils2.c \
+	./src/canvas/canva.c \
+	./src/heap/heap_utils2.c \
+	./src/heap/heap.c \
+	./src/heap/heap_utils.c \
+	./src/queue/queue.c \
+	./src/main.c \
+	./src/object/hud/hud.c \
+	./src/object/bg/background.c \
+	./src/object/counter/counter.c \
+	./src/object/generic_functions.c \
+	./src/object/map/error.c \
+	./src/object/map/map_utils.c \
+	./src/object/map/floodfill_remake.c \
+	./src/object/map/map_utils2.c \
+	./src/object/map/map.c \
+	./src/object/player/mouse2.c \
+	./src/object/player/player.c \
+	./src/object/start/start.c \
+	./src/object/collectible/collectible.c \
+	./src/object/exit/exit.c \
+	./src/object/object_utils.c \
+	./src/object/enemy/enemy_utils.c \
+	./src/object/enemy/enemy.c \
+	./src/object/enemy/Astar_cost.c \
+	./src/object/enemy/pathfindClassesUtils.c \
+	./src/object/enemy/enemy_utils2.c \
+	./src/object/enemy/pathfindClasses.c \
+	./src/object/enemy/Astar.c \
+	./src/object/enemy/pathfindClassesMethods.c \
+	./src/object/wall/wall.c \
+	./src/object/menu/menu.c \
+	./src/object/fireball/fireball.c \
+
+###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 
 # --- DEPENDENCIES ---------------- #
 
-VPATH = src/*:src/*/*:src/object/*/*
-SRCS =	$(wildcard src/*/*.c)
-SRCS += $(wildcard src/object/*/*.c)
-SRCS += ./src/main.c
 OBJS =	$(SRCS:%.c=%.o)
 
 MLX = libs/minilibx-linux/libmlx.a
