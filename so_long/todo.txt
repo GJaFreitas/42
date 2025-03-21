@@ -1,7 +1,0 @@
-Have assets be something like space invaders
-maybe make it s o shooting isnt omnidirectional and only
-works in 4 cardinal directions
--Fix stupid makefile
-
-
-Fun stat: ==48890==   total heap usage: 3,953 allocs, 3,953 frees, 3,188,889 bytes allocated
