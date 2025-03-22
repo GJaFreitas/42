@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:55:23 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/21 16:55:25 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/22 11:13:56 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@
 # define HEIGHT_W 1080
 
 // X11 Masks
-# define KPRESS_M 1
-# define KRELEASE_M 2
-# define BPRESS_M 4
-# define BRELEASE_M 8
+# define KPRESS_M 		1
+# define KRELEASE_M 		2
+# define BPRESS_M 		4
+# define BRELEASE_M 		8
+# define StructureNotifyMask	(1L<<17)
+
 
 // Event Hook Codes
 # define ON_KEYDOWN	2
@@ -48,6 +50,7 @@
 # define ON_MOUSEDOWN	4
 # define ON_KEYMOUSEUP	5
 # define ON_MOUSEMOVE	6
+# define DestroyNotify	17
 
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx-linux/mlx.h"
@@ -81,6 +84,7 @@ int					out_of_bounds(t_pos_vector pos);
 void				count_overall(t_type type);
 int					count_obj(t_type type);
 void				game_over(void);
+int					close_game(void *ptr);
 //	******************
 
 //	Math

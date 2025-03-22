@@ -6,11 +6,18 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/21 14:19:46 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/22 11:13:33 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/header.h"
+
+int	close_game(void *ptr)
+{
+	(void)ptr;
+	harbinger_of_chaos();
+	return (0);
+}
 
 void	harbinger_of_chaos(void)
 {
