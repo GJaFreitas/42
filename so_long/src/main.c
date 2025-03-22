@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:16:42 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/22 11:14:09 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/22 11:20:41 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	main(int argc, char **argv)
 	start_engine("Gaming", argv, argc);
 	start_screen();
 	start_game();
-	mlx_hook(engine()->mlx, DestroyNotify, \
-	  StructureNotifyMask, close_game, NULL);
+	mlx_hook(engine()->mlx, DESTROYNOTIFY, \
+		STRUCT_NOTI_MASK, close_game, NULL);
 	mlx_loop_hook(engine()->mlx, game_loop, NULL);
 	mlx_loop(engine()->mlx);
 	return (0);
