@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:55:23 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/22 11:20:28 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:16:45 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 // Gameplay stuff
 # ifndef PLAYER_SPEED
-#  define PLAYER_SPEED 15
+#  define PLAYER_SPEED 30
 # endif
 # ifndef FIREBALL_SPEED
 #  define FIREBALL_SPEED 30
@@ -25,14 +25,6 @@
 #  define FIREBALL_COOLDOWN 1
 # endif
 
-// Window Sizes
-// they are purposely mispelt because im mad that
-// "user defined identifiers should be only lowercase"
-// why? what is the purpose of that? every library ever
-// has all their defined constants be uppercase
-// retarded norminette doesnt like it tho and now i have
-// to change every single one of these defines across
-// all these files
 # define WIDTH_W 1920
 # define HEIGHT_W 1080
 
@@ -70,6 +62,7 @@
 void				*malloc_safe(size_t __size);
 int					free_safe(void **v);
 void				harbinger_of_chaos(void);
+int					close_game(void *ptr);
 //	*******************
 
 //	Misc
@@ -83,7 +76,6 @@ int					out_of_bounds(t_pos_vector pos);
 void				count_overall(t_type type);
 int					count_obj(t_type type);
 void				game_over(void);
-int					close_game(void *ptr);
 //	******************
 
 //	Math

@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/21 14:19:47 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:31:16 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	__put_pixel(int x, int y)
 {
+	if (x >= WIDTH_W || y >= HEIGHT_W)
+		return ;
 	game()->walls[y][x] = 1;
 }
 

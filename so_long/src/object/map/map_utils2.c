@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/21 14:47:21 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:08:31 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_byte	__map_check(t_map *s_map)
 	while (it.x < s_map->row)
 	{
 		it.y = 0;
-		while (map[(int)it.x][(int)it.y])
+		while (it.y < s_map->col && map[(int)it.x][(int)it.y])
 		{
 			if (map[(int)it.x][(int)it.y] != '0')
 				__map_handler(map[(int)it.x][(int)it.y], s_map, \
@@ -54,4 +54,24 @@ t_byte	__map_check(t_map *s_map)
 		if (s_map->error[(int)it.x++])
 			return (1);
 	return (0);
+}
+
+int	__map_ber_check(char *filepath)
+{
+	size_t	size;
+
+	size = ft_strlen(filepath);
+	if (size < 4)
+		return (0);
+	return (!ft_strncmp(&filepath[size - 4], ".ber", 4));
+}
+
+int	__check_size(t_map *s_map)
+{
+	if (s_map->row < 2 || s_map->col < 2)
+	{
+		ft_printf("Error\nMap has little space man :(\n");
+		return (0);
+	}
+	return (1);
 }

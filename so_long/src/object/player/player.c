@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/21 14:19:47 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:16:08 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,16 @@ static void	__player_keys(t_byte *keys)
 void	__mouse_left(void);
 void	__mouse_right(void);
 
+/*
 static void	__player_mouse(void)
 {
 	if (engine()->mouse_press == 1)
-		__mouse_left();
+		return ;
 	else if (engine()->mouse_press == 3)
 		return ;
 }
+*/
+//__mouse_left();
 //__mouse_right();
 
 static void	__player_update(void)
@@ -67,7 +70,6 @@ t_object	*new_player(float x, float y)
 	player->type = PLAYER;
 	player->sprite = canva()->load_img("textures/player.xpm");
 	player->func_keys = __player_keys;
-	player->func_mouse = __player_mouse;
 	player->update = __player_update;
 	player->pos.w = canva()->scale_factor_e;
 	player->pos.h = canva()->scale_factor_e;

@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/03/21 16:54:40 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/03/25 15:23:59 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LFLAGS = -lXext -lX11 -lm -lz
 
 # --- NAME ---------------------- #
 
-NAME = so_long.out
+NAME = so_long
 
 # --- DIRECTORIES ------------------- #
 

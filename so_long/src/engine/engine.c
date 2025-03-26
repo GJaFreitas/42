@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/21 15:11:50 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:17:57 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	start_engine(char *title, char **argv, int argc)
 	engine()->destroy = __destroy_all;
 	mlx_hook(engine()->win, ON_KEYDOWN, KPRESS_M, __key_press, engine());
 	mlx_hook(engine()->win, ON_KEYUP, KRELEASE_M, __key_release, engine());
-	mlx_mouse_hook(engine()->win, __mouse_release, engine());
+	mlx_hook(engine()->win, DESTROYNOTIFY, (1L << 0), close_game, NULL);
 }
 /*
 	mlx_hook(engine()->win, ON_KEYMOUSEUP, BRELEASE_M, __mouse_release, NULL);

@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/21 18:24:01 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:45:11 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ static void	__counter_render(void)
 			c->pos.w * 0.66, c->pos.h * 0.66});
 	__scale_img(
 		c->get_sprite(game()->collectibles_num), \
-		(t_pos_vector){c->pos.x + c->pos.w + 50, c->pos.y, c->pos.w, c->pos.h});
+		(t_pos_vector){c->pos.x + c->pos.w + 50 + \
+			(canva()->scale_factor * 0.3), c->pos.y, c->pos.w, c->pos.h});
 }
 
 static t_sprite	*__counter_get_sprite(int i)
@@ -75,6 +76,7 @@ t_object	*new_counter(void)
 	counter->pos.y = 5;
 	counter->pos.w = canva()->scale_factor;
 	counter->pos.h = canva()->scale_factor;
+	counter->pos.x -= canva()->scale_factor;
 	ft_strlcpy(str, "textures/number0.xpm", 32);
 	while ((str[15] - '0') < 10)
 	{
