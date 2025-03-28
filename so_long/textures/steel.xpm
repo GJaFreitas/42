@@ -2,7 +2,7 @@
 static char *Steel_PNG_Picture_10014479251725637768[] = {
 /* columns rows colors chars-per-pixel */
 "649 402 204 2 ",
-"   c None",
+"   c 0",
 ".  c #222222",
 "X  c #232323",
 "o  c gray14",
