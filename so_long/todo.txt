@@ -1,0 +1,3 @@
+[ ] Test different map configurations.
+[ ] Remove the -fsanitize flag from makefile.
+[ ] Change map parsing to happen right at the begining (optional).
