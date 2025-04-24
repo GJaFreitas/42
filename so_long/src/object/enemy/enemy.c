@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:19:39 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/28 15:16:12 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:29:32 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static void	__destructor_enemy(void)
 	enemy = (t_enemy *)fthis()->object;
 	mlx_destroy_image(engine()->mlx, enemy->sprite->img);
 	free(enemy->get_sprite());
-	enemy->hp = 515;
 }
 
 t_object	*new_enemy(float x, float y)
