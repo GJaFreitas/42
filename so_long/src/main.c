@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:16:42 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/03/25 19:17:50 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/04/26 11:24:36 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	game_loop(void)
 				canva()->data.img, 0, 0);
 	return (0);
 }
+//mlx_string_put(engine()->mlx, engine()->win, 500, 500, 87215, "HAIIIIII");
 
 int	__initial_checks(int argc, char **argv)
 {
