@@ -20,6 +20,7 @@
 # define ANSI_STRIKETHROUGH	"\x1b[9m"
 
 // Reset all attributes
+
 # define ANSI_RESET		"\x1b[0m"
 
 #endif

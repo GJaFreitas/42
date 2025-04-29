@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:16:44 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/08/19 15:16:03 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:24:24 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	destroy(char ***arr)
 	*arr = NULL;
 }
 
-static void	allocpy(char **arr, char *s, char c)
+static void	allocpy(char **arr, char *s)
 {
 	char	*temp;
 	char	**arr_cpy;
@@ -34,12 +34,12 @@ static void	allocpy(char **arr, char *s, char c)
 	arr_cpy = arr;
 	while (*temp)
 	{
-		while (*s == c)
+		while (ft_isspace(*s))
 			s++;
 		temp = s;
-		while (*temp && *temp != c)
+		while (*temp && !ft_isspace(*temp))
 			temp++;
-		if (*temp == c || temp > s)
+		if (ft_isspace(*temp) || temp > s)
 		{
 			*arr = ft_substr(s, 0, temp - s);
 			if (*arr == NULL)
@@ -51,24 +51,24 @@ static void	allocpy(char **arr, char *s, char c)
 	*arr = NULL;
 }
 
-static int	count_words(char const *s, char c)
+static int	count_words(char const *s)
 {
 	int	word_count;
 
 	word_count = 0;
 	while (*s)
 	{
-		while (*s == c)
+		while (ft_isspace(*s))
 			s++;
 		if (*s)
 			++word_count;
-		while (*s && *s != c)
+		while (*s && !ft_isspace(*s))
 			++s;
 	}
 	return (word_count);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s)
 {
 	char	**arr;
 	int		words;
@@ -81,10 +81,10 @@ char	**ft_split(char const *s, char c)
 		*arr = NULL;
 		return (arr);
 	}
-	words = count_words(s, c);
+	words = count_words(s);
 	arr = malloc(sizeof(char *) * (words + 1));
 	if (!arr)
 		return (NULL);
-	allocpy(arr, (char *)s, c);
+	allocpy(arr, (char *)s);
 	return (arr);
 }

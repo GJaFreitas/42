@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:23:12 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/04/29 10:31:56 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/04/30 00:47:55 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 static inline _Bool is_aligned(const void *restrict pointer,
 size_t byte_count)
 {
-	return (uintptr_t)pointer % byte_count == 0;
+	return ((uintptr_t)pointer % byte_count == 0);
 }
-
 
 static void	*__optimization(void *dest, const void *src,
 size_t n, void *ret_ptr)

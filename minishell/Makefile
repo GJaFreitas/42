@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/04/29 18:31:42 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/04/30 00:38:19 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,22 +29,27 @@ NODIR = --no-print-directory
 LIBFT = libft/libft.a
 
 # --- PUSH SWAP SOURCES ------------ #
-VPATH = src
+VPATH = src:src/functions
 SRCS = \
-       minishell.c
+       minishell.c \
+       tokenize.c \
+       exec.c \
+       builtin.c \
+       ft_echo.c
 
-OBJS = $(SRCS:%.c=obj/%.o)
+OBJS = $(addprefix obj/,$(SRCS:.c=.o))
 
 RM = rm -f
 
 all: $(NAME)
 
-$(OBJS):	obj/%.o: %.c
-	mkdir -p obj
+obj/%.o: %.c | obj
 	$(CC) -c $(CFLAGS) $< -o $@
 
+obj:
+	mkdir -p obj
+
 $(NAME) : $(LIBFT) $(OBJS)
-	@echo Making
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME) 
 
 
@@ -61,4 +66,8 @@ re:
 	@make fclean $(NODIR)
 	@make $(NODIR)
 
-.PHONY: all clean fclean re
+r:
+	make
+	@./$(NAME)
+
+.PHONY: all clean fclean re r

@@ -6,21 +6,11 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:23:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/08/22 12:21:54 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:19:28 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
-
-static int	ft_isspace(char c)
-{
-	return (c == '\n'
-		|| c == '\t'
-		|| c == '\v'
-		|| c == '\r'
-		|| c == '\f'
-		|| c == ' ');
-}
 
 int	ft_atoi(const char *str)
 {
