@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2024/11/15 10:26:05 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/04/29 10:21:48 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 # --- Compiler Flags -------------- #
 
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror -O2
 
 # --- NAME ---------------------- #
 
@@ -45,6 +45,7 @@ SRCS = \
 	./srcs/memory/ft_memcmp.c \
 	./srcs/memory/ft_memchr.c \
 	./srcs/memory/ft_calloc.c \
+	./srcs/memory/ft_realloc.c \
 	./srcs/memory/ft_bzero.c \
 	./srcs/lists/ft_lstdelone.c \
 	./srcs/lists/ft_lstmap.c \

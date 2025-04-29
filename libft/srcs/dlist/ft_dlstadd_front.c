@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_dlstadd_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 08:18:43 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/04/29 10:31:10 by gjacome-         ###   ########.fr       */
+/*   Created: 2024/04/11 08:21:56 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/04/29 10:26:49 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_dlistadd_front(t_dlist **head, t_dlist *node)
 {
-	t_list	*newnode;
+	t_dlist	*temp;
 
-	newnode = ft_calloc(1, sizeof(t_list));
-	if (newnode == NULL)
-		return (NULL);
-	newnode->content = content;
-	return (newnode);
+	temp = *head;
+	if (!head || !node)
+		return ;
+	node->next = *head;
+	*head = node;
+	temp->prev = node;
 }

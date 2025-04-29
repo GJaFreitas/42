@@ -6,11 +6,43 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:23:12 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/08/19 15:15:26 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/04/29 10:31:56 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
+#include <stdint.h>
+
+static inline _Bool is_aligned(const void *restrict pointer,
+size_t byte_count)
+{
+	return (uintptr_t)pointer % byte_count == 0;
+}
+
+
+static void	*__optimization(void *dest, const void *src,
+size_t n, void *ret_ptr)
+{
+	size_t	increment;
+
+	increment = sizeof(ul);
+	while (!is_aligned(dest, n))
+		*(uchar *)dest++ = *(uchar *)src++;
+	n -= ret_ptr - dest;
+	while (n >= increment)
+	{
+		*(ul *)dest = *(ul *)src;
+		dest += increment;
+		src += increment;
+		n -= increment;
+	}
+	while (n > 0)
+	{
+		*(uchar *)dest++ = *(uchar *)src++;
+		n--;
+	}
+	return (ret_ptr);
+}
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
@@ -19,6 +51,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	ret_ptr = dest;
 	if (!dest || !src)
 		return (NULL);
+	if (n > 12)
+		return (__optimization(dest, src, n, ret_ptr));
 	while (n > 0)
 	{
 		*(char *)dest = *(char *)src;

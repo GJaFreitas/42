@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:38:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2024/11/12 15:24:30 by bag              ###   ########.fr       */
+/*   Updated: 2025/04/29 10:42:10 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef unsigned long int	ul;
+typedef unsigned char		uchar;
+
+typedef struct s_dlist
+{
+	void			*content;
+	struct s_dlist	*next;
+	struct s_dlist	*prev;
+}	t_dlist;
 
 typedef struct s_list
 {
@@ -90,6 +100,19 @@ void	ft_putstr_fd(char *buf, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 // Memory
+//
+// A small explanation of the new optimizations for the memcpy and bzero functions:
+// Normally these are written as (uchar )array[i] = (uchar )x
+// so they copy 1 byte at the time
+//
+// What ive done is first i allign them, make the pointer be at a boundary of x bytes
+// dependant on system and then i copy sizeof(unsigned long int) at a time
+// the compiler will then optimize that so that it takes as long to copy 4 or 8 bytes
+// (dependant on system) as it did to copy 1 previously
+//
+// the n > 12 is the thresshold at which the extra time it takes to call up the functions
+// and new instructions is worth it, this was not tested by me of course
+// but stolen from the glibc code :)
 
 void	*ft_memset(void	*s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
@@ -98,10 +121,11 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
-void	*ft_malloc(size_t __size);
+void	*ft_realloc(void *ptr, size_t prev_size, size_t new_size);
 
 // Lists
 
+// Normal
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
@@ -111,6 +135,17 @@ void	ft_lstadd_front(t_list **head, t_list *node);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// Doubly linked
+t_dlist	*ft_dlistnew(void *content);
+t_dlist	*ft_dlistlast(t_dlist *lst);
+int		ft_dlistsize(t_dlist *lst);
+void	ft_dlistdelone(t_dlist *lst, void (*del)(void *));
+void	ft_dlistadd_back(t_dlist **head, t_dlist *node);
+void	ft_dlistadd_front(t_dlist **head, t_dlist *node);
+void	ft_dlistclear(t_dlist **lst, void (*del)(void *));
+void	ft_dlistiter(t_dlist *lst, void (*f)(void *));
+t_dlist	*ft_dlistmap(t_dlist *lst, void *(*f)(void *), void (*del)(void *));
 
 
 #endif
