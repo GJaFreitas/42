@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/04/29 10:21:48 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/04/29 19:20:16 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ NAME = libft.a
 
 SRCS = \
 	./srcs/misc/ft_isalpha.c \
+	./srcs/misc/ft_isspace.c \
 	./srcs/misc/ft_isascii.c \
 	./srcs/misc/ft_isalnum.c \
 	./srcs/misc/ft_isdigit.c \

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/30 00:52:46 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/04/30 00:52:48 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft.h"
 
 int	ft_main_loop(char **input, va_list args)
@@ -25,8 +37,8 @@ int	ft_main_loop(char **input, va_list args)
 
 int	ft_printf(char *input, ...)
 {
-	int	count;
 	va_list	args;
+	int		count;
 
 	va_start(args, input);
 	count = 0;

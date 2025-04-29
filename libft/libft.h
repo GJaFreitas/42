@@ -6,7 +6,7 @@
 /*   By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:38:47 by gjacome-          #+#    #+#             */
-/*   Updated: 2025/04/29 10:42:10 by gjacome-         ###   ########.fr       */
+/*   Updated: 2025/04/30 00:55:23 by gjacome-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef unsigned long int	ul;
-typedef unsigned char		uchar;
+typedef unsigned long int	t_ul;
+typedef unsigned char		t_uchar;
 
 typedef struct s_dlist
 {
@@ -91,6 +91,7 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+int		ft_isspace(int c);
 
 // Files
 
@@ -101,16 +102,22 @@ void	ft_putnbr_fd(int n, int fd);
 
 // Memory
 //
-// A small explanation of the new optimizations for the memcpy and bzero functions:
+// A small explanation of the new optimizations for
+// the memcpy and bzero functions:
+//
 // Normally these are written as (uchar )array[i] = (uchar )x
 // so they copy 1 byte at the time
 //
-// What ive done is first i allign them, make the pointer be at a boundary of x bytes
-// dependant on system and then i copy sizeof(unsigned long int) at a time
-// the compiler will then optimize that so that it takes as long to copy 4 or 8 bytes
+// What ive done is first i allign them, make the
+// pointer be at a boundary of x bytes
+// dependant on system and then i copy
+// sizeof(unsigned long int) at a time
+// the compiler will then optimize that so that
+// it takes as long to copy 4 or 8 bytes
 // (dependant on system) as it did to copy 1 previously
 //
-// the n > 12 is the thresshold at which the extra time it takes to call up the functions
+// the n > 12 is the thresshold at which the extra time
+// it takes to call up the functions
 // and new instructions is worth it, this was not tested by me of course
 // but stolen from the glibc code :)
 
@@ -146,6 +153,5 @@ void	ft_dlistadd_front(t_dlist **head, t_dlist *node);
 void	ft_dlistclear(t_dlist **lst, void (*del)(void *));
 void	ft_dlistiter(t_dlist *lst, void (*f)(void *));
 t_dlist	*ft_dlistmap(t_dlist *lst, void *(*f)(void *), void (*del)(void *));
-
 
 #endif
