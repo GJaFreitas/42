@@ -30,6 +30,7 @@ int	ft_isbuiltin(const char *str)
 
 // If f isnt a builtin then the placeboo function will run, doing a whole
 // lot of nothing. If f is a builtin then the correct builtin will get called
+// f is the current token and tok is the list of tokens after that
 void	exec_builtins(const char *f, char **tok)
 {
 	builtin(ft_isbuiltin(f))->foo(tok);
