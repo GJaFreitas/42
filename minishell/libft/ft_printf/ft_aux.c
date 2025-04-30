@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_aux.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjacome- <gjacome-@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/30 00:51:36 by gjacome-          #+#    #+#             */
+/*   Updated: 2025/04/30 00:51:37 by gjacome-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft.h"
 
 int	ft_putnbr_base(unsigned int nbr, char *base, int total)
@@ -18,4 +30,3 @@ int	ft_putnbr_base(unsigned int nbr, char *base, int total)
 	}
 	return (total);
 }
-
