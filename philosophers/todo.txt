@@ -3,3 +3,45 @@ Read up on:
 	- Processes
 	- Mutexes
 	- Semaphores
+
+• Each philosopher must be represented as a separate thread.
+
+• There is one fork between each pair of philosophers. Therefore, if there are several
+philosophers, each philosopher has a fork on their left side and a fork on their right
+side. If there is only one philosopher, they will have access to just one fork.
+
+• To prevent philosophers from duplicating forks, you should protect each fork’s state
+with a mutex.
+
+
+In the terms of the dining philosopher scenario, if someone fails to grab their 
+right fork they would put their left fork back down and try again.
+In the meantime, the philosopher to their left could grab the fork before it is picked back up.
+
+A third possibility for solving the dining philosophers problem is to impose a linear ordering on the semaphores
+
+Cool stuff here about OS resource management:
+
+https://www.studytonight.com/operating-system
+
+
+For the threads implementatiom i will need a mutex lock for each fork.
+When a philosopher has a fork on hand it will be locked, i should either order them to get the forks
+in a specific way or i should prioritize the pilosophers that have spent the longest starving (this is
+the better way imo).
+
+For the process implementation it is a semaphore for each fork, from what ive seen this seems even easier
+to implement.
+
+What ill do:
+
+first get all odd philos to eat and then from there let the hungriest one eat
+
+while:
+	philo(1)->eat
+	philo(3)->eat
+	...
+
+while:
+	hungriest_philo->eat
+	...

@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/05/05 00:12:30 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/05/05 16:09:42 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ LIBFT = libft/libft.a
 VPATH = src
 SRCS = \
 	philosophers.c \
-	utils.c
+	utils.c \
+	actions.c \
 
 OBJS = $(addprefix obj/,$(SRCS:.c=.o))
 
