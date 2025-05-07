@@ -27,66 +27,42 @@ int	parse_args(t_philo_info *data, int argc, char **argv)
 	return (1);
 }
 
-// Initializes an array of philosophers with null term
-t_philo	**init_philosophers(t_philo_info *data)
+void	*the_thinker(void *p)
 {
-	t_philo		**philos;
-	pthread_mutex_t	**forks;
-	pthread_mutex_t	*write;
-	int		i;
-	int		num;
-
-	num = data->p_num;
-	philos = malloc(sizeof(t_philo *) * (num + 1));
-	forks = malloc(sizeof(pthread_mutex_t *) * (num + 2));
-	write = malloc(sizeof(pthread_mutex_t));
-	pthread_mutex_init(write, NULL);
-	memset(philos, 0, sizeof(t_philo *) * (num + 1));
-	i = 0;
-	while (i < num)
+	if (((t_philo *)p)->philo_index % 2)
+		usleep(20);
+	while (729)
 	{
-		philos[i] = malloc(sizeof(t_philo));
-		memset(philos[i], 0, sizeof(t_philo));
-		forks[i] = malloc(sizeof(pthread_mutex_t));
-		pthread_mutex_init(forks[i], NULL);
-		philos[i]->write_perm = write;
-		philos[i]->info = data;
-		philos[i]->alive = 1;
-		philos[i]->philo_index = i;
-		philos[i]->forks = forks;
-		i++;
+		eat(p);
+		if (((t_philo *)p)->info->eat_max \
+		&& ((t_philo *)p)->times_eaten == ((t_philo *)p)->info->eat_max)
+			break ;
+		if (!((t_philo *)p)->alive)
+			break ;
+		think(p);
+		if (!((t_philo *)p)->alive)
+			break ;
 	}
-	forks[i] = malloc(sizeof(pthread_mutex_t));
-	pthread_mutex_init(forks[i], NULL);
-	return (philos);
-}
-
-void	*loop(void *p)
-{
-	while (1)
-	{
-		if (left_fork(p) && right_fork(p))
-			eat(p);
-	}
+	return (NULL);
 }
 
 int	main(int argc, char **argv)
 {
 	t_philo_info	data;
 	t_philo		**philos;
-	// unsigned int		i;
+	unsigned int		i;
 
-	timestamp();
-	// i = 0;
+	i = 0;
 	if (!parse_args(&data, argc, argv))
 		return (1);
 	philos = init_philosophers(&data);
-	(void)philos;
-	printf("%s\n", ft_itoa(47328958348957));
-	// while (i < data.p_num)
-	// {
-	// 	pthread_create(philos[i]->thread, NULL, loop, philos[i]);
-	// 	i++;
-	// }
+	timestamp();
+	while (i < data.p_num)
+	{
+		pthread_create(philos[i]->thread, NULL, the_thinker, philos[i]);
+		i++;
+	}
+	pthread_mutex_unlock(philos[0]->write_perm);
+	free_all(philos);
 	return (0);
 }

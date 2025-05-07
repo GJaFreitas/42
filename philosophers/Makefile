@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/05/05 16:09:42 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/05/07 18:48:06 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS = \
 	philosophers.c \
 	utils.c \
 	actions.c \
+	mem_management.c \
 
 OBJS = $(addprefix obj/,$(SRCS:.c=.o))
 
