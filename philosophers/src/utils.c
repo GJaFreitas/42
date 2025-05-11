@@ -95,7 +95,6 @@ char	*ft_itoa(size_t num)
 	return (str);
 }
 
-// The writing mutex must be called before this function
 void	print(t_philo *p, char *str)
 {
 	size_t	cur_time;
@@ -105,6 +104,7 @@ void	print(t_philo *p, char *str)
 	guy = p->philo_index;
 	pthread_mutex_lock(p->write_perm);
 	printf("%ld %ld %s", cur_time, guy, str);
+	printf("Time debug: %ld\n", cur_time + timestamp());
 	pthread_mutex_unlock(p->write_perm);
 }
 

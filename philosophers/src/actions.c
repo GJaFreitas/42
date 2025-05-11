@@ -36,6 +36,9 @@ void	eat(t_philo *p)
 
 // Updates the 'alive' variable for all philosophers to stop the
 // simulation and announces to the user the dude has died
+//
+// TODO: Somehow the time printed is sometimes negative
+// overflow???
 void	die(t_philo *p)
 {
 	p->alive = 0;
