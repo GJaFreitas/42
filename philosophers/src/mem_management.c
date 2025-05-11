@@ -1,5 +1,16 @@
 #include "../philosophers.h"
 
+static void	looping(t_philo **philos, pthread_mutex_t **forks, int i)
+{
+	philos[i] = malloc(sizeof(t_philo));
+	memset(philos[i], 0, sizeof(t_philo));
+	forks[i] = malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(forks[i], NULL);
+	philos[i]->thread = calloc(1, sizeof(pthread_t));
+	philos[i]->philo_index = i;
+	philos[i]->forks = forks;
+}
+
 // Initializes an array of philosophers with null term
 t_philo	**init_philosophers(t_philo_info *data)
 {
@@ -13,24 +24,18 @@ t_philo	**init_philosophers(t_philo_info *data)
 	num = data->p_num;
 	alive = calloc(1, sizeof(int));
 	*alive = 1;
-	philos = malloc(sizeof(t_philo *) * (num + 1));
-	forks = malloc(sizeof(pthread_mutex_t *) * (num + 2));
-	write = malloc(sizeof(pthread_mutex_t));
+	philos = calloc((num + 1), sizeof(t_philo *));
+	forks = calloc((num + 2), sizeof(pthread_mutex_t *));
+	write = calloc(1, sizeof(pthread_mutex_t));
 	pthread_mutex_init(write, NULL);
 	memset(philos, 0, sizeof(t_philo *) * (num + 1));
 	i = 0;
 	while (i < num)
 	{
-		philos[i] = malloc(sizeof(t_philo));
-		memset(philos[i], 0, sizeof(t_philo));
-		forks[i] = malloc(sizeof(pthread_mutex_t));
-		pthread_mutex_init(forks[i], NULL);
+		looping(philos, forks, i);
 		philos[i]->write_perm = write;
-		philos[i]->thread = calloc(1, sizeof(pthread_t));;
 		philos[i]->info = data;
 		philos[i]->alive = alive;
-		philos[i]->philo_index = i;
-		philos[i]->forks = forks;
 		i++;
 	}
 	return (philos);
