@@ -7,7 +7,7 @@ static void	looping(t_philo **philos, pthread_mutex_t **forks, int i)
 	forks[i] = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(forks[i], NULL);
 	philos[i]->thread = calloc(1, sizeof(pthread_t));
-	philos[i]->philo_index = i;
+	philos[i]->philo_index = i + 1;
 	philos[i]->forks = forks;
 }
 

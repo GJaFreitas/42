@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/05/07 18:48:06 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/05/11 16:21:15 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,4 +63,8 @@ re:
 	@make fclean $(NODIR)
 	@make $(NODIR)
 
-.PHONY: all clean fclean re
+r:
+	@make
+	@./philo 5 800 200 200
+
+.PHONY: all clean fclean re r

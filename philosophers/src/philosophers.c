@@ -46,7 +46,6 @@ void	*loop(void *ptr)
 		if (!p->alive)
 			break ;
 	}
-	printf("hi\n");
 	return (NULL);
 }
 
