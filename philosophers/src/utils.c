@@ -42,7 +42,7 @@ pthread_mutex_t	*right_fork(t_philo *p)
 
 pthread_mutex_t	*left_fork(t_philo *p)
 {
-	if (!p->forks[p->philo_index] + 1)
+	if (p->philo_index + 1 > p->info->p_num)
 		return (p->forks[0]);
 	return (p->forks[p->philo_index + 1]);
 }
@@ -98,36 +98,24 @@ char	*ft_itoa(size_t num)
 // The writing mutex must be called before this function
 void	print(t_philo *p, char *str)
 {
-	int	i;
-	int	j;
-	char	buf[64];
-	char	*cur_time;
-	char	*guy;
+	size_t	cur_time;
+	size_t	guy;
 
-	cur_time = ft_itoa(p->last_eat - timestamp());
-	guy = ft_itoa(p->philo_index);
-	i = 0;
-	j = 0;
-	while (cur_time[j])
-		buf[i++] = cur_time[j++];
-	j = 0;
-	free(cur_time);
-	while (guy[j])
-		buf[i++] = guy[j++];
-	free(guy);
-	while (*str)
-		buf[i++] = *str++;
-	write(1, buf, i);
+	cur_time = get_time();
+	guy = p->philo_index;
+	pthread_mutex_lock(p->write_perm);
+	printf("%ld %ld %s", cur_time, guy, str);
+	pthread_mutex_unlock(p->write_perm);
 }
 
-// The time at the start of the program in ms
+// The time at the start of the simulation in ms
 size_t	timestamp(void)
 {
 	static struct timeval	time;
 
 	if (time.tv_sec == 0)
 		gettimeofday(&time, NULL);
-	return (time.tv_usec * 1000);
+	return (time.tv_usec);
 }
 
 // The current time in ms
@@ -136,5 +124,5 @@ size_t	get_time(void)
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return (time.tv_usec * 1000);
+	return (time.tv_usec - timestamp());
 }

@@ -27,22 +27,26 @@ int	parse_args(t_philo_info *data, int argc, char **argv)
 	return (1);
 }
 
-void	*the_thinker(void *p)
+void	*loop(void *ptr)
 {
-	if (((t_philo *)p)->philo_index % 2)
-		usleep(20);
+	t_philo	*p;
+
+	p = ptr;
+	if (p->philo_index % 2)
+		usleep(50);
 	while (729)
 	{
 		eat(p);
-		if (((t_philo *)p)->info->eat_max \
-		&& ((t_philo *)p)->times_eaten == ((t_philo *)p)->info->eat_max)
+		if (p->info->eat_max \
+		&& p->times_eaten == ((t_philo *)p)->info->eat_max)
 			break ;
-		if (!((t_philo *)p)->alive)
+		if (!p->alive)
 			break ;
 		think(p);
-		if (!((t_philo *)p)->alive)
+		if (!p->alive)
 			break ;
 	}
+	printf("hi\n");
 	return (NULL);
 }
 
@@ -59,7 +63,13 @@ int	main(int argc, char **argv)
 	timestamp();
 	while (i < data.p_num)
 	{
-		pthread_create(philos[i]->thread, NULL, the_thinker, philos[i]);
+		pthread_create(philos[i]->thread, NULL, loop, philos[i]);
+		i++;
+	}
+	i = 0;
+	while (i < data.p_num)
+	{
+		pthread_join(*philos[i]->thread, NULL);
 		i++;
 	}
 	pthread_mutex_unlock(philos[0]->write_perm);
