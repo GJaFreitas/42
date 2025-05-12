@@ -33,7 +33,7 @@ void	*loop(void *ptr)
 
 	p = ptr;
 	if (p->philo_index % 2)
-		usleep(10);
+		usleep(100);
 	while (729)
 	{
 		eat(p);
