@@ -30,21 +30,6 @@ typedef struct s_philo
 	t_philo_info	*info;
 }	t_philo;
 
-/*
-*thread is the thread that is attempting the lock;
-
-*mutex is the mutex we are attempting to lock;
-
-*cond is the variable that will tell us if we were succesfull in
-locking 'mutex';
-*/
-typedef struct s_trylock
-{
-	pthread_t	*thread;
-	pthread_mutex_t	*mutex;
-	int		*cond;
-}	t_trylock;
-
 int		ft_atoi(const char *str);
 pthread_mutex_t	*right_fork(t_philo *p);
 pthread_mutex_t	*left_fork(t_philo *p);
@@ -66,7 +51,5 @@ void	print(t_philo *p, char *str);
 
 // Get the timestamp from when the program started
 size_t	timestamp(void);
-
-int	trylock(t_trylock *tl, unsigned long time);
 
 #endif
