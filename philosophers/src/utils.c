@@ -92,7 +92,7 @@ void	print(t_philo *p, char *str)
 		cur_time = get_time();
 		pthread_mutex_lock(p->write_perm);
 		printf("%ld %ld %s", get_time(), p->philo_index, str);
-		// printf("Time debug: %ld\n", cur_time + timestamp());
+		printf("Time debug: %ld\n", cur_time + timestamp());
 		pthread_mutex_unlock(p->write_perm);
 	}
 }
@@ -104,7 +104,7 @@ size_t	timestamp(void)
 
 	if (time.tv_sec == 0)
 		gettimeofday(&time, NULL);
-	return (time.tv_usec / 1000);
+	return (time.tv_usec);
 }
 
 // TODO: God fucking dammit this piece of shit is
@@ -115,5 +115,5 @@ size_t	get_time(void)
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return (((time.tv_usec / 1000) - timestamp()));
+	return (time.tv_usec - timestamp());
 }

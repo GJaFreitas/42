@@ -118,7 +118,6 @@ static void	free_philo(void *p)
 
 void	destroy_mutex(void *mutex)
 {
-	// printf("mutex: %p\n", mutex);
 	pthread_mutex_destroy(mutex);
 	free(mutex);
 }

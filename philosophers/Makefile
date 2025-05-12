@@ -16,7 +16,7 @@ CC = cc
 
 # --- Compiler Flags -------------- #
 
-CFLAGS = -g -Wall -Wextra -Werror -Ofast
+CFLAGS = -g -Wall -Wextra -Werror
 
 # --- NAME ---------------------- #
 
