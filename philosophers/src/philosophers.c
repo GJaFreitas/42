@@ -38,7 +38,7 @@ void	*loop(void *ptr)
 	{
 		eat(p);
 		if (p->info->eat_max \
-		&& p->times_eaten == ((t_philo *)p)->info->eat_max)
+		&& p->times_eaten == p->info->eat_max)
 			break ;
 		if (!p->alive)
 			break ;
