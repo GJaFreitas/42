@@ -38,8 +38,8 @@ void	eat(t_philo *p)
 	standby(p, p->info->eat_time);
 	p->last_eat = get_time();
 	p->times_eaten++;
-	pthread_mutex_unlock(p->r_fork);
 	pthread_mutex_unlock(p->l_fork);
+	pthread_mutex_unlock(p->r_fork);
 	a_sleep(p);
 }
 
@@ -50,10 +50,10 @@ void	eat(t_philo *p)
 // overflow???
 void	die(t_philo *p)
 {
+	print(p, " died\n");
 	pthread_mutex_lock(p->death_check);
 	*p->alive = 0;
 	pthread_mutex_unlock(p->death_check);
-	print(p, " died\n");
 }
 
 void	a_sleep(t_philo *p)

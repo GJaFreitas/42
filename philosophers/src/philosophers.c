@@ -32,15 +32,13 @@ void	*loop(void *ptr)
 	t_philo	*p;
 
 	p = ptr;
-	if (p->philo_index % 2)
-		usleep(150);
+	if (!p->philo_index % 2)
+		usleep(100);
 	while (729)
 	{
 		eat(p);
 		if (p->info->eat_max \
 		&& p->times_eaten == p->info->eat_max)
-			break ;
-		if (check_dead(p))
 			break ;
 		think(p);
 		if (check_dead(p))
@@ -72,7 +70,6 @@ int	main(int argc, char **argv)
 		pthread_join(*philos[i]->thread, NULL);
 		i++;
 	}
-	pthread_mutex_unlock(philos[0]->write_perm);
 	free_ptr_array((void **)forks, destroy_mutex);
 	free_all(philos);
 	return (0);

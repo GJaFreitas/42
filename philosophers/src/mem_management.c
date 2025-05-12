@@ -28,8 +28,8 @@ pthread_mutex_t	**init_forks(int num)
 	int	i;
 
 	i = 0;
-	forks = malloc(sizeof(pthread_mutex_t *) * num);
-	memset(forks, 0, sizeof(pthread_mutex_t *) * num);
+	forks = malloc(sizeof(pthread_mutex_t *) * (num + 1));
+	memset(forks, 0, sizeof(pthread_mutex_t *) * (num + 1));
 	while (i < num)
 	{
 		forks[i] = malloc(sizeof(pthread_mutex_t));
@@ -118,6 +118,7 @@ static void	free_philo(void *p)
 
 void	destroy_mutex(void *mutex)
 {
+	// printf("mutex: %p\n", mutex);
 	pthread_mutex_destroy(mutex);
 	free(mutex);
 }

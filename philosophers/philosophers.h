@@ -43,9 +43,6 @@ size_t	get_time(void);
 void	free_all(t_philo **philos);
 t_philo	**init_philosophers(t_philo_info *data, pthread_mutex_t ***forks);
 
-// Usleep wrapper to get time in ms instead of microseconds
-void	wusleep(useconds_t t);
-
 void	print(t_philo *p, char *str);
 int	check_dead(t_philo *p);
 void	free_ptr_array(void **arr, void (*f)(void *));
