@@ -85,14 +85,10 @@ char	*ft_itoa(size_t num)
 
 void	print(t_philo *p, char *str)
 {
-	size_t	cur_time;
-
 	if (!check_dead(p))
 	{
-		cur_time = get_time();
 		pthread_mutex_lock(p->write_perm);
 		printf("%ld %ld %s", get_time(), p->philo_index, str);
-		// printf("Time debug: %ld\n", cur_time + timestart());
 		pthread_mutex_unlock(p->write_perm);
 	}
 }
