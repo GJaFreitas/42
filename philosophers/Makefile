@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/05/11 16:21:15 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/05/12 12:11:31 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS = \
 	utils.c \
 	actions.c \
 	mem_management.c \
+	trylock.c \
 
 OBJS = $(addprefix obj/,$(SRCS:.c=.o))
 

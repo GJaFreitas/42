@@ -21,9 +21,9 @@ void	standby(t_philo *p, size_t t)
 // Dude eats then sleeps
 void	eat(t_philo *p)
 {
-	pthread_mutex_lock(right_fork(p));
+	trylock(&(t_trylock){p->thread, right_fork(p), NULL}, p->info->death_time - p->last_eat);
 	print(p, " has taken a fork\n");
-	pthread_mutex_lock(left_fork(p));
+	trylock(&(t_trylock){p->thread, left_fork(p), NULL}, p->info->death_time - p->last_eat);
 	print(p, " has taken a fork\n");
 	p->last_eat = get_time();
 	p->times_eaten++;
