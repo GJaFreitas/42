@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 	if (!parse_args(&data, argc, argv))
 		return (1);
 	philos = init_philosophers(&data, &forks);
-	timestamp();
+	timestart();
 	while (i < data.p_num)
 	{
 		pthread_create(philos[i]->thread, NULL, loop, philos[i]);

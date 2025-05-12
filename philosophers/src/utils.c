@@ -92,13 +92,13 @@ void	print(t_philo *p, char *str)
 		cur_time = get_time();
 		pthread_mutex_lock(p->write_perm);
 		printf("%ld %ld %s", get_time(), p->philo_index, str);
-		printf("Time debug: %ld\n", cur_time + timestamp());
+		printf("Time debug: %ld\n", cur_time + timestart());
 		pthread_mutex_unlock(p->write_perm);
 	}
 }
 
 // The time at the start of the simulation in ms
-size_t	timestamp(void)
+size_t	timestart(void)
 {
 	static struct timeval	time;
 
@@ -115,5 +115,5 @@ size_t	get_time(void)
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return (time.tv_usec - timestamp());
+	return (time.tv_usec - timestart());
 }
