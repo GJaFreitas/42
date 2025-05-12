@@ -86,14 +86,15 @@ char	*ft_itoa(size_t num)
 void	print(t_philo *p, char *str)
 {
 	size_t	cur_time;
-	size_t	guy;
 
-	cur_time = get_time();
-	guy = p->philo_index;
-	pthread_mutex_lock(p->write_perm);
-	printf("%ld %ld %s", cur_time, guy, str);
-	printf("Time debug: %ld\n", cur_time + timestamp());
-	pthread_mutex_unlock(p->write_perm);
+	if (!check_dead(p))
+	{
+		cur_time = get_time();
+		pthread_mutex_lock(p->write_perm);
+		printf("%ld %ld %s", get_time(), p->philo_index, str);
+		printf("Time debug: %ld\n", cur_time + timestamp());
+		pthread_mutex_unlock(p->write_perm);
+	}
 }
 
 // The time at the start of the simulation in ms

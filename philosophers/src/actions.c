@@ -1,5 +1,14 @@
 #include "../philosophers.h"
-#include <pthread.h>
+
+int	check_dead(t_philo *p)
+{
+	int	var;
+
+	pthread_mutex_lock(p->death_check);
+	var = *p->alive;
+	pthread_mutex_unlock(p->death_check);
+	return (!var);
+}
 
 void	standby(t_philo *p, size_t t)
 {
@@ -25,10 +34,10 @@ void	eat(t_philo *p)
 	print(p, " has taken a fork\n");
 	pthread_mutex_lock(p->l_fork);
 	print(p, " has taken a fork\n");
-	p->last_eat = get_time();
-	p->times_eaten++;
 	print(p, " is eating\n");
 	standby(p, p->info->eat_time);
+	p->last_eat = get_time();
+	p->times_eaten++;
 	pthread_mutex_unlock(p->r_fork);
 	pthread_mutex_unlock(p->l_fork);
 	a_sleep(p);
@@ -41,9 +50,10 @@ void	eat(t_philo *p)
 // overflow???
 void	die(t_philo *p)
 {
+	pthread_mutex_lock(p->death_check);
 	p->alive = 0;
+	pthread_mutex_unlock(p->death_check);
 	print(p, " died\n");
-	pthread_mutex_lock(p->write_perm);
 }
 
 void	a_sleep(t_philo *p)

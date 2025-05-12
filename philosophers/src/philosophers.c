@@ -53,12 +53,13 @@ int	main(int argc, char **argv)
 {
 	t_philo_info	data;
 	t_philo		**philos;
+	pthread_mutex_t	**forks;
 	unsigned int		i;
 
 	i = 0;
 	if (!parse_args(&data, argc, argv))
 		return (1);
-	philos = init_philosophers(&data);
+	philos = init_philosophers(&data, &forks);
 	timestamp();
 	while (i < data.p_num)
 	{
@@ -72,6 +73,7 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	pthread_mutex_unlock(philos[0]->write_perm);
+	free_ptr_array((void **)forks, destroy_mutex);
 	free_all(philos);
 	return (0);
 }

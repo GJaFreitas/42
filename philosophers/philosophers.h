@@ -27,6 +27,7 @@ typedef struct s_philo
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*write_perm;
+	pthread_mutex_t	*death_check;
 	pthread_t	*thread;
 	t_philo_info	*info;
 }	t_philo;
@@ -40,12 +41,15 @@ int	can_eat(t_philo *p);
 char	*ft_itoa(size_t num);
 size_t	get_time(void);
 void	free_all(t_philo **philos);
-t_philo	**init_philosophers(t_philo_info *data);
+t_philo	**init_philosophers(t_philo_info *data, pthread_mutex_t ***forks);
 
 // Usleep wrapper to get time in ms instead of microseconds
 void	wusleep(useconds_t t);
 
 void	print(t_philo *p, char *str);
+int	check_dead(t_philo *p);
+void	free_ptr_array(void **arr, void (*f)(void *));
+void	destroy_mutex(void *mutex);
 
 
 // Get the timestamp from when the program started
