@@ -33,17 +33,17 @@ void	*loop(void *ptr)
 
 	p = ptr;
 	if (p->philo_index % 2)
-		usleep(50);
+		usleep(150);
 	while (729)
 	{
 		eat(p);
 		if (p->info->eat_max \
 		&& p->times_eaten == p->info->eat_max)
 			break ;
-		if (!p->alive)
+		if (check_dead(p))
 			break ;
 		think(p);
-		if (!p->alive)
+		if (check_dead(p))
 			break ;
 	}
 	return (NULL);

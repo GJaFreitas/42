@@ -51,7 +51,7 @@ void	eat(t_philo *p)
 void	die(t_philo *p)
 {
 	pthread_mutex_lock(p->death_check);
-	p->alive = 0;
+	*p->alive = 0;
 	pthread_mutex_unlock(p->death_check);
 	print(p, " died\n");
 }

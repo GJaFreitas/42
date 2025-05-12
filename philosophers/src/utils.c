@@ -107,6 +107,8 @@ size_t	timestamp(void)
 	return (time.tv_usec);
 }
 
+// TODO: God fucking dammit this piece of shit is
+// overflowing what the fuck
 // The current time in ms
 size_t	get_time(void)
 {
