@@ -50,6 +50,6 @@ void	destroy_mutex(void *mutex);
 
 
 // Get the timestamp from when the program started
-suseconds_t	timestart(void);
+size_t	timestart(void);
 
 #endif

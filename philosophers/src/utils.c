@@ -98,13 +98,13 @@ void	print(t_philo *p, char *str)
 }
 
 // The time at the start of the simulation in ms
-suseconds_t	timestart(void)
+size_t	timestart(void)
 {
 	static struct timeval	time;
 
 	if (time.tv_sec == 0)
 		gettimeofday(&time, NULL);
-	return (time.tv_usec);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
 // TODO: God fucking dammit this piece of shit is
@@ -115,7 +115,5 @@ size_t	get_time(void)
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	if (time.tv_usec < timestart())
-		exit(111);
-	return ((time.tv_usec - timestart()) / 1000);
+	return (((time.tv_sec * 1000) + (time.tv_usec / 1000)) - timestart());
 }
