@@ -21,16 +21,16 @@ void	standby(t_philo *p, size_t t)
 // Dude eats then sleeps
 void	eat(t_philo *p)
 {
-	pthread_mutex_lock(right_fork(p));
+	pthread_mutex_lock(p->r_fork);
 	print(p, " has taken a fork\n");
-	pthread_mutex_lock(left_fork(p));
+	pthread_mutex_lock(p->l_fork);
 	print(p, " has taken a fork\n");
 	p->last_eat = get_time();
 	p->times_eaten++;
 	print(p, " is eating\n");
 	standby(p, p->info->eat_time);
-	pthread_mutex_unlock(right_fork(p));
-	pthread_mutex_unlock(left_fork(p));
+	pthread_mutex_unlock(p->r_fork);
+	pthread_mutex_unlock(p->l_fork);
 	a_sleep(p);
 }
 

@@ -35,18 +35,6 @@ int	ft_atoi(const char *str)
 	return (total);
 }
 
-pthread_mutex_t	*right_fork(t_philo *p)
-{
-	return (p->forks[p->philo_index - 1]);
-}
-
-pthread_mutex_t	*left_fork(t_philo *p)
-{
-	if (p->philo_index == p->info->p_num)
-		return (p->forks[0]);
-	return (p->forks[p->philo_index]);
-}
-
 size_t	ft_strlen(char *s)
 {
 	char *t;

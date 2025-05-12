@@ -2,13 +2,20 @@
 
 static void	looping(t_philo **philos, pthread_mutex_t **forks, int i)
 {
-	philos[i] = malloc(sizeof(t_philo));
-	memset(philos[i], 0, sizeof(t_philo));
+	t_philo	*p;
+
+	p = philos[i];
+	p = malloc(sizeof(t_philo));
+	memset(p, 0, sizeof(t_philo));
 	forks[i] = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(forks[i], NULL);
-	philos[i]->thread = calloc(1, sizeof(pthread_t));
-	philos[i]->philo_index = i + 1;
-	philos[i]->forks = forks;
+	p->thread = calloc(1, sizeof(pthread_t));
+	p->philo_index = i + 1;
+	p->r_fork = forks[p->philo_index - 1];
+	if (p->philo_index == p->info->p_num)
+		p->l_fork = forks[p->philo_index - 1];
+	else
+		p->l_fork = forks[p->philo_index];
 }
 
 // Initializes an array of philosophers with null term

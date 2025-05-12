@@ -24,15 +24,14 @@ typedef struct s_philo
 	size_t		philo_index;
 	size_t		times_eaten;
 	size_t		last_eat;
-	pthread_mutex_t	**forks;
+	pthread_mutex_t	*r_fork;
+	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*write_perm;
 	pthread_t	*thread;
 	t_philo_info	*info;
 }	t_philo;
 
 int		ft_atoi(const char *str);
-pthread_mutex_t	*right_fork(t_philo *p);
-pthread_mutex_t	*left_fork(t_philo *p);
 void	eat(t_philo *p);
 void	die(t_philo *p);
 void	think(t_philo *p);
