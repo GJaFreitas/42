@@ -1,4 +1,4 @@
-#include "../philosophers.h"
+#include "philosophers_bonus.h"
 #include <pthread.h>
 
 /*

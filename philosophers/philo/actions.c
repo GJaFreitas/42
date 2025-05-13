@@ -1,4 +1,4 @@
-#include "../philosophers.h"
+#include "philosophers.h"
 
 int	check_dead(t_philo *p)
 {

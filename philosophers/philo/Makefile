@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/05/11 16:21:15 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/05/13 09:20:19 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ NODIR = --no-print-directory
 LIBFT = libft/libft.a
 
 # --- PUSH SWAP SOURCES ------------ #
-VPATH = src
 SRCS = \
 	philosophers.c \
 	utils.c \

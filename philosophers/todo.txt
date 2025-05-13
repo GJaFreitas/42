@@ -1,5 +1,0 @@
-Eval rules:
-
-
-- time_to_die, time_to_eat and time_to_sleep > 60ms
-- no more than 200 philosophers

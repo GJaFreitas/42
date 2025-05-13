@@ -1,5 +1,4 @@
-#include "../philosophers.h"
-#include <pthread.h>
+#include "philosophers.h"
 
 /*
 • Each philosopher must be represented as a separate thread.

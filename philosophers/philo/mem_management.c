@@ -1,8 +1,4 @@
-#include "../philosophers.h"
-#include <bits/pthreadtypes.h>
-#include <pthread.h>
-#include <stddef.h>
-#include <string.h>
+#include "philosophers.h"
 
 /*
 
