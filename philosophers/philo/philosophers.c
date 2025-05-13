@@ -48,6 +48,17 @@ void	*loop(void *ptr)
 	return (NULL);
 }
 
+void	*p_sync(void *ptr)
+{
+	static size_t	i;
+
+	i++;
+	while (i != ((t_philo *)ptr)->info->p_num)
+		;
+	loop(ptr);
+	return (NULL);
+}
+
 int	main(int argc, char **argv)
 {
 	t_philo_info	data;
@@ -62,7 +73,7 @@ int	main(int argc, char **argv)
 	timestart();
 	while (i < data.p_num)
 	{
-		pthread_create(philos[i]->thread, NULL, loop, philos[i]);
+		pthread_create(philos[i]->thread, NULL, p_sync, philos[i]);
 		i++;
 	}
 	i = 0;

@@ -21,9 +21,6 @@ void	standby(t_philo *p, size_t t)
 		current = get_time();
 		if (current - p->last_eat >= p->info->death_time)
 		{
-			pthread_mutex_lock(p->write_perm);
-			printf("Cur: %ld\nLast eat: %ld\nStart of standbye: %ld\n", current, p->last_eat, start);
-			pthread_mutex_unlock(p->write_perm);
 			die(p);
 			break ;
 		}
