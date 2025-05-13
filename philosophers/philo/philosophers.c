@@ -1,4 +1,5 @@
 #include "philosophers.h"
+#include <pthread.h>
 
 /*
 • Each philosopher must be represented as a separate thread.
@@ -28,9 +29,16 @@ int	parse_args(t_philo_info *data, int argc, char **argv)
 
 void	*loop(void *ptr)
 {
+	// static size_t	i;
 	t_philo	*p;
 
 	p = ptr;
+	// pthread_mutex_lock(((t_philo *)ptr)->write_perm);
+	// i++;
+	// pthread_mutex_unlock(((t_philo *)ptr)->write_perm);
+	// while (1)
+	// 	if (i == ((t_philo *)ptr)->info->p_num)
+	// 		break ;
 	if (p->philo_index % 2)
 		usleep(100);
 	while (729)
@@ -48,17 +56,6 @@ void	*loop(void *ptr)
 	return (NULL);
 }
 
-void	*p_sync(void *ptr)
-{
-	static size_t	i;
-
-	i++;
-	while (i != ((t_philo *)ptr)->info->p_num)
-		;
-	loop(ptr);
-	return (NULL);
-}
-
 int	main(int argc, char **argv)
 {
 	t_philo_info	data;
@@ -73,7 +70,7 @@ int	main(int argc, char **argv)
 	timestart();
 	while (i < data.p_num)
 	{
-		pthread_create(philos[i]->thread, NULL, p_sync, philos[i]);
+		pthread_create(philos[i]->thread, NULL, loop, philos[i]);
 		i++;
 	}
 	i = 0;
@@ -82,7 +79,6 @@ int	main(int argc, char **argv)
 		pthread_join(*philos[i]->thread, NULL);
 		i++;
 	}
-	pthread_mutex_unlock(philos[0]->write_perm);
 	free_ptr_array((void **)forks, destroy_mutex);
 	free_all(philos);
 	return (0);

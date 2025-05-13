@@ -1,0 +1,155 @@
+So I am debugging at the moment and have come across
+an interesting problem:
+
+When running the program with fsanitize=thread sometimes
+i get this output:
+
+1 1  has taken a fork
+1 1  has taken a fork
+1 1  is eating
+2 3  has taken a fork
+2 3  has taken a fork
+2 3  is eating
+201 1  is sleeping
+201 2  has taken a fork
+202 3  is sleeping
+202 4  has taken a fork
+202 2  has taken a fork
+202 2  is eating
+249 4  has taken a fork
+249 4  is eating
+301 1  is thinking
+302 3  is thinking
+310 2  died
+310 4  died
+
+
+while other times i get this one:
+
+WARNING: ThreadSanitizer: lock-order-inversion (potential deadlock) (pid=66260)
+  Cycle in lock order graph: M0 (0x720c00000030) => M1 (0x720c00000060) => M2 (0x720c00000090) => M3 (0x720c000000c0) => M0
+
+  Mutex M1 acquired here while holding mutex M0 in thread T1:
+    #0 pthread_mutex_lock /usr/src/debug/gcc/gcc/libsanitizer/tsan/tsan_interceptors_posix.cpp:1371 (libtsan.so.2+0x5f1bc) (BuildId: cee2433f3df2305b51fd54f2fcd53d83e674c563)
+    #1 eat /home/bag/Documents/42/philosophers/philo/actions.c:38 (philo+0x1dce) (BuildId: daab5a86f8658cd280c75933819597d25b4ad290)
+    #2 loop /home/bag/Documents/42/philosophers/philo/philosophers.c:46 (philo+0x1450) (BuildId: daab5a86f8658cd280c75933819597d25b4ad290)
+
+    Hint: use TSAN_OPTIONS=second_deadlock_stack=1 to get more informative warning message
+
+  Mutex M2 acquired here while holding mutex M1 in thread T2:
+    #0 pthread_mutex_lock /usr/src/debug/gcc/gcc/libsanitizer/tsan/tsan_interceptors_posix.cpp:1371 (libtsan.so.2+0x5f1bc) (BuildId: cee2433f3df2305b51fd54f2fcd53d83e674c563)
+    #1 eat /home/bag/Documents/42/philosophers/philo/actions.c:38 (philo+0x1dce) (BuildId: daab5a86f8658cd280c75933819597d25b4ad290)
+    #2 loop /home/bag/Documents/42/philosophers/philo/philosophers.c:46 (philo+0x1450) (BuildId: daab5a86f8658cd280c75933819597d25b4ad290)
+
+  Mutex M3 acquired here while holding mutex M2 in thread T3:
+    #0 pthread_mutex_lock /usr/src/debug/gcc/gcc/libsanitizer/tsan/tsan_interceptors_posix.cpp:1371 (libtsan.so.2+0x5f1bc) (BuildId: cee2433f3df2305b51fd54f2fcd53d83e674c563)
+    #1 eat /home/bag/Documents/42/philosophers/philo/actions.c:38 (philo+0x1dce) (BuildId: daab5a86f8658cd280c75933819597d25b4ad290)
+    #2 loop /home/bag/Documents/42/philosophers/philo/philosophers.c:46 (philo+0x1450) (BuildId: daab5a86f8658cd280c75933819597d25b4ad290)
+
+  Mutex M0 acquired here while holding mutex M3 in thread T4:
+    #0 pthread_mutex_lock /usr/src/debug/gcc/gcc/libsanitizer/tsan/tsan_interceptors_posix.cpp:1371 (libtsan.so.2+0x5f1bc) (BuildId: cee2433f3df2305b51fd54f2fcd53d83e674c563)
+    #1 eat /home/bag/Documents/42/philosophers/philo/actions.c:38 (philo+0x1dce) (BuildId: daab5a86f8658cd280c75933819597d25b4ad290)
+    #2 loop /home/bag/Documents/42/philosophers/philo/philosophers.c:46 (philo+0x1450) (BuildId: daab5a86f8658cd28
+0c75933819597d25b4ad290)
+
+  Thread T1 (tid=66262, running) created by main thread at:
+    #0 pthread_create /usr/src/debug/gcc/gcc/libsanitizer/tsan/tsan_interceptors_posix.cpp:1041 (libtsan.so.2+0x5fcc7) (BuildId: cee2433f3df2305b51fd54f2fcd53d83e674c563)
+    #1 main /home/bag/Documents/42/philosophers/philo/philosophers.c:73 (philo+0x15e8) (BuildId: daab5a86f8658cd280c75933819597d25b4ad290)
+
+  Thread T2 (tid=66263, running) created by main thread at:
+    #0 pthread_create /usr/src/debug/gcc/gcc/libsanitizer/tsan/tsan_interceptors_posix.cpp:1041 (libtsan.so.2+0x5fcc7) (BuildId: cee2433f3df2305b51fd54f2fcd53d83e674c563)
+    #1 main /home/bag/Documents/42/philosophers/philo/philosophers.c:73 (philo+0x15e8) (BuildId: daab5a86f8658cd280c75933819597d25b4ad290)
+
+  Thread T3 (tid=66264, running) created by main thread at:
+    #0 pthread_create /usr/src/debug/gcc/gcc/libsanitizer/tsan/tsan_interceptors_posix.cpp:1041 (libtsan.so.2+0x5fcc7) (BuildId: cee2433f3df2305b51fd54f2fcd53d83e674c563)
+    #1 main /home/bag/Documents/42/philosophers/philo/philosophers.c:73 (philo+0x15e8) (BuildId: daab5a86f8658cd280c75933819597d25b4ad290)
+
+  Thread T4 (tid=66265, running) created by main thread at:
+    #0 pthread_create /usr/src/debug/gcc/gcc/libsanitizer/tsan/tsan_interceptors_posix.cpp:1041 (libtsan.so.2+0x5fcc7) (BuildId: cee2433f3df2305b51fd54f2fcd53d83e674c563)
+    #1 main /home/bag/Documents/42/philosophers/philo/philosophers.c:73 (philo+0x15e8) (BuildId: daab5a86f8658cd280c75933819597d25b4ad290)
+
+SUMMARY: ThreadSanitizer: lock-order-inversion (potential deadlock) /home/bag/Documents/42/philosophers/philo/actions.c:38 in eat
+==================
+
+
+The error seems rarer and yet still happens sometimes, this seems
+to be a bug with fsanitizer itself as seen in this github issue:
+https://github.com/google/sanitizers/issues/1419
+and this one:
+https://github.com/google/sanitizers/issues/488
+and this one:
+https://github.com/google/sanitizers/issues/814
+
+So yeah, looking at the code the lock order is impossible to violate
+
+	pthread_mutex_lock(p->r_fork);		<< (relevant lines)
+	print(p, " has taken a fork\n");
+	pthread_mutex_lock(p->l_fork);		<<
+	print(p, " has taken a fork\n");
+	print(p, " is eating\n");
+	standby(p, p->info->eat_time);
+	p->last_eat = get_time();
+	p->times_eaten++;
+	pthread_mutex_unlock(p->l_fork);	<<
+	pthread_mutex_unlock(p->r_fork);	<<
+	a_sleep(p);
+
+pick up right fork,
+wait for left
+
+put down left fork
+put down right fork
+
+Doing 10 runs with the inverse unlock order gave me 6/10 tests positive
+Using the correct lock order gave me: 4/10 positive
+
+This means that its pretty much random. The code is correct, they pick up
+one fork and wait for the other. The order in which they do it is correct.
+
+The problem fsanitizer seems to be picking up on is that a thread that acquires
+both forks will then acquire the writing permission mutex in the print() function.
+Though fsanitize seems to catch this as a mistake I can't understand how it would
+ever cause problems
+
+A thread acquires a fork > Thread waits for the write mutex > Thread writes to the stdout
+> thread releases the write mutex > thread waits for the second fork
+
+There is 0 chance of a deadlock happening because of the order in which forks are grabbed.
+
+"You must establish a strict ordering among the mutexes, e.g. mutex1 precedes mutex2 (but this
+rule is valid for any number of mutexes). You may only request a lock on a mutex if you don't
+hold a mutex which comes after it in the order; e.g. you may not request a lock on mutex1 if
+you hold a lock on mutex2. Anytime these rules are respected, you should be safe. With regards to
+releasing, if you release mutex1, then try to reacquire it before releasing mutex2, you've violated
+the rule. In this regard, there may be some advantage in respecting a stack-like order: last acquired
+is always the first released. But it's sort of an indirect effect: the rule is that you cannot
+request a lock on mutex1 if you hold one on mutex2. Regardless of whether you had a lock on
+mutex1 when you acquired the lock on mutex2 or not"
+					-- Random guy on stack overflow (https://stackoverflow.com/questions/9414812/does-order-of-unlocking-mutexes-make-a-difference-here)
+
+So what he is saying is slightly complicated to apply to the problem but becomes easy with 2 philosophers
+
+2 philosophers (p1 and p2)
+2 forks (f1 and f2)
+
+in my code it goes like this:
+
+> p1 and p2 are created
+> p2 must wait 100 microseconds
+> p1 grabs f1
+> p1 grabs f2
+> p2 waits on f2
+> p1 finishes eating and releases f2
+> p2 grabs f2 and waits on f1
+> p1 releases f1
+> p2 grabs f1 and starts eating
+> p1 sleeps then thinks
+> p2 finishes eating and puts down first f1 then f2
+> p1 is waiting on f1 and then f2
+
+so the way they grab and release the forks is correct, not only that but in this problem
+there would never be a case where someone holds f1 and f2 and then only releases one
+since the philosophers always release both forks _almost_ at the same time
+
+This _almost_ is what i believe is making fsanitizer go haywire, its also why its so inconsistent
+with its complaining, sometimes the cpu is fast enough at releasing the mutexes, other times it isnt
