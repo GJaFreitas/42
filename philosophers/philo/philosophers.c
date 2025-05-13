@@ -1,17 +1,6 @@
 #include "philosophers.h"
 #include <pthread.h>
 
-/*
-• Each philosopher must be represented as a separate thread.
-
-• There is one fork between each pair of philosophers. Therefore, if there are several
-philosophers, each philosopher has a fork on their left side and a fork on their right
-side. If there is only one philosopher, they will have access to just one fork.
-
-• To prevent philosophers from duplicating forks, you should protect each fork’s state
-with a mutex.
-*/
-
 int	parse_args(t_philo_info *data, int argc, char **argv)
 {
 	if (argc < 5)
@@ -27,6 +16,13 @@ int	parse_args(t_philo_info *data, int argc, char **argv)
 	return (1);
 }
 
+// usleep(x) is dependant on hardware, in 42 computers 100 works
+// while on my laptop 100 leads to unpredictable outcomes 200
+// will make it so around 95% of the time the code works as it should
+// but sometimes, very rarely it does something different.
+// THIS IS DEPENDANT ON HOW MANY PROGRAMS IM USING AT THE TIME
+// it feels like given enough time any test, even the "impossible to
+// fail" ones will fail
 void	*loop(void *ptr)
 {
 	// static size_t	i;
@@ -40,7 +36,7 @@ void	*loop(void *ptr)
 	// 	if (i == ((t_philo *)ptr)->info->p_num)
 	// 		break ;
 	if (p->philo_index % 2)
-		usleep(100);
+		usleep(300);
 	while (729)
 	{
 		eat(p);
@@ -58,10 +54,10 @@ void	*loop(void *ptr)
 
 int	main(int argc, char **argv)
 {
-	t_philo_info	data;
-	t_philo		**philos;
 	pthread_mutex_t	**forks;
-	unsigned int		i;
+	t_philo_info	data;
+	unsigned int	i;
+	t_philo			**philos;
 
 	i = 0;
 	if (!parse_args(&data, argc, argv))

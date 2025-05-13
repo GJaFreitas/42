@@ -6,7 +6,7 @@
 #    By: gjacome- <gjacome-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/15 15:16:20 by gjacome-          #+#    #+#              #
-#    Updated: 2025/05/13 18:21:38 by gjacome-         ###   ########.fr        #
+#    Updated: 2025/05/13 19:11:57 by gjacome-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 # --- Compiler Flags -------------- #
 
-CFLAGS = -g -Wall -Wextra -Werror -fsanitize=thread
+CFLAGS = -g -Wall -Wextra -Werror
 
 # --- NAME ---------------------- #
 
@@ -32,8 +32,11 @@ LIBFT = libft/libft.a
 SRCS = \
 	philosophers.c \
 	utils.c \
+	basic_utils.c \
 	actions.c \
-	mem_management.c \
+	action_utils.c \
+	mem_start.c \
+	mem_free.c \
 
 OBJS = $(addprefix obj/,$(SRCS:.c=.o))
 
