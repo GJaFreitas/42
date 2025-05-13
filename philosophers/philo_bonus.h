@@ -1,5 +1,5 @@
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#ifndef PHILO_BONUS_H
+# define PHILO_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -32,7 +32,7 @@ typedef struct s_philo
 	t_philo_info	*info;
 }	t_philo;
 
-long		ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 void	eat(t_philo *p);
 void	die(t_philo *p);
 void	think(t_philo *p);

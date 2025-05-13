@@ -10,11 +10,11 @@ static int	ft_isspace(int c)
 		|| c == ' ');
 }
 
-long	ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	sign;
-	long	total;
+	int	total;
 
 	sign = 1;
 	i = 0;
@@ -22,7 +22,10 @@ long	ft_atoi(const char *str)
 	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-')
+	{
+		sign = -1;
 		i++;
+	}
 	else if (str[i] == '+')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
