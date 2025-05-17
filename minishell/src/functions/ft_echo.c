@@ -1,4 +1,4 @@
-#include "../../minishell.h"
+#include "minishell.h"
 
 // Account for how spaces and tabs were removed
 char	*ft_reverse_split(char **tokens)

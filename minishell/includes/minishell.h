@@ -1,8 +1,9 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "libft/libft.h"
+# include "libft.h"
 # include "colors.h"
+# include "memory.h"
 # include <stdio.h>
 # include <stdarg.h>
 # include <stddef.h>

@@ -1,4 +1,4 @@
-#include "../minishell.h"
+#include "minishell.h"
 
 static void	__placebo(char **args)
 {
