@@ -2,14 +2,19 @@
 #include <pthread.h>
 
 /*
-• Each philosopher must be represented as a separate thread.
+The kill() system call can be used to send any signal to any
+       process group or process.
 
-• There is one fork between each pair of philosophers. Therefore, if there are several
-philosophers, each philosopher has a fork on their left side and a fork on their right
-side. If there is only one philosopher, they will have access to just one fork.
+       If pid is positive, then signal sig is sent to the process with
+       the ID specified by pid.
 
-• To prevent philosophers from duplicating forks, you should protect each fork’s state
-with a mutex.
+       If pid equals 0, then sig is sent to every process in the process
+       group of the calling process.
+
+       If pid equals -1, then sig is sent to every process for which the
+       calling process has permission to send signals, except for process
+       1 (init), but see below.
+
 */
 
 int	parse_args(t_philo_info *data, int argc, char **argv)

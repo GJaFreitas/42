@@ -8,6 +8,9 @@
 # include <string.h>
 # include <sys/time.h>
 
+# define SEM_FORKS "\forks"
+# define SEM_ALIVE "\alive"
+
 // Eat max is optional and if not given stays at 0
 typedef struct s_philosophers
 {
