@@ -18,13 +18,11 @@ void	eat(t_philo *p)
 
 // Updates the 'alive' variable for all philosophers to stop the
 // simulation and announces to the user the dude has died
-//
-// TODO: Somehow the time printed is sometimes negative
-// overflow???
 void	die(t_philo *p)
 {
-	print(p, " died\n");
 	pthread_mutex_lock(p->death_check);
+	if (*p->alive)
+		printf("%ld %ld died\n", get_time(), p->philo_index);
 	*p->alive = 0;
 	pthread_mutex_unlock(p->death_check);
 }

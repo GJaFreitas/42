@@ -29,12 +29,6 @@ void	*loop(void *ptr)
 	t_philo	*p;
 
 	p = ptr;
-	// pthread_mutex_lock(((t_philo *)ptr)->write_perm);
-	// i++;
-	// pthread_mutex_unlock(((t_philo *)ptr)->write_perm);
-	// while (1)
-	// 	if (i == ((t_philo *)ptr)->info->p_num)
-	// 		break ;
 	if (p->philo_index % 2)
 		usleep(300);
 	while (729)
@@ -52,6 +46,20 @@ void	*loop(void *ptr)
 	return (NULL);
 }
 
+void	*one_philo(void *ptr)
+{
+	t_philo	*p;
+
+	p = ptr;
+	while (1)
+	{
+		if (check_dead(p))
+			break ;
+		standby(p, 10);
+	}
+	return (NULL);
+}
+
 int	main(int argc, char **argv)
 {
 	pthread_mutex_t	**forks;
@@ -64,11 +72,14 @@ int	main(int argc, char **argv)
 		return (1);
 	philos = init_philosophers(&data, &forks);
 	timestart();
-	while (i < data.p_num)
-	{
-		pthread_create(philos[i]->thread, NULL, loop, philos[i]);
-		i++;
-	}
+	if (data.p_num == 1)
+		pthread_create(philos[i]->thread, NULL, one_philo, philos[i]);
+	else
+		while (i < data.p_num)
+		{
+			pthread_create(philos[i]->thread, NULL, loop, philos[i]);
+			i++;
+		}
 	i = 0;
 	while (i < data.p_num)
 	{
