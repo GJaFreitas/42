@@ -1,6 +1,0 @@
--Wall -Wextra -Werror
--L./includes
--I./includes
--L./libft
--I./libft
--lfmt
